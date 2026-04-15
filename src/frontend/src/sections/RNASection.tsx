@@ -19,116 +19,153 @@ const RNAScene = lazy(() =>
 const RNA_QUIZ: QuizQuestion[] = [
   {
     id: "rna-q1",
-    topic: "rna",
-    question: "Which sugar is found in RNA but NOT in DNA?",
-    options: ["Deoxyribose", "Ribose", "Glucose", "Fructose"],
+    question:
+      "What is alternative splicing and why does it dramatically increase protein diversity?",
+    options: [
+      "Alternative splicing is a mutation that creates new exons spontaneously",
+      "Alternative splicing is where different combinations of exons from a single pre-mRNA are joined together, allowing one gene to encode multiple different protein isoforms",
+      "Alternative splicing is the degradation of mRNAs that have incorrect stop codons",
+      "Alternative splicing is the addition of multiple poly-A tails to stabilize an mRNA",
+    ],
     correctIndex: 1,
     explanation:
-      "RNA contains ribose, which has a hydroxyl (–OH) group at the 2' carbon. DNA contains deoxyribose, which lacks that –OH group, making DNA more stable.",
+      "This is one of the most mind-expanding discoveries in genomics. The human genome has ~20,000 protein-coding genes — far fewer than expected for our complexity. The answer to this paradox is largely alternative splicing. When the spliceosome processes a pre-mRNA, different exons can be included or excluded in different cell types or conditions, generating multiple distinct mRNAs (and thus multiple proteins) from a single gene. The DSCAM gene in Drosophila, for example, can theoretically generate over 38,000 different protein isoforms through alternative splicing — more than the entire fly genome has genes! In humans, ~95% of multi-exon genes undergo alternative splicing. Errors in splicing regulation are implicated in many diseases, including spinal muscular atrophy (SMN2 exon 7 skipping) and several cancers.",
+    topic: "rna",
   },
   {
     id: "rna-q2",
-    topic: "rna",
-    question: "Which nitrogenous base is found in RNA but NOT in DNA?",
-    options: ["Adenine", "Guanine", "Uracil", "Cytosine"],
-    correctIndex: 2,
+    question:
+      "What is the wobble hypothesis in tRNA decoding, and why is it important?",
+    options: [
+      "Wobble refers to the physical oscillation of tRNA in the ribosome A-site",
+      "Wobble refers to flexible base pairing at the third codon position, allowing a single tRNA anticodon to recognize multiple codons that differ only at the third position — reducing the number of tRNAs needed",
+      "Wobble is the process by which aminoacyl-tRNA synthetases identify the correct tRNA",
+      "Wobble describes the conformational change in the ribosome during translocation",
+    ],
+    correctIndex: 1,
     explanation:
-      "RNA uses Uracil (U) instead of Thymine (T). Both pair with Adenine, but Uracil lacks the methyl group that Thymine has.",
+      "Francis Crick proposed the wobble hypothesis in 1966 to explain a puzzle: there are 61 sense codons but only ~45 tRNA anticodons in most organisms. How can 45 tRNAs decode 61 codons? The answer is that the pairing at the third codon position (the 'wobble position') is flexible — a G in the anticodon can pair with U or C; inosine (a modified base found in many tRNAs at position 34) can pair with U, C, or A. This non-Watson-Crick pairing means some tRNAs can recognize 2–4 different codons. The genetic code is degenerate precisely because of wobble — many amino acids are encoded by multiple codons differing only at position 3. This degeneracy also buffers against silent mutations.",
+    topic: "rna",
   },
   {
     id: "rna-q3",
-    topic: "rna",
-    question: "What is the primary role of messenger RNA (mRNA)?",
+    question:
+      "How do miRNAs regulate gene expression, and why are they dysregulated in cancer?",
     options: [
-      "Forms the ribosome structure",
-      "Brings amino acids to the ribosome",
-      "Carries the genetic message from DNA to the ribosome",
-      "Catalyzes peptide bond formation",
+      "miRNAs are catalytic RNAs that directly degrade DNA in the nucleus to silence genes",
+      "miRNAs are ~22 nt RNAs that, loaded into the RISC complex, find complementary sequences in target mRNAs and either block their translation or trigger their degradation — one miRNA can silence hundreds of targets",
+      "miRNAs are the same as siRNAs and function only in plants",
+      "miRNAs are structural components of the spliceosome with no role in gene silencing",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation:
-      "mRNA is transcribed from DNA and carries the codons (triplet sequences) that specify which amino acids to incorporate into a growing protein.",
+      "miRNAs are tiny but enormously influential. They're transcribed as primary miRNAs (pri-miRNAs), cleaved by Drosha/DGCR8 in the nucleus into pre-miRNA hairpins (~70 nt), exported by Exportin-5, and cleaved by Dicer into mature ~22 nt duplexes. One strand loads into Argonaute (AGO) to form the RISC complex. RISC scans 3' UTRs of mRNAs for complementary sequences — partial complementarity (common in animals) leads to translational repression and mRNA destabilization. A single miRNA can regulate hundreds of genes. miRNA-21 is overexpressed in many cancers and suppresses multiple tumor suppressors. The therapeutic potential of miRNA mimics and anti-miRNA oligonucleotides is a major research frontier.",
+    topic: "rna",
   },
   {
     id: "rna-q4",
-    topic: "rna",
-    question: "Which part of a tRNA molecule carries the amino acid?",
+    question:
+      "What is the function of the 5' cap and poly-A tail on eukaryotic mRNA?",
     options: [
-      "Anticodon loop",
-      "D-loop",
-      "T-loop",
-      "3' CCA end (acceptor stem)",
+      "The 5' cap provides the start codon; the poly-A tail provides the stop codon",
+      "The 5' 7-methylguanosine cap protects mRNA from 5' exonucleases and recruits the ribosome; the 3' poly-A tail protects from 3' degradation, aids nuclear export, and enhances translation efficiency",
+      "Both the cap and tail are removed before the mRNA is translated",
+      "The 5' cap is added in the cytoplasm; the poly-A tail is added in the nucleus before transcription",
     ],
-    correctIndex: 3,
+    correctIndex: 1,
     explanation:
-      "The 3' CCA end of tRNA is where the specific amino acid is covalently attached by aminoacyl-tRNA synthetase enzymes.",
+      "These two modifications are like protective bookends that dramatically extend mRNA life and functionality. The 5' cap is an unusual 7-methylguanosine linked via a 5'–5' triphosphate bridge — added co-transcriptionally by capping enzymes. Cap-binding protein (eIF4E) recognizes it during cap-dependent translation initiation, and it blocks 5'→3' exonucleases. The poly-A tail (~250 adenines) is bound by poly(A) binding protein (PABP), which interacts with eIF4E at the cap to circularize the mRNA, promoting ribosome recycling and efficient translation. Different mRNAs have dramatically different half-lives: some are degraded in minutes (rapid-response genes), others last days.",
+    topic: "rna",
   },
   {
     id: "rna-q5",
-    topic: "rna",
-    question: "What does the anticodon on a tRNA molecule do?",
+    question:
+      "What are snRNAs and how do they drive pre-mRNA splicing in the spliceosome?",
     options: [
-      "Attaches to the ribosome large subunit",
-      "Pairs with the complementary codon on mRNA",
-      "Binds to RNA polymerase",
-      "Catalyzes peptide bond formation",
+      "snRNAs are structural RNAs found only in prokaryotes that replace ribosomes",
+      "snRNAs combine with proteins to form snRNPs (U1, U2, U4, U5, U6), which assemble on pre-mRNA splice sites and catalyze two transesterification reactions to remove introns and join exons",
+      "snRNAs are identical to miRNAs but are 40–60 nt instead of 22 nt",
+      "snRNAs serve only a structural role in the spliceosome and play no part in catalysis",
     ],
     correctIndex: 1,
     explanation:
-      "The anticodon loop on tRNA contains three nucleotides that base-pair with the complementary codon on mRNA, ensuring the correct amino acid is added.",
+      "The spliceosome is an astonishing molecular machine — roughly the size of a ribosome, assembled de novo on every intron. U1 snRNP recognizes the 5' splice site; U2 snRNP recognizes the branch point adenosine; U4/U6 and U5 join to form the active spliceosome. Two transesterification reactions occur: first, the 2'-OH of the branch point A attacks the 5' splice site, creating a lariat intermediate; then, the free 3'-OH of the upstream exon attacks the 3' splice site, joining the exons and releasing the lariat. Remarkably, the splicing chemistry may be catalyzed by U6 snRNA itself — making the spliceosome another ribozyme.",
+    topic: "rna",
   },
   {
     id: "rna-q6",
-    topic: "rna",
-    question: "Which enzyme synthesizes RNA during transcription?",
-    options: ["DNA polymerase", "RNA polymerase", "Ribonuclease", "Helicase"],
+    question:
+      "What is the ribosome's composition in bacteria vs eukaryotes, and what makes it fundamentally an RNA machine?",
+    options: [
+      "Bacterial ribosomes are 80S (40S + 60S); eukaryotic are 70S (30S + 50S); both use protein as the catalytic center",
+      "Bacterial ribosomes are 70S (30S + 50S); eukaryotic are 80S (40S + 60S); peptidyl transferase activity is performed by the 23S/28S rRNA — making the ribosome a ribozyme",
+      "Both bacterial and eukaryotic ribosomes are 80S and use identical ribosomal proteins for catalysis",
+      "The ribosome has no RNA catalytic activity — only proteins perform peptide bond synthesis",
+    ],
     correctIndex: 1,
     explanation:
-      "RNA polymerase binds to the promoter region of DNA, unwinds the double helix, and synthesizes a complementary RNA strand in the 5'→3' direction.",
+      "This is one of biology's most profound discoveries. Bacterial ribosomes are 70S (30S small subunit with 16S rRNA + 50S large subunit with 23S and 5S rRNA). Eukaryotic ribosomes are 80S (40S with 18S rRNA + 60S with 28S, 5.8S, and 5S rRNA). The bombshell: the peptidyl transferase center — where peptide bonds are actually formed — is made entirely of RNA (23S rRNA in bacteria, 28S in eukaryotes). Proteins are present but mostly structural, not catalytic. This confirms the ribosome is a ribozyme, which is one of the strongest arguments for the RNA World hypothesis: RNA was catalyzing protein synthesis long before proteins took over most enzymatic roles.",
+    topic: "rna",
   },
   {
     id: "rna-q7",
-    topic: "rna",
     question:
-      "In eukaryotes, what happens to pre-mRNA before it leaves the nucleus?",
+      "What is the difference between siRNA and miRNA in the RNAi pathway?",
     options: [
-      "It is immediately translated",
-      "Introns are added and exons are removed",
-      "A 5' cap and poly-A tail are added, and introns are spliced out",
-      "It is converted into DNA",
+      "siRNA and miRNA are identical — 'siRNA' is just the name used for therapeutic applications",
+      "siRNA is typically exogenous/double-stranded and guides RISC to perfectly complementary mRNAs for cleavage; miRNA is endogenously produced and usually has partial complementarity, causing translational repression rather than cleavage",
+      "siRNA functions in the nucleus; miRNA functions only in the cytoplasm",
+      "siRNA silences genes permanently by methylating their promoters; miRNA acts only temporarily",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation:
-      "Pre-mRNA processing in eukaryotes includes adding a 5' methylguanosine cap, a 3' poly-A tail, and removing non-coding introns by spliceosomes — producing mature mRNA.",
+      "Both siRNA and miRNA work through the RNAi pathway and the RISC complex, but they differ in origin and mechanism. siRNAs are typically double-stranded, processed by Dicer, and guide RISC to perfectly complementary target mRNAs — leading to precise mRNA cleavage by Argonaute 'slicer' activity. siRNA naturally defends against viruses and transposons (especially in plants and invertebrates). In research and therapy, synthetic siRNAs are powerful gene-knockdown tools. miRNAs have imperfect complementarity to their targets, causing translational repression and mRNA destabilization rather than precise cleavage. This partial complementarity allows one miRNA to regulate hundreds of genes subtly — functioning as a fine-tuner rather than a binary on/off switch.",
+    topic: "rna",
   },
   {
     id: "rna-q8",
-    topic: "rna",
-    question: "What codon signals the START of translation?",
-    options: ["UAA", "UAG", "AUG", "UGA"],
-    correctIndex: 2,
+    question:
+      "What is the difference between RNA Pol I, Pol II, and Pol III in eukaryotic transcription?",
+    options: [
+      "All three polymerases transcribe the same genes but are used in different cell types",
+      "RNA Pol I transcribes rRNA (28S, 18S, 5.8S) in the nucleolus; RNA Pol II transcribes all protein-coding genes and most snRNA and miRNA; RNA Pol III transcribes tRNA, 5S rRNA, and other small RNAs",
+      "RNA Pol I is in the nucleus; Pol II is in the cytoplasm; Pol III is in the mitochondria",
+      "RNA Pol III is the main polymerase; Pol I and Pol II are accessory factors",
+    ],
+    correctIndex: 1,
     explanation:
-      "AUG is the universal start codon. It codes for the amino acid methionine and marks where the ribosome begins reading the mRNA.",
+      "This division of labor is beautifully organized. RNA Pol I is dedicated to ribosomal RNA production — it transcribes the 45S rRNA precursor in the nucleolus, processed into 28S, 18S, and 5.8S rRNAs. This is the most active polymerase in rapidly growing cells, reflecting the huge demand for ribosomes. RNA Pol II transcribes all protein-coding genes plus most non-coding RNAs (snRNAs, miRNA precursors, most lncRNAs). Its large carboxy-terminal domain (CTD) serves as a platform for co-transcriptional RNA processing. RNA Pol III transcribes small, stable RNAs: all tRNAs, 5S rRNA, U6 snRNA — the 'housekeeping' RNAs needed in large quantities.",
+    topic: "rna",
   },
   {
     id: "rna-q9",
-    topic: "rna",
     question:
-      "Which RNA type is a major structural and catalytic component of ribosomes?",
-    options: ["mRNA", "tRNA", "rRNA", "miRNA"],
-    correctIndex: 2,
+      "What is a riboswitch, and what makes it an extraordinary example of RNA's versatility?",
+    options: [
+      "A riboswitch is a switch between the ribosome's two subunits during translation",
+      "A riboswitch is an RNA element in the 5' UTR of certain bacterial mRNAs that directly binds a small-molecule metabolite and changes its secondary structure to regulate transcription or translation — no protein needed",
+      "A riboswitch is a eukaryotic protein that switches ribosomes between cap-dependent and IRES-dependent translation",
+      "A riboswitch is the regulatory sequence that controls tRNA aminoacylation",
+    ],
+    correctIndex: 1,
     explanation:
-      "Ribosomal RNA (rRNA) makes up the bulk of the ribosome. The large subunit contains catalytic rRNA that directly forms peptide bonds — making it a ribozyme.",
+      "Riboswitches are astonishing examples of RNA doing things we didn't think RNA could do. Found mostly in bacterial mRNAs, they fold into two competing secondary structures depending on whether a specific small-molecule ligand is bound. When a metabolite (like thiamine pyrophosphate or SAM) binds the aptamer domain, it induces a conformational change that either causes premature transcription termination or sequesters the ribosome-binding site — all without a protein. It's direct RNA-based gene regulation: the mRNA itself 'senses' the concentration of its product and shuts off when that product is abundant. Another beautiful glimpse of the RNA World.",
+    topic: "rna",
   },
   {
     id: "rna-q10",
-    topic: "rna",
     question:
-      "Which non-coding RNA type regulates gene expression by silencing complementary mRNA?",
-    options: ["rRNA", "tRNA", "snRNA", "miRNA"],
-    correctIndex: 3,
+      "What is XIST RNA and what role does it play in X-chromosome inactivation?",
+    options: [
+      "XIST is a protein-coding mRNA that encodes a transcription repressor",
+      "XIST is a long non-coding RNA (lncRNA) transcribed from the X-inactivation center that spreads in cis along one X chromosome in female cells, recruiting Polycomb complexes to silence that chromosome — creating the Barr body",
+      "XIST is a microRNA that silences individual X-linked genes during development",
+      "XIST is expressed in males to activate the single X chromosome",
+    ],
+    correctIndex: 1,
     explanation:
-      "MicroRNA (miRNA) are short (~22 nt) non-coding RNAs that bind to complementary regions on mRNA, blocking translation or triggering degradation — a key post-transcriptional regulatory mechanism.",
+      "X-chromosome inactivation (XCI) is one of the most striking examples of epigenetic regulation and lncRNA biology. Without dosage compensation, female mammals would produce twice as much X-linked gene product as males. XIST (X-Inactive Specific Transcript) is a ~17 kb lncRNA that 'coats' the chromosome it's transcribed from in cis, recruiting Polycomb repressive complexes that add repressive H3K27me3 marks, and DNA methyltransferases that methylate CpG islands. The result is a condensed, silent Barr body. XIST is one of the strongest pieces of evidence that non-coding RNA can drive large-scale chromatin reorganization — and the mosaicism it creates is why tortoiseshell cats are almost always female.",
+    topic: "rna",
   },
 ];
 
@@ -138,8 +175,8 @@ const BASE_COLOR_MAP: Record<string, string> = {
   A: "#22c55e",
   U: "#ef4444",
   G: "#3b82f6",
-  C: "#eab308",
-  T: "#f59e0b",
+  C: "#ca8a04",
+  T: "#d97706",
 };
 
 const DNA_TEMPLATE = [
@@ -193,8 +230,8 @@ function TranscriptionDiagram() {
     <div
       className="rounded-2xl border p-6 overflow-hidden relative"
       style={{
-        borderColor: "oklch(0.70 0.20 290 / 0.25)",
-        background: "oklch(0.16 0 0)",
+        borderColor: "oklch(0.55 0.12 280 / 0.2)",
+        background: "oklch(0.98 0.01 75)",
       }}
     >
       <h3 className="font-display text-lg font-bold mb-1 accent-dna">
@@ -204,12 +241,10 @@ function TranscriptionDiagram() {
         RNA Polymerase reads the DNA template and builds a complementary RNA
         strand
       </p>
-
       <div
         className="relative h-44 overflow-hidden rounded-xl"
-        style={{ background: "oklch(0.13 0 0)" }}
+        style={{ background: "oklch(0.95 0.02 280 / 0.25)" }}
       >
-        {/* DNA strands */}
         <div className="absolute top-4 left-0 right-0 flex flex-col gap-2 px-4">
           <div className="flex gap-1.5 items-center">
             <span className="text-xs text-muted-foreground w-16 shrink-0">
@@ -220,9 +255,9 @@ function TranscriptionDiagram() {
                 key={item.id}
                 className="h-6 w-6 rounded flex items-center justify-center text-xs font-bold"
                 style={{
-                  background: "oklch(0.70 0.20 290 / 0.2)",
-                  color: "oklch(0.70 0.20 290)",
-                  border: "1px solid oklch(0.70 0.20 290 / 0.4)",
+                  background: "oklch(0.90 0.06 280)",
+                  color: "oklch(0.35 0.12 280)",
+                  border: "1px solid oklch(0.55 0.12 280 / 0.4)",
                 }}
               >
                 {item.b}
@@ -238,8 +273,8 @@ function TranscriptionDiagram() {
                 key={item.id}
                 className="h-6 w-6 rounded flex items-center justify-center text-xs font-bold"
                 style={{
-                  background: "oklch(0.28 0 0)",
-                  color: "oklch(0.55 0 0)",
+                  background: "oklch(0.93 0.01 75)",
+                  color: "oklch(0.6 0.02 75)",
                 }}
               >
                 {item.b}
@@ -247,25 +282,21 @@ function TranscriptionDiagram() {
             ))}
           </div>
         </div>
-
-        {/* RNAP polymerase moving */}
         <div
           className="absolute top-2"
           style={{
             animation: "rnapMove 4s linear infinite",
-            background: "oklch(0.70 0.20 290 / 0.85)",
+            background: "oklch(0.55 0.12 280)",
             borderRadius: "8px",
             padding: "2px 8px",
             fontSize: "10px",
             fontWeight: "700",
-            color: "oklch(0.12 0 0)",
+            color: "white",
             whiteSpace: "nowrap",
           }}
         >
           RNA Pol II
         </div>
-
-        {/* RNA strand growing */}
         <div className="absolute bottom-4 left-0 px-4 flex gap-1.5 items-center overflow-hidden">
           <span className="text-xs text-muted-foreground w-16 shrink-0">
             RNA (5'→3')
@@ -286,30 +317,21 @@ function TranscriptionDiagram() {
             </div>
           ))}
         </div>
-
-        {/* Steps legend */}
         <div className="absolute right-3 top-3 flex flex-col gap-1">
           {TRANSCRIPTION_STEPS.map((step) => (
             <div
               key={step}
-              className="text-xs text-muted-foreground bg-black/30 px-1.5 py-0.5 rounded"
+              className="text-xs text-muted-foreground px-1.5 py-0.5 rounded"
+              style={{ background: "oklch(0.92 0.01 75 / 0.8)" }}
             >
               {step}
             </div>
           ))}
         </div>
       </div>
-
       <style>{`
-        @keyframes rnapMove {
-          0% { left: 72px; }
-          100% { left: calc(100% - 80px); }
-        }
-        @keyframes rnaBaseAppear {
-          0%, 10% { opacity: 0; transform: translateY(8px); }
-          30%, 70% { opacity: 1; transform: translateY(0); }
-          85%, 100% { opacity: 0; transform: translateY(-4px); }
-        }
+        @keyframes rnapMove { 0% { left: 72px; } 100% { left: calc(100% - 80px); } }
+        @keyframes rnaBaseAppear { 0%, 10% { opacity: 0; transform: translateY(8px); } 30%, 70% { opacity: 1; transform: translateY(0); } 85%, 100% { opacity: 0; transform: translateY(-4px); } }
       `}</style>
     </div>
   );
@@ -387,17 +409,17 @@ interface AAEntry {
   delay: number;
 }
 const AA_DATA: AAEntry[] = [
-  { id: "aa-Met", label: "Met", color: "#a78bfa", delay: 0 },
-  { id: "aa-Tyr", label: "Tyr", color: "#22c55e", delay: 0.7 },
-  { id: "aa-Ala", label: "Ala", color: "#f59e0b", delay: 1.4 },
-  { id: "aa-Lys", label: "Lys", color: "#3b82f6", delay: 2.1 },
-  { id: "aa-Trp", label: "Trp", color: "#ec4899", delay: 2.8 },
-  { id: "aa-Gln", label: "Gln", color: "#34d399", delay: 3.5 },
+  { id: "aa-Met", label: "Met", color: "#7c3aed", delay: 0 },
+  { id: "aa-Tyr", label: "Tyr", color: "#16a34a", delay: 0.7 },
+  { id: "aa-Ala", label: "Ala", color: "#d97706", delay: 1.4 },
+  { id: "aa-Lys", label: "Lys", color: "#2563eb", delay: 2.1 },
+  { id: "aa-Trp", label: "Trp", color: "#db2777", delay: 2.8 },
+  { id: "aa-Gln", label: "Gln", color: "#059669", delay: 3.5 },
 ];
 
 const SITE_LABELS = [
-  { id: "site-A", color: "#ef4444", label: "A-site: incoming tRNA" },
-  { id: "site-P", color: "#22c55e", label: "P-site: growing chain" },
+  { id: "site-A", color: "#dc2626", label: "A-site: incoming tRNA" },
+  { id: "site-P", color: "#16a34a", label: "P-site: growing chain" },
   { id: "site-E", color: "#6b7280", label: "E-site: exiting tRNA" },
 ];
 
@@ -406,8 +428,8 @@ function TranslationDiagram() {
     <div
       className="rounded-2xl border p-6 overflow-hidden"
       style={{
-        borderColor: "oklch(0.70 0.20 290 / 0.25)",
-        background: "oklch(0.16 0 0)",
+        borderColor: "oklch(0.55 0.12 280 / 0.2)",
+        background: "oklch(0.98 0.01 75)",
       }}
     >
       <h3 className="font-display text-lg font-bold mb-1 accent-dna">
@@ -417,12 +439,10 @@ function TranslationDiagram() {
         Ribosome reads mRNA codons; tRNA delivers amino acids to build the
         polypeptide chain
       </p>
-
       <div
         className="relative h-52 overflow-hidden rounded-xl"
-        style={{ background: "oklch(0.13 0 0)" }}
+        style={{ background: "oklch(0.95 0.02 280 / 0.25)" }}
       >
-        {/* mRNA ribbon */}
         <div className="absolute top-6 left-0 right-0 flex items-center px-3 gap-0">
           {CODON_DATA.map((codon) => (
             <div key={codon.id} className="flex gap-0.5">
@@ -443,14 +463,12 @@ function TranslationDiagram() {
             </div>
           ))}
         </div>
-
-        {/* Ribosome (moving) */}
         <div
           className="absolute top-1"
           style={{
             animation: "ribosomeSlide 5s linear infinite",
             background:
-              "linear-gradient(135deg, oklch(0.70 0.20 290 / 0.9), oklch(0.55 0.22 290 / 0.9))",
+              "linear-gradient(135deg, oklch(0.55 0.12 280 / 0.9), oklch(0.42 0.14 280 / 0.9))",
             borderRadius: "12px",
             width: "64px",
             height: "44px",
@@ -459,13 +477,11 @@ function TranslationDiagram() {
             justifyContent: "center",
             fontSize: "9px",
             fontWeight: "700",
-            color: "oklch(0.95 0 0)",
+            color: "white",
           }}
         >
           Ribosome
         </div>
-
-        {/* Polypeptide chain growing */}
         <div className="absolute bottom-4 left-3 flex items-center gap-1.5 flex-wrap">
           <span className="text-xs text-muted-foreground mr-1">Chain:</span>
           {AA_DATA.map((aa) => (
@@ -484,8 +500,6 @@ function TranslationDiagram() {
             </div>
           ))}
         </div>
-
-        {/* Site labels */}
         <div className="absolute right-3 top-3 flex flex-col gap-1">
           {SITE_LABELS.map((s) => (
             <div key={s.id} className="flex items-center gap-1.5">
@@ -498,17 +512,9 @@ function TranslationDiagram() {
           ))}
         </div>
       </div>
-
       <style>{`
-        @keyframes ribosomeSlide {
-          0% { left: 4px; }
-          100% { left: calc(100% - 68px); }
-        }
-        @keyframes aaAppear {
-          0%, 5% { opacity: 0; transform: scale(0.6); }
-          20%, 70% { opacity: 1; transform: scale(1); }
-          85%, 100% { opacity: 0; }
-        }
+        @keyframes ribosomeSlide { 0% { left: 4px; } 100% { left: calc(100% - 68px); } }
+        @keyframes aaAppear { 0%, 5% { opacity: 0; transform: scale(0.6); } 20%, 70% { opacity: 1; transform: scale(1); } 85%, 100% { opacity: 0; } }
       `}</style>
     </div>
   );
@@ -519,33 +525,67 @@ function TranslationDiagram() {
 const PARAGRAPHS = [
   {
     id: "para-structure",
-    heading: "RNA vs DNA: Key Structural Differences",
-    body: `RNA (ribonucleic acid) and DNA (deoxyribonucleic acid) are both nucleic acids built from nucleotide monomers, but they differ in three critical ways. First, RNA contains the sugar ribose, which has a hydroxyl (–OH) group at the 2' carbon, while DNA uses deoxyribose that lacks this group. This seemingly small difference makes RNA more reactive and less chemically stable — a feature that is actually advantageous for a molecule meant to be temporary. Second, RNA replaces the base thymine (T) with uracil (U), which also pairs with adenine but lacks thymine's methyl group. Third, RNA is typically single-stranded rather than forming a stable double helix. This single-stranded nature allows RNA to fold into complex three-dimensional shapes through internal base-pairing — shapes that are crucial for its many functional roles.`,
+    anchorId: "rna-structure",
+    heading: "RNA vs DNA: Three Differences, Huge Consequences",
+    body: `RNA and DNA are both nucleic acid polymers built from nucleotides — but three structural differences give them entirely different cellular fates. First, RNA uses ribose (with a 2'-OH group) instead of deoxyribose. That extra hydroxyl makes RNA more reactive and less stable than DNA — perfect for a molecule that's supposed to work and then get degraded, not stick around as a permanent archive. Second, RNA uses uracil instead of thymine. Both pair with adenine, but uracil lacks thymine's methyl group. Third, RNA is typically single-stranded, not double-stranded.
+
+That single-stranded nature is not a limitation — it's an enormous opportunity. A single RNA strand can fold back on itself to form hairpin loops, stem-loops, pseudoknots, and complex tertiary structures. These aren't just passive shapes — they're functional. RNA can adopt conformations that allow it to bind small molecules (aptamers, riboswitches), catalyze reactions (ribozymes), and perform structural scaffolding functions. RNA secondary structures also regulate mRNA stability and translation efficiency. This conformational flexibility explains why RNA was likely life's original molecule — capable of both information storage and catalysis before proteins evolved to take over most enzymatic roles.`,
   },
   {
-    id: "para-types",
-    heading: "The Three Main Types of RNA",
-    body: `Three principal RNA species orchestrate protein synthesis. Messenger RNA (mRNA) is the molecular blueprint: it is transcribed from a gene and carries its nucleotide sequence — organized into sequential three-letter codons — to the ribosome, where the protein is built. Transfer RNA (tRNA) is the decoder: each tRNA molecule carries a specific amino acid on its 3' CCA end and sports an anticodon loop whose three nucleotides pair with the matching mRNA codon, ensuring amino acids are added in the correct order. Ribosomal RNA (rRNA) is the most abundant RNA in a cell and forms the structural scaffold and catalytic machinery of the ribosome itself. The large ribosomal subunit's rRNA is a ribozyme — it directly catalyzes the formation of peptide bonds between amino acids, without the help of any protein enzyme.`,
+    id: "para-mrna",
+    anchorId: "rna-mrna",
+    heading: "mRNA: From Gene to Message — Every Processing Step Matters",
+    body: `In eukaryotes, the journey from gene to mature mRNA is anything but direct. RNA Polymerase II transcribes a primary transcript called pre-mRNA, and three crucial processing steps occur before it leaves the nucleus. The 5' cap (7-methylguanosine added co-transcriptionally via an unusual 5'–5' triphosphate bond) protects the mRNA from 5' exonucleases and recruits the translation machinery via eIF4E. The 3' poly-A tail (~250 adenosines added by poly(A) polymerase after recognizing the AAUAAA polyadenylation signal) stabilizes the transcript, aids nuclear export via PABP interactions, and circularizes the mRNA during translation to enhance ribosome recycling. And crucially, the spliceosome excises introns and joins exons.
+
+Alternative splicing is arguably the most important consequence of the intron/exon architecture. The DSCAM gene in Drosophila can theoretically generate ~38,000 isoforms — more than the entire fly genome has genes. In humans, ~95% of multi-exon genes undergo alternative splicing, and this is a major reason our ~20,000 genes generate such proteome complexity. The 5' and 3' untranslated regions (UTRs) are not just passive flanking sequences — they're regulatory hotspots. The 5' UTR determines translation efficiency (secondary structures near the start codon can stall ribosomes). The 3' UTR contains regulatory elements for mRNA stability, localization, and miRNA binding sites. mRNA stability is also regulated by AU-rich elements (AREs) in unstable mRNAs like cytokine transcripts, which recruit deadenylases to rapidly shorten the poly-A tail and trigger decay.`,
   },
   {
-    id: "para-transcription",
-    heading: "Transcription: From DNA to RNA",
-    body: `Transcription is the process of copying a gene's sequence from DNA into RNA. It begins when RNA polymerase II recognizes and binds a promoter region — a specific DNA sequence upstream of the gene, often containing a "TATA box" motif. The polymerase unwinds the double helix to expose a short single-stranded template. Reading the template strand in the 3'→5' direction, it synthesizes a complementary RNA strand in the 5'→3' direction, substituting uracil wherever it would have placed thymine in DNA. Transcription ends when the polymerase reaches a terminator sequence. In eukaryotes, the initial transcript (pre-mRNA) is extensively processed: a 7-methylguanosine cap is added to the 5' end (to protect RNA from degradation and aid ribosome binding), a poly-A tail of ~250 adenines is added to the 3' end (for export and stability), and spliceosome machinery removes non-coding intron sequences, joining the coding exons together. Only after this processing does the mature mRNA exit the nucleus.`,
+    id: "para-trna",
+    anchorId: "rna-trna",
+    heading: "tRNA: The Molecular Adapter That Makes the Genetic Code Work",
+    body: `Transfer RNA is the molecular adapter that bridges genetic information and protein sequence. Each tRNA is ~73–93 nucleotides long and folds into the famous cloverleaf secondary structure: an acceptor stem (ending in the universal 3'-CCA sequence where the amino acid attaches), a D-loop (containing dihydrouridine, stabilizing the molecule), an anticodon loop (containing the three nucleotides that base-pair with the mRNA codon), and a TΨC loop (interacting with the ribosome). The cloverleaf folds further into an inverted L-shape in 3D, with the anticodon at one end and the amino acid attachment site at the other.
+
+There are 21 aminoacyl-tRNA synthetases (aaRSs) — one per standard amino acid, plus one for selenocysteine. Each aaRS charges its specific tRNA(s) in a two-step ATP-consuming reaction: first activating the amino acid as an aminoacyl-adenylate, then transferring it to the 3'-CCA end of its tRNA. The accuracy of charging is crucial — this is called the 'second genetic code' because aaRSs determine which amino acid gets linked to which codon. Most aaRSs have proofreading mechanisms to clear incorrect aminoacyl products. Crick's wobble hypothesis explains the degeneracy of the code: flexible base-pairing at the third codon position (especially via inosine in many anticodons) allows ~45 tRNA anticodons to decode all 61 sense codons. Many tRNA bases are heavily modified post-transcriptionally — over 100 modification types are known — affecting decoding accuracy, frameshifting, and tRNA stability. The most famous modification: inosine at position 34 (anticodon wobble position) from adenosine deamination by ADAT.`,
   },
   {
-    id: "para-translation",
-    heading: "Translation: From RNA to Protein",
-    body: `Translation is the process of reading the mRNA sequence and using it as instructions to build a polypeptide. The ribosome assembles at the mRNA's 5' cap and scans until it reaches the start codon AUG, which codes for methionine. At this point, the initiator tRNA carrying methionine occupies the ribosome's P-site (peptidyl site). A second tRNA bearing the next amino acid enters the A-site (aminoacyl site). RNA polymerase — actually here the rRNA of the large subunit — catalyzes the formation of a peptide bond between the two amino acids, transferring the growing chain from the P-site tRNA to the A-site tRNA. The ribosome then translocates one codon along the mRNA, moving the chain-bearing tRNA from A to P, the empty tRNA from P to the E-site (exit site) where it leaves. This cycle repeats, adding one amino acid per codon, until a stop codon (UAA, UAG, or UGA) is reached and no amino acid-carrying tRNA can bind. Release factors trigger hydrolysis of the chain, liberating the newly synthesized polypeptide.`,
+    id: "para-rrna",
+    anchorId: "rna-rrna",
+    heading: "rRNA: The Ancient Heart of the Ribosome",
+    body: `Ribosomal RNA makes up ~60% of the ribosome's mass and is its most functionally critical component. In bacteria, the small subunit (30S) contains 16S rRNA; the large subunit (50S) contains 23S and 5S rRNA. In eukaryotes, the small subunit (40S) has 18S rRNA; the large subunit (60S) has 28S, 5.8S, and 5S rRNA. These rRNAs fold into elaborate three-dimensional architectures that form the ribosome's core, with ribosomal proteins (54 in bacteria, ~80 in humans) filling structural roles and stabilizing the RNA scaffold.
+
+Here's the revelation that transformed how we think about life: the peptidyl transferase center — where peptide bonds are actually catalyzed — is made entirely of RNA. The 23S rRNA (in bacteria) and 28S rRNA (in eukaryotes) perform this ancient chemical reaction. Proteins near the active site are structural bystanders, not catalysts. The ribosome is, at its core, a ribozyme. This is among the most compelling evidence for the RNA World hypothesis: life's most fundamental synthetic machine runs on RNA chemistry. The 16S rRNA is also an invaluable phylogenetic marker — its sequence is conserved enough to identify organisms but variable enough to distinguish them. 16S rRNA sequencing has revolutionized microbiology, revealing that the vast majority of Earth's microorganisms have never been cultured, and fundamentally reshaped the tree of life by revealing the three-domain structure (Bacteria, Archaea, Eukarya). Ribosome assembly itself is an extraordinarily complex process occurring in the nucleolus, involving hundreds of assembly factors and dozens of processing steps.`,
   },
   {
-    id: "para-noncoding",
-    heading: "Non-Coding RNAs: Beyond Protein Synthesis",
-    body: `Beyond mRNA, tRNA, and rRNA, cells produce a rich repertoire of non-coding RNAs that regulate gene expression at multiple levels. MicroRNAs (miRNAs) are ~22 nucleotide molecules that, when incorporated into the RISC (RNA-Induced Silencing Complex), bind to complementary sequences in mRNA 3' UTRs and either block translation or trigger mRNA degradation — fine-tuning gene output. Small interfering RNAs (siRNAs) work through a similar RISC mechanism and are heavily exploited in research and medicine to silence specific genes. Small nuclear RNAs (snRNAs) form part of the spliceosome and are essential for removing introns from pre-mRNA. The discovery of these regulatory RNAs has transformed our understanding of the genome: a large fraction of non-coding DNA is actively transcribed into functional RNA molecules, expanding our concept of how genetic information is controlled.`,
+    id: "para-snrna",
+    anchorId: "rna-snrna",
+    heading: "snRNAs and the Spliceosome: Molecular Surgery on Pre-mRNA",
+    body: `Small nuclear RNAs (snRNAs) are the central components of the spliceosome — one of the most complex and dynamic molecular machines in the cell, roughly the size of a ribosome and assembled fresh on every intron it processes. Five snRNAs (U1, U2, U4, U5, and U6) combine with dozens of proteins to form snRNPs (small nuclear ribonucleoproteins), which assemble on the pre-mRNA in a carefully ordered sequence. U1 snRNP base-pairs with the 5' splice site; U2 snRNP recognizes the branch point adenosine within the intron; U4/U6 di-snRNP joins and undergoes dramatic remodeling to activate the catalytic center; U5 bridges the two exons for joining.
+
+The actual chemistry of splicing involves two sequential transesterification reactions — no ATP required. First, the 2'-OH of the branch point A attacks the phosphodiester bond at the 5' splice site, forming a lariat intermediate and freeing the upstream exon's 3'-OH. Second, that free 3'-OH attacks the 3' splice site, joining the exons and releasing the lariat intron for debranching and degradation. Strikingly, U6 snRNA forms the catalytic core of the active spliceosome, and the chemistry it performs is similar to that of group II self-splicing introns — suggesting group II introns may be the evolutionary ancestors of spliceosomal introns and snRNAs. Alternative splicing is controlled by regulatory sequences (exonic splicing enhancers/silencers) and RNA-binding proteins (SR proteins, hnRNPs) that recruit or exclude spliceosomal components. Errors in these regulatory networks cause diseases including spinal muscular atrophy, retinitis pigmentosa, and numerous cancers.`,
+  },
+  {
+    id: "para-small-regulatory",
+    anchorId: "rna-regulatory",
+    heading: "miRNA, siRNA, and piRNA: The Small RNA Revolution",
+    body: `The discovery of small non-coding RNAs has completely changed how we think about gene regulation. MicroRNAs (miRNAs, ~22 nt) are encoded in the genome, transcribed as long primary miRNAs (pri-miRNAs), cleaved in the nucleus by the Drosha/DGCR8 microprocessor complex into pre-miRNA hairpins (~70 nt), exported to the cytoplasm by Exportin-5, and cleaved by Dicer into ~22 nt duplexes. The guide strand loads into an Argonaute protein to form the RISC complex, which scans mRNA 3' UTRs for complementary sequences. In animals, miRNAs typically have partial complementarity to targets, causing translational repression and mRNA destabilization rather than cleavage. One miRNA can regulate hundreds of targets simultaneously — miR-21 suppresses multiple tumor suppressors and is overexpressed in most human cancers; the let-7 family regulates developmental timing and is one of the most conserved sequences in the animal kingdom.
+
+Small interfering RNAs (siRNAs) arise from exogenous double-stranded RNA (viral RNA, transposons, experimental constructs) processed by Dicer into 21–23 nt duplexes. They load into RISC and direct precise mRNA cleavage through perfect complementarity. siRNA-based therapeutics have become clinical reality — patisiran (for transthyretin amyloidosis) was the first FDA-approved siRNA drug (2018), and the field has exploded since. PIWI-interacting RNAs (piRNAs, 26–31 nt) are a germline-specific class processed by a Dicer-independent pathway and associated with PIWI clade Argonaute proteins. They silence transposable elements in the germline through post-transcriptional cleavage and co-transcriptional DNA methylation, protecting genome integrity across generations. Mutations in piRNA pathway genes cause transposon mobilization, DNA damage, and sterility.`,
+  },
+  {
+    id: "para-lncrna",
+    anchorId: "rna-lncrna",
+    heading: "Long Non-Coding RNAs, Circular RNAs, and Riboswitches",
+    body: `Long non-coding RNAs (lncRNAs, >200 nt) were once dismissed as transcriptional noise. We now know thousands play regulatory roles. XIST (X-Inactive Specific Transcript) is the best-studied: a ~17 kb lncRNA transcribed from the X-inactivation center that spreads in cis to coat the entire inactive X chromosome, recruiting Polycomb repressive complexes (PRC2) that add H3K27me3 marks to silence ~1,000 genes — the mechanism behind dosage compensation in female mammals. HOTAIR, transcribed from the HOXC locus, acts in trans to silence the HOXD locus via PRC2 recruitment and is overexpressed in cancers, promoting invasion. Enhancer RNAs (eRNAs) are transcribed from active enhancers and may stabilize enhancer-promoter looping by helping anchor cohesin. NEAT1 forms the structural scaffold of nuclear paraspeckles.
+
+Circular RNAs (circRNAs) are covalently closed RNA loops formed by back-splicing, where a downstream splice donor joins an upstream splice acceptor. Their circular topology makes them resistant to exonucleases, giving them exceptional stability (much longer half-lives than linear mRNAs). CDR1as/ciRS-7 has ~73 binding sites for miR-7 and acts as a 'miRNA sponge' in neurons, absorbing miR-7 to protect its mRNA targets from repression. Riboswitches represent another layer of RNA regulatory ingenuity: RNA elements embedded in the 5' UTR of bacterial mRNAs that directly bind small molecules (thiamine pyrophosphate, SAM, adenine, lysine) and fold into two competing secondary structures. When the metabolite binds, the conformational switch either causes premature transcription termination or sequesters the ribosome binding site — elegant, protein-independent feedback regulation that constitutes a direct molecular fossil of RNA World gene control.`,
   },
   {
     id: "para-rna-world",
-    heading: "The RNA World and RNA's Central Role in Life",
-    body: `RNA occupies a uniquely pivotal position in biology because it can both store genetic information (like DNA) and catalyze chemical reactions (like protein enzymes). This dual capability underpins the "RNA World" hypothesis — the idea that early life relied on RNA as the primary molecule of heredity and catalysis before proteins took over most enzymatic roles and DNA took over as the stable genetic archive. Today's ribosome is a molecular fossil of that ancient RNA world: at its core, it is an RNA machine, with proteins playing a mostly structural supporting role. Understanding RNA is therefore not just about understanding protein synthesis — it is about understanding the molecular origins of life itself.`,
+    anchorId: "rna-world",
+    heading: "The RNA World — Where It All Began",
+    body: `Here's one of biology's most profound hypotheses: before DNA, before proteins, the first living systems may have run entirely on RNA. Think about why this is compelling. DNA can store information reliably, but it can't catalyze reactions. Proteins are extraordinary catalysts, but they need information stored elsewhere to replicate. RNA uniquely does both: it stores genetic information in its sequence and can fold into ribozymes that catalyze chemical reactions, including replication.
+
+The RNA World hypothesis proposes that early life used RNA for both heredity and catalysis. The evidence for it is scattered throughout modern cell biology like evolutionary breadcrumbs. The ribosome is an RNA machine at its catalytic heart. The spliceosome's snRNAs catalyze splicing — and their chemistry is identical to group II self-splicing introns, suggesting spliceosomal introns are domesticated group II introns from an RNA World organism. RNase P (processing tRNA precursors) is a ribozyme. The two-step transesterification chemistry of splicing echoes ancient RNA catalysis. Riboswitches control gene expression in bacteria without any proteins. Even the coenzymes ATP, NAD, CoA, and FAD are nucleotides or contain nucleotide-like structures — possibly vestiges of an RNA-dominated metabolism. Over evolutionary time, DNA took over as the stable genetic archive (the 2'-H making it chemically more stable than RNA), and proteins took over most enzymatic roles (their 20-amino acid alphabet provides far greater functional diversity). But the fingerprints of RNA's ancient dominance are everywhere you look in molecular biology.`,
   },
 ];
 
@@ -553,14 +593,17 @@ const PARAGRAPHS = [
 
 export default function RNASection() {
   return (
-    <div className="px-4 py-16 md:px-8 max-w-5xl mx-auto">
+    <div
+      className="px-4 py-16 md:px-8 max-w-5xl mx-auto"
+      style={{ background: "oklch(0.97 0.015 280 / 0.2)" }}
+    >
       <SectionHeader
         topicId="rna"
-        title="RNA: The Versatile Messenger"
-        subtitle="From transcription to translation — discover how RNA bridges DNA and proteins to make life possible."
+        title="RNA: The Versatile Molecule"
+        subtitle="From transcription through translation to regulation — all RNA types, processing machinery, small regulatory RNAs, lncRNAs, and the RNA World hypothesis."
       />
 
-      {/* 3D Scene */}
+      {/* RNA Scene */}
       <AnimatedEntrance direction="fade" delay={0.1} className="mb-10">
         <SceneErrorBoundary
           sceneName="RNA Structure 3D Model"
@@ -571,14 +614,14 @@ export default function RNASection() {
               <div
                 className="rounded-2xl border flex items-center justify-center h-40"
                 style={{
-                  borderColor: "oklch(0.70 0.20 290 / 0.3)",
-                  background: "oklch(0.16 0 0)",
+                  borderColor: "oklch(0.55 0.12 280 / 0.25)",
+                  background: "oklch(0.97 0.02 280 / 0.2)",
                 }}
               >
                 <div className="flex flex-col items-center gap-3">
                   <div
                     className="h-8 w-8 animate-spin rounded-full border-2 border-muted"
-                    style={{ borderTopColor: "oklch(0.70 0.20 290)" }}
+                    style={{ borderTopColor: "oklch(0.55 0.12 280)" }}
                   />
                   <p className="text-sm text-muted-foreground">
                     Loading 3D model…
@@ -592,33 +635,338 @@ export default function RNASection() {
         </SceneErrorBoundary>
       </AnimatedEntrance>
 
+      {/* RNA types quick overview */}
+      <AnimatedEntrance direction="up" delay={0.1} className="mb-10">
+        <div className="flex items-center gap-2 mb-4">
+          <GitBranch
+            className="h-4 w-4"
+            style={{ color: "oklch(0.42 0.12 280)" }}
+          />
+          <span
+            className="text-sm font-semibold"
+            style={{ color: "oklch(0.42 0.12 280)" }}
+          >
+            RNA Types at a Glance
+          </span>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+          {[
+            {
+              type: "mRNA",
+              full: "Messenger RNA",
+              role: "Carries genetic message from DNA to ribosome; processed with 5' cap, poly-A tail, and splicing",
+              color: "#7c3aed",
+            },
+            {
+              type: "tRNA",
+              full: "Transfer RNA",
+              role: "Delivers amino acids; decodes mRNA codons via anticodon; cloverleaf → L-shape",
+              color: "#16a34a",
+            },
+            {
+              type: "rRNA",
+              full: "Ribosomal RNA",
+              role: "Forms ribosome structure; catalyzes peptide bonds via peptidyl transferase (ribozyme)",
+              color: "#0891b2",
+            },
+            {
+              type: "snRNA",
+              full: "Small Nuclear RNA",
+              role: "U1/U2/U4/U5/U6 snRNPs form spliceosome; remove introns via transesterification",
+              color: "#d97706",
+            },
+            {
+              type: "miRNA",
+              full: "MicroRNA (~22 nt)",
+              role: "Loaded into RISC; silences target mRNAs via translational repression; regulates development & cancer",
+              color: "#dc2626",
+            },
+            {
+              type: "siRNA",
+              full: "Small Interfering RNA",
+              role: "Exogenous dsRNA; guides RISC to cleave complementary mRNA; therapeutic applications",
+              color: "#be185d",
+            },
+            {
+              type: "piRNA",
+              full: "PIWI-interacting RNA (26–31 nt)",
+              role: "Silences transposons in germline; protects genome integrity across generations",
+              color: "#7c3aed",
+            },
+            {
+              type: "lncRNA",
+              full: "Long Non-Coding RNA (>200 nt)",
+              role: "Chromatin remodeling, X-inactivation (XIST), enhancer regulation (HOTAIR), nuclear structure",
+              color: "#059669",
+            },
+          ].map((item) => (
+            <div
+              key={item.type}
+              className="rounded-xl p-3"
+              style={{
+                background: `${item.color}08`,
+                border: `1px solid ${item.color}25`,
+              }}
+            >
+              <div
+                className="font-display font-bold text-sm mb-0.5"
+                style={{ color: item.color }}
+              >
+                {item.type}
+              </div>
+              <div className="text-xs font-medium text-muted-foreground mb-1">
+                {item.full}
+              </div>
+              <p
+                className="text-xs leading-relaxed"
+                style={{ color: "oklch(0.38 0.03 75)" }}
+              >
+                {item.role}
+              </p>
+            </div>
+          ))}
+        </div>
+      </AnimatedEntrance>
+
+      {/* RNA processing callout */}
+      <AnimatedEntrance direction="up" delay={0.1} className="mb-10">
+        <div
+          className="rounded-2xl p-5 border"
+          style={{
+            borderColor: "oklch(0.55 0.12 280 / 0.22)",
+            background: "oklch(0.97 0.02 280 / 0.15)",
+          }}
+        >
+          <h3 className="font-display font-bold text-base mb-3 accent-dna">
+            mRNA Processing: Three Steps Before It Leaves the Nucleus
+          </h3>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+            {[
+              {
+                step: "1. 5' Capping",
+                detail:
+                  "7-methylguanosine added co-transcriptionally via 5'–5' triphosphate bond. Protects from exonucleases; recruits eIF4E for translation.",
+                color: "#7c3aed",
+              },
+              {
+                step: "2. Splicing",
+                detail:
+                  "Spliceosome removes introns, joins exons. ~95% of human multi-exon genes alternatively spliced → huge proteome expansion from ~20,000 genes.",
+                color: "#0891b2",
+              },
+              {
+                step: "3. 3' Polyadenylation",
+                detail:
+                  "~250 adenines added after AAUAAA signal. PABP binding circularizes mRNA, enhances translation efficiency and stability.",
+                color: "#16a34a",
+              },
+            ].map((item) => (
+              <div
+                key={item.step}
+                className="rounded-xl p-4"
+                style={{
+                  background: `${item.color}08`,
+                  border: `1px solid ${item.color}25`,
+                }}
+              >
+                <div
+                  className="font-semibold text-sm mb-1.5"
+                  style={{ color: item.color }}
+                >
+                  {item.step}
+                </div>
+                <p
+                  className="text-xs leading-relaxed"
+                  style={{ color: "oklch(0.35 0.03 75)" }}
+                >
+                  {item.detail}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </AnimatedEntrance>
+
+      {/* tRNA structure callout */}
+      <AnimatedEntrance direction="up" delay={0.1} className="mb-10">
+        <div
+          className="rounded-2xl p-5 border"
+          style={{
+            borderColor: "oklch(0.55 0.12 280 / 0.22)",
+            background: "oklch(0.98 0.01 75)",
+          }}
+        >
+          <h3 className="font-display font-bold text-base mb-3 accent-dna">
+            tRNA Cloverleaf Structure — Four Arms, One Elegant Adapter
+          </h3>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {[
+              {
+                arm: "Acceptor Stem",
+                detail:
+                  "5'/3' end; 3'-CCA where amino acid attaches via aminoacyl-tRNA synthetase",
+                color: "#dc2626",
+              },
+              {
+                arm: "D-Loop",
+                detail:
+                  "Contains dihydrouridine; stabilizes tRNA; recognized by aaRSs",
+                color: "#d97706",
+              },
+              {
+                arm: "Anticodon Loop",
+                detail:
+                  "3 bases that base-pair with mRNA codon at ribosome A-site; wobble at position 34",
+                color: "#16a34a",
+              },
+              {
+                arm: "TΨC Loop",
+                detail:
+                  "Contains pseudouridine; interacts with ribosome EF-Tu binding site",
+                color: "#7c3aed",
+              },
+            ].map((arm) => (
+              <div
+                key={arm.arm}
+                className="rounded-xl p-3"
+                style={{
+                  background: `${arm.color}08`,
+                  border: `1px solid ${arm.color}25`,
+                }}
+              >
+                <div
+                  className="font-semibold text-xs mb-1"
+                  style={{ color: arm.color }}
+                >
+                  {arm.arm}
+                </div>
+                <p
+                  className="text-xs leading-relaxed"
+                  style={{ color: "oklch(0.38 0.03 75)" }}
+                >
+                  {arm.detail}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </AnimatedEntrance>
+
       {/* Explanation paragraphs */}
       <StaggerContainer
         staggerDelay={0.12}
         className="flex flex-col gap-6 mb-12"
       >
-        {PARAGRAPHS.map((para) => (
+        {PARAGRAPHS.map((para, i) => (
           <StaggerItem key={para.id}>
             <div
+              id={para.anchorId}
               className="rounded-2xl border p-6"
               style={{
-                borderColor: "oklch(0.70 0.20 290 / 0.2)",
-                background: "oklch(0.17 0 0)",
+                borderColor: "oklch(0.55 0.12 280 / 0.18)",
+                background:
+                  i % 2 === 0
+                    ? "oklch(0.98 0.01 75)"
+                    : "oklch(0.95 0.03 280 / 0.2)",
               }}
             >
               <h3 className="font-display text-xl font-bold mb-3 accent-dna">
                 {para.heading}
               </h3>
-              <p className="text-base text-muted-foreground leading-relaxed">
-                {para.body}
-              </p>
+              {para.body.split("\n\n").map((paragraph) => (
+                <p
+                  key={paragraph.slice(0, 40)}
+                  className="text-base leading-relaxed mb-3 last:mb-0"
+                  style={{ color: "oklch(0.28 0.04 75)" }}
+                >
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </StaggerItem>
         ))}
       </StaggerContainer>
 
+      {/* Ribosome subunit reference */}
+      <AnimatedEntrance direction="up" delay={0.1} className="mb-12">
+        <div
+          className="rounded-2xl p-5 border"
+          style={{
+            borderColor: "oklch(0.55 0.12 280 / 0.22)",
+            background: "oklch(0.97 0.02 280 / 0.12)",
+          }}
+        >
+          <h3 className="font-display font-bold text-lg mb-4 accent-dna">
+            Ribosome Architecture — Bacteria vs Eukaryotes
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[
+              {
+                org: "Bacteria (Prokaryotes)",
+                total: "70S",
+                small: "30S — 16S rRNA + ~21 proteins",
+                large: "50S — 23S + 5S rRNA + ~31 proteins",
+                highlight: "23S rRNA catalyzes peptide bond formation",
+                color: "#0891b2",
+              },
+              {
+                org: "Eukaryotes",
+                total: "80S",
+                small: "40S — 18S rRNA + ~33 proteins",
+                large: "60S — 28S + 5.8S + 5S rRNA + ~47 proteins",
+                highlight:
+                  "28S rRNA performs peptidyl transferase — same ribozyme activity",
+                color: "#7c3aed",
+              },
+            ].map((r) => (
+              <div
+                key={r.org}
+                className="rounded-xl p-4"
+                style={{
+                  background: `${r.color}08`,
+                  border: `1px solid ${r.color}28`,
+                }}
+              >
+                <div
+                  className="font-display font-bold text-sm mb-2"
+                  style={{ color: r.color }}
+                >
+                  {r.org} — {r.total} total
+                </div>
+                <div className="space-y-1 mb-2">
+                  <p
+                    className="text-xs"
+                    style={{ color: "oklch(0.38 0.03 75)" }}
+                  >
+                    Small subunit: {r.small}
+                  </p>
+                  <p
+                    className="text-xs"
+                    style={{ color: "oklch(0.38 0.03 75)" }}
+                  >
+                    Large subunit: {r.large}
+                  </p>
+                </div>
+                <div
+                  className="text-xs font-semibold rounded-lg px-2 py-1"
+                  style={{
+                    background: `${r.color}12`,
+                    color: r.color,
+                  }}
+                >
+                  ✦ {r.highlight}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </AnimatedEntrance>
+
       {/* Diagrams row */}
       <AnimatedEntrance direction="up" delay={0.1} className="mb-12">
+        <h3 className="font-display text-xl font-bold mb-5 accent-dna">
+          Watch It Happen: Transcription & Translation
+        </h3>
         <div className="grid md:grid-cols-2 gap-5">
           <TranscriptionDiagram />
           <TranslationDiagram />
@@ -627,7 +975,25 @@ export default function RNASection() {
 
       {/* Quiz */}
       <AnimatedEntrance direction="up" delay={0.15}>
-        <QuizEngine topicId="rna" questions={RNA_QUIZ} />
+        <div
+          data-ocid="rna-quiz-section"
+          className="rounded-2xl p-7"
+          style={{
+            background: "oklch(0.98 0.01 75)",
+            border: "1px solid oklch(0.55 0.12 280 / 0.2)",
+          }}
+        >
+          <h3 className="font-display text-2xl font-bold mb-2 accent-dna">
+            🧬 Test Your RNA Knowledge
+          </h3>
+          <p className="text-muted-foreground mb-6">
+            10 questions covering all RNA types, mRNA processing, tRNA
+            structure, ribosome composition, splicing, regulatory RNAs,
+            transcription machinery, and the RNA World — with detailed
+            teacher-style explanations.
+          </p>
+          <QuizEngine topicId="rna" questions={RNA_QUIZ} />
+        </div>
       </AnimatedEntrance>
     </div>
   );

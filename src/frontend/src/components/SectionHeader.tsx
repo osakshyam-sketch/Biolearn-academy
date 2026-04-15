@@ -8,27 +8,60 @@ interface SectionHeaderProps {
   subtitle?: string;
 }
 
+// Badge background and text colors appropriate for the light cream background
+const badgeLightStyles: Record<
+  string,
+  { bg: string; text: string; border: string }
+> = {
+  biomolecule: {
+    bg: "oklch(0.6 0.12 145 / 0.12)",
+    text: "oklch(0.42 0.14 145)",
+    border: "oklch(0.6 0.12 145 / 0.3)",
+  },
+  cell: {
+    bg: "oklch(0.58 0.11 240 / 0.12)",
+    text: "oklch(0.4 0.13 240)",
+    border: "oklch(0.58 0.11 240 / 0.3)",
+  },
+  dna: {
+    bg: "oklch(0.58 0.1 280 / 0.12)",
+    text: "oklch(0.4 0.12 280)",
+    border: "oklch(0.58 0.1 280 / 0.3)",
+  },
+  protein: {
+    bg: "oklch(0.62 0.14 35 / 0.12)",
+    text: "oklch(0.44 0.16 35)",
+    border: "oklch(0.62 0.14 35 / 0.3)",
+  },
+  biotech: {
+    bg: "oklch(0.6 0.12 155 / 0.12)",
+    text: "oklch(0.42 0.13 155)",
+    border: "oklch(0.6 0.12 155 / 0.3)",
+  },
+};
+
 export function SectionHeader({
   topicId,
   title,
   subtitle,
 }: SectionHeaderProps) {
   const topic = TOPICS.find((t) => t.id === topicId)!;
+  const badge = badgeLightStyles[topic.color] ?? badgeLightStyles.biotech;
 
   return (
     <motion.div
       className="mb-10 flex flex-col items-start gap-3"
-      initial={{ opacity: 0, x: -30 }}
+      initial={{ opacity: 0, x: -24 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="flex items-center gap-3">
         <motion.span
           className="text-4xl"
-          animate={{ rotate: [0, 10, -10, 0] }}
+          animate={{ rotate: [0, 8, -8, 0] }}
           transition={{
-            duration: 3,
+            duration: 3.5,
             repeat: Number.POSITIVE_INFINITY,
             ease: "easeInOut",
           }}
@@ -37,7 +70,11 @@ export function SectionHeader({
         </motion.span>
         <span
           className="rounded-full px-3 py-1 text-xs font-semibold tracking-widest uppercase"
-          style={topic.badgeStyle}
+          style={{
+            background: badge.bg,
+            color: badge.text,
+            border: `1px solid ${badge.border}`,
+          }}
         >
           {topic.label}
         </span>
@@ -63,7 +100,7 @@ export function SectionHeader({
                 : topic.color === "dna"
                   ? "var(--gradient-dna)"
                   : topic.color === "biotech"
-                    ? "linear-gradient(135deg, oklch(0.72 0.18 172) 0%, oklch(0.85 0.12 172) 100%)"
+                    ? "linear-gradient(135deg, oklch(0.46 0.13 155) 0%, oklch(0.6 0.11 155) 100%)"
                     : "var(--gradient-protein)",
         }}
         initial={{ width: 0 }}

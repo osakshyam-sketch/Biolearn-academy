@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { useSoundContext } from "@/context/SoundContext";
 import type { QuizQuestion, TopicId } from "@/types/biology";
 import { TOPICS } from "@/types/biology";
 import {
@@ -18,15 +19,32 @@ interface QuizEngineProps {
 
 type Phase = "quiz" | "result";
 
+// Color values adjusted for readability on light cream background
 function getAccentOklch(color: string): string {
-  if (color === "biomolecule") return "0.72 0.18 142";
-  if (color === "cell") return "0.68 0.19 262";
-  if (color === "dna") return "0.70 0.20 290";
-  return "0.68 0.22 36";
+  if (color === "biomolecule") return "0.48 0.14 145";
+  if (color === "cell") return "0.45 0.14 240";
+  if (color === "dna") return "0.45 0.13 280";
+  return "0.5 0.16 35";
+}
+
+// Light tint for quiz card background — soft warm variant per topic
+function getCardBg(color: string): string {
+  if (color === "biomolecule") return "oklch(0.6 0.12 145 / 0.06)";
+  if (color === "cell") return "oklch(0.58 0.11 240 / 0.06)";
+  if (color === "dna") return "oklch(0.58 0.1 280 / 0.06)";
+  return "oklch(0.62 0.14 35 / 0.06)";
+}
+
+function getCardBorder(color: string): string {
+  if (color === "biomolecule") return "oklch(0.6 0.12 145 / 0.2)";
+  if (color === "cell") return "oklch(0.58 0.11 240 / 0.2)";
+  if (color === "dna") return "oklch(0.58 0.1 280 / 0.2)";
+  return "oklch(0.62 0.14 35 / 0.2)";
 }
 
 export function QuizEngine({ topicId, questions }: QuizEngineProps) {
   const topic = TOPICS.find((t) => t.id === topicId)!;
+  const { playSuccess, playFailure } = useSoundContext();
   const [phase, setPhase] = useState<Phase>("quiz");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<(number | null)[]>(
@@ -45,6 +63,8 @@ export function QuizEngine({ topicId, questions }: QuizEngineProps) {
     (a, i) => a === questions[i].correctIndex,
   ).length;
   const accentOklch = getAccentOklch(topic.color);
+  const cardBg = getCardBg(topic.color);
+  const cardBorder = getCardBorder(topic.color);
 
   // Move focus to first answer option when question changes
   useEffect(() => {
@@ -63,6 +83,12 @@ export function QuizEngine({ topicId, questions }: QuizEngineProps) {
     const newAnswers = [...answers];
     newAnswers[currentIndex] = idx;
     setAnswers(newAnswers);
+    // Play feedback sound — once per selection, non-blocking
+    if (idx === current.correctIndex) {
+      playSuccess();
+    } else {
+      playFailure();
+    }
   }
 
   function handleKeyDown(e: React.KeyboardEvent, idx: number) {
@@ -97,17 +123,18 @@ export function QuizEngine({ topicId, questions }: QuizEngineProps) {
 
   const resultLabel =
     percentage >= 80
-      ? "Excellent!"
+      ? "Excellent work!"
       : percentage >= 60
-        ? "Good work!"
-        : "Keep learning!";
+        ? "Good effort — you're getting there!"
+        : "Keep going — every attempt teaches you something!";
 
   return (
     <div
       className="rounded-2xl border p-6"
       style={{
-        borderColor: `oklch(${accentOklch} / 0.3)`,
-        background: "oklch(0.18 0 0)",
+        borderColor: cardBorder,
+        background: cardBg,
+        boxShadow: `0 2px 12px ${cardBorder}`,
       }}
     >
       <div className="mb-5 flex items-center gap-3">
@@ -139,12 +166,16 @@ export function QuizEngine({ topicId, questions }: QuizEngineProps) {
             exit={{ opacity: 0, x: -40 }}
             transition={{ duration: 0.35 }}
           >
-            {/* Progress bar — label + meter conveys progress accessibly */}
+            {/* Progress bar */}
             <div className="mb-6">
               <span className="sr-only">
                 Quiz progress: {progressValue}% complete
               </span>
-              <div className="h-1.5 rounded-full bg-muted" aria-hidden="true">
+              <div
+                className="h-1.5 rounded-full"
+                style={{ background: "oklch(0.88 0.022 75)" }}
+                aria-hidden="true"
+              >
                 <motion.div
                   className="h-1.5 rounded-full"
                   style={{ background: `oklch(${accentOklch})` }}
@@ -164,32 +195,33 @@ export function QuizEngine({ topicId, questions }: QuizEngineProps) {
               {current.question}
             </p>
 
-            {/* Answer options as accessible buttons in a fieldset group */}
+            {/* Answer options */}
             <fieldset
               aria-labelledby={questionId}
               className="grid gap-3 border-none p-0 m-0"
             >
               <legend className="sr-only">{current.question}</legend>
               {current.options.map((option, idx) => {
-                let bg = "oklch(0.22 0 0)";
-                let border = "oklch(0.28 0 0)";
-                let textColor = "oklch(0.85 0 0)";
+                // Default state — warm neutral on cream
+                let bg = "oklch(0.99 0.008 75)";
+                let border = "oklch(0.88 0.022 75)";
+                let textColor = "oklch(0.28 0.03 75)";
                 let feedbackSuffix = "";
 
                 if (showFeedback) {
                   if (idx === current.correctIndex) {
-                    bg = "oklch(0.72 0.18 142 / 0.15)";
-                    border = "oklch(0.72 0.18 142)";
-                    textColor = "oklch(0.72 0.18 142)";
+                    bg = "oklch(0.6 0.12 145 / 0.1)";
+                    border = "oklch(0.48 0.14 145)";
+                    textColor = "oklch(0.38 0.14 145)";
                     feedbackSuffix = " — Correct answer";
                   } else if (idx === selected && idx !== current.correctIndex) {
-                    bg = "oklch(0.65 0.19 22 / 0.15)";
-                    border = "oklch(0.65 0.19 22)";
-                    textColor = "oklch(0.65 0.19 22)";
+                    bg = "oklch(0.62 0.16 22 / 0.1)";
+                    border = "oklch(0.52 0.18 22)";
+                    textColor = "oklch(0.42 0.18 22)";
                     feedbackSuffix = " — Incorrect";
                   }
                 } else if (idx === selected) {
-                  bg = `oklch(${accentOklch} / 0.15)`;
+                  bg = `oklch(${accentOklch} / 0.1)`;
                   border = `oklch(${accentOklch})`;
                   textColor = `oklch(${accentOklch})`;
                 }
@@ -221,12 +253,12 @@ export function QuizEngine({ topicId, questions }: QuizEngineProps) {
                       color: textColor,
                       // @ts-expect-error CSS custom property
                       "--tw-ring-color": `oklch(${accentOklch})`,
-                      "--tw-ring-offset-color": "oklch(0.18 0 0)",
+                      "--tw-ring-offset-color": "oklch(0.97 0.012 75)",
                     }}
                   >
                     <span
                       className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border text-xs font-bold"
-                      style={{ borderColor: border }}
+                      style={{ borderColor: border, color: textColor }}
                       aria-hidden="true"
                     >
                       {String.fromCharCode(65 + idx)}
@@ -276,47 +308,40 @@ export function QuizEngine({ topicId, questions }: QuizEngineProps) {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mt-4 rounded-xl p-4"
-                  style={{
-                    background: "oklch(0.20 0 0)",
-                    border: "1px solid oklch(0.30 0 0)",
-                  }}
+                  className="mt-4 rounded-xl p-4 callout-warm"
                 >
                   <div className="flex items-start gap-2 mb-2">
                     {selected === current.correctIndex ? (
                       <>
                         <CheckCircle
                           className="h-4 w-4 mt-0.5 shrink-0"
-                          style={{ color: "oklch(0.72 0.18 142)" }}
+                          style={{ color: "oklch(0.48 0.14 145)" }}
                           aria-hidden="true"
                         />
                         <span
                           className="text-sm font-semibold"
-                          style={{ color: "oklch(0.72 0.18 142)" }}
+                          style={{ color: "oklch(0.38 0.14 145)" }}
                         >
-                          ✓ Correct!
+                          ✓ That's right!
                         </span>
                       </>
                     ) : (
                       <>
                         <XCircle
                           className="h-4 w-4 mt-0.5 shrink-0"
-                          style={{ color: "oklch(0.65 0.19 22)" }}
+                          style={{ color: "oklch(0.52 0.18 22)" }}
                           aria-hidden="true"
                         />
                         <span
                           className="text-sm font-semibold"
-                          style={{ color: "oklch(0.65 0.19 22)" }}
+                          style={{ color: "oklch(0.42 0.18 22)" }}
                         >
-                          ✗ Incorrect
+                          Not quite — here's why:
                         </span>
                       </>
                     )}
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    <span className="font-semibold text-foreground">
-                      Explanation:{" "}
-                    </span>
                     {current.explanation}
                   </p>
                   <Button
@@ -330,7 +355,7 @@ export function QuizEngine({ topicId, questions }: QuizEngineProps) {
                     }
                     style={{
                       background: `oklch(${accentOklch})`,
-                      color: "oklch(0.10 0 0)",
+                      color: "oklch(0.97 0.005 75)",
                     }}
                     data-ocid="quiz-next-btn"
                   >
@@ -361,7 +386,7 @@ export function QuizEngine({ topicId, questions }: QuizEngineProps) {
             </div>
 
             <motion.div
-              animate={{ scale: [1, 1.1, 1] }}
+              animate={{ scale: [1, 1.08, 1] }}
               transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
               className="mb-4 text-6xl"
               aria-hidden="true"
@@ -383,12 +408,12 @@ export function QuizEngine({ topicId, questions }: QuizEngineProps) {
             <Button
               onClick={handleRetake}
               variant="outline"
-              className="gap-2 border-muted-foreground/30"
+              className="gap-2"
               aria-label="Retake quiz"
               data-ocid="quiz-retake-btn"
             >
               <RotateCcw className="h-4 w-4" aria-hidden="true" />
-              Retake Quiz
+              Try Again
             </Button>
           </motion.div>
         )}

@@ -8,7 +8,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import type { QuizQuestion } from "@/types/biology";
 import { FlaskConical } from "lucide-react";
 
-// ─── Bioreactor SVG diagram ────────────────────────────────────────────────────
+// ── Bioreactor SVG diagram ────────────────────────────────────────────────────
 
 const BUBBLES = [
   { id: "b1", cx: 92, startY: 290, delay: 0 },
@@ -46,19 +46,10 @@ function BioreactorDiagram() {
           0%, 100% { transform: translateY(0px); }
           50%       { transform: translateY(-3px); }
         }
-        .bubble-anim {
-          animation: bubble-rise 3s ease-in infinite;
-        }
-        .stirrer-anim {
-          transform-origin: 115px 300px;
-          animation: stirrer-spin 4s linear infinite;
-        }
-        .gauge-anim {
-          animation: gauge-pulse 2s ease-in-out infinite;
-        }
-        .foam-anim {
-          animation: foam-float 2.5s ease-in-out infinite;
-        }
+        .bubble-anim { animation: bubble-rise 3s ease-in infinite; }
+        .stirrer-anim { transform-origin: 115px 300px; animation: stirrer-spin 4s linear infinite; }
+        .gauge-anim { animation: gauge-pulse 2s ease-in-out infinite; }
+        .foam-anim { animation: foam-float 2.5s ease-in-out infinite; }
       `}</style>
 
       <svg
@@ -66,38 +57,36 @@ function BioreactorDiagram() {
         width="340"
         height="460"
         aria-hidden="true"
-        style={{ filter: "drop-shadow(0 0 18px oklch(0.65 0.2 175 / 0.45))" }}
+        style={{ filter: "drop-shadow(0 0 14px oklch(0.52 0.15 175 / 0.30))" }}
       >
-        {/* ── Vessel walls ── */}
-        {/* Outer metallic vessel */}
         <defs>
           <linearGradient id="vesselGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="oklch(0.38 0.04 220)" />
-            <stop offset="40%" stopColor="oklch(0.55 0.05 210)" />
-            <stop offset="70%" stopColor="oklch(0.48 0.04 215)" />
-            <stop offset="100%" stopColor="oklch(0.32 0.04 220)" />
+            <stop offset="0%" stopColor="oklch(0.65 0.06 210)" />
+            <stop offset="40%" stopColor="oklch(0.75 0.05 210)" />
+            <stop offset="70%" stopColor="oklch(0.70 0.05 215)" />
+            <stop offset="100%" stopColor="oklch(0.60 0.05 220)" />
           </linearGradient>
           <linearGradient id="liquidGrad" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop
               offset="0%"
-              stopColor="oklch(0.52 0.18 175)"
-              stopOpacity="0.9"
+              stopColor="oklch(0.65 0.16 175)"
+              stopOpacity="0.85"
             />
             <stop
               offset="100%"
-              stopColor="oklch(0.35 0.14 175)"
-              stopOpacity="0.95"
+              stopColor="oklch(0.50 0.14 175)"
+              stopOpacity="0.90"
             />
           </linearGradient>
           <linearGradient id="foamGrad" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop
               offset="0%"
-              stopColor="oklch(0.80 0.12 175)"
+              stopColor="oklch(0.88 0.10 175)"
               stopOpacity="0.7"
             />
             <stop
               offset="100%"
-              stopColor="oklch(0.60 0.15 175)"
+              stopColor="oklch(0.72 0.13 175)"
               stopOpacity="0.5"
             />
           </linearGradient>
@@ -106,22 +95,17 @@ function BioreactorDiagram() {
           </clipPath>
         </defs>
 
-        {/* Vessel body */}
         <path
           d="M58,90 Q58,80 68,78 L162,78 Q172,78 172,90 L172,380 Q172,400 115,400 Q58,400 58,380 Z"
           fill="url(#vesselGrad)"
-          stroke="oklch(0.6 0.05 210)"
+          stroke="oklch(0.72 0.05 210)"
           strokeWidth="2"
         />
-
-        {/* Liquid fill */}
         <path
           d="M60,145 L170,145 L170,378 Q170,397 115,397 Q60,397 60,378 Z"
           fill="url(#liquidGrad)"
           clipPath="url(#vesselClip)"
         />
-
-        {/* Foam layer */}
         <ellipse
           className="foam-anim"
           cx="115"
@@ -131,13 +115,12 @@ function BioreactorDiagram() {
           fill="url(#foamGrad)"
         />
 
-        {/* Jacket / outer ring highlight lines (industrial look) */}
         <line
           x1="58"
           y1="120"
           x2="172"
           y2="120"
-          stroke="oklch(0.55 0.05 210)"
+          stroke="oklch(0.70 0.05 210)"
           strokeWidth="1.5"
           strokeDasharray="4,4"
           opacity="0.5"
@@ -147,13 +130,12 @@ function BioreactorDiagram() {
           y1="350"
           x2="172"
           y2="350"
-          stroke="oklch(0.55 0.05 210)"
+          stroke="oklch(0.70 0.05 210)"
           strokeWidth="1.5"
           strokeDasharray="4,4"
           opacity="0.5"
         />
 
-        {/* ── Bubbles (animated) ── */}
         {BUBBLES.map((b) => (
           <circle
             key={b.id}
@@ -161,7 +143,7 @@ function BioreactorDiagram() {
             cx={b.cx}
             cy={b.startY}
             r={3.5 + (Number(b.id.replace("b", "")) % 3)}
-            fill="oklch(0.85 0.08 175)"
+            fill="oklch(0.88 0.08 175)"
             opacity="0.75"
             style={{
               animationDelay: `${b.delay}s`,
@@ -170,27 +152,23 @@ function BioreactorDiagram() {
           />
         ))}
 
-        {/* ── Stirrer shaft ── */}
         <rect
           x="112"
           y="78"
           width="6"
           height="230"
-          fill="oklch(0.58 0.04 210)"
+          fill="oklch(0.65 0.05 210)"
           rx="2"
         />
-
-        {/* ── Stirrer impeller (rotating) ── */}
         <g className="stirrer-anim">
-          {/* Impeller blades */}
           <rect
             x="68"
             y="293"
             width="38"
             height="9"
             rx="3"
-            fill="oklch(0.62 0.06 210)"
-            stroke="oklch(0.7 0.05 210)"
+            fill="oklch(0.70 0.06 210)"
+            stroke="oklch(0.78 0.05 210)"
             strokeWidth="1"
           />
           <rect
@@ -199,8 +177,8 @@ function BioreactorDiagram() {
             width="38"
             height="9"
             rx="3"
-            fill="oklch(0.62 0.06 210)"
-            stroke="oklch(0.7 0.05 210)"
+            fill="oklch(0.70 0.06 210)"
+            stroke="oklch(0.78 0.05 210)"
             strokeWidth="1"
           />
           <rect
@@ -209,8 +187,8 @@ function BioreactorDiagram() {
             width="9"
             height="38"
             rx="3"
-            fill="oklch(0.62 0.06 210)"
-            stroke="oklch(0.7 0.05 210)"
+            fill="oklch(0.70 0.06 210)"
+            stroke="oklch(0.78 0.05 210)"
             strokeWidth="1"
           />
           <rect
@@ -219,28 +197,27 @@ function BioreactorDiagram() {
             width="9"
             height="38"
             rx="3"
-            fill="oklch(0.62 0.06 210)"
-            stroke="oklch(0.7 0.05 210)"
+            fill="oklch(0.70 0.06 210)"
+            stroke="oklch(0.78 0.05 210)"
             strokeWidth="1"
           />
           <circle
             cx="115"
             cy="300"
             r="8"
-            fill="oklch(0.55 0.05 210)"
-            stroke="oklch(0.7 0.05 210)"
+            fill="oklch(0.65 0.05 210)"
+            stroke="oklch(0.78 0.05 210)"
             strokeWidth="1.5"
           />
         </g>
 
-        {/* ── Sparger (air inlet at bottom) ── */}
         <ellipse
           cx="115"
           cy="370"
           rx="28"
           ry="5"
-          fill="oklch(0.42 0.04 210)"
-          stroke="oklch(0.6 0.05 210)"
+          fill="oklch(0.58 0.05 210)"
+          stroke="oklch(0.70 0.05 210)"
           strokeWidth="1.5"
         />
         <rect
@@ -248,22 +225,19 @@ function BioreactorDiagram() {
           y="370"
           width="8"
           height="16"
-          fill="oklch(0.42 0.04 210)"
+          fill="oklch(0.58 0.05 210)"
           rx="2"
         />
-
-        {/* ── Vessel top cap ── */}
         <ellipse
           cx="115"
           cy="85"
           rx="57"
           ry="12"
-          fill="oklch(0.44 0.04 215)"
-          stroke="oklch(0.6 0.05 210)"
+          fill="oklch(0.62 0.05 215)"
+          stroke="oklch(0.72 0.05 210)"
           strokeWidth="2"
         />
 
-        {/* ── Temperature gauge ── */}
         <g className="gauge-anim" transform="translate(178, 190)">
           <rect
             x="0"
@@ -271,8 +245,8 @@ function BioreactorDiagram() {
             width="44"
             height="60"
             rx="6"
-            fill="oklch(0.18 0.06 262)"
-            stroke="oklch(0.55 0.15 175)"
+            fill="oklch(0.92 0.02 75)"
+            stroke="oklch(0.52 0.14 175)"
             strokeWidth="1.5"
           />
           <text
@@ -280,7 +254,7 @@ function BioreactorDiagram() {
             y="14"
             textAnchor="middle"
             fontSize="7"
-            fill="oklch(0.75 0.15 175)"
+            fill="oklch(0.52 0.14 175)"
             fontFamily="monospace"
             fontWeight="bold"
           >
@@ -292,7 +266,7 @@ function BioreactorDiagram() {
             width="32"
             height="10"
             rx="3"
-            fill="oklch(0.12 0.05 262)"
+            fill="oklch(0.88 0.02 75)"
           />
           <rect
             x="7"
@@ -300,14 +274,14 @@ function BioreactorDiagram() {
             width="24"
             height="8"
             rx="2"
-            fill="oklch(0.72 0.2 50)"
+            fill="oklch(0.62 0.18 50)"
           />
           <text
             x="22"
             y="44"
             textAnchor="middle"
             fontSize="8"
-            fill="oklch(0.88 0.05 262)"
+            fill="oklch(0.28 0.03 75)"
             fontFamily="monospace"
           >
             37°C
@@ -317,14 +291,13 @@ function BioreactorDiagram() {
             y="56"
             textAnchor="middle"
             fontSize="6"
-            fill="oklch(0.62 0.06 262)"
+            fill="oklch(0.50 0.04 75)"
             fontFamily="monospace"
           >
             Optimal
           </text>
         </g>
 
-        {/* ── pH gauge ── */}
         <g
           className="gauge-anim"
           transform="translate(178, 265)"
@@ -336,8 +309,8 @@ function BioreactorDiagram() {
             width="44"
             height="60"
             rx="6"
-            fill="oklch(0.18 0.06 262)"
-            stroke="oklch(0.55 0.15 175)"
+            fill="oklch(0.92 0.02 75)"
+            stroke="oklch(0.52 0.14 175)"
             strokeWidth="1.5"
           />
           <text
@@ -345,7 +318,7 @@ function BioreactorDiagram() {
             y="14"
             textAnchor="middle"
             fontSize="7"
-            fill="oklch(0.75 0.15 175)"
+            fill="oklch(0.52 0.14 175)"
             fontFamily="monospace"
             fontWeight="bold"
           >
@@ -357,7 +330,7 @@ function BioreactorDiagram() {
             width="32"
             height="10"
             rx="3"
-            fill="oklch(0.12 0.05 262)"
+            fill="oklch(0.88 0.02 75)"
           />
           <rect
             x="7"
@@ -365,14 +338,14 @@ function BioreactorDiagram() {
             width="20"
             height="8"
             rx="2"
-            fill="oklch(0.65 0.18 142)"
+            fill="oklch(0.55 0.16 142)"
           />
           <text
             x="22"
             y="44"
             textAnchor="middle"
             fontSize="8"
-            fill="oklch(0.88 0.05 262)"
+            fill="oklch(0.28 0.03 75)"
             fontFamily="monospace"
           >
             7.0
@@ -382,20 +355,19 @@ function BioreactorDiagram() {
             y="56"
             textAnchor="middle"
             fontSize="6"
-            fill="oklch(0.62 0.06 262)"
+            fill="oklch(0.50 0.04 75)"
             fontFamily="monospace"
           >
             Neutral
           </text>
         </g>
 
-        {/* ── Connecting lines from gauges to vessel ── */}
         <line
           x1="178"
           y1="220"
           x2="172"
           y2="220"
-          stroke="oklch(0.55 0.15 175)"
+          stroke="oklch(0.52 0.14 175)"
           strokeWidth="1"
           strokeDasharray="2,2"
           opacity="0.6"
@@ -405,45 +377,43 @@ function BioreactorDiagram() {
           y1="295"
           x2="172"
           y2="295"
-          stroke="oklch(0.55 0.15 175)"
+          stroke="oklch(0.52 0.14 175)"
           strokeWidth="1"
           strokeDasharray="2,2"
           opacity="0.6"
         />
 
-        {/* ── CO2 outlet pipe (top right) ── */}
         <path
           d="M155,78 L155,50 L230,50"
           fill="none"
-          stroke="oklch(0.62 0.08 30)"
+          stroke="oklch(0.55 0.08 30)"
           strokeWidth="3"
           strokeLinecap="round"
         />
-        <polygon points="226,44 238,50 226,56" fill="oklch(0.62 0.08 30)" />
+        <polygon points="226,44 238,50 226,56" fill="oklch(0.55 0.08 30)" />
         <text
           x="232"
           y="46"
           fontSize="9"
-          fill="oklch(0.62 0.08 30)"
+          fill="oklch(0.55 0.08 30)"
           fontWeight="bold"
         >
           CO₂ out
         </text>
 
-        {/* ── Nutrient inlet pipe (top left) ── */}
         <path
           d="M75,78 L75,50 L10,50"
           fill="none"
-          stroke="oklch(0.72 0.18 142)"
+          stroke="oklch(0.52 0.14 142)"
           strokeWidth="3"
           strokeLinecap="round"
         />
-        <polygon points="14,44 2,50 14,56" fill="oklch(0.72 0.18 142)" />
+        <polygon points="14,44 2,50 14,56" fill="oklch(0.52 0.14 142)" />
         <text
           x="2"
           y="44"
           fontSize="9"
-          fill="oklch(0.72 0.18 142)"
+          fill="oklch(0.52 0.14 142)"
           fontWeight="bold"
         >
           Nutrients
@@ -452,26 +422,25 @@ function BioreactorDiagram() {
           x="2"
           y="56"
           fontSize="9"
-          fill="oklch(0.72 0.18 142)"
+          fill="oklch(0.52 0.14 142)"
           fontWeight="bold"
         >
           in
         </text>
 
-        {/* ── Product outlet pipe (bottom right) ── */}
         <path
           d="M172,370 L220,370 L220,430"
           fill="none"
-          stroke="oklch(0.68 0.22 36)"
+          stroke="oklch(0.58 0.18 36)"
           strokeWidth="3"
           strokeLinecap="round"
         />
-        <polygon points="214,426 220,438 226,426" fill="oklch(0.68 0.22 36)" />
+        <polygon points="214,426 220,438 226,426" fill="oklch(0.58 0.18 36)" />
         <text
           x="224"
           y="402"
           fontSize="9"
-          fill="oklch(0.68 0.22 36)"
+          fill="oklch(0.58 0.18 36)"
           fontWeight="bold"
         >
           Product
@@ -480,26 +449,25 @@ function BioreactorDiagram() {
           x="224"
           y="414"
           fontSize="9"
-          fill="oklch(0.68 0.22 36)"
+          fill="oklch(0.58 0.18 36)"
           fontWeight="bold"
         >
           out
         </text>
 
-        {/* ── Air sparger inlet (bottom left) ── */}
         <path
           d="M58,370 L10,370 L10,430"
           fill="none"
-          stroke="oklch(0.68 0.19 262)"
+          stroke="oklch(0.52 0.14 262)"
           strokeWidth="3"
           strokeLinecap="round"
         />
-        <polygon points="4,426 10,438 16,426" fill="oklch(0.68 0.19 262)" />
+        <polygon points="4,426 10,438 16,426" fill="oklch(0.52 0.14 262)" />
         <text
           x="1"
           y="400"
           fontSize="9"
-          fill="oklch(0.68 0.19 262)"
+          fill="oklch(0.52 0.14 262)"
           fontWeight="bold"
         >
           Air / O₂
@@ -508,19 +476,18 @@ function BioreactorDiagram() {
           x="1"
           y="412"
           fontSize="9"
-          fill="oklch(0.68 0.19 262)"
+          fill="oklch(0.52 0.14 262)"
           fontWeight="bold"
         >
           in
         </text>
 
-        {/* ── Labels inside vessel ── */}
         <text
           x="115"
           y="165"
           textAnchor="middle"
           fontSize="8.5"
-          fill="oklch(0.88 0.05 262)"
+          fill="oklch(0.96 0.01 75)"
           fontWeight="bold"
         >
           Broth
@@ -530,7 +497,7 @@ function BioreactorDiagram() {
           y="176"
           textAnchor="middle"
           fontSize="7"
-          fill="oklch(0.75 0.08 175)"
+          fill="oklch(0.90 0.06 175)"
         >
           microorganisms + medium
         </text>
@@ -539,7 +506,7 @@ function BioreactorDiagram() {
           y="240"
           textAnchor="middle"
           fontSize="7.5"
-          fill="oklch(0.82 0.12 175)"
+          fill="oklch(0.85 0.10 175)"
         >
           Impeller
         </text>
@@ -548,7 +515,7 @@ function BioreactorDiagram() {
           y="250"
           textAnchor="middle"
           fontSize="6.5"
-          fill="oklch(0.65 0.08 175)"
+          fill="oklch(0.72 0.08 175)"
         >
           (mixing)
         </text>
@@ -557,18 +524,16 @@ function BioreactorDiagram() {
           y="390"
           textAnchor="middle"
           fontSize="7.5"
-          fill="oklch(0.75 0.08 175)"
+          fill="oklch(0.80 0.08 175)"
         >
           Sparger
         </text>
-
-        {/* ── Title label ── */}
         <text
           x="115"
           y="448"
           textAnchor="middle"
           fontSize="11"
-          fill="oklch(0.75 0.15 175)"
+          fill="oklch(0.52 0.14 175)"
           fontWeight="bold"
         >
           Stirred-Tank Bioreactor
@@ -578,7 +543,7 @@ function BioreactorDiagram() {
   );
 }
 
-// ─── Quiz questions ────────────────────────────────────────────────────────────
+// ── Quiz questions ─────────────────────────────────────────────────────────────
 
 const quizQuestions: QuizQuestion[] = [
   {
@@ -594,22 +559,22 @@ const quizQuestions: QuizQuestion[] = [
     ],
     correctIndex: 1,
     explanation:
-      "Anaerobic fermentation proceeds without oxygen and regenerates NAD⁺ by reducing pyruvate to products like lactate or ethanol, yielding only 2 ATP per glucose. Aerobic respiration uses oxygen and yields ~30–32 ATP per glucose through the full oxidation of glucose.",
+      "Anaerobic fermentation happens when there's no oxygen available. The cell still runs glycolysis to get 2 ATP from glucose, but then needs to recycle NADH back to NAD⁺ — it does this by reducing pyruvate to lactate or ethanol. Aerobic respiration uses oxygen as the final electron acceptor and squeezes ~30–32 ATP from that same glucose molecule. The oxygen really does make all the difference.",
   },
   {
     id: "ferm-q2",
     topic: "fermentation",
     question:
-      "Which metabolic product is generated during lactic acid fermentation?",
+      "Which enzyme directly converts pyruvate to lactate in lactic acid fermentation?",
     options: [
-      "Ethanol and CO₂",
-      "Acetone and butanol",
-      "Lactic acid (lactate)",
-      "Acetic acid and hydrogen gas",
+      "Pyruvate decarboxylase",
+      "Alcohol dehydrogenase",
+      "Lactate dehydrogenase (LDH)",
+      "Pyruvate kinase",
     ],
     correctIndex: 2,
     explanation:
-      "In lactic acid fermentation, pyruvate is reduced directly to lactate by lactate dehydrogenase, regenerating NAD⁺. This pathway is used by Lactobacillus bacteria in yogurt and cheese production, and by human muscle cells during intense exercise.",
+      "Lactate dehydrogenase (LDH) is the key enzyme here — it reduces pyruvate directly to lactate, simultaneously oxidizing NADH back to NAD⁺. That NAD⁺ regeneration is the whole point: it lets glycolysis keep running even without oxygen. Your muscles do this during intense exercise, and Lactobacillus bacteria do it in yogurt, kimchi, and sauerkraut.",
   },
   {
     id: "ferm-q3",
@@ -624,7 +589,7 @@ const quizQuestions: QuizQuestion[] = [
     ],
     correctIndex: 1,
     explanation:
-      "Saccharomyces cerevisiae (brewer's yeast) carries out alcoholic fermentation, converting glucose to ethanol and CO₂. It is used industrially in brewing beer, fermenting wine, and leavening bread dough.",
+      "Saccharomyces cerevisiae — brewer's and baker's yeast. It converts pyruvate first to acetaldehyde (releasing CO₂ via pyruvate decarboxylase) then to ethanol (via alcohol dehydrogenase). The ethanol makes your beer; the CO₂ makes your bread rise. Humans have been exploiting this organism for at least 9,000 years, making it one of the most commercially important organisms on Earth.",
   },
   {
     id: "ferm-q4",
@@ -639,32 +604,32 @@ const quizQuestions: QuizQuestion[] = [
     ],
     correctIndex: 2,
     explanation:
-      "The impeller in a stirred-tank bioreactor provides mechanical agitation, ensuring uniform distribution of oxygen, nutrients, and temperature throughout the culture. Good mixing prevents oxygen gradients and concentration gradients that would inhibit cell growth.",
+      "The impeller is the spinning mixing device inside the vessel. Without it, oxygen introduced at the bottom would create steep concentration gradients — cells near the sparger get oxygen while cells elsewhere starve. The impeller distributes oxygen, nutrients, and heat evenly throughout the broth. In large vessels at 50,000+ litre scale, this is genuinely challenging engineering.",
   },
   {
     id: "ferm-q5",
     topic: "fermentation",
     question:
-      "In a batch fermentation process, what happens after inoculation?",
+      "In fed-batch fermentation, what is added during the process — and why?",
     options: [
-      "Fresh medium is continuously added while product is continuously removed",
-      "The culture grows in a closed, fixed volume of medium until nutrients are depleted",
-      "Cells are removed at regular intervals while medium is replaced",
-      "The bioreactor is heated to kill all cells and harvest the product",
+      "Nothing — fed-batch is a closed system like batch fermentation",
+      "Product is continuously removed to prevent inhibition",
+      "Substrate (e.g. glucose) is added continuously or intermittently to prevent substrate inhibition and extend growth",
+      "Cells are removed at regular intervals to maintain constant density",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation:
-      "Batch fermentation is a closed-system process: the vessel is inoculated and sealed, and the culture grows through lag, exponential, stationary, and decline phases until nutrients are exhausted. The entire batch is then harvested. This contrasts with continuous culture, where fresh medium is constantly fed and broth continuously removed.",
+      "Fed-batch is the dominant mode for high-value products like antibiotics and recombinant proteins. By feeding in substrate gradually, you prevent the substrate from accumulating to inhibitory concentrations, extend the productive growth phase, and achieve much higher final cell densities than simple batch. Most commercial penicillin and insulin production uses this approach.",
   },
   {
     id: "ferm-q6",
     topic: "fermentation",
     question:
-      "Which antibiotic is produced by Penicillium mold through industrial fermentation?",
+      "Which antibiotic is produced by Penicillium chrysogenum through industrial fermentation?",
     options: ["Streptomycin", "Tetracycline", "Penicillin", "Vancomycin"],
     correctIndex: 2,
     explanation:
-      "Penicillin is produced by the filamentous fungus Penicillium chrysogenum. Alexander Fleming discovered its antibacterial properties in 1928, and by the 1940s industrial deep-tank fermentation processes were developed to produce penicillin at scale, transforming medicine.",
+      "Penicillin! Alexander Fleming noticed in 1928 that Penicillium mold was killing bacteria on a contaminated culture plate. The work of Florey and Chain in the 1940s to develop industrial fermentation at scale transformed it into a medicine that saved millions of lives in World War II. Production titers have improved from 1 unit/ml in early processes to over 50,000 units/ml today through decades of strain improvement.",
   },
   {
     id: "ferm-q7",
@@ -675,11 +640,11 @@ const quizQuestions: QuizQuestion[] = [
       "Microorganisms behave differently at larger scales due to oxygen and mixing limitations",
       "Industrial bioreactors cannot maintain sterile conditions",
       "Large-scale fermentation always produces toxic byproducts",
-      "Scale-up is straightforward since microorganism behavior is independent of vessel size",
+      "Scale-up is straightforward since microorganism behaviour is independent of vessel size",
     ],
     correctIndex: 0,
     explanation:
-      "Scale-up is challenging because mixing time, oxygen transfer rates, heat removal, and shear forces change non-linearly with vessel volume. What works in a 1-liter flask may produce oxygen-starved or poorly mixed zones in a 10,000-liter tank, requiring careful engineering of impeller design, sparger placement, and aeration strategies.",
+      "What works in a 1-litre flask often doesn't work the same way in a 10,000-litre tank. Mixing time, oxygen transfer rate (kLa), heat removal, and shear forces all change non-linearly with scale. You can get oxygen-poor dead zones, pH gradients, and temperature hotspots that simply don't exist at lab scale. That's why pilot-scale testing at 100–1,000 litres is almost always required before committing to full industrial production.",
   },
   {
     id: "ferm-q8",
@@ -687,107 +652,125 @@ const quizQuestions: QuizQuestion[] = [
     question: "How is recombinant human insulin produced commercially?",
     options: [
       "Extracted from the pancreases of pigs and purified",
-      "Synthesized chemically from amino acids in industrial reactors",
+      "Synthesised chemically from amino acids in industrial reactors",
       "Produced by genetically engineered Escherichia coli or yeast via fermentation",
       "Isolated from human blood donors",
     ],
     correctIndex: 2,
     explanation:
-      "Recombinant human insulin is produced by inserting the human insulin gene into E. coli or Saccharomyces cerevisiae. These microorganisms then express the insulin protein during fermentation, which is purified, folded correctly, and formulated for therapeutic use.",
+      "The human insulin gene is inserted into E. coli or Saccharomyces cerevisiae. These microorganisms grow in large fermenters, express the insulin protein, and it's then extracted, properly folded (insulin forms disulfide bonds between A and B chains), purified by chromatography, and formulated for injection. Every person with diabetes who uses recombinant insulin is benefiting directly from this process, first commercialised in 1982.",
   },
   {
     id: "ferm-q9",
     topic: "fermentation",
-    question: "What is the role of a sparger in a bioreactor?",
+    question:
+      "What is the first principle of ABE fermentation, and which organism performs it?",
     options: [
-      "To add carbon sources like glucose to the medium",
-      "To remove CO₂ from the exhaust gas stream",
-      "To introduce fine air or oxygen bubbles into the culture broth",
-      "To maintain temperature by circulating coolant",
+      "Acetate–Butanol–Ethanol fermentation by Saccharomyces cerevisiae",
+      "Acetone–Butanol–Ethanol fermentation by Clostridium acetobutylicum — the first industrial bioprocess",
+      "Acetic–Butyric–Ethanol fermentation by Lactobacillus acidophilus",
+      "Acetaldehyde–Butanol–Ethylene by Aspergillus niger",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation:
-      "A sparger is a porous device or perforated pipe at the bottom of a bioreactor that disperses compressed air or pure oxygen as fine bubbles. These small bubbles maximize the gas-liquid contact area, improving oxygen mass transfer into the broth — critical for aerobic fermentations.",
+      "ABE (Acetone–Butanol–Ethanol) fermentation is performed by Clostridium acetobutylicum and holds the distinction of being the first large-scale industrial bioprocess — developed during World War I when Chaim Weizmann used it to produce acetone for cordite explosive manufacture. It's a remarkable piece of biotechnology history and also the origin of industrial butanol production.",
   },
   {
     id: "ferm-q10",
     topic: "fermentation",
     question:
-      "Which type of fermentation produces both ethanol and CO₂ as metabolic end products?",
+      "In a chemostat (continuous fermentation), what determines the steady-state cell density?",
     options: [
-      "Lactic acid fermentation",
-      "Propionic acid fermentation",
-      "Alcoholic (ethanolic) fermentation",
-      "Acetic acid fermentation",
+      "The initial inoculum size",
+      "The dilution rate — fresh medium in, culture out — which equals the specific growth rate at steady state",
+      "The temperature setting of the vessel jacket",
+      "The stirrer speed in revolutions per minute",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation:
-      "In alcoholic fermentation, pyruvate is first decarboxylated to acetaldehyde (releasing CO₂), then acetaldehyde is reduced to ethanol by alcohol dehydrogenase using NADH. Both ethanol and CO₂ are the characteristic end products — CO₂ is what causes bread to rise and beer to be carbonated.",
+      "A chemostat is elegant in its simplicity: fresh medium flows in at a constant rate (dilution rate D), and culture flows out at the same rate. At steady state, the cells grow exactly fast enough to compensate for the dilution — so D equals the specific growth rate μ. By adjusting D, you control growth rate. This makes the chemostat a powerful tool for physiological studies and can give higher volumetric productivity than batch, though contamination risk over long runs is a real concern.",
   },
 ];
 
-// ─── Explanation paragraphs ────────────────────────────────────────────────────
+// ── Explanation paragraphs ─────────────────────────────────────────────────────
 
 const explanations = [
   {
-    id: "intro",
-    heading: "What Is Fermentation? Aerobic vs. Anaerobic Pathways",
-    color: "oklch(0.72 0.18 175)",
-    body: `Fermentation is a metabolic process in which microorganisms — and some of our own cells — extract energy from organic molecules in the absence of oxygen. More precisely, fermentation refers to the regeneration of NAD⁺ from NADH after glycolysis, allowing glycolysis to continue producing ATP even when no oxygen is available as a terminal electron acceptor. During glycolysis, glucose (6 carbons) is broken down into two molecules of pyruvate (3 carbons each), generating 2 ATP and 2 NADH. Without oxygen, the NADH produced must be reoxidized back to NAD⁺ — and fermentation pathways accomplish exactly this by transferring electrons to organic end products rather than to oxygen.
+    id: "history",
+    anchorId: "fermentation-types",
+    heading: "A Brief History: From Yogurt to Nobel Prizes",
+    color: "oklch(0.52 0.14 175)",
+    body: `Humans have been harnessing fermentation for thousands of years — bread, beer, wine, cheese, yogurt — without having the faintest idea of the chemistry involved. The understanding came much later. In 1857, Louis Pasteur demonstrated that fermentation was caused by living microorganisms, not by a purely chemical process as many chemists of the time believed. He coined the phrase "la vie sans air" — life without air — and laid the groundwork for microbiology as a discipline.
 
-Aerobic respiration, by contrast, uses oxygen as the final electron acceptor in the electron transport chain, allowing the complete oxidation of glucose through the citric acid cycle and oxidative phosphorylation. This yields approximately 30–32 ATP per glucose molecule — far more than the 2 ATP generated by fermentation alone. The tradeoff is that aerobic respiration requires oxygen, while fermentation can sustain life in anaerobic environments — from the bottom of swamps to the interior of a fermenting batch of dough.`,
+The next big conceptual leap came from Eduard Buchner in 1897. He ground up yeast cells and squeezed out their juice, expecting it to be inert. Instead, it fermented sugar. This "cell-free fermentation" proved that enzymes — not intact living cells — were doing the chemical work, and it earned Buchner the Nobel Prize in Chemistry in 1907. That insight launched biochemistry as we know it. From there to penicillin production in the 1940s, to recombinant insulin in the 1980s, to today's monoclonal antibody bioreactors worth hundreds of billions of dollars — it's all one continuous story of humanity learning to redirect microbial chemistry toward useful ends.`,
+  },
+  {
+    id: "biochemistry",
+    anchorId: "fermentation-biochemistry",
+    heading: "The Biochemistry: What's Actually Happening in That Flask?",
+    color: "oklch(0.52 0.14 175)",
+    body: `At the heart of fermentation is a problem of electron bookkeeping. Glycolysis breaks glucose (6 carbons) into two pyruvate molecules (3 carbons each), yielding 2 ATP and 2 NADH. Here's the catch: those 2 NADH molecules need to donate their electrons somewhere, or NAD⁺ runs out and glycolysis stops completely. In aerobic cells, the electron transport chain handles this — and generates an additional 28–30 ATP along the way. Without oxygen, fermentation takes over.
+
+Lactic acid fermentation is the simplest solution: lactate dehydrogenase (LDH) directly reduces pyruvate to lactate, oxidising NADH back to NAD⁺ in one step. Lactobacillus species are homofermentative (only lactate as product) or heterofermentative (Leuconostoc — producing lactate, ethanol, and CO₂). Alcoholic fermentation takes two steps: pyruvate decarboxylase removes CO₂ from pyruvate to form acetaldehyde, then alcohol dehydrogenase reduces acetaldehyde to ethanol using NADH. Two CO₂ are released and two ethanol molecules are produced per glucose. Beyond these two classics, there's propionic acid fermentation (Propionibacterium in Swiss cheese — the CO₂ produces the holes), acetic acid fermentation (Acetobacter oxidises ethanol to acetic acid — that's your vinegar), mixed acid fermentation in E. coli (producing acetate, formate, succinate, and ethanol in varying ratios), and the remarkable ABE fermentation by Clostridium acetobutylicum — which produces acetone, butanol, and ethanol simultaneously and was the first industrial bioprocess in history.`,
   },
   {
     id: "types",
-    heading: "Lactic Acid vs. Alcoholic Fermentation",
-    color: "oklch(0.68 0.22 36)",
-    body: `There are two major fermentation pathways that dominate industrial and biological importance. In **lactic acid fermentation**, pyruvate is reduced directly to lactate (lactic acid) by the enzyme lactate dehydrogenase, using the electrons from NADH. This pathway is used by lactic acid bacteria (LAB) such as Lactobacillus and Streptococcus — the microorganisms responsible for yogurt, cheese, sauerkraut, kimchi, and sourdough. Our own muscle cells switch to lactic acid fermentation during intense exercise when oxygen delivery cannot keep pace with ATP demand, causing the burning sensation associated with muscle fatigue.
+    anchorId: "fermentation-types-batch",
+    heading:
+      "Types of Fermentation Processes: Batch, Fed-batch, and Continuous",
+    color: "oklch(0.58 0.18 36)",
+    body: `Industrial fermentation isn't one thing — it's a spectrum of process modes, each with distinct advantages and the right application niche. Batch fermentation is the simplest: inoculate a closed vessel, grow until nutrients are exhausted, harvest everything at the end. The microbial culture goes through distinct phases — lag (adapting to new environment), exponential/log (rapid doubling), stationary (nutrients limiting, production phase for many secondary metabolites like antibiotics), and death (starvation and cell lysis). Batch is easy to validate, each run is a discrete lot with clear traceability, and if contamination strikes you lose one batch, not your entire facility. Pharmaceutical GMP (Good Manufacturing Practice) favours batch for precisely this auditability.
 
-**Alcoholic (ethanolic) fermentation** proceeds differently: pyruvate is first decarboxylated to acetaldehyde by pyruvate decarboxylase (releasing CO₂), and acetaldehyde is then reduced to ethanol by alcohol dehydrogenase using NADH. This two-step process is the biochemical basis of brewing, winemaking, and bread-making. The CO₂ released during alcoholic fermentation is what causes bread dough to rise and gives beer and champagne their carbonation. Yeasts — primarily Saccharomyces cerevisiae — are the microbial workhorses of alcoholic fermentation. Other fermentation pathways of industrial interest include propionic acid fermentation (Swiss cheese), butanol fermentation (biofuel production), and acetic acid fermentation (vinegar).`,
-  },
-  {
-    id: "microorganisms",
-    heading: "Microorganisms in Industrial Fermentation",
-    color: "oklch(0.70 0.20 290)",
-    body: `Industrial fermentation relies on a carefully selected cast of microorganisms, each chosen for their unique metabolic capabilities, robustness, and suitability for large-scale culture. Bacteria are the workhorses of many industrial processes: Escherichia coli is the preferred host for recombinant protein production because it grows rapidly, is genetically well-understood, and can be engineered to produce foreign proteins at high yields. Corynebacterium glutamicum is used to manufacture amino acids like glutamate (monosodium glutamate, MSG) and lysine on a scale of millions of tons per year. Streptomyces species are filamentous bacteria that naturally produce antibiotics, including streptomycin, erythromycin, and tetracycline.
-
-Fungi serve equally critical industrial roles. The yeast Saccharomyces cerevisiae dominates ethanol fermentation for beverages and biofuels, and is widely used for recombinant protein expression — including hepatitis B vaccine antigens and insulin. Filamentous fungi like Aspergillus niger are used to produce citric acid (a ubiquitous food additive) and industrial enzymes. Penicillium chrysogenum produces penicillin. Trichoderma reesei secretes cellulases used to break down plant biomass for second-generation biofuels. Microalgae are emerging producers of high-value compounds like omega-3 fatty acids, carotenoids, and bioplastic precursors.`,
+Fed-batch is the workhorse of modern bioprocessing. Instead of adding all substrate at once, you feed it in gradually — often following a pre-programmed feeding strategy that responds to dissolved oxygen or CO₂ evolution as proxies for cell metabolism. This prevents substrate inhibition (glucose repression in yeast, acetate overflow in E. coli), extends the productive phase, and achieves cell densities 10–100x higher than batch. Most antibiotic and recombinant protein production runs as fed-batch. Continuous fermentation (chemostat) pumps fresh medium in while removing culture at the same rate, maintaining cells at a fixed density and growth rate indefinitely. Productivity per unit volume can exceed batch, but the risk of contamination and genetic drift accumulates over long runs. Perfusion culture is an advanced variant used in mammalian cell culture for monoclonal antibody production — cells are retained inside the vessel by a filter while spent medium is continuously replaced, achieving extraordinarily high cell densities (>100 million cells/mL) and productivity.`,
   },
   {
     id: "bioreactor",
-    heading: "Bioreactor Design: From Stirred Tanks to Airlift Vessels",
-    color: "oklch(0.65 0.20 175)",
-    body: `A bioreactor is an engineered vessel designed to support and control microbial or cell culture at scale. The most common design is the **stirred-tank bioreactor (STR)**: a cylindrical stainless steel vessel equipped with mechanical agitators (impellers), a sparger for introducing air or oxygen, baffles to enhance mixing, temperature control via a water jacket, and ports for measuring and adjusting pH, dissolved oxygen, and nutrient feed. The impeller is the heart of the STR — its rotation creates turbulent flow that distributes oxygen, breaks up air bubbles, and maintains a homogeneous culture environment. Impeller designs range from Rushton turbines (excellent for gas dispersion) to pitched-blade turbines (gentler for fragile mammalian cells).
+    anchorId: "fermentation-bioreactor",
+    heading: "Inside a Bioreactor: The Engineering Behind the Biology",
+    color: "oklch(0.52 0.15 175)",
+    body: `A bioreactor looks like a fancy metal tank, but it's actually a tightly controlled life-support system for billions of microorganisms. The stirred-tank reactor (STR) is the most common industrial design — a cylindrical stainless steel vessel with a rotating impeller (mixing blades), a sparger (porous ring that disperses oxygen as tiny bubbles from the bottom), baffles (vertical plates on the vessel wall that disrupt circular flow and improve mixing), and a cooling jacket through which temperature-controlled water circulates. Sensors — pH, dissolved oxygen (DO), temperature, foam, biomass — monitor the culture in real time and feed data to control loops that adjust acid/base addition, agitation speed, and airflow automatically.
 
-**Airlift bioreactors** use rising air or gas bubbles rather than mechanical agitation to circulate the culture. Air is introduced at the bottom of a draft tube (the riser), causing liquid to flow upward through the riser and downward through the annular space (the downcomer). This gentle circulation is ideal for shear-sensitive organisms like mammalian cells and microalgae. Airlift reactors require less energy and have fewer mechanical parts than STRs, reducing contamination risk and maintenance costs. Other designs include packed-bed reactors (immobilized cells on beads), bubble column reactors, and wave bioreactors (single-use plastic bags for cell therapy). The choice of bioreactor design depends on the organism, oxygen demand, product, and shear tolerance of the culture.`,
+But STRs aren't the only option, and the right bioreactor depends on the organism. Airlift bioreactors circulate culture using rising gas bubbles rather than mechanical agitation — they're gentler on shear-sensitive organisms like mammalian cells and filamentous fungi. Bubble column reactors are simpler still: just a column with a sparger, no mechanical parts, easy to sterilise. Packed bed and fluidised bed bioreactors immobilise cells or enzymes on support materials, keeping the biocatalyst retained while substrate flows through — useful for biotransformations and enzyme catalysis. Hollow-fibre bioreactors use bundles of semi-permeable membranes, giving anchorage-dependent mammalian cells an enormous surface area to grow on. And wave bioreactors — single-use bags rocked on a platform — have become the standard for small-batch clinical manufacturing; the disposable bag eliminates cross-contamination risk between batches and speeds turnaround. Photobioreactors are specialised designs for microalgae, incorporating transparent tubes or flat panels and an artificial or natural light source alongside CO₂ supply. The variety of reactor designs directly reflects the variety of biology being exploited.`,
   },
   {
     id: "scale-up",
-    heading: "Scale-Up Challenges in Bioprocess Engineering",
-    color: "oklch(0.72 0.18 142)",
-    body: `Translating a fermentation process from a laboratory flask to a 50,000-liter industrial bioreactor is one of the most technically demanding challenges in bioprocess engineering. At laboratory scale, mixing is rapid, oxygen transfer is easy, and temperature gradients are negligible. At industrial scale, these assumptions break down. Mixing time — the time for a pulse of tracer to become uniformly distributed — scales roughly with vessel diameter, meaning industrial bioreactors can have mixing times of minutes rather than seconds. This creates concentration gradients of nutrients, dissolved oxygen, and pH throughout the vessel, which can profoundly affect microbial physiology and product yield.
+    anchorId: "fermentation-scale-up",
+    heading: "Scale-Up: Where Engineering Meets Humility",
+    color: "oklch(0.52 0.14 142)",
+    body: `There's a saying in bioprocess engineering: "scale-up is where careers go to die." It's only half a joke. What works perfectly in a 1-litre shake flask often fails catastrophically in a 50,000-litre production vessel — and understanding why requires grappling with fluid dynamics, mass transfer, and microbial physiology all at once.
 
-Oxygen transfer rate (OTR) is often the critical scale-up constraint for aerobic fermentations. The volumetric oxygen transfer coefficient (kLa) must be maintained as vessels grow, requiring careful optimization of impeller speed, sparger design, and aeration rate — while avoiding excessive shear forces that damage cells. Heat removal presents another challenge: large cultures generate substantial metabolic heat, and cooling capacity must scale accordingly. Engineers use dimensionless parameters like the Reynolds number, power-to-volume ratio, and oxygen uptake rate to guide scale-up decisions, but empirical testing at pilot scale (typically 100–1000 liters) is almost always required before full industrial production begins.`,
+The oxygen transfer coefficient kLa (the rate at which oxygen moves from gas bubbles into the liquid phase) is one of the most critical parameters. It depends on bubble size, power input, turbulence, and fluid viscosity in complex, non-linear ways. Achieve the right kLa in a small vessel with one set of conditions, and replicating it at 100x scale while maintaining geometric similarity of the vessel usually requires completely different agitation speeds and gas flows. Mixing time — how long it takes a slug of acid to become uniformly distributed after pH control dosing — scales with vessel diameter and can go from fractions of a second in a lab flask to 30–60 seconds in a 20,000-litre vessel. During those 60 seconds, cells near the acid dosing port experience a pH crash that cells elsewhere never see. Those physiological stress cycles affect cell growth, metabolite production, and product quality in ways that are only discovered at large scale. Process Analytical Technology (PAT) — an FDA framework for continuous monitoring of critical process parameters using in-line sensors and mathematical models (soft sensors) — has become the standard approach for managing this complexity and ensuring consistent product quality during scale-up and production.`,
+  },
+  {
+    id: "upstream",
+    anchorId: "fermentation-upstream",
+    heading: "Upstream Processing: Building the Perfect Microbial Workforce",
+    color: "oklch(0.52 0.16 290)",
+    body: `Before a drop of product is made, there's extensive work upstream. Strain development is the foundation: you need a microorganism that produces your target molecule at high yield, with good genetic stability, tolerance to the process conditions, and ideally without making unwanted byproducts. Early industrial strains were improved by random mutagenesis — exposing cells to UV light or chemical mutagens and screening tens of thousands of colonies for improved production. Modern metabolic engineering takes a rational approach: delete genes for competing pathways, overexpress biosynthetic genes, engineer cofactor balance, introduce synthetic promoters and regulators. CRISPR has made this dramatically faster.
+
+Media optimisation is equally important. The composition of the growth medium — carbon source, nitrogen source, mineral salts, vitamins, trace metals, antifoam agents — profoundly affects cell behaviour, product yield, and product quality. Dissolved oxygen control strategies, induction timing for recombinant protein expression (if using inducible promoters like the E. coli lac promoter or the T7 system), and feeding profiles for fed-batch processes are all upstream variables that must be systematically optimised. Then there's the seed train: inoculating the final production bioreactor directly from a cryopreserved vial would be impractical (the ratio of inoculum to working volume would be impossibly small). Instead, cells are progressively scaled through shake flasks, then successively larger bioreactors — each step 10–30x larger than the last — until the production vessel is reached with a healthy, productive inoculum at the right cell density.`,
+  },
+  {
+    id: "downstream",
+    anchorId: "fermentation-industrial",
+    heading: "Downstream Processing: Getting Your Product Out — Pure",
+    color: "oklch(0.58 0.18 36)",
+    body: `Making the product in the bioreactor is only half the battle. Downstream processing (DSP) — isolating the product from the culture broth in a pure, safe, and stable form — can represent 50–80% of total production costs for biopharmaceuticals. The specific steps depend on whether the product is secreted outside the cell or retained intracellularly, how large and stable it is, and how pure it needs to be.
+
+A typical monoclonal antibody downstream process looks like this: the culture is first clarified by centrifugation and depth filtration to remove cells and cell debris. Then comes Protein A affinity chromatography — the single most powerful purification step in bioprocessing, exploiting the near-perfect specificity of Protein A (from Staphylococcus) for the Fc region of antibodies. One column pass reduces impurities by several orders of magnitude. Subsequent polishing steps (ion exchange chromatography, hydrophobic interaction chromatography) remove remaining host cell proteins, DNA, viruses, and aggregates. Ultrafiltration/diafiltration concentrates the product and exchanges it into the final formulation buffer. Finally, the purified antibody may be lyophilised (freeze-dried) to improve shelf-life, mixed with excipients (stabilisers, surfactants, tonicity agents), filled into vials, and tested for purity, potency, safety, and sterility before release. For a product that costs $100,000 per year per patient, each step needs to be extraordinarily reliable.`,
   },
   {
     id: "applications",
-    heading: "Applications: Antibiotics, Beer, Cheese, Insulin, and Beyond",
-    color: "oklch(0.68 0.22 36)",
-    body: `Fermentation technology underpins an astonishing range of products central to modern life. In medicine, fermentation produces antibiotics — penicillin, cephalosporins, aminoglycosides — that have saved hundreds of millions of lives. Recombinant insulin, produced by engineered E. coli since 1982, replaced animal-derived insulin and is now the primary treatment for type 1 diabetes worldwide. Vaccines (hepatitis B, human papillomavirus), biologic drugs (erythropoietin, monoclonal antibodies), and amino acid supplements for animal feed all rely on industrial fermentation. The global market for fermentation-derived pharmaceuticals exceeds $200 billion annually.
+    anchorId: "fermentation-economy",
+    heading: "Industrial Applications: The Fermentation Economy",
+    color: "oklch(0.52 0.14 142)",
+    body: `Stop and count how many products in your life depend on fermentation. Beer, wine, cheese, yogurt, sourdough, soy sauce, miso, kombucha, vinegar — fermentation has fed and delighted humans for millennia. But the modern industrial fermentation economy goes far beyond food. Antibiotics from Streptomyces and Penicillium fermentation have saved hundreds of millions of lives and transformed surgery, medicine, and animal husbandry. Recombinant insulin (E. coli and yeast since 1982) supplies every diabetic on the planet. Erythropoietin for anaemia, human growth hormone, interferons, vaccines, monoclonal antibodies — the global market for fermentation-derived biopharmaceuticals exceeds $200 billion annually.
 
-In food and beverage production, fermentation is ancient technology modernized at industrial scale. Beer brewing uses Saccharomyces cerevisiae to ferment malted barley; wine fermentation converts grape sugars to ethanol; distilled spirits concentrate fermented ethanol further. Cheese production relies on LAB to acidify milk and specific fungi for ripening (Penicillium camemberti gives Brie its white rind; Penicillium roqueforti gives blue cheese its flavor and appearance). Soy sauce, miso, tempeh, and kombucha are fermented foods with complex microbial ecologies. Industrial enzymes produced by fermentation — amylases, proteases, lipases — are used in baking, brewing, detergents, and textile processing. Biofuels represent a growing application: bioethanol from sugarcane and corn fermentation is blended into gasoline worldwide, reducing fossil fuel dependence.`,
-  },
-  {
-    id: "continuous",
-    heading: "Batch vs. Continuous Fermentation: Process Economics",
-    color: "oklch(0.70 0.20 290)",
-    body: `Industrial fermentation processes are classified by how medium is added and culture is removed. In **batch fermentation**, the bioreactor is inoculated with a starter culture, and the microorganisms grow through a characteristic series of phases: a lag phase (adaptation to the new environment), an exponential growth phase (rapid doubling), a stationary phase (nutrient depletion slows growth), and a decline phase. All of the product accumulates in the vessel over this time, and the entire batch is then harvested at once. Batch processes are simple to operate, easy to troubleshoot, and minimize contamination risk because the vessel is cleaned and sterilized between runs.
-
-**Fed-batch fermentation** is a variation in which nutrients are added incrementally over time without removing culture — extending the productive phase and allowing much higher cell densities and product titers. Fed-batch is the dominant mode for antibiotic production and recombinant protein expression. **Continuous culture** (chemostat operation) provides a steady inflow of fresh medium and outflow of culture at equal rates, maintaining cells at a constant density and growth rate. Continuous operation maximizes volumetric productivity but requires stringent contamination prevention over long operational periods. Choosing between batch, fed-batch, and continuous operation depends on product stability, contamination risk, regulatory requirements, and economics — a batch process is safer and more auditable for pharmaceutical products, while continuous processes suit commodities like ethanol.`,
+Industrial enzymes made by microbial fermentation appear everywhere you don't expect them: in laundry detergent (proteases, lipases, and amylases cleaning your clothes at cold temperatures), in cheese production (chymosin — the enzyme that curdles milk, formerly extracted from calf stomachs, now produced by recombinant fermentation), in bread (amylases improving texture and extending shelf-life), and even in your jeans (cellulases give denim its stonewashed appearance without actual stones). Citric acid — Aspergillus niger fermentation — is the world's most widely used food acidulant, produced at over 2 million tonnes per year. Glutamate (MSG) and lysine from Corynebacterium glutamicum fermentation run into millions of tonnes annually. Bioethanol from Saccharomyces fermentation of corn and sugarcane is blended into petrol in most countries. Bioplastics (PLA from lactic acid fermentation), biogas from anaerobic digestion of organic waste, single-cell protein (Quorn from Fusarium mycoprotein fermentation), and omega-3 fatty acids from microalgae are all growing parts of the fermentation economy. It's not just a traditional technology — it's an expanding platform that underpins much of what keeps modern civilisation running.`,
   },
 ];
 
-// ─── Main section ──────────────────────────────────────────────────────────────
+// ── Main section ───────────────────────────────────────────────────────────────
 
 export default function FermentationSection() {
   return (
@@ -795,85 +778,80 @@ export default function FermentationSection() {
       className="px-6 py-16 max-w-5xl mx-auto"
       data-ocid="fermentation-section"
       aria-label="Fermentation and Bioreactors educational section"
+      style={{ background: "oklch(0.97 0.012 75)" }}
     >
-      {/* Header */}
       <SectionHeader
         topicId="fermentation"
         title="Fermentation & Bioreactors"
-        subtitle="From ancient bread-making to cutting-edge insulin production — explore the metabolic processes and engineered vessels that power biotechnology."
+        subtitle="From the burning in your muscles during a sprint to the beer in your fridge to the insulin in a diabetic's injection — fermentation is everywhere."
       />
 
-      {/* Bioreactor diagram */}
       <AnimatedEntrance direction="up" delay={0.1}>
         <div className="mb-14">
           <h3
             className="font-display text-xl font-semibold mb-6 flex items-center gap-2"
-            style={{ color: "oklch(0.72 0.18 175)" }}
+            style={{ color: "oklch(0.52 0.14 175)" }}
           >
             <FlaskConical
               className="inline w-5 h-5"
-              style={{ color: "oklch(0.72 0.18 175)" }}
+              style={{ color: "oklch(0.52 0.14 175)" }}
               aria-hidden="true"
             />
             Interactive Bioreactor Diagram
           </h3>
-
           <div
             className="rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8"
             style={{
-              background: "oklch(0.16 0.05 262)",
-              border: "1px solid oklch(0.55 0.15 175 / 0.35)",
-              boxShadow:
-                "0 0 40px oklch(0.65 0.2 175 / 0.15), inset 0 0 24px oklch(0.65 0.2 175 / 0.04)",
+              background: "oklch(0.985 0.008 75)",
+              border: "1px solid oklch(0.52 0.14 175 / 0.25)",
+              boxShadow: "0 4px 24px oklch(0.52 0.14 175 / 0.08)",
             }}
           >
             <div className="flex-shrink-0">
               <BioreactorDiagram />
             </div>
-
-            {/* Legend */}
             <div className="flex flex-col gap-3 min-w-0">
               <h4
                 className="font-display text-base font-semibold mb-1"
-                style={{ color: "oklch(0.88 0.05 262)" }}
+                style={{ color: "oklch(0.28 0.03 75)" }}
               >
                 Components
               </h4>
               {[
                 {
-                  color: "oklch(0.62 0.06 210)",
+                  color: "oklch(0.65 0.06 210)",
                   label: "Impeller",
-                  desc: "Rotating blades for mixing",
+                  desc: "Rotating blades for mixing — distributes O₂ and nutrients evenly",
                 },
                 {
-                  color: "oklch(0.52 0.18 175)",
+                  color: "oklch(0.55 0.15 175)",
                   label: "Culture Broth",
-                  desc: "Microorganism suspension",
+                  desc: "Microorganism suspension in nutrient medium",
                 },
                 {
-                  color: "oklch(0.80 0.12 175)",
+                  color: "oklch(0.82 0.10 175)",
                   label: "Foam / Bubbles",
-                  desc: "Air dispersion from sparger",
+                  desc: "Air dispersion from sparger — oxygen delivery",
                 },
                 {
-                  color: "oklch(0.72 0.18 142)",
+                  color: "oklch(0.52 0.14 142)",
                   label: "Nutrient Inlet",
-                  desc: "Sugars, nitrogen, minerals",
+                  desc: "Carbon source, nitrogen source, minerals",
                 },
                 {
-                  color: "oklch(0.68 0.22 36)",
+                  color: "oklch(0.58 0.18 36)",
                   label: "Product Outlet",
                   desc: "Harvested fermentation product",
                 },
                 {
-                  color: "oklch(0.68 0.19 262)",
+                  color: "oklch(0.52 0.14 262)",
                   label: "Air / O₂ Inlet",
-                  desc: "Oxygen for aerobic growth",
+                  desc: "Sterile air or pure oxygen for aerobic organisms",
                 },
                 {
-                  color: "oklch(0.62 0.08 30)",
+                  color: "oklch(0.55 0.08 30)",
                   label: "CO₂ Exhaust",
-                  desc: "Metabolic gas removed overhead",
+                  desc: "Metabolic gas removed via overhead vent",
                 },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-3">
@@ -891,7 +869,7 @@ export default function FermentationSection() {
                     </span>
                     <span
                       className="text-sm ml-1"
-                      style={{ color: "oklch(0.68 0.06 262)" }}
+                      style={{ color: "oklch(0.45 0.04 75)" }}
                     >
                       — {item.desc}
                     </span>
@@ -903,17 +881,52 @@ export default function FermentationSection() {
         </div>
       </AnimatedEntrance>
 
-      {/* Explanation paragraphs */}
-      <StaggerContainer className="mb-14 flex flex-col gap-10">
+      {/* Interesting fact callout */}
+      <AnimatedEntrance direction="up" delay={0.05}>
+        <div
+          className="rounded-2xl p-5 mb-10 flex items-start gap-4"
+          style={{
+            background: "oklch(0.96 0.025 175 / 0.35)",
+            border: "1px solid oklch(0.52 0.14 175 / 0.3)",
+          }}
+        >
+          <span className="text-2xl shrink-0" aria-hidden="true">
+            🔬
+          </span>
+          <div>
+            <p
+              className="font-semibold text-sm mb-1"
+              style={{ color: "oklch(0.42 0.12 175)" }}
+            >
+              Did you know?
+            </p>
+            <p
+              className="text-sm leading-relaxed"
+              style={{ color: "oklch(0.35 0.05 75)" }}
+            >
+              The ABE (Acetone–Butanol–Ethanol) fermentation by{" "}
+              <em>Clostridium acetobutylicum</em> was the{" "}
+              <strong>first industrial bioprocess in history</strong> —
+              developed during World War I to produce acetone for cordite
+              explosive manufacturing. Chaim Weizmann, the scientist who
+              developed it, later became the first President of Israel.
+              Fermentation helped change the course of the war.
+            </p>
+          </div>
+        </div>
+      </AnimatedEntrance>
+
+      <StaggerContainer className="mb-14 flex flex-col gap-8">
         {explanations.map((para) => (
           <StaggerItem key={para.id}>
             <article
+              id={para.anchorId}
               aria-labelledby={`ferm-heading-${para.id}`}
               className="rounded-2xl p-6 md:p-8"
               style={{
-                background: "oklch(0.16 0.05 262)",
-                border: `1px solid ${para.color}40`,
-                boxShadow: `0 0 24px ${para.color}18`,
+                background: "oklch(0.985 0.008 75)",
+                border: "1px solid oklch(0.87 0.02 75)",
+                borderLeft: `3px solid ${para.color}`,
               }}
             >
               <h3
@@ -923,13 +936,13 @@ export default function FermentationSection() {
               >
                 {para.heading}
               </h3>
-              {para.body.split("\n\n").map((paragraph) => (
+              {para.body.split("\n\n").map((paragraph, pi) => (
                 <p
-                  key={paragraph.slice(0, 40)}
+                  key={`${para.id}-p${pi}`}
                   className="text-base leading-relaxed mb-3 last:mb-0"
-                  style={{ color: "oklch(0.88 0.03 262)" }}
+                  style={{ color: "oklch(0.30 0.03 75)" }}
                 >
-                  {paragraph.replace(/\*\*(.*?)\*\*/g, "$1")}
+                  {paragraph}
                 </p>
               ))}
             </article>
@@ -937,7 +950,88 @@ export default function FermentationSection() {
         ))}
       </StaggerContainer>
 
-      {/* Quiz */}
+      {/* Key facts grid */}
+      <AnimatedEntrance direction="up" delay={0.1}>
+        <div
+          className="rounded-2xl p-6 mb-12"
+          style={{
+            background: "oklch(0.985 0.008 75)",
+            border: "1px solid oklch(0.52 0.14 175 / 0.20)",
+          }}
+        >
+          <h3
+            className="font-display text-lg font-bold mb-4"
+            style={{ color: "oklch(0.52 0.14 175)" }}
+          >
+            🔑 Key Facts at a Glance
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              {
+                icon: "🧪",
+                fact: "Pasteur, 1857",
+                detail:
+                  "Demonstrated fermentation is caused by living microorganisms — 'la vie sans air'",
+              },
+              {
+                icon: "🏆",
+                fact: "Buchner Nobel Prize 1907",
+                detail:
+                  "Cell-free fermentation proved enzymes — not intact cells — do the chemistry",
+              },
+              {
+                icon: "💊",
+                fact: "Penicillin, 1940s",
+                detail:
+                  "First large-scale pharmaceutical fermentation — from 1 U/mL to 50,000 U/mL through strain improvement",
+              },
+              {
+                icon: "🩺",
+                fact: "Recombinant Insulin, 1982",
+                detail:
+                  "First recombinant protein drug — E. coli fermentation replaced animal pancreas extraction",
+              },
+              {
+                icon: "🔄",
+                fact: "Fed-batch dominates",
+                detail:
+                  "Most high-value biopharmaceuticals use fed-batch; prevents substrate inhibition and maximises titre",
+              },
+              {
+                icon: "📊",
+                fact: "$200B+ Market",
+                detail:
+                  "Global fermentation-derived biopharmaceuticals market — antibiotics, insulin, mAbs, enzymes",
+              },
+            ].map(({ icon, fact, detail }) => (
+              <div
+                key={fact}
+                className="flex gap-3 items-start rounded-xl p-3"
+                style={{ background: "oklch(0.52 0.14 175 / 0.05)" }}
+              >
+                <span className="text-xl shrink-0" aria-hidden="true">
+                  {icon}
+                </span>
+                <div>
+                  <p
+                    className="text-sm font-bold leading-tight"
+                    style={{ color: "oklch(0.52 0.14 175)" }}
+                  >
+                    {fact}
+                  </p>
+                  <p
+                    className="text-xs mt-0.5 leading-relaxed"
+                    style={{ color: "oklch(0.45 0.04 75)" }}
+                  >
+                    {detail}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </AnimatedEntrance>
+
       <AnimatedEntrance direction="up" delay={0.2}>
         <div data-ocid="fermentation-quiz">
           <QuizEngine topicId="fermentation" questions={quizQuestions} />

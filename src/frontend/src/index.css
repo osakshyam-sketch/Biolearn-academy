@@ -9,151 +9,151 @@
     --font-mono: "Geist Mono", monospace;
     --radius: 0.625rem;
 
-    --background: 0.13 0.06 262;
-    --foreground: 0.95 0.02 262;
-    --card: 0.16 0.05 262;
-    --card-foreground: 0.95 0.02 262;
-    --popover: 0.19 0.05 262;
-    --popover-foreground: 0.95 0.02 262;
+    --background: 0.96 0.015 75;
+    --foreground: 0.22 0.03 75;
+    --card: 0.99 0.008 75;
+    --card-foreground: 0.22 0.03 75;
+    --popover: 0.99 0.008 75;
+    --popover-foreground: 0.22 0.03 75;
 
-    --primary: 0.75 0.15 254;
-    --primary-foreground: 0.1 0.04 262;
+    --primary: 0.5 0.12 35;
+    --primary-foreground: 0.96 0.01 35;
 
-    --secondary: 0.2 0.05 262;
-    --secondary-foreground: 0.88 0.03 262;
-    --muted: 0.2 0.05 262;
-    --muted-foreground: 0.62 0.06 262;
+    --secondary: 0.93 0.018 75;
+    --secondary-foreground: 0.3 0.03 75;
+    --muted: 0.93 0.018 75;
+    --muted-foreground: 0.52 0.025 75;
 
-    --accent: 0.75 0.15 254;
-    --accent-foreground: 0.1 0.04 262;
+    --accent: 0.5 0.1 160;
+    --accent-foreground: 0.96 0.01 160;
 
-    --destructive: 0.65 0.19 22;
-    --destructive-foreground: 0.95 0 0;
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.96 0.01 25;
 
-    --border: 0.26 0.05 262;
-    --input: 0.26 0.05 262;
-    --ring: 0.75 0.15 254;
+    --border: 0.88 0.022 75;
+    --input: 0.88 0.022 75;
+    --ring: 0.5 0.12 35;
 
-    --biomolecule: 0.72 0.18 142;
-    --biomolecule-light: 0.85 0.12 142;
-    --cell: 0.68 0.19 262;
-    --cell-light: 0.82 0.13 262;
-    --dna: 0.7 0.2 290;
-    --dna-light: 0.84 0.14 290;
-    --protein: 0.68 0.22 36;
-    --protein-light: 0.82 0.15 36;
+    --biomolecule: 0.6 0.12 145;
+    --biomolecule-light: 0.75 0.1 145;
+    --cell: 0.58 0.11 240;
+    --cell-light: 0.7 0.09 240;
+    --dna: 0.58 0.1 280;
+    --dna-light: 0.7 0.08 280;
+    --protein: 0.62 0.14 35;
+    --protein-light: 0.75 0.11 35;
 
-    --chart-1: 0.72 0.18 142;
-    --chart-2: 0.68 0.19 262;
-    --chart-3: 0.7 0.2 290;
-    --chart-4: 0.68 0.22 36;
-    --chart-5: 0.75 0.15 254;
+    --chart-1: 0.6 0.12 145;
+    --chart-2: 0.58 0.11 240;
+    --chart-3: 0.58 0.1 280;
+    --chart-4: 0.62 0.14 35;
+    --chart-5: 0.5 0.1 160;
 
-    --sidebar: 0.12 0.06 262;
-    --sidebar-foreground: 0.95 0.02 262;
-    --sidebar-primary: 0.75 0.15 254;
-    --sidebar-primary-foreground: 0.1 0.04 262;
-    --sidebar-accent: 0.19 0.05 262;
-    --sidebar-accent-foreground: 0.88 0.03 262;
-    --sidebar-border: 0.26 0.05 262;
-    --sidebar-ring: 0.75 0.15 254;
+    --sidebar: 0.97 0.012 75;
+    --sidebar-foreground: 0.22 0.03 75;
+    --sidebar-primary: 0.5 0.12 35;
+    --sidebar-primary-foreground: 0.96 0.01 35;
+    --sidebar-accent: 0.91 0.02 75;
+    --sidebar-accent-foreground: 0.3 0.03 75;
+    --sidebar-border: 0.88 0.022 75;
+    --sidebar-ring: 0.5 0.12 35;
 
-    /* Focus ring custom property — bright green for max contrast on navy */
-    --focus-ring: oklch(0.85 0.2 142);
+    /* Focus ring — warm terracotta for contrast on light backgrounds */
+    --focus-ring: oklch(0.5 0.15 35);
 
     --gradient-biomolecule: linear-gradient(
       135deg,
-      oklch(0.72 0.18 142) 0%,
-      oklch(0.85 0.12 142) 100%
+      oklch(0.6 0.12 145) 0%,
+      oklch(0.75 0.1 145) 100%
     );
     --gradient-cell: linear-gradient(
       135deg,
-      oklch(0.68 0.19 262) 0%,
-      oklch(0.82 0.13 262) 100%
+      oklch(0.58 0.11 240) 0%,
+      oklch(0.7 0.09 240) 100%
     );
     --gradient-dna: linear-gradient(
       135deg,
-      oklch(0.7 0.2 290) 0%,
-      oklch(0.84 0.14 290) 100%
+      oklch(0.58 0.1 280) 0%,
+      oklch(0.7 0.08 280) 100%
     );
     --gradient-protein: linear-gradient(
       135deg,
-      oklch(0.68 0.22 36) 0%,
-      oklch(0.82 0.15 36) 100%
+      oklch(0.62 0.14 35) 0%,
+      oklch(0.75 0.11 35) 100%
     );
   }
 
   .dark {
-    --background: 0.13 0.06 262;
-    --foreground: 0.95 0.02 262;
-    --card: 0.16 0.05 262;
-    --card-foreground: 0.95 0.02 262;
-    --popover: 0.19 0.05 262;
-    --popover-foreground: 0.95 0.02 262;
+    --background: 0.96 0.015 75;
+    --foreground: 0.22 0.03 75;
+    --card: 0.99 0.008 75;
+    --card-foreground: 0.22 0.03 75;
+    --popover: 0.99 0.008 75;
+    --popover-foreground: 0.22 0.03 75;
 
-    --primary: 0.75 0.15 254;
-    --primary-foreground: 0.1 0.04 262;
+    --primary: 0.5 0.12 35;
+    --primary-foreground: 0.96 0.01 35;
 
-    --secondary: 0.2 0.05 262;
-    --secondary-foreground: 0.88 0.03 262;
-    --muted: 0.2 0.05 262;
-    --muted-foreground: 0.62 0.06 262;
+    --secondary: 0.93 0.018 75;
+    --secondary-foreground: 0.3 0.03 75;
+    --muted: 0.93 0.018 75;
+    --muted-foreground: 0.52 0.025 75;
 
-    --accent: 0.75 0.15 254;
-    --accent-foreground: 0.1 0.04 262;
+    --accent: 0.5 0.1 160;
+    --accent-foreground: 0.96 0.01 160;
 
-    --destructive: 0.65 0.19 22;
-    --destructive-foreground: 0.95 0 0;
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.96 0.01 25;
 
-    --border: 0.26 0.05 262;
-    --input: 0.26 0.05 262;
-    --ring: 0.75 0.15 254;
+    --border: 0.88 0.022 75;
+    --input: 0.88 0.022 75;
+    --ring: 0.5 0.12 35;
 
-    --biomolecule: 0.72 0.18 142;
-    --biomolecule-light: 0.85 0.12 142;
-    --cell: 0.68 0.19 262;
-    --cell-light: 0.82 0.13 262;
-    --dna: 0.7 0.2 290;
-    --dna-light: 0.84 0.14 290;
-    --protein: 0.68 0.22 36;
-    --protein-light: 0.82 0.15 36;
+    --biomolecule: 0.6 0.12 145;
+    --biomolecule-light: 0.75 0.1 145;
+    --cell: 0.58 0.11 240;
+    --cell-light: 0.7 0.09 240;
+    --dna: 0.58 0.1 280;
+    --dna-light: 0.7 0.08 280;
+    --protein: 0.62 0.14 35;
+    --protein-light: 0.75 0.11 35;
 
-    --chart-1: 0.72 0.18 142;
-    --chart-2: 0.68 0.19 262;
-    --chart-3: 0.7 0.2 290;
-    --chart-4: 0.68 0.22 36;
-    --chart-5: 0.75 0.15 254;
+    --chart-1: 0.6 0.12 145;
+    --chart-2: 0.58 0.11 240;
+    --chart-3: 0.58 0.1 280;
+    --chart-4: 0.62 0.14 35;
+    --chart-5: 0.5 0.1 160;
 
-    --sidebar: 0.12 0.06 262;
-    --sidebar-foreground: 0.95 0.02 262;
-    --sidebar-primary: 0.75 0.15 254;
-    --sidebar-primary-foreground: 0.1 0.04 262;
-    --sidebar-accent: 0.19 0.05 262;
-    --sidebar-accent-foreground: 0.88 0.03 262;
-    --sidebar-border: 0.26 0.05 262;
-    --sidebar-ring: 0.75 0.15 254;
+    --sidebar: 0.97 0.012 75;
+    --sidebar-foreground: 0.22 0.03 75;
+    --sidebar-primary: 0.5 0.12 35;
+    --sidebar-primary-foreground: 0.96 0.01 35;
+    --sidebar-accent: 0.91 0.02 75;
+    --sidebar-accent-foreground: 0.3 0.03 75;
+    --sidebar-border: 0.88 0.022 75;
+    --sidebar-ring: 0.5 0.12 35;
 
-    --focus-ring: oklch(0.85 0.2 142);
+    --focus-ring: oklch(0.5 0.15 35);
 
     --gradient-biomolecule: linear-gradient(
       135deg,
-      oklch(0.72 0.18 142) 0%,
-      oklch(0.85 0.12 142) 100%
+      oklch(0.6 0.12 145) 0%,
+      oklch(0.75 0.1 145) 100%
     );
     --gradient-cell: linear-gradient(
       135deg,
-      oklch(0.68 0.19 262) 0%,
-      oklch(0.82 0.13 262) 100%
+      oklch(0.58 0.11 240) 0%,
+      oklch(0.7 0.09 240) 100%
     );
     --gradient-dna: linear-gradient(
       135deg,
-      oklch(0.7 0.2 290) 0%,
-      oklch(0.84 0.14 290) 100%
+      oklch(0.58 0.1 280) 0%,
+      oklch(0.7 0.08 280) 100%
     );
     --gradient-protein: linear-gradient(
       135deg,
-      oklch(0.68 0.22 36) 0%,
-      oklch(0.82 0.15 36) 100%
+      oklch(0.62 0.14 35) 0%,
+      oklch(0.75 0.11 35) 100%
     );
   }
 
@@ -198,6 +198,14 @@
   font-display: swap;
 }
 
+/* ── Grain texture SVG filter — organic background noise ── */
+svg#grain-filter {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
 @layer utilities {
   /* ── Screen-reader-only utility ── */
   .sr-only {
@@ -228,113 +236,337 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
+  /* ── Organic background texture ── */
+  .texture-grain {
+    position: relative;
+  }
+  .texture-grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    border-radius: inherit;
+  }
+
+  /* ── Wavy section divider ── */
+  .wavy-bottom {
+    position: relative;
+    padding-bottom: 2rem;
+  }
+  .wavy-bottom::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 28px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 28' preserveAspectRatio='none'%3E%3Cpath d='M0,14 C150,28 350,0 600,14 C850,28 1050,0 1200,14 L1200,28 L0,28 Z' fill='oklch(0.96 0.015 75)'/%3E%3C/svg%3E");
+    background-size: 100% 100%;
+  }
+
+  /* ── Topic section cards ── */
   .topic-section-biomolecule {
-    @apply relative rounded-2xl border border-transparent;
-    background-color: oklch(0.16 0.05 262);
-    border-image: var(--gradient-biomolecule) 1;
-    box-shadow: 0 0 32px oklch(0.72 0.18 142 / 0.2), inset 0 0 20px
-      oklch(0.72 0.18 142 / 0.05);
+    @apply relative rounded-2xl border;
+    background-color: oklch(0.99 0.008 75);
+    border-color: oklch(0.6 0.12 145 / 0.18);
+    box-shadow: 0 2px 12px oklch(0.6 0.12 145 / 0.1), 0 1px 3px
+      oklch(0.6 0.12 145 / 0.07);
   }
 
   .topic-section-cell {
-    @apply relative rounded-2xl border border-transparent;
-    background-color: oklch(0.16 0.05 262);
-    border-image: var(--gradient-cell) 1;
-    box-shadow: 0 0 32px oklch(0.68 0.19 262 / 0.2), inset 0 0 20px
-      oklch(0.68 0.19 262 / 0.05);
+    @apply relative rounded-2xl border;
+    background-color: oklch(0.99 0.008 75);
+    border-color: oklch(0.58 0.11 240 / 0.18);
+    box-shadow: 0 2px 12px oklch(0.58 0.11 240 / 0.1), 0 1px 3px
+      oklch(0.58 0.11 240 / 0.07);
   }
 
   .topic-section-dna {
-    @apply relative rounded-2xl border border-transparent;
-    background-color: oklch(0.16 0.05 262);
-    border-image: var(--gradient-dna) 1;
-    box-shadow: 0 0 32px oklch(0.7 0.2 290 / 0.2), inset 0 0 20px
-      oklch(0.7 0.2 290 / 0.05);
+    @apply relative rounded-2xl border;
+    background-color: oklch(0.99 0.008 75);
+    border-color: oklch(0.58 0.1 280 / 0.18);
+    box-shadow: 0 2px 12px oklch(0.58 0.1 280 / 0.1), 0 1px 3px
+      oklch(0.58 0.1 280 / 0.07);
   }
 
   .topic-section-protein {
-    @apply relative rounded-2xl border border-transparent;
-    background-color: oklch(0.16 0.05 262);
-    border-image: var(--gradient-protein) 1;
-    box-shadow: 0 0 32px oklch(0.68 0.22 36 / 0.2), inset 0 0 20px
-      oklch(0.68 0.22 36 / 0.05);
-  }
-
-  .accent-biomolecule {
-    @apply text-emerald-400;
-    color: oklch(0.72 0.18 142);
-  }
-
-  .accent-cell {
-    @apply text-blue-400;
-    color: oklch(0.68 0.19 262);
-  }
-
-  .accent-dna {
-    @apply text-purple-400;
-    color: oklch(0.7 0.2 290);
-  }
-
-  .accent-protein {
-    @apply text-orange-400;
-    color: oklch(0.68 0.22 36);
-  }
-
-  .accent-biotech {
-    color: oklch(0.72 0.18 172);
-  }
-
-  .glow-biomolecule {
-    text-shadow: 0 0 20px oklch(0.72 0.18 142 / 0.6);
-  }
-
-  .glow-cell {
-    text-shadow: 0 0 20px oklch(0.68 0.19 262 / 0.6);
-  }
-
-  .glow-dna {
-    text-shadow: 0 0 20px oklch(0.7 0.2 290 / 0.6);
-  }
-
-  .glow-protein {
-    text-shadow: 0 0 20px oklch(0.68 0.22 36 / 0.6);
-  }
-
-  .glow-biotech {
-    text-shadow: 0 0 20px oklch(0.72 0.18 172 / 0.6);
+    @apply relative rounded-2xl border;
+    background-color: oklch(0.99 0.008 75);
+    border-color: oklch(0.62 0.14 35 / 0.18);
+    box-shadow: 0 2px 12px oklch(0.62 0.14 35 / 0.1), 0 1px 3px
+      oklch(0.62 0.14 35 / 0.07);
   }
 
   .topic-section-biotech {
-    @apply relative rounded-2xl border border-transparent;
-    background-color: oklch(0.16 0.05 262);
-    border-image: linear-gradient(
-        135deg,
-        oklch(0.72 0.18 172) 0%,
-        oklch(0.85 0.12 172) 100%
-      )
-      1;
-    box-shadow: 0 0 32px oklch(0.72 0.18 172 / 0.2), inset 0 0 20px
-      oklch(0.72 0.18 172 / 0.05);
+    @apply relative rounded-2xl border;
+    background-color: oklch(0.99 0.008 75);
+    border-color: oklch(0.6 0.12 155 / 0.18);
+    box-shadow: 0 2px 12px oklch(0.6 0.12 155 / 0.1), 0 1px 3px
+      oklch(0.6 0.12 155 / 0.07);
   }
 
+  /* ── Accent text colors ── */
+  .accent-biomolecule {
+    color: oklch(0.48 0.14 145);
+  }
+
+  .accent-cell {
+    color: oklch(0.45 0.14 240);
+  }
+
+  .accent-dna {
+    color: oklch(0.45 0.13 280);
+  }
+
+  .accent-protein {
+    color: oklch(0.5 0.16 35);
+  }
+
+  .accent-biotech {
+    color: oklch(0.46 0.13 155);
+  }
+
+  /* ── Soft glows (reduced for light bg — warm shadow instead of neon) ── */
+  .glow-biomolecule {
+    text-shadow: 0 1px 8px oklch(0.6 0.12 145 / 0.25);
+  }
+
+  .glow-cell {
+    text-shadow: 0 1px 8px oklch(0.58 0.11 240 / 0.25);
+  }
+
+  .glow-dna {
+    text-shadow: 0 1px 8px oklch(0.58 0.1 280 / 0.25);
+  }
+
+  .glow-protein {
+    text-shadow: 0 1px 8px oklch(0.62 0.14 35 / 0.25);
+  }
+
+  .glow-biotech {
+    text-shadow: 0 1px 8px oklch(0.6 0.12 155 / 0.25);
+  }
+
+  /* ── Animations ── */
   @keyframes gentle-float {
     0%,
     100% {
       transform: translateY(0px);
     }
     50% {
-      transform: translateY(-6px);
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes float-delayed {
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+      transform: translateY(-7px) rotate(1deg);
+    }
+    66% {
+      transform: translateY(-4px) rotate(-1deg);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      opacity: 0.5;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.85;
+      transform: scale(1.08);
     }
   }
 
   @keyframes pulse-glow-teal {
     0%,
     100% {
-      box-shadow: 0 0 6px oklch(0.72 0.18 172 / 0.4);
+      box-shadow: 0 0 6px oklch(0.6 0.12 155 / 0.25);
     }
     50% {
-      box-shadow: 0 0 16px oklch(0.72 0.18 172 / 0.8);
+      box-shadow: 0 0 14px oklch(0.6 0.12 155 / 0.4);
     }
+  }
+
+  @keyframes wiggle-slow {
+    0%,
+    100% {
+      transform: rotate(-2deg);
+    }
+    50% {
+      transform: rotate(2deg);
+    }
+  }
+
+  @keyframes entrance-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes entrance-fade-right {
+    from {
+      opacity: 0;
+      transform: translateX(-16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes wave-path {
+    0% {
+      d: path("M0,14 C150,28 350,0 600,14 C850,28 1050,0 1200,14");
+    }
+    50% {
+      d: path("M0,14 C150,0 350,28 600,14 C850,0 1050,28 1200,14");
+    }
+    100% {
+      d: path("M0,14 C150,28 350,0 600,14 C850,28 1050,0 1200,14");
+    }
+  }
+
+  .animate-float {
+    animation: gentle-float 5s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float-delayed 7s ease-in-out infinite;
+  }
+
+  .animate-float-slow {
+    animation: gentle-float 8s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2.5s ease-in-out infinite;
+  }
+
+  .animate-wiggle-slow {
+    animation: wiggle-slow 4s ease-in-out infinite;
+  }
+
+  .animate-entrance-up {
+    animation: entrance-fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animate-entrance-up-delay-1 {
+    animation: entrance-fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+  }
+
+  .animate-entrance-up-delay-2 {
+    animation: entrance-fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+  }
+
+  .animate-entrance-up-delay-3 {
+    animation: entrance-fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
+  }
+
+  .animate-entrance-right {
+    animation: entrance-fade-right 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* ── Callout card — organic wavy border feel ── */
+  .callout-warm {
+    background: oklch(0.97 0.025 75);
+    border: 1.5px solid oklch(0.88 0.04 75);
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px oklch(0.5 0.05 75 / 0.1);
+  }
+
+  /* ── Sidebar item hover — warm tint ── */
+  .sidebar-item-hover:hover {
+    background: oklch(0.93 0.02 75);
+  }
+
+  /* ── AnimatedEntrance CSS-only system ── */
+  .ae-base {
+    opacity: 0;
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s
+      cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .ae-up {
+    transform: translateY(40px);
+  }
+  .ae-down {
+    transform: translateY(-40px);
+  }
+  .ae-left {
+    transform: translateX(-40px);
+  }
+  .ae-right {
+    transform: translateX(40px);
+  }
+  .ae-fade {
+    transform: none;
+  }
+
+  .ae-base.ae-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* StaggerContainer + StaggerItem */
+  .sc-base .si-base {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s
+      cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .sc-base.sc-visible .si-base:nth-child(1) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0ms;
+  }
+  .sc-base.sc-visible .si-base:nth-child(2) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 100ms;
+  }
+  .sc-base.sc-visible .si-base:nth-child(3) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 200ms;
+  }
+  .sc-base.sc-visible .si-base:nth-child(4) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 300ms;
+  }
+  .sc-base.sc-visible .si-base:nth-child(5) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 400ms;
+  }
+  .sc-base.sc-visible .si-base:nth-child(6) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 500ms;
+  }
+  .sc-base.sc-visible .si-base:nth-child(7) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 600ms;
+  }
+  .sc-base.sc-visible .si-base:nth-child(n + 8) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 700ms;
   }
 }
 
@@ -360,12 +592,12 @@
   .topic-section-biomolecule,
   .topic-section-cell,
   .topic-section-dna,
-  .topic-section-protein {
+  .topic-section-protein,
+  .topic-section-biotech {
     border: 2px solid ButtonText;
     box-shadow: none;
   }
 
-  /* Ensure quiz options are clearly visible */
   [role="radio"] {
     border: 2px solid ButtonText !important;
     forced-color-adjust: none;
@@ -376,16 +608,15 @@
     outline-offset: 2px;
   }
 
-  /* Progress bar visible in forced-colors */
   [role="progressbar"] > * {
     background: Highlight !important;
   }
 
-  /* Glow effects don't work in forced-colors — strip them */
   .glow-biomolecule,
   .glow-cell,
   .glow-dna,
-  .glow-protein {
+  .glow-protein,
+  .glow-biotech {
     text-shadow: none;
   }
 }

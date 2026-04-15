@@ -8,21 +8,20 @@ import { SectionHeader } from "@/components/SectionHeader";
 import type { QuizQuestion } from "@/types/biology";
 import { useEffect, useRef, useState } from "react";
 
-// ─── Gel Electrophoresis Animated Diagram ─────────────────────────────────────
-
-const TEAL = "oklch(0.72 0.19 185)";
-const TEAL_DIM = "oklch(0.50 0.14 185)";
-const AMBER = "oklch(0.82 0.18 70)";
-const LADDER_COLOR = "oklch(0.78 0.16 210)";
-const NAVY_BG = "#060d26";
+// ── Gel Electrophoresis diagram colors ────────────────────────────────────────
+const TEAL = "oklch(0.52 0.15 185)";
+const TEAL_DIM = "oklch(0.44 0.12 185)";
+const AMBER = "oklch(0.68 0.16 70)";
+const LADDER_COLOR = "oklch(0.60 0.14 210)";
+const GEL_BG = "#0f1a3e";
 
 interface GelBand {
-  lane: number; // 0 = ladder, 1-4 = samples
+  lane: number;
   label: string;
-  size: number; // bp
-  yPercent: number; // final resting position (% from top of gel)
+  size: number;
+  yPercent: number;
   color: string;
-  width: number; // px
+  width: number;
   isLadder?: boolean;
 }
 
@@ -102,7 +101,6 @@ const LADDER_BANDS: GelBand[] = [
 ];
 
 const SAMPLE_BANDS: GelBand[] = [
-  // Lane 1 — Sample A (2 fragments)
   { lane: 1, label: "~4 kb", size: 4000, yPercent: 33, color: TEAL, width: 44 },
   {
     lane: 1,
@@ -112,7 +110,6 @@ const SAMPLE_BANDS: GelBand[] = [
     color: TEAL,
     width: 44,
   },
-  // Lane 2 — Sample B (3 fragments)
   { lane: 2, label: "~6 kb", size: 6000, yPercent: 24, color: TEAL, width: 44 },
   { lane: 2, label: "~2 kb", size: 2000, yPercent: 47, color: TEAL, width: 44 },
   {
@@ -123,7 +120,6 @@ const SAMPLE_BANDS: GelBand[] = [
     color: TEAL,
     width: 44,
   },
-  // Lane 3 — Sample C (1 fragment — positive control)
   {
     lane: 3,
     label: "~1 kb",
@@ -132,12 +128,10 @@ const SAMPLE_BANDS: GelBand[] = [
     color: AMBER,
     width: 44,
   },
-  // Lane 4 — Negative control (no bands)
 ];
 
 const ALL_BANDS = [...LADDER_BANDS, ...SAMPLE_BANDS];
-const LANE_COUNT = 5; // ladder + 4 samples
-
+const LANE_COUNT = 5;
 const LANE_LABELS = [
   "Ladder",
   "Sample A",
@@ -149,16 +143,14 @@ const DIVIDER_IDS = ["div-1", "div-2", "div-3", "div-4"];
 const ARROW_IDS = ["arr-0", "arr-1", "arr-2", "arr-3", "arr-4", "arr-5"];
 const ARROW_DELAYS = [0, 0.2, 0.4, 0.6, 0.8, 1.0];
 
-// ─── Gel Canvas Component ──────────────────────────────────────────────────────
-
 function GelDiagram() {
   const [running, setRunning] = useState(false);
-  const [progress, setProgress] = useState(0); // 0–1
+  const [progress, setProgress] = useState(0);
   const [done, setDone] = useState(false);
   const [uvMode, setUvMode] = useState(false);
   const rafRef = useRef<number>(0);
   const startRef = useRef<number>(0);
-  const DURATION = 3200; // ms for full migration
+  const DURATION = 3200;
 
   function startRun() {
     if (running) return;
@@ -166,7 +158,6 @@ function GelDiagram() {
     setProgress(0);
     setRunning(true);
     startRef.current = performance.now();
-
     function tick(now: number) {
       const elapsed = now - startRef.current;
       const p = Math.min(elapsed / DURATION, 1);
@@ -191,13 +182,11 @@ function GelDiagram() {
 
   useEffect(() => () => cancelAnimationFrame(rafRef.current), []);
 
-  // Each band starts at yPercent=5 (well) and migrates to its final yPercent
   const WELL_Y = 5;
   const GEL_H = 360;
   const GEL_W = 480;
   const LANE_W = GEL_W / LANE_COUNT;
-
-  const gelBg = uvMode ? "#05081a" : "#0a1040";
+  const gelBg = uvMode ? "#05081a" : GEL_BG;
   const gelBandOpacity = uvMode ? 1 : 0.88;
 
   return (
@@ -205,7 +194,6 @@ function GelDiagram() {
       className="flex flex-col items-center gap-4"
       aria-label="Interactive gel electrophoresis simulation showing DNA band migration"
     >
-      {/* Controls */}
       <div className="flex items-center gap-3 flex-wrap justify-center">
         <button
           type="button"
@@ -216,19 +204,18 @@ function GelDiagram() {
           className="rounded-lg px-5 py-2 text-sm font-semibold transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-50"
           style={{
             background: running
-              ? "rgba(0,200,160,0.15)"
-              : "oklch(0.72 0.19 185 / 0.25)",
+              ? "rgba(0,180,140,0.15)"
+              : "oklch(0.52 0.15 185 / 0.18)",
             color: TEAL,
-            border: `1.5px solid ${running ? "oklch(0.72 0.19 185 / 0.5)" : "oklch(0.72 0.19 185)"}`,
+            border: `1.5px solid ${running ? "oklch(0.52 0.15 185 / 0.5)" : TEAL}`,
             boxShadow: running
               ? "none"
-              : "0 0 16px oklch(0.72 0.19 185 / 0.35)",
+              : "0 0 12px oklch(0.52 0.15 185 / 0.25)",
             outlineColor: TEAL,
           }}
         >
           {running ? "⚡ Running…" : "▶ Run Gel"}
         </button>
-
         {done && (
           <button
             type="button"
@@ -242,17 +229,16 @@ function GelDiagram() {
             className="rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
             style={{
               background: uvMode
-                ? "oklch(0.78 0.20 70 / 0.25)"
-                : "rgba(255,200,60,0.1)",
-              color: uvMode ? AMBER : "oklch(0.75 0.14 70)",
-              border: `1.5px solid ${uvMode ? AMBER : "oklch(0.75 0.14 70 / 0.5)"}`,
+                ? "oklch(0.68 0.16 70 / 0.20)"
+                : "rgba(220,180,50,0.08)",
+              color: uvMode ? AMBER : "oklch(0.60 0.12 70)",
+              border: `1.5px solid ${uvMode ? AMBER : "oklch(0.60 0.12 70 / 0.5)"}`,
               outlineColor: AMBER,
             }}
           >
             {uvMode ? "🔆 White Light" : "🔵 UV Stain"}
           </button>
         )}
-
         {(done || progress > 0) && (
           <button
             type="button"
@@ -261,10 +247,10 @@ function GelDiagram() {
             aria-label="Reset gel simulation"
             className="rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
             style={{
-              background: "rgba(255,100,100,0.1)",
-              color: "oklch(0.70 0.18 22)",
-              border: "1.5px solid oklch(0.70 0.18 22 / 0.5)",
-              outlineColor: "oklch(0.70 0.18 22)",
+              background: "rgba(220,80,80,0.08)",
+              color: "oklch(0.55 0.18 22)",
+              border: "1.5px solid oklch(0.55 0.18 22 / 0.5)",
+              outlineColor: "oklch(0.55 0.18 22)",
             }}
           >
             ↺ Reset
@@ -272,29 +258,27 @@ function GelDiagram() {
         )}
       </div>
 
-      {/* Gel Container */}
       <div
         className="relative rounded-xl overflow-hidden"
         style={{
           width: GEL_W,
           height: GEL_H + 72,
-          background: NAVY_BG,
+          background: "#060d26",
           border: "1.5px solid oklch(0.40 0.12 220 / 0.5)",
           boxShadow: uvMode
-            ? "0 0 40px oklch(0.72 0.19 185 / 0.35), 0 0 80px oklch(0.72 0.19 185 / 0.15)"
-            : "0 4px 32px rgba(0,0,0,0.6)",
+            ? "0 0 40px oklch(0.52 0.15 185 / 0.30), 0 0 80px oklch(0.52 0.15 185 / 0.12)"
+            : "0 4px 32px rgba(0,0,0,0.4)",
         }}
         aria-live="polite"
         aria-atomic="false"
       >
-        {/* Electrode labels */}
         <div
           className="absolute top-0 left-0 right-0 flex items-center justify-between px-4 pt-2 pb-1 z-20"
           style={{ borderBottom: "1px solid rgba(100,130,255,0.2)" }}
         >
           <span
             style={{
-              color: "oklch(0.72 0.16 250)",
+              color: "oklch(0.68 0.14 250)",
               fontSize: 11,
               fontWeight: 700,
             }}
@@ -303,7 +287,7 @@ function GelDiagram() {
           </span>
           <span
             style={{
-              color: "oklch(0.70 0.18 22)",
+              color: "oklch(0.65 0.16 22)",
               fontSize: 11,
               fontWeight: 700,
             }}
@@ -312,7 +296,6 @@ function GelDiagram() {
           </span>
         </div>
 
-        {/* Gel body */}
         <div
           className="absolute"
           style={{
@@ -326,9 +309,8 @@ function GelDiagram() {
             transition: "background 0.5s ease",
           }}
           role="img"
-          aria-label={`Gel electrophoresis diagram with ${LANE_COUNT} lanes. ${done ? "Migration complete." : progress > 0 ? "DNA bands are migrating." : "Press Run Gel to start."}`}
+          aria-label={`Gel electrophoresis diagram. ${done ? "Migration complete." : progress > 0 ? "DNA bands migrating." : "Press Run Gel to start."}`}
         >
-          {/* Lane dividers */}
           {DIVIDER_IDS.map((divId, i) => (
             <div
               key={divId}
@@ -340,8 +322,6 @@ function GelDiagram() {
               }}
             />
           ))}
-
-          {/* Wells */}
           {LANE_LABELS.map((laneLabel, i) => {
             const wellW = 36;
             const laneCenter = i * LANE_W + LANE_W / 2;
@@ -362,8 +342,6 @@ function GelDiagram() {
               />
             );
           })}
-
-          {/* DNA Bands */}
           {ALL_BANDS.map((band) => {
             const laneCenter = band.lane * LANE_W + LANE_W / 2;
             const currentY = WELL_Y + (band.yPercent - WELL_Y) * progress;
@@ -379,7 +357,6 @@ function GelDiagram() {
             const glow = uvMode
               ? `0 0 12px ${bandColor}, 0 0 24px ${bandColor}88`
               : `0 0 8px ${band.color}99`;
-
             return (
               <div
                 key={`band-lane${band.lane}-${band.label}`}
@@ -400,8 +377,6 @@ function GelDiagram() {
               />
             );
           })}
-
-          {/* Ladder size labels (visible only after run completes) */}
           {done &&
             LADDER_BANDS.map((band) => {
               const yPx = (band.yPercent / 100) * GEL_H;
@@ -425,8 +400,6 @@ function GelDiagram() {
                 </div>
               );
             })}
-
-          {/* Electric field arrows (right edge) — only when running */}
           {running && (
             <div
               className="absolute right-2 top-0 bottom-0 flex flex-col justify-around items-center pointer-events-none"
@@ -437,7 +410,7 @@ function GelDiagram() {
                   key={arrowId}
                   style={{
                     fontSize: 14,
-                    color: "oklch(0.70 0.18 22 / 0.6)",
+                    color: "oklch(0.65 0.16 22 / 0.6)",
                     animation: `pulse-glow 1.2s ${ARROW_DELAYS[i]}s infinite`,
                   }}
                 >
@@ -448,7 +421,6 @@ function GelDiagram() {
           )}
         </div>
 
-        {/* Lane labels at bottom */}
         <div
           className="absolute bottom-0 left-0 right-0 flex"
           style={{
@@ -477,14 +449,12 @@ function GelDiagram() {
         </div>
       </div>
 
-      {/* Results interpretation panel */}
       {done && (
         <section
           className="w-full max-w-lg rounded-xl p-4 animate-fade-in"
           style={{
-            background: "oklch(0.12 0.05 220 / 0.95)",
-            border: "1px solid oklch(0.72 0.19 185 / 0.3)",
-            boxShadow: "0 0 20px oklch(0.72 0.19 185 / 0.12)",
+            background: "oklch(0.96 0.012 75)",
+            border: "1px solid oklch(0.52 0.15 185 / 0.25)",
           }}
           aria-label="Results interpretation panel"
         >
@@ -503,23 +473,23 @@ function GelDiagram() {
             {[
               {
                 label: "Sample A",
-                desc: "2 bands: ~4 kb + ~900 bp — two DNA fragments",
+                desc: "2 bands: ~4 kb + ~900 bp — two DNA fragments. Could be a plasmid backbone + insert after restriction digest verification.",
                 color: TEAL,
               },
               {
                 label: "Sample B",
-                desc: "3 bands: ~6 kb, ~2 kb, ~500 bp — larger plasmid with inserts",
+                desc: "3 bands: ~6 kb, ~2 kb, ~500 bp — larger plasmid with multiple fragments. Consistent with triple restriction digest.",
                 color: TEAL,
               },
               {
                 label: "Sample C",
-                desc: "Single ~1 kb band — matches expected positive control size",
+                desc: "Single ~1 kb band — matches expected positive control size. PCR amplification verified with one clean product.",
                 color: AMBER,
               },
               {
                 label: "Neg ctrl",
-                desc: "No bands — confirms no contamination in experiment",
-                color: "oklch(0.65 0.08 0)",
+                desc: "No bands — confirms no contamination, no primer-dimers, reagents clean. Every gel needs this control.",
+                color: "oklch(0.55 0.06 0)",
               },
             ].map(({ label, desc, color }) => (
               <div
@@ -537,29 +507,29 @@ function GelDiagram() {
                 >
                   {label}:
                 </span>
-                <span style={{ color: "oklch(0.78 0.06 220)" }}>{desc}</span>
+                <span style={{ color: "oklch(0.35 0.03 75)" }}>{desc}</span>
               </div>
             ))}
           </div>
           <div
             style={{
               fontSize: 11,
-              color: "oklch(0.60 0.06 220)",
+              color: "oklch(0.50 0.04 75)",
               marginTop: 10,
-              borderTop: "1px solid rgba(100,130,255,0.15)",
+              borderTop: "1px solid oklch(0.87 0.02 75)",
               paddingTop: 8,
             }}
           >
-            💡 Smaller fragments travel farther from the wells. Compare unknown
-            bands to the DNA ladder to estimate size.
+            💡 Compare band positions to the DNA ladder to estimate sizes.
+            Log(size) vs distance gives a straight line for accurate
+            interpolation.
           </div>
         </section>
       )}
 
-      {/* Status bar */}
       <div
         className="text-center text-xs"
-        style={{ color: "oklch(0.55 0.08 220)" }}
+        style={{ color: "oklch(0.50 0.08 220)" }}
         aria-live="polite"
       >
         {!running &&
@@ -572,229 +542,245 @@ function GelDiagram() {
           "✅ Migration complete — click UV Stain to visualize ethidium bromide fluorescence"}
         {done &&
           uvMode &&
-          "🔵 UV mode: ethidium bromide intercalated in DNA glows orange under UV light"}
+          "🔵 UV mode: EtBr intercalated in DNA fluoresces orange. Brightness correlates with DNA quantity in each band."}
       </div>
     </section>
   );
 }
 
-// ─── Explanations ─────────────────────────────────────────────────────────────
+// ── Explanations ──────────────────────────────────────────────────────────────
 
 const EXPLANATIONS = [
   {
-    title: "What Is Gel Electrophoresis?",
+    anchorId: "gel-agarose",
+    title: "The Elegant Physics: Why DNA Separates by Size",
     content:
-      "Gel electrophoresis is a laboratory technique used to separate and analyze DNA, RNA, or protein molecules based on their size and electrical charge. The name comes from two key principles: a gel matrix (most commonly agarose for nucleic acids) acts as a molecular sieve, and electrophoresis refers to the movement of charged molecules in an electric field. When an electric voltage is applied across the gel, negatively charged DNA molecules are attracted toward the positive electrode (anode) and repelled from the negative electrode (cathode), causing them to migrate through the gel. The rate at which they move depends almost entirely on their size — smaller fragments weave through the gel pores more easily and travel farther in a given time, while larger fragments are impeded by the mesh and move a shorter distance. This size-based separation produces a characteristic banding pattern that can be stained and visualized.",
+      "Gel electrophoresis exploits a beautiful combination of physics and chemistry. DNA carries a negative charge at neutral pH — one phosphate group per nucleotide, each carrying a full negative charge at pH 7.5. When you apply an electric field, DNA migrates toward the positive electrode (anode). But all DNA molecules — large or small — have essentially the same charge-to-mass ratio (one phosphate per base pair, regardless of length). If you ran electrophoresis in free solution, all DNA would move at the same rate regardless of size. The agarose gel is what provides size discrimination. When dissolved and polymerized, agarose forms a tangled network of polymer chains with a characteristic pore size. Small DNA fragments slide through these pores easily, with minimal friction. Large fragments have to deform and 'reptate' (snake through, like a snake through grass) and move much more slowly. Plot the log of size against migration distance, and you get a straight line — that's the calibration curve used to estimate unknown fragment sizes by comparing them to a DNA ladder of known sizes.",
   },
   {
-    title: "The Agarose Gel Matrix",
+    anchorId: "gel-agarose-setup",
+    title: "Agarose Gels: Concentration, Buffer, and Practical Setup",
     content:
-      "Agarose is a polysaccharide polymer extracted from red seaweed (agar), and it forms the physical framework through which DNA migrates. To prepare the gel, agarose powder is dissolved in a buffer solution (typically TAE — Tris-acetate-EDTA — or TBE — Tris-borate-EDTA) by heating, then poured into a mold with a comb inserted to create wells. As the solution cools to room temperature, the agarose chains form a tangled three-dimensional network of pores. The concentration of agarose determines the pore size: a low-percentage gel (0.5–0.8%) has larger pores and is best for resolving large DNA fragments (5–50 kb), while a high-percentage gel (2–3%) has smaller pores and is used for small fragments (100–500 bp). The buffer solution is critical — it maintains a stable pH and provides ions that carry the electrical current through the gel. Without a buffer, the current would heat the gel unevenly and distort the separation.",
+      "Making an agarose gel is genuinely kitchen-level chemistry, which makes it one of the most accessible molecular biology techniques. Weigh agarose powder (from red seaweed — the same polysaccharide family as agar), dissolve it in buffer by microwaving, let it cool to ~55°C, pour into a casting tray with a comb inserted, and wait 20–30 minutes for it to solidify. The comb creates sample wells. The gel slab is then submerged in running buffer. Agarose concentration (w/v) determines pore size and the useful separation range: 0.5–0.8% gels work for large fragments (5–50 kb), 1–1.5% for routine work (0.5–10 kb), 2–3% for small fragments (50–500 bp). Two buffers dominate: TAE (Tris-Acetate-EDTA) and TBE (Tris-Borate-EDTA). Both maintain pH and ionic strength. TBE has higher buffering capacity — better for long runs where TAE can exhaust. EDTA in both chelates Mg²⁺, inhibiting any DNases that would degrade your samples. Loading dye, added to every sample, contains glycerol or ficoll (density agent so the sample sinks into the well, not back into the buffer) and tracking dyes — bromophenol blue (migrates at ~300 bp) and xylene cyanol (migrates at ~4 kb) give you a visible front to watch so you know when to stop the run.",
   },
   {
-    title: "How the Electric Current Separates DNA",
+    anchorId: "gel-sds-page",
+    title: "SDS-PAGE: Separating Proteins by Molecular Weight",
     content:
-      "DNA is a negatively charged molecule at physiological pH due to the phosphate groups in its backbone. When submerged in buffer and connected to a power supply, the DNA fragments loaded into the wells begin migrating toward the positive electrode at the far end of the gel. The movement is not uniform: the relationship between fragment size and migration distance follows a logarithmic curve — a semilog plot of log(base pair size) versus distance migrated produces a straight line. This predictable relationship allows scientists to estimate the size of unknown fragments by comparing their position to a DNA ladder (also called a molecular weight marker), which is a mixture of DNA fragments of precisely known sizes run in an adjacent lane. The voltage used typically ranges from 80 to 150 volts; higher voltages speed up the run but can cause bands to blur and overheat the gel.",
+      "For proteins, the story is more complex. Proteins have different shapes, different charges, and different charge-to-mass ratios — so native electrophoresis separates them by a combination of charge, size, and shape. Most of the time, we want to separate by size only — that's what SDS-PAGE achieves. SDS (sodium dodecyl sulfate) is a negatively charged detergent that coats proteins uniformly: approximately one SDS molecule per two amino acids. This masks the protein's intrinsic charge entirely — all SDS-coated proteins are negatively charged, in proportion to their length. The reducing agent (beta-mercaptoethanol or DTT) breaks all disulfide bonds, linearizing the protein. Now when you run the gel, the polyacrylamide matrix separates proteins by size alone. The Laemmli buffer system (used in almost every SDS-PAGE) uses a discontinuous buffer — a low-pH stacking gel on top concentrates all proteins into a sharp band before they enter the high-pH resolving gel. This gives sharp, well-resolved bands rather than diffuse smears. Standard SDS-PAGE resolves proteins from about 10 kDa to 250 kDa, depending on polyacrylamide percentage.",
   },
   {
-    title: "Loading Wells, DNA Ladder, and Sample Preparation",
+    anchorId: "gel-staining",
+    title: "Staining, Detection, and Quantification on Gels",
     content:
-      "Before loading onto the gel, DNA samples are mixed with a loading dye that serves two purposes: it adds density (typically from glycerol or ficoll) to ensure the sample sinks into the well rather than floating out, and it contains tracking dyes (such as bromophenol blue and xylene cyanol) that migrate at known rates, allowing the researcher to monitor electrophoresis progress without staining. Samples are pipetted carefully into the wells — rectangular slots formed by the comb during casting. One lane is always reserved for the DNA ladder, a commercially prepared mixture of DNA fragments at standard sizes (e.g., 100 bp, 200 bp, 500 bp, 1 kb, 2 kb, 5 kb, 10 kb). After electrophoresis, each ladder band appears at a predictable position, and unknown sample bands can be estimated by measuring their distance from the well and interpolating against the ladder's known values. A negative control well (containing buffer and loading dye but no DNA) confirms that any bands observed in sample lanes are genuine and not contaminants.",
+      "After electrophoresis, DNA or protein bands are invisible — you need to visualize them. For DNA, ethidium bromide (EtBr) is the classic: it intercalates between base pairs and fluoresces orange under UV. Sensitivity is ~1–10 ng DNA per band. EtBr is a mutagen (it disrupts DNA replication in living cells), so safer alternatives are now standard in most labs: SYBR Safe (embedded in the gel after casting), GelRed, GelGreen, and SYBR Gold are chemically safer and work similarly. For proteins, Coomassie Brilliant Blue R-250 stains nonspecifically by binding to positively charged residues — sensitivity ~100 ng per band. Silver staining is 50–100x more sensitive (~1 ng per band) but more finicky and incompatible with mass spectrometry without destaining. SYPRO Ruby fluorescent stain has dynamic range exceeding Coomassie by 3 orders of magnitude and is compatible with mass spec analysis. Colloidal Coomassie (G-250 form) reduces background staining and is used for proteomics gel analysis. Band intensity in Coomassie or SYPRO staining correlates roughly with protein amount, allowing relative quantification by densitometry — though absolute quantification requires running a dilution series of a standard protein alongside your sample.",
   },
   {
-    title: "Visualization: Ethidium Bromide and Modern Stains",
+    anchorId: "gel-western-blot",
+    title: "Western Blotting: From Gel to Immunodetection",
     content:
-      "Once electrophoresis is complete, the DNA bands are invisible to the naked eye and must be stained. Ethidium bromide (EtBr) has historically been the most widely used dye for this purpose. It intercalates (inserts) between the stacked base pairs of double-stranded DNA and, when exposed to ultraviolet (UV) light, fluoresces bright orange. The gel is either run with EtBr incorporated throughout (allowing real-time visualization) or stained after the run. Under UV illumination, DNA bands appear as glowing orange bands against the dark gel background. While highly sensitive, ethidium bromide is a mutagen and requires careful handling and disposal. Modern labs increasingly use safer alternatives such as SYBR Safe, GelRed, and SYBR Green, which are less hazardous but similarly effective. Some protocols use silver staining for very high sensitivity when working with nanogram quantities of DNA. The intensity of a band correlates roughly with the amount of DNA present — a brighter band contains more DNA molecules at that size.",
+      "Western blotting (also called immunoblot) uses SDS-PAGE as its first step, then transfers the separated proteins to a membrane for specific antibody detection. After SDS-PAGE, proteins are transferred from the gel to a nitrocellulose or PVDF membrane — maintaining the same size-based arrangement. Transfer can be wet (submerge gel+membrane sandwich in buffer with an electric field), semi-dry (thinner stack between electrodes, faster), or dry (modern systems like Bio-Rad Trans-Blot Turbo, 7 minutes). Blocking the membrane (5% non-fat dry milk or BSA in TBST) prevents antibodies from sticking to empty membrane. Then you incubate with a primary antibody specific to your protein of interest — overnight at 4°C or 1 hour at room temperature. The primary antibody binds your protein; wash away unbound antibody. Then add secondary antibody (anti-species IgG, conjugated to horseradish peroxidase or alkaline phosphatase) which binds the primary. ECL (enhanced chemiluminescence) substrate reacts with HRP to produce light, detected on film or digital imager. The result: a specific band at the molecular weight of your protein of interest, with essentially zero background. Loading controls (beta-actin, GAPDH, tubulin) on the same blot normalize for any variation in how much protein was loaded per lane.",
   },
   {
-    title: "Southern Blotting: From Gel to Membrane",
+    anchorId: "gel-2d",
+    title: "2D Gel Electrophoresis and Proteomics",
     content:
-      "Gel electrophoresis is also the first step in the powerful technique known as Southern blotting, developed by Edwin Southern in 1975. After electrophoresis separates DNA fragments by size, the gel is treated to denature the double-stranded DNA into single strands. The fragments are then transferred (blotted) from the gel onto a nitrocellulose or nylon membrane, preserving their size-based arrangement. The membrane is incubated with a labeled DNA or RNA probe — a single-stranded sequence complementary to the target gene. Where the probe hybridizes (binds) to its complement on the membrane, a signal is generated (via radioactivity, chemiluminescence, or fluorescence). This reveals which specific-sized fragments contain the gene of interest. Southern blotting was an essential tool in early molecular biology before the rise of PCR and DNA sequencing, and it remains useful for detecting gene copy number variations, confirming transgene integration in genetically modified organisms, and diagnosing certain genetic diseases.",
+      "When you need to resolve thousands of proteins simultaneously — proteomics-scale analysis — one-dimensional SDS-PAGE doesn't have enough resolution. Two-dimensional electrophoresis (2DE) separates proteins in two orthogonal dimensions. First dimension: isoelectric focusing (IEF). An immobilized pH gradient (IPG) strip with a pH range of ~3–11 is used. Proteins are loaded and an electric field is applied. Each protein migrates through the pH gradient until it reaches the pH where its net charge is zero — its isoelectric point (pI). Proteins with the same pI focus to the same position regardless of size. Second dimension: SDS-PAGE. The IEF strip is laid on top of a polyacrylamide gel and proteins are separated by molecular weight perpendicular to the first separation. The result is a 2D map that can resolve 1,000–2,000 individual protein spots. Comparing 2D maps from normal vs diseased tissue, or treated vs untreated cells, reveals which proteins change in abundance — the core workflow in disease biomarker discovery. Spots of interest are cut out, digested with trypsin, and identified by mass spectrometry. 2DE has been largely supplemented by LC-MS/MS for many proteomics applications (higher throughput, quantitative, no gel required), but remains valuable for its visual representation of the proteome.",
   },
   {
-    title: "Applications: Forensics, Diagnostics, and Beyond",
+    anchorId: "gel-southern-northern",
+    title: "Southern, Northern, and Other Blotting Techniques",
     content:
-      "Gel electrophoresis underpins a remarkable range of real-world applications. In forensic science, DNA fingerprinting (DNA profiling) relies on gel electrophoresis to separate PCR-amplified short tandem repeat (STR) fragments from a biological sample — the unique banding pattern can identify individuals with extremely high statistical confidence and has revolutionized criminal investigations since the 1980s. In medical diagnostics, gel electrophoresis is used to screen for genetic disorders: for example, sickle cell anemia can be detected by the altered migration pattern of hemoglobin S on protein gels. Paternity testing, diagnosis of sexually transmitted infections, and detection of foodborne pathogens all rely on electrophoresis-based methods. In research, gel electrophoresis verifies PCR products, confirms restriction enzyme digestion, checks RNA integrity before sequencing experiments, and validates plasmid construction in cloning workflows. Protein gel electrophoresis (SDS-PAGE) uses sodium dodecyl sulfate to denature and give proteins uniform negative charge before separating them by molecular weight — a fundamental technique for protein analysis and Western blotting.",
+      "Edwin Southern invented his eponymous blotting technique in 1975, and it spawned an entire nomenclature. Southern blot (DNA): run agarose gel → denature DNA (NaOH) → transfer to nylon/nitrocellulose membrane via capillary action, vacuum, or electroblotting → bake/UV crosslink → block → hybridize with radiolabeled or DIG-labeled DNA probe → wash stringently → expose to film. The probe is a labeled DNA sequence complementary to your gene of interest. Only fragments carrying that sequence produce a signal. Used for restriction fragment length polymorphism (RFLP) analysis, copy number determination, transgene integration site mapping, and gene deletion/duplication diagnosis. Northern blot (RNA, named playfully): identical concept but RNA. Detect mRNA expression from specific genes, measure transcript size, verify alternative splicing. Far-Western blot: after transfer, instead of antibody, incubate with a labeled protein to detect protein-protein interactions. EMSA (electrophoretic mobility shift assay): a gel-based method to detect DNA-protein or RNA-protein binding — a protein-bound DNA fragment migrates slower than free DNA, 'shifting' the band upward. EMSA is still widely used in transcription factor research.",
+  },
+  {
+    anchorId: "gel-applications",
+    title: "Modern Applications: Forensics, Diagnostics, and Beyond",
+    content:
+      "Gel electrophoresis appears across every discipline that uses molecular biology. In forensic science, PCR-amplified STR (short tandem repeat) loci are separated by capillary electrophoresis — a high-resolution, automated form of gel electrophoresis where fragments migrate through a polymer-filled capillary and are detected by laser fluorescence. The CODIS system uses 20 STR loci; the probability of two unrelated people sharing the same profile is less than 1 in a quintillion. In medical diagnostics, HIV was historically confirmed by Western blot against multiple viral antigens (though now superseded by NAT testing); Lyme disease serology uses Western blot to confirm reactive ELISA results by checking specific band patterns. In clinical labs, hemoglobin variants (HbS, HbC, HbE) are separated by cellulose acetate electrophoresis or capillary electrophoresis for sickle cell screening. In research and biotechnology QC, gel electrophoresis is the sanity-check that precedes almost every downstream application: confirm PCR product size, verify restriction digest, check plasmid size, assess RNA integrity before RNA-seq, confirm antibody purity, verify ligation product. Even in the age of next-generation sequencing and nanopore technology, gel electrophoresis remains the fastest, simplest visual confirmation available.",
   },
 ];
 
-// ─── Quiz ─────────────────────────────────────────────────────────────────────
+// ── Quiz ─────────────────────────────────────────────────────────────────────
 
 const GEL_QUIZ: QuizQuestion[] = [
   {
     id: "gel-1",
     question:
-      "What is the primary purpose of gel electrophoresis in molecular biology?",
+      "Why do all DNA fragments have the same charge-to-mass ratio, yet still separate by size in a gel?",
     options: [
-      "To amplify specific DNA sequences",
-      "To separate DNA, RNA, or proteins by size using an electric field",
-      "To sequence the nucleotide order of a DNA strand",
-      "To cut DNA at specific restriction sites",
+      "Larger fragments carry more net positive charge that slows them in the electric field",
+      "All DNA has one phosphate per base pair (same charge-to-mass), so size discrimination comes entirely from differential resistance as fragments navigate the gel's pore network",
+      "Smaller fragments have higher melting temperatures and denature faster in the electric field",
+      "Ethidium bromide intercalation adds extra mass to larger fragments, slowing them selectively",
     ],
     correctIndex: 1,
     explanation:
-      "Gel electrophoresis separates molecules based on their size and charge by driving them through a gel matrix with an electric field. Smaller fragments move faster and travel farther; larger fragments are impeded and stay near the wells.",
+      "This is the key insight. DNA has one negatively-charged phosphate group per nucleotide, regardless of fragment length — so a 100 bp and a 10,000 bp fragment experience the same electric force per unit mass. In free solution, they'd move identically. The agarose gel network is what creates size discrimination: small fragments weave through pores easily; large fragments must 'reptate' (snake through) and experience far more friction. Log(size) plotted against migration distance gives a straight line — the standard curve for reading band sizes.",
     topic: "gel-electrophoresis",
   },
   {
     id: "gel-2",
     question:
-      "Why do smaller DNA fragments migrate farther in a gel during electrophoresis?",
+      "How does increasing agarose concentration affect gel pore size and separation range?",
     options: [
-      "Smaller fragments carry more negative charge per base",
-      "Smaller fragments are repelled more strongly by the negative electrode",
-      "Smaller fragments pass through gel pores more easily and encounter less resistance",
-      "Smaller fragments are denser and sink faster through the gel",
+      "Higher agarose creates larger pores — good for large DNA fragments like chromosomal DNA",
+      "Higher agarose creates smaller pores, reducing the separation range to small fragments (50–500 bp) but giving better resolution of small fragments",
+      "Agarose concentration does not affect pore size — only voltage changes resolution",
+      "Higher agarose increases DNA migration speed by reducing viscosity",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation:
-      "The agarose gel acts as a molecular sieve. Smaller fragments weave through the tangled network of pores much more easily than larger fragments, which are significantly impeded by the gel matrix. This size-dependent friction is the basis of separation.",
+      "More agarose = denser polymer network = smaller pores. A 0.5% gel has large pores (best for 5–50 kb genomic fragments), a 1% gel works for 0.5–10 kb (most routine work), and a 2–3% gel has tiny pores that give excellent resolution for fragments under 500 bp — distinguishing a 150 bp from a 200 bp fragment. For very small fragments (10–100 bp), 3–4% agarose or polyacrylamide gels are used. Always match your agarose percentage to the expected size range of your fragments.",
     topic: "gel-electrophoresis",
   },
   {
     id: "gel-3",
     question:
-      "What is a DNA ladder (molecular weight marker) used for in gel electrophoresis?",
+      "What does SDS do in SDS-PAGE, and why is this step critical for accurate molecular weight determination?",
     options: [
-      "It provides the electric current that drives DNA migration",
-      "It stains the DNA bands so they are visible under UV light",
-      "It is a mixture of known-size fragments that allows estimation of unknown fragment sizes",
-      "It acts as a negative control to confirm no DNA contamination",
+      "SDS adds fluorescent labels to proteins for visualization under UV light",
+      "SDS coats proteins with a uniform negative charge proportional to polypeptide length, masking intrinsic charge differences so proteins separate by molecular weight only",
+      "SDS denatures DNA in the sample to prevent it from interfering with protein migration",
+      "SDS cross-links proteins to the polyacrylamide matrix to prevent diffusion after electrophoresis",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation:
-      "A DNA ladder contains a set of DNA fragments of precisely known sizes run in one lane of the gel. After electrophoresis, each ladder band appears at a predictable position based on its size. Researchers compare the migration distance of unknown bands to the ladder to estimate their sizes.",
+      "In native gel electrophoresis, proteins migrate based on their charge, size, AND shape — which makes determining molecular weight nearly impossible from the gel alone. SDS (sodium dodecyl sulfate) solves this: it's a negatively charged detergent that wraps around proteins at approximately one SDS molecule per two amino acids, covering the protein's intrinsic charge entirely. All SDS-protein complexes are now uniformly negatively charged in proportion to their mass. The reducing agent (DTT or beta-mercaptoethanol) breaks disulfide bonds to linearize the polypeptide. Now migration depends only on size — you can accurately read molecular weights from the gel using a protein ladder.",
     topic: "gel-electrophoresis",
   },
   {
     id: "gel-4",
     question:
-      "What polymer forms the matrix of the most common nucleic acid electrophoresis gel?",
-    options: ["Polyacrylamide", "Cellulose", "Agarose", "Gelatin"],
-    correctIndex: 2,
+      "In a Western blot, what are the purpose of the primary antibody and secondary antibody, respectively?",
+    options: [
+      "Primary antibody stains the membrane background; secondary antibody specifically detects the target protein",
+      "Primary antibody specifically recognizes the target protein; secondary antibody (enzyme-conjugated, anti-species) binds the primary to amplify and generate the detectable signal",
+      "Both antibodies recognize the same epitope — two antibodies are used for redundancy and to reduce false negatives",
+      "Primary antibody is used in stripping; secondary antibody is added fresh for each new protein probed",
+    ],
+    correctIndex: 1,
     explanation:
-      "Agarose, a polysaccharide derived from red seaweed, is the standard matrix for separating DNA and RNA fragments by size. It forms a tangled three-dimensional network of pores when cooled. Polyacrylamide gels are used for higher-resolution separation of proteins and small nucleic acids.",
+      "Western blotting uses a two-antibody system for excellent reasons. The primary antibody is specific — you choose it for your exact target protein (say, anti-p53 or anti-beta-actin). After washing, the secondary antibody binds the primary — it's an anti-species antibody (e.g., if your primary is rabbit-raised, use anti-rabbit secondary). The secondary is conjugated to a detection enzyme (HRP or alkaline phosphatase) or fluorescent dye. This two-step approach amplifies signal (multiple secondary antibodies can bind one primary), and the same secondary works for any primary from the same host species — you only need to buy one secondary for all your rabbit primaries. HRP + ECL chemiluminescence substrate generates light captured on film or digital imager as dark bands at the molecular weight of your protein.",
     topic: "gel-electrophoresis",
   },
   {
     id: "gel-5",
     question:
-      "In gel electrophoresis, toward which electrode do DNA fragments migrate, and why?",
+      "How does Southern blotting extend gel electrophoresis to detect specific genes?",
     options: [
-      "Toward the negative electrode (cathode), because DNA is positively charged",
-      "Toward the positive electrode (anode), because DNA has a negative charge from its phosphate backbone",
-      "Toward the negative electrode (cathode), because DNA is neutral",
-      "DNA does not migrate — the gel moves around it",
+      "Southern blotting runs gels at higher voltage to improve resolution of gene-sized fragments",
+      "After gel separation, DNA is transferred to a membrane and hybridized with a labeled probe complementary to the gene of interest — only matching fragments produce a signal",
+      "Southern blotting uses antibodies instead of DNA probes — it's essentially Western blotting for DNA",
+      "Southern blotting is performed before gel electrophoresis to pre-sort DNA by hybridization affinity",
     ],
     correctIndex: 1,
     explanation:
-      "DNA molecules carry an overall negative charge at physiological pH because of the multiple phosphate groups in the sugar-phosphate backbone. In an electric field, negatively charged molecules are attracted to the positive electrode (anode) and migrate toward it.",
+      "Southern blotting (Edwin Southern, 1975) takes gel electrophoresis further. After running the gel and separating restriction-digested genomic DNA by size, the DNA is denatured (NaOH makes it single-stranded) and transferred to a nitrocellulose or nylon membrane by capillary action — preserving the exact size-based arrangement from the gel. The membrane is then hybridized with a labeled probe: a single-stranded DNA sequence complementary to your gene of interest. The probe only binds its complement. Signal (radioactive, fluorescent, or colorimetric) appears only where the probe found a matching sequence — telling you exactly which size fragment contains your gene. This can reveal gene copy number, deletions, or mutations that change restriction fragment sizes (RFLP analysis).",
     topic: "gel-electrophoresis",
   },
   {
     id: "gel-6",
     question:
-      "Which dye is classically used to visualize DNA bands in an agarose gel under UV light?",
+      "What is the loading dye in gel electrophoresis, and what two functions does it serve?",
     options: [
-      "Coomassie Brilliant Blue",
-      "Crystal violet",
-      "Methylene blue",
-      "Ethidium bromide",
+      "A fluorescent dye that makes DNA visible under white light without UV; it also denatures proteins for SDS-PAGE",
+      "A mixture providing density (glycerol/ficoll) so samples sink into wells, plus tracking dyes (bromophenol blue, xylene cyanol) that migrate at known rates to monitor the run",
+      "A reducing agent that breaks disulfide bonds in DNA and proteins before loading",
+      "A stabilizing buffer that prevents DNA degradation during the electrophoresis run",
     ],
-    correctIndex: 3,
+    correctIndex: 1,
     explanation:
-      "Ethidium bromide (EtBr) intercalates between the base pairs of double-stranded DNA and fluoresces bright orange when exposed to UV light, making DNA bands visible. While highly effective, EtBr is a mutagen and many labs now use safer alternatives like SYBR Safe or GelRed.",
+      "Loading dye is a simple but essential component. First: density agent. Glycerol or ficoll makes your sample heavier than the buffer, so when you pipette it into the well, it sinks and stays put rather than floating back out. Without this, samples mix with the buffer immediately and you lose all resolution. Second: tracking dyes. Bromophenol blue is a small dye that migrates through gels at approximately the same rate as ~300 bp DNA fragments (on a 1% gel). Xylene cyanol migrates at ~4 kb. These colored fronts are visible without UV — you watch them migrate and stop the run before the dye reaches the end of the gel (and before your smallest fragments run off).",
     topic: "gel-electrophoresis",
   },
   {
     id: "gel-7",
     question:
-      "What technique uses gel electrophoresis as its first step to identify specific DNA sequences on a membrane?",
+      "What is the difference between native PAGE and denaturing PAGE, and when would you use each?",
     options: [
-      "PCR (Polymerase Chain Reaction)",
-      "CRISPR-Cas9 gene editing",
-      "Southern blotting",
-      "Flow cytometry",
+      "Native PAGE uses higher voltage; denaturing PAGE uses lower voltage for gentler separation",
+      "Native PAGE preserves protein structure and separates by charge/size/shape — useful for activity assays; denaturing PAGE (SDS-PAGE) unfolds proteins with SDS for MW determination only",
+      "Native PAGE is for DNA; denaturing PAGE is exclusively for proteins",
+      "Denaturing PAGE uses a higher percentage acrylamide; native PAGE uses lower percentage",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation:
-      "Southern blotting (developed by Edwin Southern in 1975) starts with gel electrophoresis to separate DNA fragments by size, then transfers them to a membrane and uses a labeled probe to detect specific sequences. It is used for gene copy number analysis, transgene confirmation, and genetic disease diagnosis.",
+      "Native PAGE runs proteins without SDS in their natural, folded state. Migration depends on the protein's charge at the running pH, its hydrodynamic size, and its shape. This is useful when you want to study active protein complexes, check whether a protein is monomeric or forms oligomers, or verify protein-protein interactions (proteins in a complex migrate as a larger unit). The catch: you can't directly determine molecular weight from a native gel without calibration curves specific to the protein shape. SDS-PAGE (denaturing) unfolds everything with SDS + reducing agent, giving you accurate molecular weight information for any protein. Choose native PAGE to study function/interaction; choose SDS-PAGE to determine size or confirm identity by Western blot.",
     topic: "gel-electrophoresis",
   },
   {
     id: "gel-8",
     question:
-      "How does gel electrophoresis contribute to DNA fingerprinting used in forensic science?",
+      "In 2D gel electrophoresis, what does the first dimension (isoelectric focusing) separate proteins by?",
     options: [
-      "It amplifies trace DNA found at a crime scene",
-      "It separates PCR-amplified STR fragments to produce a unique banding pattern that identifies individuals",
-      "It reads the exact sequence of DNA bases from crime scene evidence",
-      "It removes contaminants from DNA before analysis",
+      "Molecular weight, using a pre-cast SDS gel strip",
+      "Isoelectric point (pI) — proteins migrate along an immobilized pH gradient until they reach their pI and stop",
+      "Hydrophobicity — proteins bind to the strip proportional to their apolar surface area",
+      "Glycosylation state — N-linked vs O-linked glycoproteins separate in different regions of the strip",
     ],
     correctIndex: 1,
     explanation:
-      "In DNA fingerprinting (profiling), specific short tandem repeat (STR) regions are first amplified by PCR, then separated by gel electrophoresis. The resulting pattern of band sizes is unique to each individual (except identical twins) and can match suspects to biological evidence.",
+      "First dimension in 2DE is isoelectric focusing (IEF). An immobilized pH gradient (IPG) strip spans, say, pH 3–11. Apply a voltage and proteins migrate along the pH gradient. As a protein moves from a lower-pH region, it gains positive charge from protonation; from a higher-pH region, it becomes negative. It migrates until it reaches the pH where it has zero net charge — its isoelectric point (pI). There it stops. The entire first dimension separates by pI only. The second dimension (SDS-PAGE run perpendicular to the strip) then separates by molecular weight. The result: a 2D protein map where x-position = pI and y-position = MW. Proteins with the same pI but different MW appear in the same vertical column; proteins with the same MW but different pI appear in the same horizontal row.",
     topic: "gel-electrophoresis",
   },
   {
     id: "gel-9",
     question:
-      "What is the role of the loading dye added to DNA samples before gel electrophoresis?",
+      "Why is ethidium bromide mutagenic, and what safer alternatives are commonly used?",
     options: [
-      "It denatures the DNA into single strands for better separation",
-      "It adds density so samples sink into wells and provides visible tracking dye to monitor migration",
-      "It stains the DNA so bands are visible without UV light",
-      "It digests the DNA into uniform small fragments",
+      "EtBr is mutagenic because it contains cyanide groups that inhibit mitochondrial respiration",
+      "EtBr intercalates between base pairs — the same property that makes it glow also allows it to insert into living cell DNA and distort replication, causing frameshift mutations",
+      "EtBr generates reactive oxygen species under UV light that oxidize DNA",
+      "EtBr is not actually mutagenic — it was historical misinformation that has since been corrected",
     ],
     correctIndex: 1,
     explanation:
-      "Loading dye contains two components: a dense substance (glycerol or ficoll) that weighs down the sample so it sinks into the well rather than floating out, and tracking dyes (bromophenol blue, xylene cyanol) that migrate at known rates and are visible during the run so the researcher can monitor progress.",
+      "Ethidium bromide's magic and danger share the same molecular mechanism: intercalation. The flat aromatic ring system of EtBr slides between the stacked base pairs of double-stranded DNA and fluoresces orange under UV. But EtBr doesn't discriminate — it intercalates just as readily in living cell DNA as in gel DNA. When EtBr-DNA is replicated, the intercalated EtBr causes the polymerase to lose its place, inserting or deleting a base — a frameshift mutation. This makes EtBr a mutagen (Ames test positive) and potentially carcinogenic. Safer alternatives include SYBR Safe (a modified cyanine dye), GelRed, GelGreen, and SYBR Gold. These have similar sensitivity to EtBr, are Ames-negative, and are now used in most educational and commercial labs. They can be added directly to the molten agarose before casting or post-stained.",
     topic: "gel-electrophoresis",
   },
   {
     id: "gel-10",
     question:
-      "How does increasing the agarose concentration of a gel affect the separation of DNA fragments?",
+      "How has capillary electrophoresis replaced traditional gel electrophoresis in modern forensic DNA profiling?",
     options: [
-      "Higher agarose concentration creates larger pores and is better for large fragments",
-      "Higher agarose concentration creates smaller pores and gives better resolution for small fragments",
-      "Agarose concentration does not affect pore size or separation",
-      "Higher agarose concentration makes DNA migrate toward the negative electrode",
+      "Capillary electrophoresis uses gel slabs but with automated lane-reading software instead of UV photography",
+      "Capillary electrophoresis separates fluorescently labeled DNA fragments through a polymer-filled capillary, with laser detection — fully automated, far higher resolution, and generates digital peak-based profiles instead of gel bands",
+      "Capillary electrophoresis requires no separation matrix — DNA is detected by capillary flow alone",
+      "Forensic labs still use traditional agarose gels; capillary electrophoresis is only used in research settings",
     ],
     correctIndex: 1,
     explanation:
-      "Higher agarose concentrations produce a denser gel network with smaller pores, which provides better resolution for separating small DNA fragments (100–500 bp). Lower agarose concentrations (larger pores) are better for resolving large fragments (5–50 kb). Choosing the right concentration is key for optimal separation.",
+      "Traditional slab gel STR analysis required manual lane interpretation and was slow. Modern forensic labs use capillary electrophoresis (CE): fluorescently labeled PCR products (each STR locus labeled with a different color dye) are injected into a narrow capillary filled with a polymer separation matrix. A laser detects the fluorescent signal as each fragment passes the detector. The output is an electropherogram — peaks at precise positions corresponding to fragment sizes. Multiple loci are run simultaneously in different color channels. The software calls the allele sizes for all 20 CODIS STR loci in one run. CE is fully automated, 10–100x higher resolution than slab gels, produces digital records (essential for court evidence), and can analyze samples with picogram quantities of DNA — small enough to profile a single hair shaft.",
     topic: "gel-electrophoresis",
   },
 ];
 
-// ─── Main Component ────────────────────────────────────────────────────────────
+// ── Main Component ────────────────────────────────────────────────────────────
 
 export default function GelElectrophoresisSection() {
   return (
     <article
       className="topic-section-biotech"
-      style={{ background: "oklch(0.13 0.06 240)", minHeight: "100vh" }}
+      style={{ background: "oklch(0.97 0.012 75)", minHeight: "100vh" }}
       aria-labelledby="gel-section-heading"
     >
       <div className="mx-auto max-w-5xl px-4 py-16 sm:px-8">
-        {/* Header */}
         <div id="gel-section-heading">
           <SectionHeader
             topicId="gel-electrophoresis"
             title="Gel Electrophoresis"
-            subtitle="Separating DNA, RNA, and proteins by size using an electric field — the foundation of molecular biology's most powerful analytical techniques."
+            subtitle="A slab of seaweed-derived gel, a battery, and a UV lamp — that's all it takes to see DNA with your own eyes and separate thousands of molecules by size."
           />
         </div>
 
-        {/* Interactive Gel Diagram */}
         <AnimatedEntrance direction="up" delay={0.1}>
           <div
             className="mb-14 rounded-2xl overflow-hidden"
             style={{
-              background: "oklch(0.10 0.05 240)",
-              border: "1px solid oklch(0.68 0.16 210 / 0.25)",
-              boxShadow: "0 8px 48px oklch(0.10 0.05 240 / 0.8)",
+              background: "oklch(0.985 0.008 75)",
+              border: "1px solid oklch(0.87 0.02 75)",
+              boxShadow: "0 4px 24px oklch(0.52 0.15 185 / 0.08)",
             }}
           >
             <div className="px-6 pt-6 pb-2">
@@ -802,15 +788,15 @@ export default function GelElectrophoresisSection() {
                 <span
                   className="rounded-full px-3 py-1 text-xs font-semibold tracking-widest uppercase"
                   style={{
-                    background: "oklch(0.68 0.16 210 / 0.2)",
-                    color: "oklch(0.68 0.16 210)",
-                    border: "1px solid oklch(0.68 0.16 210 / 0.4)",
+                    background: "oklch(0.52 0.15 185 / 0.10)",
+                    color: TEAL,
+                    border: "1px solid oklch(0.52 0.15 185 / 0.30)",
                   }}
                 >
                   Interactive Simulation
                 </span>
-                <span style={{ fontSize: 12, color: "oklch(0.55 0.08 220)" }}>
-                  Ethidium bromide visualization included
+                <span style={{ fontSize: 12, color: "oklch(0.50 0.04 75)" }}>
+                  Ethidium bromide UV visualization included
                 </span>
               </div>
               <h3
@@ -822,7 +808,7 @@ export default function GelElectrophoresisSection() {
               <p
                 style={{
                   fontSize: 13,
-                  color: "oklch(0.65 0.08 220)",
+                  color: "oklch(0.45 0.04 75)",
                   marginBottom: 16,
                 }}
               >
@@ -838,18 +824,19 @@ export default function GelElectrophoresisSection() {
           </div>
         </AnimatedEntrance>
 
-        {/* Explanation Paragraphs */}
-        <StaggerContainer className="mb-14 flex flex-col gap-8">
+        <StaggerContainer className="mb-14 flex flex-col gap-7">
           {EXPLANATIONS.map((para, i) => (
             <StaggerItem key={para.title}>
               <div
+                id={para.anchorId}
                 className="rounded-xl p-6"
                 style={{
                   background:
                     i % 2 === 0
-                      ? "oklch(0.11 0.05 240)"
-                      : "oklch(0.13 0.06 250)",
-                  border: "1px solid oklch(0.40 0.10 220 / 0.25)",
+                      ? "oklch(0.985 0.008 75)"
+                      : "oklch(0.975 0.010 75)",
+                  border: "1px solid oklch(0.87 0.02 75)",
+                  borderLeft: "3px solid oklch(0.52 0.15 185 / 0.5)",
                 }}
               >
                 <h3
@@ -860,7 +847,7 @@ export default function GelElectrophoresisSection() {
                 </h3>
                 <p
                   className="leading-relaxed"
-                  style={{ color: "oklch(0.82 0.06 220)", fontSize: 15 }}
+                  style={{ color: "oklch(0.30 0.03 75)", fontSize: 15 }}
                 >
                   {para.content}
                 </p>
@@ -869,60 +856,69 @@ export default function GelElectrophoresisSection() {
           ))}
         </StaggerContainer>
 
-        {/* Key Concepts summary */}
         <AnimatedEntrance direction="up" delay={0.2}>
           <div
             className="mb-14 rounded-2xl p-6"
             style={{
-              background: "oklch(0.10 0.05 240)",
-              border: "1px solid oklch(0.68 0.16 210 / 0.3)",
+              background: "oklch(0.985 0.008 75)",
+              border: "1px solid oklch(0.87 0.02 75)",
             }}
           >
             <h3
               className="font-display text-xl font-bold mb-5"
               style={{ color: TEAL }}
             >
-              ⚡ Key Concepts at a Glance
+              ⚡ Techniques at a Glance
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
                 {
-                  icon: "📏",
-                  title: "Size-based separation",
-                  desc: "Smaller fragments travel farther; distance is proportional to log(size)",
-                },
-                {
-                  icon: "🔋",
-                  title: "Electric field",
-                  desc: "DNA migrates toward positive electrode (anode) due to negative charge",
-                },
-                {
                   icon: "🧫",
-                  title: "Agarose matrix",
-                  desc: "Pore size tuned by concentration — 0.5% for large DNA, 3% for small fragments",
+                  title: "Agarose gel electrophoresis",
+                  desc: "0.5–3% gel for DNA/RNA size separation (50 bp–50 kb). TAE or TBE buffer, EtBr or SYBR staining.",
                 },
                 {
                   icon: "🔬",
-                  title: "DNA ladder",
-                  desc: "Reference lane of known sizes used to estimate unknown fragment lengths",
-                },
-                {
-                  icon: "🔵",
-                  title: "EtBr staining",
-                  desc: "Intercalates in DNA, fluoresces orange under UV — reveals band positions",
+                  title: "SDS-PAGE",
+                  desc: "Polyacrylamide gel + SDS denatures proteins; separates by MW only. Coomassie or silver stain.",
                 },
                 {
                   icon: "🧬",
-                  title: "Applications",
-                  desc: "Forensics, diagnostics, gene cloning verification, Southern blotting",
+                  title: "Western blot",
+                  desc: "SDS-PAGE → transfer → primary Ab → secondary Ab-HRP → ECL. Identifies specific proteins.",
+                },
+                {
+                  icon: "📏",
+                  title: "Southern blot",
+                  desc: "Genomic DNA separated → membrane transfer → probe hybridization. Detects specific gene fragments.",
+                },
+                {
+                  icon: "🔊",
+                  title: "Northern blot",
+                  desc: "RNA separated by size → membrane → probe. Detects mRNA expression and transcript size.",
+                },
+                {
+                  icon: "🌀",
+                  title: "2D gel electrophoresis",
+                  desc: "IEF (pI) + SDS-PAGE (MW). Resolves 1,000–2,000 proteins. Core proteomics discovery tool.",
+                },
+                {
+                  icon: "💉",
+                  title: "Capillary electrophoresis",
+                  desc: "Automated polymer-filled capillary, laser detection. Forensic STR profiling; high resolution.",
+                },
+                {
+                  icon: "🔵",
+                  title: "Pulsed-field gel (PFGE)",
+                  desc: "Alternating field directions allow separation of chromosome-sized DNA (50 kb–10 Mb).",
                 },
               ].map(({ icon, title, desc }) => (
                 <div
                   key={title}
                   className="flex items-start gap-3 rounded-lg p-4"
                   style={{
-                    background: "oklch(0.13 0.06 240)",
-                    border: "1px solid oklch(0.40 0.10 220 / 0.2)",
+                    background: "oklch(0.96 0.01 75)",
+                    border: "1px solid oklch(0.87 0.02 75)",
                   }}
                 >
                   <span style={{ fontSize: 22, lineHeight: 1 }}>{icon}</span>
@@ -937,9 +933,7 @@ export default function GelElectrophoresisSection() {
                     >
                       {title}
                     </div>
-                    <div
-                      style={{ color: "oklch(0.72 0.06 220)", fontSize: 12 }}
-                    >
+                    <div style={{ color: "oklch(0.45 0.04 75)", fontSize: 12 }}>
                       {desc}
                     </div>
                   </div>
@@ -949,19 +943,16 @@ export default function GelElectrophoresisSection() {
           </div>
         </AnimatedEntrance>
 
-        {/* Quiz */}
         <AnimatedEntrance direction="up" delay={0.15}>
           <div
             className="rounded-2xl overflow-hidden"
-            style={{
-              border: "1px solid oklch(0.68 0.16 210 / 0.3)",
-            }}
+            style={{ border: "1px solid oklch(0.87 0.02 75)" }}
           >
             <div
               className="px-6 py-4"
               style={{
-                background: "oklch(0.10 0.05 240)",
-                borderBottom: "1px solid oklch(0.40 0.10 220 / 0.2)",
+                background: "oklch(0.985 0.008 75)",
+                borderBottom: "1px solid oklch(0.87 0.02 75)",
               }}
             >
               <h3
@@ -973,15 +964,15 @@ export default function GelElectrophoresisSection() {
               <p
                 style={{
                   fontSize: 13,
-                  color: "oklch(0.60 0.06 220)",
+                  color: "oklch(0.50 0.04 75)",
                   marginTop: 4,
                 }}
               >
-                10 questions covering gel electrophoresis principles and
-                applications
+                10 questions covering gel principles, SDS-PAGE, Western blot,
+                Southern blot, 2D electrophoresis, and forensic applications
               </p>
             </div>
-            <div style={{ background: "oklch(0.11 0.05 240)" }}>
+            <div style={{ background: "oklch(0.97 0.012 75)" }}>
               <QuizEngine questions={GEL_QUIZ} topicId="gel-electrophoresis" />
             </div>
           </div>

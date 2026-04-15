@@ -1,6 +1,4 @@
-import { motion } from "motion/react";
-import type { Variants } from "motion/react";
-import type { ReactNode } from "react";
+import { type ReactNode, useEffect, useRef } from "react";
 
 interface AnimatedEntranceProps {
   children: ReactNode;
@@ -9,46 +7,44 @@ interface AnimatedEntranceProps {
   className?: string;
 }
 
-const variants: Record<string, Variants> = {
-  up: {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0 },
-  },
-  down: {
-    hidden: { opacity: 0, y: -40 },
-    visible: { opacity: 1, y: 0 },
-  },
-  left: {
-    hidden: { opacity: 0, x: -40 },
-    visible: { opacity: 1, x: 0 },
-  },
-  right: {
-    hidden: { opacity: 0, x: 40 },
-    visible: { opacity: 1, x: 0 },
-  },
-  fade: {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
-  },
-};
-
+// CSS-only entrance animation using IntersectionObserver.
+// Replaces framer-motion whileInView to avoid scroll re-render cascades.
 export function AnimatedEntrance({
   children,
   delay = 0,
   direction = "up",
   className,
 }: AnimatedEntranceProps) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            el.classList.add("ae-visible");
+            observer.unobserve(el);
+          }
+        }
+      },
+      { rootMargin: "-80px" },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <motion.div
-      className={className}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
-      variants={variants[direction]}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+    <div
+      ref={ref}
+      className={`ae-base ae-${direction}${className ? ` ${className}` : ""}`}
+      style={delay ? { transitionDelay: `${delay}s` } : undefined}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -61,21 +57,33 @@ interface StaggerContainerProps {
 export function StaggerContainer({
   children,
   className,
-  staggerDelay = 0.1,
 }: StaggerContainerProps) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            el.classList.add("sc-visible");
+            observer.unobserve(el);
+          }
+        }
+      },
+      { rootMargin: "-60px" },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <motion.div
-      className={className}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-60px" }}
-      variants={{
-        hidden: {},
-        visible: { transition: { staggerChildren: staggerDelay } },
-      }}
-    >
+    <div ref={ref} className={`sc-base${className ? ` ${className}` : ""}`}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -84,18 +92,8 @@ export function StaggerItem({
   className,
 }: { children: ReactNode; className?: string }) {
   return (
-    <motion.div
-      className={className}
-      variants={{
-        hidden: { opacity: 0, y: 30 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-        },
-      }}
-    >
+    <div className={`si-base${className ? ` ${className}` : ""}`}>
       {children}
-    </motion.div>
+    </div>
   );
 }

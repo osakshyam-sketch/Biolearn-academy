@@ -19,30 +19,30 @@ const PROTEIN_QUIZ: QuizQuestion[] = [
   {
     id: "p1",
     question:
-      "What are the four components attached to the central alpha-carbon of an amino acid?",
+      "What are the four categories of amino acid R groups, and why do they matter for protein folding?",
     options: [
-      "Amino group, carboxyl group, R side chain, hydrogen atom",
-      "Phosphate group, sugar, base, hydroxyl group",
-      "Peptide bond, carbonyl, amine, methyl group",
-      "Adenine, guanine, cytosine, thymine",
+      "Acidic, basic, aromatic, sulfur-containing — they determine the protein's molecular weight",
+      "Nonpolar aliphatic/aromatic, polar uncharged, positively charged, negatively charged — they determine where each residue ends up in a folded protein and drive tertiary structure",
+      "Hydrophobic, hydrophilic, neutral, ionizable — they determine only secondary structure",
+      "R groups are identical in all amino acids — only the backbone differs",
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation:
-      "Every amino acid has a central alpha-carbon bonded to: an amino group (–NH₂), a carboxyl group (–COOH), a variable R side chain (determines the amino acid's identity), and a hydrogen atom.",
+      "The 20 standard amino acids are classified by their R-group chemistry: nonpolar aliphatic (Gly, Ala, Val, Leu, Ile, Pro, Met) and aromatic (Phe, Trp, Tyr) residues cluster in the protein's hydrophobic core; polar uncharged residues (Ser, Thr, Cys, Asn, Gln) can participate in hydrogen bonding; positively charged (Lys, Arg, His) and negatively charged (Asp, Glu) residues sit at the protein surface where they interact with water and other charged molecules. These properties directly drive hydrophobic collapse and the specific 3D shape of every protein. Change one amino acid in a hydrophobic core position to a charged residue, and the protein often misfolds completely.",
     topic: "proteins",
   },
   {
     id: "p2",
-    question: "How is a peptide bond formed between two amino acids?",
+    question: "What makes the peptide bond special from a chemical standpoint?",
     options: [
-      "By a condensation reaction releasing water between the carboxyl of one and the amino group of the next",
-      "By an oxidation reaction forming a disulfide bridge",
-      "By ionic attraction between opposite charges",
-      "By hydrogen bonding between backbone atoms",
+      "It's the strongest bond in biology and never breaks under any conditions",
+      "It has partial double-bond character due to resonance — the C–N bond is planar and rigid, restricting rotation and influencing secondary structure",
+      "It's a hydrogen bond between backbone atoms and is easily reversible",
+      "It connects the R groups of adjacent amino acids, not the backbone",
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation:
-      "A peptide bond (–CO–NH–) forms via a condensation (dehydration) reaction: the carboxyl group of one amino acid reacts with the amino group of the next, releasing a water molecule. This creates the –CO–NH– covalent linkage.",
+      "The peptide bond (–CO–NH–) has a fascinating chemical property: resonance between the C=O and C–N bonds gives the peptide group partial double-bond character. This means the six atoms of the peptide group (Cα–C=O–N–H–Cα) are coplanar — they can't rotate freely around the C–N bond. This planarity is crucial: it dramatically constrains the conformational space available to a polypeptide backbone, which is why only certain Phi (φ) and Psi (ψ) dihedral angles are allowed — exactly what the Ramachandran plot shows. Proline breaks helices because its cyclic side chain fixes the Phi angle and eliminates the N–H needed for helix hydrogen bonds.",
     topic: "proteins",
   },
   {
@@ -50,113 +50,118 @@ const PROTEIN_QUIZ: QuizQuestion[] = [
     question: "What defines the PRIMARY structure of a protein?",
     options: [
       "The coiling of the polypeptide into an alpha-helix",
-      "The linear sequence of amino acids in the chain",
+      "The linear sequence of amino acids from N-terminus to C-terminus, encoded directly by the gene",
       "The overall 3D folded shape of the protein",
       "The association of multiple polypeptide chains",
     ],
     correctIndex: 1,
     explanation:
-      "Primary structure is simply the order of amino acids along the polypeptide chain, read from the N-terminus to the C-terminus. This sequence is encoded in the gene and determines all higher-order structures.",
+      "Primary structure is simply the order of amino acids from N-terminus to C-terminus, determined directly by the mRNA codon sequence and historically first sequenced by Fred Sanger (using chemical degradation — his Nobel-prize-winning work on insulin in 1955). Today, mass spectrometry proteomics can identify thousands of proteins and their sequences simultaneously. The primary structure is the master instruction set — it contains all the information needed to fold into the correct 3D shape (Anfinsen's dogma, demonstrated by denaturing and refolding ribonuclease A). Change one critical amino acid and you can get sickle cell disease (Val→Glu at position 6 of hemoglobin β-chain), complete loss of enzyme function, or a disease-causing protein aggregate.",
     topic: "proteins",
   },
   {
     id: "p4",
-    question: "What type of bonds hold an alpha-helix together?",
+    question:
+      "What is the alpha-helix, and what property of proline disrupts it?",
     options: [
-      "Covalent peptide bonds between side chains",
-      "Disulfide bridges between cysteine residues",
-      "Hydrogen bonds between backbone carbonyl and amino groups every 4 residues",
-      "Ionic interactions between R groups",
+      "The alpha-helix has 3.6 residues per turn, with i to i+4 backbone hydrogen bonds; proline breaks helices because its cyclic pyrrolidine ring fixes the Phi angle and lacks an N–H for H-bonding",
+      "The alpha-helix is left-handed; proline's large aromatic ring sterically blocks helix formation",
+      "Alpha-helices are held together by side-chain H-bonds; proline's charged side chain disrupts these",
+      "Alpha-helices have 4 residues per turn; proline breaks them because it's nonpolar",
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     explanation:
-      "Alpha-helices are stabilized by hydrogen bonds between the carbonyl oxygen (C=O) of one residue and the amide nitrogen (N–H) of a residue four positions further along the backbone. These regular H-bonds create the tight coil.",
+      "The alpha-helix is a right-handed coil with 3.6 residues per turn and a pitch of 5.4 Å. The stabilizing force is backbone hydrogen bonds between the carbonyl oxygen (C=O) of residue n and the amide nitrogen (N–H) of residue n+4. These repeating H-bonds run nearly parallel to the helix axis, creating a stable, rod-like structure. Side chains project outward from the helix surface. Proline is the helix-breaker: its cyclic pyrrolidine ring covalently fixes the Phi angle at ~-65°, which doesn't fit the standard helix geometry, and it lacks the N–H group needed to form the i to i+4 hydrogen bond. Proline is often found at helix termini or in tight turns. The amphipathic helix is a biologically important variant — one face is hydrophobic, the other hydrophilic, making it ideal for membrane insertion or coiled-coil protein-protein interactions.",
     topic: "proteins",
   },
   {
     id: "p5",
-    question: "Which describes beta-sheets correctly?",
+    question:
+      "What is the Michaelis-Menten equation describing, and what do Km and Vmax tell you about an enzyme?",
     options: [
-      "Tightly coiled ribbons stabilized by side-chain interactions",
-      "Extended polypeptide strands lying side by side, linked by backbone hydrogen bonds",
-      "Globular regions formed by hydrophobic R groups clustering together",
-      "Double-stranded structures similar to DNA",
+      "It describes DNA polymerase fidelity; Km is the error rate and Vmax is the maximum replication speed",
+      "It describes enzyme reaction rate as a function of substrate concentration; Km is the substrate concentration at half-maximal velocity (reflects binding affinity); Vmax is the maximum rate when enzyme is fully saturated",
+      "It describes protein folding kinetics; Km is the folding rate constant and Vmax is the denaturation temperature",
+      "It applies only to allosteric enzymes; Km and Vmax don't apply to standard enzymes",
     ],
     correctIndex: 1,
     explanation:
-      "Beta-sheets are formed when two or more extended polypeptide strands line up side-by-side. Backbone hydrogen bonds (not side-chain bonds) form between the strands. Strands can be parallel (same N→C direction) or antiparallel.",
+      "The Michaelis-Menten equation (v = Vmax[S] / (Km + [S])) describes how enzyme reaction velocity (v) varies with substrate concentration [S]. Km (Michaelis constant) is the substrate concentration at which v = Vmax/2 — a lower Km means the enzyme has higher affinity for its substrate (it reaches half-saturation at lower [S]). Vmax reflects how many substrate molecules the enzyme converts per unit time when fully saturated (related to kcat, the turnover number). In competitive inhibition, an inhibitor binds the active site: apparent Km increases but Vmax is unchanged — adding more substrate can overcome competitive inhibition. In noncompetitive inhibition, the inhibitor binds an allosteric site on both free enzyme and enzyme-substrate complex: Vmax decreases but Km is unchanged. Uncompetitive inhibitors bind only the enzyme-substrate complex, decreasing both Km and Vmax proportionally.",
     topic: "proteins",
   },
   {
     id: "p6",
-    question: "What drives the TERTIARY structure folding of a protein?",
+    question:
+      "What is cooperative binding in hemoglobin, and what is the Bohr effect?",
     options: [
-      "Watson-Crick base pairing rules",
-      "R-group interactions including hydrophobic effect, H-bonds, ionic bonds, and disulfide bridges",
-      "Only covalent peptide bonds between the backbone atoms",
-      "Ribosomal RNA templates that guide folding",
+      "Hemoglobin binds oxygen non-cooperatively; the Bohr effect describes how temperature affects binding",
+      "Hemoglobin switches between T-state (tense, low O₂ affinity) and R-state (relaxed, high affinity); cooperative binding means each O₂ bound makes the next easier to bind; the Bohr effect is that increased CO₂/H⁺ (in tissues) shifts hemoglobin to T-state, promoting O₂ release",
+      "Cooperative binding means hemoglobin can only bind one O₂ at a time; the Bohr effect describes allosteric inhibition by 2,3-BPG",
+      "The Bohr effect is the chemical process by which hemoglobin is synthesized in red blood cells",
     ],
     correctIndex: 1,
     explanation:
-      "Tertiary structure is the overall 3D shape of a single polypeptide. It is driven by R-group (side-chain) interactions: nonpolar R groups cluster in the hydrophobic core (hydrophobic effect), while H-bonds, ionic bonds, and disulfide bridges between cysteines further stabilize the fold.",
+      "Hemoglobin's quaternary structure (two alpha and two beta globin subunits, each with a heme group) enables cooperativity — one of the most elegant examples of allosteric regulation in biochemistry. In the T-state (tense/deoxy form), the subunits are in a constrained conformation with low O₂ affinity. When the first O₂ binds, it triggers a conformational change in that subunit which propagates to neighboring subunits, converting them toward the R-state (relaxed/oxy) with higher affinity. This produces the sigmoidal oxygen-binding curve — not the hyperbolic curve of a non-cooperative protein like myoglobin. The Bohr effect describes how CO₂ and H⁺ (which are high in metabolically active tissues) shift hemoglobin toward the T-state, causing O₂ release where it's most needed. 2,3-bisphosphoglycerate (2,3-BPG) also stabilizes the T-state and is elevated at altitude to improve O₂ delivery. This is how hemoglobin acts as both an oxygen delivery truck and a built-in sensor of tissue metabolic need.",
     topic: "proteins",
   },
   {
     id: "p7",
     question:
-      "Hemoglobin is a classic example of which level of protein structure?",
+      "What are the six major enzyme classes (EC system) and one example of each?",
     options: [
-      "Primary structure — its long amino acid sequence",
-      "Secondary structure — its alpha-helices and beta-sheets",
-      "Tertiary structure — the single folded globin chain",
-      "Quaternary structure — four polypeptide subunits assembled together",
+      "Kinases, phosphatases, proteases, synthases, ligases, transferases",
+      "Oxidoreductases (lactate dehydrogenase), transferases (hexokinase), hydrolases (pepsin), lyases (pyruvate decarboxylase), isomerases (phosphoglucose isomerase), ligases (DNA ligase)",
+      "Polymerases, nucleases, kinases, phosphatases, proteases, glycosidases",
+      "All enzymes belong to one class; the EC number only reflects their substrate specificity",
     ],
-    correctIndex: 3,
+    correctIndex: 1,
     explanation:
-      "Quaternary structure arises when two or more folded polypeptide chains (subunits) associate into one functional complex. Hemoglobin has four subunits (2 alpha-globin + 2 beta-globin chains) that work cooperatively to carry oxygen.",
+      "The six EC enzyme classes are: Oxidoreductases transfer electrons/hydrogen (lactate dehydrogenase converts pyruvate to lactate, regenerating NAD⁺; succinate dehydrogenase in the TCA cycle). Transferases move functional groups between molecules (hexokinase transfers a phosphate from ATP to glucose; aminotransferases move amino groups). Hydrolases cleave bonds using water (pepsin and trypsin cleave peptide bonds; lipases cleave ester bonds in fats; lactase cleaves lactose). Lyases cleave bonds without water, often creating double bonds (pyruvate decarboxylase removes CO₂; aldolase cleaves fructose-1,6-bisphosphate). Isomerases interconvert structural isomers (phosphoglucose isomerase converts glucose-6-phosphate to fructose-6-phosphate; triose phosphate isomerase). Ligases join two molecules using ATP energy (DNA ligase seals nicks; acetyl-CoA carboxylase joins CO₂ to acetyl-CoA). These six classes cover every chemical transformation in metabolism.",
     topic: "proteins",
   },
   {
     id: "p8",
-    question: "Which of the following is an example of a structural protein?",
+    question:
+      "What are post-translational modifications (PTMs) and why are they crucial for protein function?",
     options: [
-      "Hemoglobin — transports oxygen in red blood cells",
-      "Insulin — a hormone that regulates blood glucose",
-      "Collagen — provides tensile strength to skin and tendons",
-      "Amylase — an enzyme that digests starch",
+      "PTMs change the amino acid sequence after translation; they're caused only by mutations",
+      "PTMs are chemical modifications added to proteins after translation — phosphorylation activates/inactivates proteins; glycosylation affects folding and recognition; ubiquitination marks proteins for proteasomal degradation; these expand functional diversity far beyond what the primary sequence alone can achieve",
+      "PTMs are removals of the signal peptide only; all other modifications are co-translational",
+      "PTMs only affect membrane proteins and have no role in cytosolic protein regulation",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation:
-      "Collagen and keratin are structural proteins. Collagen forms triple-helix fibers that give connective tissues (skin, cartilage, tendons) their remarkable tensile strength. Keratin provides the tough scaffold for hair, nails, and the outer skin layer.",
+      "Post-translational modifications are the cell's way of creating enormous functional complexity from a finite proteome. Phosphorylation (by kinases, reversed by phosphatases) is the most common regulatory PTM — the Ser/Thr/Tyr hydroxyl groups receive a negatively charged phosphate that changes the protein's conformation and interactions. Signal transduction cascades are built almost entirely from phosphorylation events. Glycosylation adds sugar chains (N-linked to Asn, O-linked to Ser/Thr) for proper folding in the ER, protein trafficking, cell-cell recognition, and immune evasion by pathogens. Ubiquitination tags proteins with ubiquitin chains recognized by the 26S proteasome for degradation — essential for clearing misfolded proteins and regulatory proteins that must be destroyed after their job is done. SUMOylation (related to ubiquitin) regulates protein localization and activity. Acetylation of lysines neutralizes charge, affecting histone compaction and enzyme activity. Lipid modifications (myristoylation, palmitoylation, prenylation) anchor proteins to membranes. The sheer number of possible PTM combinations on a single protein means the 'proteome' is far larger than the genome would suggest.",
     topic: "proteins",
   },
   {
     id: "p9",
-    question: "What happens to a protein when it is DENATURED?",
+    question:
+      "What are molecular chaperones and why are they essential for protein folding?",
     options: [
-      "Its amino acid sequence is permanently destroyed",
-      "New peptide bonds are created, changing its primary structure",
-      "Non-covalent bonds maintaining its 3D shape are disrupted, causing it to unfold and lose function",
-      "It is broken into individual amino acids by hydrolysis",
+      "Chaperones are structural proteins that permanently bind their target proteins to stabilize them",
+      "Chaperones (Hsp70, Hsp90, GroEL/GroES) prevent premature folding or aggregation of nascent polypeptides — they bind exposed hydrophobic regions, provide a folding chamber, and release the protein to fold correctly; they're especially important under heat stress when proteins denature",
+      "Chaperones are only needed for membrane proteins; cytosolic proteins fold spontaneously without any assistance",
+      "Chaperones are ribozymes that catalyze peptide bond formation during translation",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation:
-      "Denaturation disrupts the non-covalent interactions (hydrogen bonds, ionic bonds, hydrophobic interactions) that hold the protein's 3D shape together. The primary structure (amino acid sequence, held by covalent peptide bonds) remains intact, but the protein unfolds and loses its biological activity.",
+      "Protein folding in the crowded cellular environment (protein concentration ~300 mg/mL) is not the same as folding in dilute solution. Nascent polypeptides emerging from ribosomes have exposed hydrophobic segments that would readily aggregate with other unfolded proteins — a catastrophe for the cell. Chaperones prevent this. Hsp70 (heat shock protein 70) binds short hydrophobic stretches on unfolded proteins in an ATP-dependent manner, preventing aggregation while giving the protein time to fold. The GroEL/GroES system in bacteria (Hsp60/Hsp10 in eukaryotes) provides a protected folding chamber: GroEL forms a barrel that encapsulates the unfolded protein; GroES caps the barrel; ATP hydrolysis causes conformational changes that allow folding in an isolated, chaperone-lined environment. Hsp90 specializes in folding signaling proteins like kinases and steroid hormone receptors. Prion diseases (Parkinson's, Alzheimer's) involve proteins that misfold and seed aggregation of other normally folded proteins — spectacular cases where folding quality control fails with devastating consequences.",
     topic: "proteins",
   },
   {
     id: "p10",
     question:
-      "Where in the cell are proteins destined for secretion outside the cell primarily made and processed?",
+      "What are the five classes of antibodies (immunoglobulins) and what is the basic antibody structure?",
     options: [
-      "Free ribosomes in the cytoplasm, then directly exported",
-      "Rough ER ribosomes → Golgi apparatus → secretory vesicles → plasma membrane",
-      "Mitochondria → lysosomes → plasma membrane",
-      "Nucleus → cytoplasm → directly secreted",
+      "IgA, IgB, IgC, IgD, IgE — each named for its tissue location of production",
+      "IgG, IgM, IgA, IgE, IgD — all share a basic Y-shape with two heavy chains and two light chains connected by disulfide bonds; the variable (V) regions at the tips form the antigen-binding site; each class has distinct effector functions",
+      "Antibodies are all identical in structure; only the signaling pathway they activate differs",
+      "There are only two antibody classes — membrane-bound and secreted forms of IgM",
     ],
     correctIndex: 1,
     explanation:
-      "Secreted proteins follow the endomembrane pathway: synthesized by ribosomes on the rough ER, threaded into the ER lumen, passed through the Golgi apparatus for modification and sorting, then packaged into secretory vesicles that fuse with the plasma membrane to release the protein outside the cell.",
+      "Antibodies are extraordinary examples of protein architecture meeting biological function. The basic monomer is Y-shaped: two identical heavy chains and two identical light chains connected by disulfide bridges. Each arm of the Y contains a variable (V) domain from both chains that together form the antigen-binding site (the paratope) — generating specificity through the hypervariable CDR loops. The five immunoglobulin classes differ in their heavy chain constant regions and thus their effector functions: IgG (most abundant in blood; crosses the placenta; four subclasses) activates complement and opsonization; IgM (pentameric) is the first antibody produced in a response and is the most effective complement activator; IgA (dimeric in secretions) protects mucosal surfaces (gut, lungs, breast milk); IgE (monomeric; bound to mast cells) mediates allergic responses and antiparasitic immunity; IgD (on naive B cell surface) functions as a B cell receptor. Antibody diversity arises from V(D)J recombination — the same NHEJ-like mechanism that introduces junctional diversity — allowing the immune system to generate ~10¹⁸ possible antigen-binding sequences from a finite genome.",
     topic: "proteins",
   },
 ];
@@ -164,15 +169,15 @@ const PROTEIN_QUIZ: QuizQuestion[] = [
 // ────────────────────────────────────────────────────────────
 // Amino acid chain CSS animation
 // ────────────────────────────────────────────────────────────
-const AA_DATA = [
-  { label: "Gly", color: "#ff6b35", type: "Nonpolar" },
-  { label: "Ala", color: "#ffa040", type: "Nonpolar" },
-  { label: "Val", color: "#ffcb47", type: "Nonpolar" },
-  { label: "Ser", color: "#a8e063", type: "Polar" },
-  { label: "Thr", color: "#56c596", type: "Polar" },
-  { label: "Asp", color: "#4da6ff", type: "Charged −" },
-  { label: "Lys", color: "#c86dd7", type: "Charged +" },
-  { label: "Pro", color: "#e96595", type: "Nonpolar" },
+const AA_CHAIN_DATA = [
+  { label: "Gly", color: "#c2410c", type: "Nonpolar" },
+  { label: "Ala", color: "#b45309", type: "Nonpolar" },
+  { label: "Val", color: "#a16207", type: "Nonpolar" },
+  { label: "Ser", color: "#4d7c0f", type: "Polar" },
+  { label: "Thr", color: "#15803d", type: "Polar" },
+  { label: "Asp", color: "#1d4ed8", type: "Charged −" },
+  { label: "Lys", color: "#7e22ce", type: "Charged +" },
+  { label: "Pro", color: "#be185d", type: "Nonpolar" },
 ];
 
 function AminoAcidChain() {
@@ -181,18 +186,17 @@ function AminoAcidChain() {
       <div className="flex items-center gap-0 min-w-max py-6 px-4">
         {/* N-terminus label */}
         <div className="flex flex-col items-center mr-3">
-          <span className="text-xs font-bold mb-1" style={{ color: "#ff9944" }}>
+          <span className="text-xs font-bold mb-1" style={{ color: "#b45309" }}>
             N
           </span>
-          <div className="h-6 w-0.5" style={{ background: "#ff994466" }} />
-          <span className="text-xs" style={{ color: "#ff994488" }}>
+          <div className="h-6 w-0.5" style={{ background: "#b4530966" }} />
+          <span className="text-xs" style={{ color: "#b4530988" }}>
             H₂N–
           </span>
         </div>
 
-        {AA_DATA.map((aa, i) => (
+        {AA_CHAIN_DATA.map((aa, i) => (
           <div key={aa.label} className="flex items-center">
-            {/* Amino acid bead */}
             <div
               className="flex flex-col items-center"
               style={{
@@ -207,12 +211,12 @@ function AminoAcidChain() {
                 {aa.type}
               </span>
               <div
-                className="flex h-12 w-12 items-center justify-center rounded-full text-xs font-bold shadow-lg"
+                className="flex h-12 w-12 items-center justify-center rounded-full text-xs font-bold"
                 style={{
-                  background: `${aa.color}22`,
+                  background: `${aa.color}15`,
                   border: `2px solid ${aa.color}`,
                   color: aa.color,
-                  boxShadow: `0 0 12px ${aa.color}44`,
+                  boxShadow: `0 2px 8px ${aa.color}33`,
                 }}
               >
                 {aa.label}
@@ -225,8 +229,7 @@ function AminoAcidChain() {
               </span>
             </div>
 
-            {/* Peptide bond connector */}
-            {i < AA_DATA.length - 1 && (
+            {i < AA_CHAIN_DATA.length - 1 && (
               <div
                 className="flex flex-col items-center mx-1"
                 style={{
@@ -237,7 +240,7 @@ function AminoAcidChain() {
                 <span
                   style={{
                     fontSize: "9px",
-                    color: "oklch(0.55 0 0)",
+                    color: "oklch(0.5 0.03 75)",
                     marginBottom: "2px",
                   }}
                 >
@@ -247,7 +250,7 @@ function AminoAcidChain() {
                   style={{
                     height: "2px",
                     width: "24px",
-                    background: "oklch(0.45 0 0)",
+                    background: "oklch(0.75 0.02 75)",
                   }}
                 />
               </div>
@@ -257,11 +260,11 @@ function AminoAcidChain() {
 
         {/* C-terminus label */}
         <div className="flex flex-col items-center ml-3">
-          <span className="text-xs font-bold mb-1" style={{ color: "#4db8ff" }}>
+          <span className="text-xs font-bold mb-1" style={{ color: "#1d4ed8" }}>
             C
           </span>
-          <div className="h-6 w-0.5" style={{ background: "#4db8ff66" }} />
-          <span className="text-xs" style={{ color: "#4db8ff88" }}>
+          <div className="h-6 w-0.5" style={{ background: "#1d4ed866" }} />
+          <span className="text-xs" style={{ color: "#1d4ed888" }}>
             –COOH
           </span>
         </div>
@@ -270,18 +273,15 @@ function AminoAcidChain() {
       {/* Legend */}
       <div className="flex flex-wrap gap-3 px-4 mt-2">
         {[
-          { label: "Nonpolar (hydrophobic)", color: "#ffa040" },
-          { label: "Polar (uncharged)", color: "#56c596" },
-          { label: "Charged (–)", color: "#4da6ff" },
-          { label: "Charged (+)", color: "#c86dd7" },
+          { label: "Nonpolar (hydrophobic)", color: "#b45309" },
+          { label: "Polar (uncharged)", color: "#15803d" },
+          { label: "Charged (–)", color: "#1d4ed8" },
+          { label: "Charged (+)", color: "#7e22ce" },
         ].map((item) => (
           <div key={item.label} className="flex items-center gap-1.5">
             <div
               className="h-3 w-3 rounded-full"
-              style={{
-                background: item.color,
-                boxShadow: `0 0 6px ${item.color}88`,
-              }}
+              style={{ background: item.color }}
             />
             <span className="text-xs text-muted-foreground">{item.label}</span>
           </div>
@@ -299,28 +299,37 @@ const FOLDING_STAGES = [
     id: "primary",
     label: "Primary Structure",
     sublabel: "Amino acid sequence",
-    color: "#ff9944",
+    color: "#c2410c",
     shape: "linear",
     description:
-      "The specific order of amino acids (N→C terminus) determined by the DNA sequence. This is the blueprint.",
+      "The specific order of amino acids from N-terminus to C-terminus — encoded directly in the gene. Change one amino acid in the wrong place and the whole protein can lose its function. Sanger sequencing revealed the first protein sequence (insulin, 1955); mass spectrometry now maps entire proteomes.",
   },
   {
     id: "secondary",
     label: "Secondary Structure",
     sublabel: "Local folding patterns",
-    color: "#ffd44d",
+    color: "#d97706",
     shape: "coiled",
     description:
-      "Backbone hydrogen bonds create alpha-helices (coils) and beta-sheets (flat sheets) in local regions.",
+      "Backbone hydrogen bonds create alpha-helices (right-handed coils, 3.6 residues/turn, i to i+4 H-bonds) and beta-sheets (extended strands running side-by-side, parallel or antiparallel). Beta-turns and loops connect these elements. The Ramachandran plot shows which Phi/Psi backbone angles are sterically allowed.",
   },
   {
     id: "tertiary",
     label: "Tertiary Structure",
     sublabel: "Overall 3D fold",
-    color: "#ff6622",
+    color: "#b45309",
     shape: "globular",
     description:
-      "R-group interactions collapse the chain into a compact 3D shape: the functional protein.",
+      "R-group interactions collapse the chain into a compact, unique 3D shape: hydrophobic residues hide in the core (hydrophobic effect), polar and charged residues sit on the surface. Disulfide bridges between cysteines, salt bridges between charged residues, and H-bonds provide additional stability. Chaperones (Hsp70, GroEL/GroES) assist in crowded cellular conditions.",
+  },
+  {
+    id: "quaternary",
+    label: "Quaternary Structure",
+    sublabel: "Multi-subunit assembly",
+    color: "#7c3aed",
+    shape: "complex",
+    description:
+      "Multiple folded polypeptides associate via non-covalent interactions and sometimes disulfide bonds. Hemoglobin (2α + 2β subunits) exhibits cooperativity through the T-state/R-state allosteric switch. The proteasome has 28 subunits; ATP synthase spans two membranes with 8+ subunit types. Quaternary assembly enables allosteric regulation impossible in single-chain proteins.",
   },
 ];
 
@@ -340,11 +349,11 @@ function FoldingDiagram() {
             className="flex flex-col items-start rounded-xl px-4 py-3 transition-smooth"
             style={{
               background:
-                activeStage === i ? `${stage.color}22` : "oklch(0.20 0 0)",
-              border: `1px solid ${activeStage === i ? stage.color : "oklch(0.28 0 0)"}`,
+                activeStage === i ? `${stage.color}15` : "oklch(0.96 0.015 75)",
+              border: `1px solid ${activeStage === i ? stage.color : "oklch(0.88 0.02 75)"}`,
               cursor: "pointer",
               flex: "1 1 0",
-              minWidth: "140px",
+              minWidth: "120px",
             }}
           >
             <span className="text-xs font-bold" style={{ color: stage.color }}>
@@ -361,9 +370,9 @@ function FoldingDiagram() {
       <div
         className="flex items-center justify-center rounded-2xl"
         style={{
-          background: "oklch(0.14 0 0)",
+          background: "oklch(0.95 0.02 75)",
           minHeight: "180px",
-          border: "1px solid oklch(0.25 0 0)",
+          border: "1px solid oklch(0.88 0.02 75)",
         }}
       >
         {activeStage === 0 && (
@@ -376,9 +385,9 @@ function FoldingDiagram() {
                 <div
                   className="h-8 w-8 rounded-full flex items-center justify-center text-xs font-bold"
                   style={{
-                    background: `oklch(0.68 0.22 ${36 + i * 15} / 0.25)`,
-                    border: `2px solid oklch(0.68 0.22 ${36 + i * 15} / 0.8)`,
-                    color: `oklch(0.85 0.15 ${36 + i * 15})`,
+                    background: `oklch(0.92 0.05 ${36 + i * 12} / 0.4)`,
+                    border: `2px solid oklch(0.62 0.14 ${36 + i * 12})`,
+                    color: `oklch(0.42 0.14 ${36 + i * 12})`,
                     animation: "chainBuild 0.3s ease-out both",
                     animationDelay: `${i * 0.06}s`,
                   }}
@@ -390,7 +399,7 @@ function FoldingDiagram() {
                     style={{
                       width: "12px",
                       height: "2px",
-                      background: "oklch(0.40 0 0)",
+                      background: "oklch(0.78 0.02 75)",
                     }}
                   />
                 )}
@@ -404,29 +413,29 @@ function FoldingDiagram() {
             className="flex items-center gap-8 py-6"
             style={{ animation: "fadeIn 0.4s ease" }}
           >
-            {/* Helix symbol */}
             <div className="flex flex-col items-center gap-2">
               <div
                 className="text-4xl"
                 style={{
                   animation: "spin-slow 4s linear infinite",
-                  color: "#ff8833",
+                  color: "#c2410c",
                 }}
               >
                 🌀
               </div>
               <span
                 className="text-xs font-semibold"
-                style={{ color: "#ff8833" }}
+                style={{ color: "#c2410c" }}
               >
                 Alpha-Helix
               </span>
               <span className="text-xs text-muted-foreground">
-                H-bonds every 4 residues
+                3.6 residues/turn · i to i+4 H-bonds
               </span>
             </div>
-            <div style={{ color: "oklch(0.45 0 0)", fontSize: "24px" }}>+</div>
-            {/* Beta-sheet symbol */}
+            <div style={{ color: "oklch(0.6 0.02 75)", fontSize: "24px" }}>
+              +
+            </div>
             <div className="flex flex-col items-center gap-2">
               <div className="flex flex-col gap-1">
                 {[0, 1, 2].map((i) => (
@@ -435,8 +444,8 @@ function FoldingDiagram() {
                       style={{
                         width: "48px",
                         height: "10px",
-                        background: "#ffd44d44",
-                        border: "1px solid #ffd44d88",
+                        background: "#d9770622",
+                        border: "1px solid #d9770666",
                         borderRadius: "2px",
                       }}
                     />
@@ -444,7 +453,7 @@ function FoldingDiagram() {
                       style={{
                         width: 0,
                         height: 0,
-                        borderLeft: "10px solid #ffd44daa",
+                        borderLeft: "10px solid #d97706aa",
                         borderTop: "5px solid transparent",
                         borderBottom: "5px solid transparent",
                       }}
@@ -454,12 +463,12 @@ function FoldingDiagram() {
               </div>
               <span
                 className="text-xs font-semibold"
-                style={{ color: "#ffd44d" }}
+                style={{ color: "#d97706" }}
               >
                 Beta-Sheet
               </span>
               <span className="text-xs text-muted-foreground">
-                Parallel strands
+                Antiparallel · backbone H-bonds
               </span>
             </div>
           </div>
@@ -471,27 +480,24 @@ function FoldingDiagram() {
             style={{ animation: "fadeIn 0.4s ease" }}
           >
             <div className="relative">
-              {/* Compact globe shape */}
               <div
                 className="h-28 w-28 rounded-full flex items-center justify-center"
                 style={{
                   background:
-                    "radial-gradient(circle at 35% 35%, oklch(0.68 0.22 36 / 0.5), oklch(0.45 0.15 36 / 0.3))",
-                  border: "2px solid oklch(0.68 0.22 36 / 0.6)",
-                  boxShadow: "0 0 30px oklch(0.68 0.22 36 / 0.3)",
+                    "radial-gradient(circle at 35% 35%, oklch(0.75 0.12 36 / 0.4), oklch(0.55 0.12 36 / 0.2))",
+                  border: "2px solid oklch(0.62 0.14 36 / 0.5)",
+                  boxShadow: "0 4px 20px oklch(0.62 0.14 36 / 0.2)",
                   animation: "pulse-glow 3s ease-in-out infinite",
                 }}
               >
                 <span className="text-2xl">⚗️</span>
               </div>
-              {/* Decorative dots representing R-group contacts */}
               {[0, 60, 120, 180, 240, 300].map((deg) => (
                 <div
                   key={deg}
                   className="absolute h-3 w-3 rounded-full"
                   style={{
-                    background: `oklch(0.72 0.20 ${36 + deg / 10})`,
-                    boxShadow: `0 0 6px oklch(0.72 0.20 ${36 + deg / 10} / 0.7)`,
+                    background: `oklch(0.62 0.14 ${36 + deg / 10})`,
                     top: `${50 + 46 * Math.sin((deg * Math.PI) / 180)}%`,
                     left: `${50 + 46 * Math.cos((deg * Math.PI) / 180)}%`,
                     transform: "translate(-50%, -50%)",
@@ -500,12 +506,53 @@ function FoldingDiagram() {
               ))}
             </div>
             <div className="text-center">
-              <p className="text-sm font-semibold" style={{ color: "#ff6622" }}>
+              <p className="text-sm font-semibold" style={{ color: "#b45309" }}>
                 Compact Globular Shape
               </p>
               <p className="text-xs text-muted-foreground mt-1">
                 Hydrophobic core · Disulfide bridges · H-bonds
               </p>
+            </div>
+          </div>
+        )}
+
+        {activeStage === 3 && (
+          <div
+            className="flex items-center gap-4 py-6 px-6"
+            style={{ animation: "fadeIn 0.4s ease" }}
+          >
+            {[
+              { color: "#7c3aed", label: "α-chain 1", id: "alpha1" },
+              { color: "#be185d", label: "β-chain 1", id: "beta1" },
+              { color: "#7c3aed", label: "α-chain 2", id: "alpha2" },
+              { color: "#be185d", label: "β-chain 2", id: "beta2" },
+            ].map((sub, i) => (
+              <div key={sub.id} className="flex flex-col items-center gap-2">
+                <div
+                  className="h-16 w-16 rounded-full flex items-center justify-center text-xs font-bold"
+                  style={{
+                    background: `${sub.color}18`,
+                    border: `2px solid ${sub.color}66`,
+                    color: sub.color,
+                    boxShadow: `0 2px 12px ${sub.color}22`,
+                    animation: `pulse-glow ${2.5 + i * 0.3}s ease-in-out infinite`,
+                  }}
+                >
+                  ⚗️
+                </div>
+                <span className="text-xs" style={{ color: sub.color }}>
+                  {sub.label}
+                </span>
+              </div>
+            ))}
+            <div className="ml-3 text-center">
+              <p className="text-sm font-semibold" style={{ color: "#7c3aed" }}>
+                Hemoglobin
+              </p>
+              <p className="text-xs text-muted-foreground">
+                Tetrameric complex
+              </p>
+              <p className="text-xs text-muted-foreground">T-state ⇌ R-state</p>
             </div>
           </div>
         )}
@@ -515,11 +562,14 @@ function FoldingDiagram() {
       <div
         className="rounded-xl p-4"
         style={{
-          background: `${FOLDING_STAGES[activeStage].color}11`,
-          border: `1px solid ${FOLDING_STAGES[activeStage].color}33`,
+          background: `${FOLDING_STAGES[activeStage].color}0d`,
+          border: `1px solid ${FOLDING_STAGES[activeStage].color}30`,
         }}
       >
-        <p className="text-sm leading-relaxed text-muted-foreground">
+        <p
+          className="text-sm leading-relaxed"
+          style={{ color: "oklch(0.3 0.03 75)" }}
+        >
           <span
             className="font-semibold"
             style={{ color: FOLDING_STAGES[activeStage].color }}
@@ -538,34 +588,69 @@ function FoldingDiagram() {
 // ────────────────────────────────────────────────────────────
 const EXPLANATION_PARAGRAPHS = [
   {
-    title: "Amino Acids: The Monomer Units of Proteins",
-    color: "#ff9944",
-    text: "Proteins are built from amino acids, small organic molecules that share a common core architecture. At the center sits an alpha-carbon (C\u03B1) bonded to four groups: an amino group (\u2013NH\u2082), a carboxyl group (\u2013COOH), a hydrogen atom, and a variable R side chain (also called the side group). It is the R chain that distinguishes one amino acid from another. The human body uses 20 standard amino acids, which differ in the size, charge, polarity, and chemical reactivity of their R groups. These 20 are grouped into families: nonpolar aliphatic (like glycine, alanine, valine, leucine, isoleucine, proline, and methionine), aromatic (phenylalanine, tyrosine, tryptophan), polar uncharged (serine, threonine, cysteine, asparagine, glutamine), positively charged (lysine, arginine, histidine), and negatively charged (aspartate, glutamate). The specific properties of each R group ultimately determine how a protein will fold and function.",
+    anchorId: "proteins-amino-acids",
+    title: "Amino Acids: 20 Building Blocks, Unlimited Potential",
+    color: "#c2410c",
+    text: `It sounds improbable that just 20 amino acids could build the staggering diversity of proteins in every living organism — but that's exactly what happens. Every amino acid has the same backbone: a central alpha-carbon bonded to an amino group (–NH₂), a carboxyl group (–COOH), and a hydrogen atom. What makes each one unique is its R-group, the side chain hanging off that central carbon. Glycine's R-group is just a hydrogen atom — the smallest, most flexible amino acid. Tryptophan's is a large bicyclic aromatic indole ring. Aspartate carries a negative charge at physiological pH; lysine carries a positive charge; cysteine has a thiol group (–SH) that forms disulfide bridges.
+
+The 20 amino acids are sorted into families by R-group properties. Nonpolar aliphatic (Gly, Ala, Val, Leu, Ile, Pro) and aromatic (Phe, Trp, Tyr) residues are hydrophobic — they cluster in protein cores away from water. Polar uncharged residues (Ser, Thr, Cys, Asn, Gln) have hydroxyl or amide groups capable of hydrogen bonding. Positively charged (Lys, Arg, His) and negatively charged (Asp, Glu) residues are at the surface. Essential amino acids (His, Ile, Leu, Lys, Met, Phe, Thr, Trp, Val in adults) must come from diet because humans can't synthesize them. Nine non-essential ones are synthesized from metabolic intermediates. Peptide bond formation is a condensation reaction: the carboxyl of one amino acid reacts with the amino group of the next, releasing water and creating the –CO–NH– linkage. Remarkably, this bond has partial double-bond character due to resonance — making the peptide unit planar and rigid, a constraint that drives secondary structure.`,
   },
   {
-    title: "Peptide Bond Formation: Linking the Chain",
-    color: "#ffd44d",
-    text: "Amino acids are joined into chains through peptide bonds, a type of covalent bond formed in a condensation (dehydration) reaction. When two amino acids approach one another, the carboxyl group (\u2013COOH) of the first reacts with the amino group (\u2013NH\u2082) of the second, releasing a molecule of water (H\u2082O) as a byproduct. The resulting covalent linkage, \u2013CO\u2013NH\u2013, is the peptide bond. The chain that forms is called a polypeptide, and it has a defined directionality: the end with the free amino group is called the N-terminus, while the end with the free carboxyl group is the C-terminus. By convention, polypeptide sequences are always read from the N-terminus to the C-terminus. In living cells, this bond formation occurs on ribosomes, molecular machines that translate the information in mRNA into polypeptide chains with remarkable speed and fidelity.",
+    anchorId: "proteins-structure",
+    title:
+      "Secondary Structure: Alpha-Helices, Beta-Sheets, and Ramachandran Space",
+    color: "#d97706",
+    text: `Secondary structure refers to regular, repeating local arrangements stabilized by backbone hydrogen bonds. The alpha-helix is a right-handed coil with 3.6 amino acid residues per turn and a pitch of 5.4 Å. Each backbone carbonyl oxygen (C=O at residue n) hydrogen bonds to the backbone amide nitrogen (N–H at residue n+4), and these H-bonds run roughly parallel to the helix axis, stabilizing it beautifully. Side chains project outward from the helix, available for interactions with other parts of the protein or with other molecules. Proline is the classic helix-breaker: its cyclic pyrrolidine side chain fixes the Phi backbone dihedral angle and lacks the N–H needed for helix H-bonding — proline is often found at helix termini or in tight turns, creating structural kinks (crucial in collagen, for example).
+
+Beta-sheets form when two or more extended polypeptide strands run side-by-side, connected by backbone H-bonds between the strands rather than within a single strand. Antiparallel beta-sheets (strands running in opposite N→C directions) are more stable than parallel sheets because their H-bonds are more linear and their geometry more favorable. The pleated appearance of beta-sheets arises because the backbone has a slightly zig-zag geometry when extended. Beta-turns (type I, II, II') connect strands in antiparallel sheets and are frequently found on protein surfaces. The Ramachandran plot charts the allowed Phi (φ) and Psi (ψ) backbone dihedral angles for every residue — steric clashes forbid most regions, and the alpha-helical and beta-sheet regions are clearly distinct. Analyzing a new protein structure's Ramachandran plot is a standard quality check in structural biology.`,
   },
   {
-    title: "Hierarchy of Protein Structure: Four Levels",
-    color: "#ff6622",
-    text: "Proteins adopt complex, precise three-dimensional shapes described by four hierarchical levels. Primary structure is simply the linear amino acid sequence \u2014 the specific order of residues from N to C terminus, encoded directly in the gene. Secondary structure arises from regular, repetitive folding patterns within local regions of the polypeptide, driven entirely by hydrogen bonds between backbone atoms (not side chains). The two main secondary structures are the alpha-helix, a right-handed coil held by H-bonds between every fourth residue, and the beta-sheet, where extended strands lie side by side and form H-bonds across strands in parallel or antiparallel orientations. Tertiary structure is the complete, unique three-dimensional fold of a single polypeptide chain, determined by interactions among R groups: hydrophobic residues cluster in the core, polar and charged residues prefer the surface, H-bonds and ionic interactions provide additional stability, and disulfide bridges (covalent bonds between cysteine thiol groups) can lock regions together. Quaternary structure exists only in multi-subunit proteins and refers to how two or more folded polypeptide chains associate into one functional complex, as in hemoglobin\u2019s four-subunit structure.",
+    anchorId: "proteins-tertiary",
+    title: "Tertiary Structure: Protein Domains, Motifs, and Chaperones",
+    color: "#b45309",
+    text: `Tertiary structure is the complete three-dimensional fold of a single polypeptide chain, stabilized by a network of R-group interactions. The hydrophobic effect is the dominant driving force: nonpolar side chains are excluded from water and cluster in the protein interior, minimizing the thermodynamically unfavorable exposure of hydrophobic surface area. Disulfide bonds between cysteine residues (formed in the oxidizing environment of the ER lumen) provide covalent stabilization, crucial for extracellular proteins like antibodies and insulin. Salt bridges between oppositely charged residues and a network of hydrogen bonds add further stability.
+
+Proteins often contain independently folding units called domains — compact substructures with distinct hydrophobic cores, typically 50–350 residues. Protein domains are evolution's modular building blocks: the TIM barrel (a barrel of 8 beta-strands and 8 alpha-helices) is one of the most common enzymatic folds; the Rossmann fold binds NAD⁺/NADH in many dehydrogenases; the EF-hand is a calcium-binding loop found in calmodulin. Structural motifs are smaller super-secondary patterns: the leucine zipper and helix-turn-helix (HTH) are DNA-binding motifs; zinc fingers coordinate Zn²⁺ to stabilize a small finger-like protrusion that inserts into the DNA major groove. Chaperones are essential for in-cell folding — Hsp70 prevents premature aggregation of nascent chains; the GroEL/GroES barrel provides a protected folding chamber. When folding goes wrong, misfolded proteins aggregate into amyloid fibrils: Alzheimer's disease involves β-amyloid (Aβ) and tau aggregation; Parkinson's involves alpha-synuclein; prions are an extreme case where a misfolded protein (PrP^Sc) acts as a template to refold normal prions (PrP^C) into the disease conformation.`,
   },
   {
-    title: "Protein Functions: The Workhorses of the Cell",
-    color: "#ff8833",
-    text: "Proteins carry out an astonishing variety of cellular functions, making them the most functionally diverse macromolecules in biology. Enzymes are catalytic proteins that accelerate biochemical reactions by lowering activation energy; without them, most metabolic reactions would proceed far too slowly to sustain life. Structural proteins such as collagen (providing tensile strength to connective tissues) and keratin (the tough polymer of hair, nails, and epidermis) give cells and tissues their physical integrity. Transport proteins \u2014 most famously hemoglobin \u2014 bind and ferry small molecules or ions through the bloodstream or across membranes (as channel and carrier proteins). Hormonal proteins like insulin, a small protein secreted by pancreatic beta-cells, serve as chemical messengers that coordinate physiology across different organs. Antibodies (immunoglobulins) are Y-shaped proteins produced by immune cells that bind and neutralize specific foreign molecules with exquisite specificity. Motor proteins such as myosin and kinesin convert chemical energy into directed mechanical movement, powering muscle contraction and organelle transport.",
+    anchorId: "proteins-quaternary",
+    title: "Quaternary Structure and Allosteric Regulation",
+    color: "#7c3aed",
+    text: `Quaternary structure exists in proteins made of two or more polypeptide subunits — the arrangement of those subunits relative to each other. Subunits can be identical (homomers: hemoglobin-like complexes, viral capsids) or different (heteromers). The interactions holding subunits together are the same non-covalent forces as tertiary structure, plus sometimes intersubunit disulfide bonds. Quaternary assembly enables a remarkable phenomenon impossible in monomers: allostery.
+
+Hemoglobin is the textbook example of positive cooperativity. The four subunits (2 alpha + 2 beta globin chains, each carrying a heme group) exist in two conformations: T-state (tense, low O₂ affinity) and R-state (relaxed, high affinity). When the first O₂ binds one subunit, it triggers a conformational change that propagates through the other subunits, shifting them toward R-state and making them more likely to bind O₂. This produces hemoglobin's sigmoidal oxygen-binding curve — far more efficient than the hyperbolic curve of non-cooperative myoglobin. The Bohr effect means that high CO₂ and H⁺ (in metabolically active tissues) stabilize the T-state and promote O₂ release exactly where it's needed. 2,3-BPG also stabilizes the T-state. Other major quaternary complexes: the 26S proteasome (28 subunit protease complex degrading ubiquitinated proteins), ATP synthase (8+ subunit types spanning two membranes, rotary mechanism), and the ribosome (4 rRNA + ~80 proteins). All are among the most complex machines in the cell.`,
   },
   {
-    title: "Protein Denaturation: When Structure Collapses",
-    color: "#ff5533",
-    text: "Proteins depend on their precise three-dimensional shape to function. Denaturation is the process by which this shape is disrupted \u2014 not by breaking peptide bonds, but by destroying the weaker non-covalent interactions (hydrogen bonds, ionic bonds, hydrophobic interactions, and van der Waals forces) that maintain the native conformation. High temperature is one of the most common denaturants: heat agitates atoms and breaks the fragile H-bond network, causing the chain to unfold. Extreme pH disrupts ionic bonds and the protonation state of ionizable R groups, while chemical denaturants such as urea or detergents interfere with hydrophobic packing and hydrogen bonding. When denatured, proteins lose their biological activity \u2014 an enzyme can no longer catalyze its reaction, a transport protein cannot bind its cargo. In some cases (if the primary structure is intact and conditions are restored) a protein can refold spontaneously; in others, denaturation is irreversible, as when cooking an egg white transforms liquid albumin into a permanently solid mass.",
+    anchorId: "proteins-enzymes",
+    title: "Six Enzyme Classes and Kinetics: From Km to Inhibition",
+    color: "#c2410c",
+    text: `Enzymes are biological catalysts that lower the activation energy of reactions without being consumed. They're classified into six EC (Enzyme Commission) classes: Oxidoreductases catalyze electron/hydrogen transfer (lactate dehydrogenase, succinate dehydrogenase, cytochrome P450s). Transferases move functional groups (hexokinase transfers phosphate from ATP to glucose; aminotransferases move amino groups in amino acid synthesis and catabolism). Hydrolases cleave bonds using water (proteases, lipases, glycosidases — the digestive enzymes). Lyases cleave bonds without water, often forming double bonds (pyruvate decarboxylase removing CO₂; aldolase in glycolysis). Isomerases interconvert stereoisomers or structural isomers (triose phosphate isomerase — one of the most efficient enzymes known; phosphoglucose isomerase). Ligases join two molecules using ATP energy (DNA ligase sealing nicks; acetyl-CoA carboxylase in fatty acid synthesis).
+
+Enzyme kinetics follows the Michaelis-Menten model (v = Vmax[S]/(Km + [S])) for most simple enzymes. Km is the substrate concentration at half-maximal velocity — a low Km means high substrate affinity. Vmax reflects the maximum rate when enzyme is fully saturated, related to kcat (the catalytic rate constant, or turnover number). Competitive inhibitors bind the active site and increase apparent Km without affecting Vmax — addable substrate can overcome them. Noncompetitive inhibitors bind an allosteric site on both free enzyme and enzyme-substrate complex, decreasing Vmax but leaving Km unchanged. Uncompetitive inhibitors bind only the enzyme-substrate complex, decreasing both Km and Vmax. Allosteric enzymes (like aspartate transcarbamoylase or phosphofructokinase) don't obey Michaelis-Menten kinetics and produce sigmoidal v vs [S] curves — they're the key control points in metabolic pathways.`,
   },
   {
-    title: "Where Proteins Are Made and Localized in the Cell",
-    color: "#ffaa44",
-    text: "Protein synthesis begins on ribosomes, large complexes of ribosomal RNA and proteins located throughout the cell. Cytosolic proteins \u2014 those destined to function in the cytoplasm (glycolytic enzymes, cytoskeletal components, most regulatory proteins) \u2014 are made on free ribosomes floating in the cytoplasm. In contrast, proteins destined for secretion, for the plasma membrane, or for organelles such as the ER, Golgi, or lysosomes are synthesized on ribosomes attached to the rough endoplasmic reticulum (rough ER). A hydrophobic signal sequence at the protein\u2019s N-terminus directs the ribosome to dock on the rough ER membrane; as the polypeptide elongates it is threaded directly into the ER lumen, where initial folding and glycosylation occur. From the ER the protein moves via vesicles to the Golgi apparatus, the cell\u2019s sorting and modification center, which adds carbohydrates, cleaves signal peptides, and packages finished proteins into secretory vesicles for delivery to their final destinations. Mitochondria and chloroplasts import many of their own proteins post-translationally using specific targeting sequences, while integral membrane proteins remain embedded in the lipid bilayer through hydrophobic transmembrane helices.",
+    anchorId: "proteins-functions",
+    title: "Structural, Transport, Motor, and Signaling Proteins",
+    color: "#d97706",
+    text: `Proteins are the most functionally diverse molecules in biology. Structural proteins provide mechanical strength: collagen (the most abundant protein in the human body) is a triple-helix rope-like polymer that gives tendons, cartilage, bone, and skin their tensile strength; mutations in collagen genes cause Ehlers-Danlos and osteogenesis imperfecta syndromes. Keratin fills hair, nails, and the outer skin layer (epidermis). Actin and tubulin are cytoskeletal proteins that form dynamic filaments and microtubules for cell shape, division, and intracellular transport.
+
+Transport proteins carry molecules where they're needed: hemoglobin carries O₂ in red blood cells; myoglobin stores O₂ in muscle; albumin (most abundant plasma protein) carries fatty acids, hormones, and bilirubin in blood; channel proteins (aquaporins, ion channels) and carrier proteins (glucose transporters) move solutes across membranes with specificity and speed. Motor proteins convert chemical energy (ATP hydrolysis) into directed mechanical motion: myosin walks along actin filaments, powering muscle contraction; kinesin and dynein walk along microtubules carrying vesicles and organelles toward opposite cell poles (kinesin toward + end, dynein toward − end). Signaling proteins include G-proteins (molecular switches cycling between GTP-active and GDP-inactive states), receptor tyrosine kinases (RTKs like EGFR and insulin receptor that autophosphorylate upon ligand binding, triggering downstream phosphorylation cascades), G-protein-coupled receptors (GPCRs — the largest receptor superfamily, ~800 human GPCRs, targets of ~35% of approved drugs), ligand-gated ion channels (nicotinic acetylcholine receptor), and nuclear receptors (glucocorticoid receptor, estrogen receptor — transcription factors activated by lipophilic ligands). Antibodies (IgG, IgM, IgA, IgE, IgD) are Y-shaped immunoglobulins with hypervariable CDR loops at the tips that generate extraordinary binding specificity; their diversity arises from V(D)J recombination.`,
+  },
+  {
+    anchorId: "proteins-ptms",
+    title: "Post-Translational Modifications and Protein Targeting",
+    color: "#b45309",
+    text: `Once a protein is translated, its story is far from over. Post-translational modifications (PTMs) dramatically expand functional diversity beyond what the primary sequence alone achieves. Phosphorylation is the most common regulatory PTM: kinases add phosphate groups to Ser, Thr, or Tyr hydroxyl groups, creating negative charges that alter protein conformation and interactions; phosphatases reverse this. Signal transduction cascades — from the cell surface to the nucleus — are largely built from phosphorylation events. Glycosylation adds carbohydrate chains (N-linked to Asn in the ER, O-linked to Ser/Thr in the Golgi) for proper folding, targeting, and cell-surface recognition. Ubiquitination tags proteins with chains of the 76-amino acid ubiquitin protein; K48-linked polyubiquitin chains mark proteins for degradation by the 26S proteasome; K63-linked chains have signaling roles in DNA repair. SUMOylation and acetylation (especially of histone lysines) regulate protein localization and chromatin compaction. Lipid modifications (N-myristoylation, palmitoylation, prenylation) anchor peripheral membrane proteins to bilayers.
+
+Protein targeting ensures each protein reaches its correct cellular address. Cytosolic proteins (glycolytic enzymes, kinases, many regulatory proteins) are made on free ribosomes without any special signals. Proteins destined for secretion or membrane insertion contain an N-terminal hydrophobic signal sequence recognized by Signal Recognition Particle (SRP), which docks the ribosome on the rough ER — the polypeptide threads directly into the ER lumen as it's translated. After folding and initial glycosylation in the ER, COPII vesicles deliver proteins to the Golgi for further processing and sorting. Mitochondria have their own protein import machinery (TOM/TIM complexes) recognizing matrix-targeting sequences that are cleaved upon import. Nuclear localization sequences (NLS, typically enriched in Lys and Arg) are recognized by importins for active transport through nuclear pore complexes. Proteolytic cleavage activates many proteins: zymogens (inactive enzyme precursors) like trypsinogen and pepsinogen are activated by targeted cleavage; insulin is made as preproinsulin and processed to the active two-chain form by removal of the signal peptide and C-peptide.`,
+  },
+  {
+    anchorId: "proteins-diseases",
+    title: "Protein Folding Diseases: When the Machine Goes Wrong",
+    color: "#c2410c",
+    text: `Given the complexity of protein folding, it's remarkable how well it works — but when it fails, the consequences can be devastating. Amyloid diseases arise when proteins misfold from their native globular conformation into beta-sheet-rich fibrillar aggregates that are resistant to cellular degradation. In Alzheimer's disease, amyloid precursor protein is cleaved to generate Aβ peptides (especially Aβ42) that aggregate into extracellular plaques; tau protein also forms intracellular neurofibrillary tangles. In Parkinson's disease, alpha-synuclein aggregates into Lewy bodies in dopaminergic neurons. Type 2 diabetes involves IAPP (islet amyloid polypeptide) aggregating in pancreatic islets, destroying beta cells. Huntington's disease involves polyglutamine (polyQ) expansion in huntingtin protein, causing it to aggregate — a direct result of a DNA repeat expansion mutation.
+
+Prion diseases represent the most conceptually disturbing folding pathology: a single protein (PrP) can exist in two conformations — the normal cellular form (PrP^C, mostly alpha-helical) and the misfolded scrapie form (PrP^Sc, predominantly beta-sheet). PrP^Sc acts as a template that physically catalyzes the conversion of PrP^C into more PrP^Sc — essentially an infectious protein with no nucleic acid. This underlies mad cow disease (BSE), Creutzfeldt-Jakob disease (CJD), and kuru. Cystic fibrosis provides another instructive example: the most common mutation (ΔF508) in the CFTR chloride channel causes it to misfold slightly, so the quality control machinery of the ER retains and degrades it — resulting in near-complete loss of functional CFTR at the cell surface, despite the protein potentially having some activity if it could get there. Understanding these diseases has driven enormous investment in protein folding research and chaperone-based therapies.`,
   },
 ];
 
@@ -576,38 +661,38 @@ const FUNCTION_CARDS = [
   {
     icon: "⚙️",
     label: "Enzymes",
-    desc: "Amylase digests starch; catalase destroys H₂O₂",
-    color: "#ff9944",
+    desc: "Six EC classes: oxidoreductases, transferases, hydrolases, lyases, isomerases, ligases. Kinetics: Km, Vmax, competitive/noncompetitive inhibition.",
+    color: "#c2410c",
   },
   {
     icon: "🛡️",
     label: "Antibodies",
-    desc: "Immunoglobulins neutralize pathogens with high specificity",
-    color: "#ffd44d",
+    desc: "IgG/IgM/IgA/IgE/IgD — Y-shaped immunoglobulins; V(D)J recombination generates ~10¹⁸ possible antigen-binding specificities.",
+    color: "#d97706",
   },
   {
     icon: "📡",
-    label: "Hormones",
-    desc: "Insulin signals cells to absorb glucose from blood",
-    color: "#ff6622",
+    label: "Signaling",
+    desc: "GPCRs (~800 human types, 35% of drug targets), RTKs, G-proteins, nuclear receptors — coordinate cellular responses to signals.",
+    color: "#b45309",
   },
   {
     icon: "🏗️",
     label: "Structural",
-    desc: "Collagen in tendons; keratin in hair and nails",
-    color: "#ff8833",
+    desc: "Collagen (triple helix, most abundant human protein), keratin (hair/nails), actin/tubulin (cytoskeleton dynamics).",
+    color: "#c2410c",
   },
   {
     icon: "🚌",
     label: "Transport",
-    desc: "Hemoglobin carries O₂; channel proteins regulate ion flow",
-    color: "#ffaa44",
+    desc: "Hemoglobin (cooperative O₂ binding, Bohr effect), albumin, aquaporins, glucose transporters, ion channels.",
+    color: "#d97706",
   },
   {
     icon: "⚡",
     label: "Motor",
-    desc: "Myosin powers muscle contraction; kinesin walks on microtubules",
-    color: "#ff5544",
+    desc: "Myosin (muscle contraction along actin), kinesin (+end, anterograde cargo), dynein (−end, retrograde) — ATP-powered walking.",
+    color: "#b45309",
   },
 ];
 
@@ -618,26 +703,29 @@ export default function ProteinsSection() {
   const [level, setLevel] = useState<StructureLevel>("secondary");
 
   return (
-    <section className="px-4 py-16 md:px-8">
+    <section
+      className="px-4 py-16 md:px-8"
+      style={{ background: "oklch(0.97 0.015 36 / 0.25)" }}
+    >
       <div className="mx-auto max-w-5xl">
         {/* Header */}
         <AnimatedEntrance direction="left">
           <SectionHeader
             topicId="proteins"
             title="Proteins — The Molecular Workhorses"
-            subtitle="From amino acid sequences to intricate 3D machines: explore how proteins fold, function, and power every living process."
+            subtitle="From amino acid chemistry through all four structural levels, enzyme kinetics, protein types, and post-translational modifications — a complete guide for students and researchers alike."
           />
-          {/* Zap icon usage — decorative accent badge */}
           <div
             className="mb-6 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold"
             style={{
-              background: "oklch(0.68 0.22 36 / 0.15)",
-              border: "1px solid oklch(0.68 0.22 36 / 0.35)",
-              color: "oklch(0.82 0.15 36)",
+              background: "oklch(0.92 0.06 36)",
+              border: "1px solid oklch(0.62 0.14 36 / 0.35)",
+              color: "oklch(0.42 0.14 36)",
             }}
           >
             <Zap className="h-3.5 w-3.5" />
-            20 standard amino acids · 4 structural levels · Countless functions
+            20 standard amino acids · 4 structural levels · 6 enzyme classes ·
+            Countless PTMs
           </div>
         </AnimatedEntrance>
 
@@ -646,15 +734,15 @@ export default function ProteinsSection() {
           <div
             className="mb-12 rounded-2xl overflow-hidden"
             style={{
-              border: "1px solid oklch(0.68 0.22 36 / 0.3)",
-              boxShadow: "0 0 40px oklch(0.68 0.22 36 / 0.15)",
+              border: "1px solid oklch(0.62 0.14 36 / 0.25)",
+              boxShadow: "0 4px 20px oklch(0.62 0.14 36 / 0.1)",
             }}
           >
             <div
               className="flex items-center justify-between px-5 py-3 border-b"
               style={{
-                borderColor: "oklch(0.68 0.22 36 / 0.2)",
-                background: "oklch(0.17 0 0)",
+                borderColor: "oklch(0.62 0.14 36 / 0.18)",
+                background: "oklch(0.99 0.01 75)",
               }}
             >
               <h3 className="font-display text-sm font-semibold accent-protein">
@@ -673,15 +761,90 @@ export default function ProteinsSection() {
           </div>
         </AnimatedEntrance>
 
+        {/* Amino acid categories quick reference */}
+        <AnimatedEntrance direction="up" delay={0.05} className="mb-12">
+          <div
+            className="rounded-2xl p-5 border"
+            style={{
+              borderColor: "oklch(0.62 0.14 36 / 0.22)",
+              background: "oklch(0.98 0.01 75)",
+            }}
+          >
+            <h3 className="font-display font-bold text-base mb-3 accent-protein">
+              The 20 Amino Acids — Grouped by R-Group Properties
+            </h3>
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+              {[
+                {
+                  cat: "Nonpolar Aliphatic",
+                  aas: "Gly, Ala, Val, Leu, Ile, Pro, Met",
+                  role: "Hydrophobic core packing; Pro breaks helices",
+                  color: "#c2410c",
+                },
+                {
+                  cat: "Aromatic",
+                  aas: "Phe, Trp, Tyr",
+                  role: "Hydrophobic + pi-stacking; Tyr has –OH for H-bonding; Trp fluorescent",
+                  color: "#b45309",
+                },
+                {
+                  cat: "Polar Uncharged",
+                  aas: "Ser, Thr, Cys, Asn, Gln",
+                  role: "H-bonding; Cys forms disulfide bridges; Ser/Thr phosphorylation sites",
+                  color: "#15803d",
+                },
+                {
+                  cat: "Charged",
+                  aas: "Asp, Glu (−) · Lys, Arg, His (+)",
+                  role: "Protein surface, salt bridges; Asp/Glu in enzyme active sites; Lys acetylated in histones",
+                  color: "#1d4ed8",
+                },
+              ].map((item) => (
+                <div
+                  key={item.cat}
+                  className="rounded-xl p-3"
+                  style={{
+                    background: `${item.color}08`,
+                    border: `1px solid ${item.color}25`,
+                  }}
+                >
+                  <div
+                    className="font-semibold text-xs mb-1"
+                    style={{ color: item.color }}
+                  >
+                    {item.cat}
+                  </div>
+                  <div
+                    className="text-xs font-mono font-medium mb-1.5"
+                    style={{ color: "oklch(0.35 0.03 75)" }}
+                  >
+                    {item.aas}
+                  </div>
+                  <p
+                    className="text-xs leading-relaxed"
+                    style={{ color: "oklch(0.42 0.02 75)" }}
+                  >
+                    {item.role}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </AnimatedEntrance>
+
         {/* Explanation paragraphs */}
         <StaggerContainer className="mb-12 space-y-8" staggerDelay={0.08}>
-          {EXPLANATION_PARAGRAPHS.map((para) => (
+          {EXPLANATION_PARAGRAPHS.map((para, i) => (
             <StaggerItem key={para.title}>
               <div
+                id={para.anchorId}
                 className="rounded-2xl p-6"
                 style={{
-                  background: "oklch(0.18 0 0)",
-                  border: `1px solid ${para.color}25`,
+                  background:
+                    i % 2 === 0
+                      ? "oklch(0.98 0.01 75)"
+                      : "oklch(0.95 0.04 36 / 0.2)",
+                  border: `1px solid ${para.color}20`,
                 }}
               >
                 <h3
@@ -690,9 +853,15 @@ export default function ProteinsSection() {
                 >
                   {para.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
-                  {para.text}
-                </p>
+                {para.text.split("\n\n").map((paragraph) => (
+                  <p
+                    key={paragraph.slice(0, 40)}
+                    className="leading-relaxed text-sm md:text-base mb-3 last:mb-0"
+                    style={{ color: "oklch(0.3 0.03 75)" }}
+                  >
+                    {paragraph}
+                  </p>
+                ))}
               </div>
             </StaggerItem>
           ))}
@@ -703,20 +872,20 @@ export default function ProteinsSection() {
           <div
             className="mb-12 rounded-2xl overflow-hidden"
             style={{
-              background: "oklch(0.17 0 0)",
-              border: "1px solid oklch(0.68 0.22 36 / 0.25)",
+              background: "oklch(0.98 0.01 75)",
+              border: "1px solid oklch(0.62 0.14 36 / 0.2)",
             }}
           >
             <div
               className="px-5 py-4 border-b"
-              style={{ borderColor: "oklch(0.68 0.22 36 / 0.2)" }}
+              style={{ borderColor: "oklch(0.62 0.14 36 / 0.18)" }}
             >
               <h3 className="font-display text-lg font-bold accent-protein">
                 Amino Acid Chain — Building a Polypeptide
               </h3>
               <p className="text-xs text-muted-foreground mt-1">
-                Each colored bead is an amino acid; the connector shows the
-                peptide bond (–CO–NH–)
+                Each colored bead is an amino acid; connectors show the peptide
+                bond (–CO–NH–); colors encode R-group class
               </p>
             </div>
             <div className="px-2 py-4">
@@ -730,24 +899,101 @@ export default function ProteinsSection() {
           <div
             className="mb-12 rounded-2xl overflow-hidden"
             style={{
-              background: "oklch(0.17 0 0)",
-              border: "1px solid oklch(0.68 0.22 36 / 0.25)",
+              background: "oklch(0.98 0.01 75)",
+              border: "1px solid oklch(0.62 0.14 36 / 0.2)",
             }}
           >
             <div
               className="px-5 py-4 border-b"
-              style={{ borderColor: "oklch(0.68 0.22 36 / 0.2)" }}
+              style={{ borderColor: "oklch(0.62 0.14 36 / 0.18)" }}
             >
               <h3 className="font-display text-lg font-bold accent-protein">
-                Protein Folding Hierarchy
+                Protein Folding Hierarchy — All Four Levels
               </h3>
               <p className="text-xs text-muted-foreground mt-1">
-                Click a stage to explore the primary → secondary → tertiary
-                structure progression
+                Click each level to explore primary → secondary → tertiary →
+                quaternary
               </p>
             </div>
             <div className="p-5">
               <FoldingDiagram />
+            </div>
+          </div>
+        </AnimatedEntrance>
+
+        {/* Enzyme kinetics quick reference */}
+        <AnimatedEntrance direction="up" delay={0.05} className="mb-12">
+          <div
+            className="rounded-2xl p-5 border"
+            style={{
+              borderColor: "oklch(0.62 0.14 36 / 0.22)",
+              background: "oklch(0.97 0.015 36 / 0.18)",
+            }}
+          >
+            <h3 className="font-display font-bold text-lg mb-4 accent-protein">
+              Enzyme Kinetics Quick Reference
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {[
+                {
+                  type: "Competitive Inhibition",
+                  effect: "Km ↑ · Vmax unchanged",
+                  mechanism:
+                    "Inhibitor binds active site; competes with substrate. Overcome by excess substrate.",
+                  example: "Methotrexate vs dihydrofolate reductase",
+                  color: "#dc2626",
+                },
+                {
+                  type: "Noncompetitive Inhibition",
+                  effect: "Km unchanged · Vmax ↓",
+                  mechanism:
+                    "Inhibitor binds allosteric site on both free enzyme and E-S complex. Can't overcome with substrate.",
+                  example: "Heavy metals vs many enzymes",
+                  color: "#d97706",
+                },
+                {
+                  type: "Uncompetitive Inhibition",
+                  effect: "Km ↓ · Vmax ↓ (proportionally)",
+                  mechanism:
+                    "Inhibitor binds only the enzyme-substrate complex. Paradoxically decreases Km (increases apparent affinity).",
+                  example: "Lithium vs inositol monophosphatase",
+                  color: "#7c3aed",
+                },
+              ].map((item) => (
+                <div
+                  key={item.type}
+                  className="rounded-xl p-4"
+                  style={{
+                    background: `${item.color}08`,
+                    border: `1px solid ${item.color}28`,
+                  }}
+                >
+                  <div
+                    className="font-semibold text-sm mb-1"
+                    style={{ color: item.color }}
+                  >
+                    {item.type}
+                  </div>
+                  <div
+                    className="text-xs font-mono font-bold mb-2"
+                    style={{ color: item.color }}
+                  >
+                    {item.effect}
+                  </div>
+                  <p
+                    className="text-xs leading-relaxed mb-2"
+                    style={{ color: "oklch(0.38 0.03 75)" }}
+                  >
+                    {item.mechanism}
+                  </p>
+                  <p
+                    className="text-xs italic"
+                    style={{ color: "oklch(0.5 0.02 75)" }}
+                  >
+                    Example: {item.example}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </AnimatedEntrance>
@@ -759,8 +1005,8 @@ export default function ProteinsSection() {
               Six Roles Proteins Play
             </h3>
             <p className="text-muted-foreground text-sm mb-6">
-              Proteins are specialists — each class evolved for a distinct
-              molecular job.
+              Each class evolved for a distinct molecular job — and all are
+              essential for life.
             </p>
             <StaggerContainer
               className="grid grid-cols-2 md:grid-cols-3 gap-4"
@@ -771,8 +1017,8 @@ export default function ProteinsSection() {
                   <div
                     className="rounded-2xl p-5 flex flex-col gap-2 h-full transition-smooth hover:scale-[1.02]"
                     style={{
-                      background: `${card.color}0f`,
-                      border: `1px solid ${card.color}30`,
+                      background: `${card.color}0a`,
+                      border: `1px solid ${card.color}25`,
                     }}
                   >
                     <span className="text-3xl">{card.icon}</span>
@@ -794,13 +1040,22 @@ export default function ProteinsSection() {
 
         {/* Quiz */}
         <AnimatedEntrance direction="up" delay={0.05}>
-          <div className="mb-4">
+          <div
+            data-ocid="proteins-quiz-section"
+            className="rounded-2xl p-7 mb-4"
+            style={{
+              background: "oklch(0.98 0.01 75)",
+              border: "1px solid oklch(0.62 0.14 36 / 0.2)",
+            }}
+          >
             <h3 className="font-display text-2xl font-bold accent-protein glow-protein mb-1">
-              Test Your Knowledge
+              🧪 Test Your Protein Knowledge
             </h3>
             <p className="text-muted-foreground text-sm mb-6">
-              10 questions on amino acid structure, protein folding, functions,
-              and denaturation.
+              10 questions spanning amino acid chemistry, structural levels,
+              enzyme kinetics, cooperative binding, post-translational
+              modifications, protein types, and chaperones — with detailed
+              teacher-style explanations.
             </p>
             <QuizEngine topicId="proteins" questions={PROTEIN_QUIZ} />
           </div>

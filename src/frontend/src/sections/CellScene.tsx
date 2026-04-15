@@ -633,7 +633,23 @@ function drawCell(
 // ── React component ───────────────────────────────────────────
 export function CellScene({ isPlant }: { isPlant: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number>(0);
+  const isVisible = useRef<boolean>(false);
+
+  // Pause animation when scrolled offscreen
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        isVisible.current = entries[0]?.isIntersecting ?? false;
+      },
+      { rootMargin: "100px" },
+    );
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -644,11 +660,14 @@ export function CellScene({ isPlant }: { isPlant: boolean }) {
     let startTime = performance.now();
 
     function loop(now: number) {
+      // Reschedule always, but skip draw work when not visible
+      rafRef.current = requestAnimationFrame(loop);
+      if (!isVisible.current) return;
+
       const t = (now - startTime) / 1000;
       const W = canvas!.width;
       const H = canvas!.height;
       drawCell(ctx!, W, H, isPlant, t);
-      rafRef.current = requestAnimationFrame(loop);
     }
 
     rafRef.current = requestAnimationFrame(loop);
@@ -657,6 +676,7 @@ export function CellScene({ isPlant }: { isPlant: boolean }) {
 
   return (
     <div
+      ref={containerRef}
       className="relative w-full rounded-2xl overflow-hidden"
       style={{ background: NAVY_BG }}
       aria-label={`2D animated ${isPlant ? "plant" : "animal"} cell diagram with labeled organelles`}

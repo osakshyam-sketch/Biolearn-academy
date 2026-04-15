@@ -466,10 +466,26 @@ function drawBasePairs(ctx: CanvasRenderingContext2D, W: number, H: number) {
 // ── React component ───────────────────────────────────────────
 export function DNAScene() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number>(0);
+  const isVisible = useRef<boolean>(false);
   const [view, setView] = useState<"helix" | "basepairs">("helix");
   const viewRef = useRef(view);
   viewRef.current = view;
+
+  // Pause animation when scrolled offscreen
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        isVisible.current = entries[0]?.isIntersecting ?? false;
+      },
+      { rootMargin: "100px" },
+    );
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -480,19 +496,20 @@ export function DNAScene() {
     const startTime = performance.now();
 
     function loop(now: number) {
+      // Reschedule always, but skip draw work when not visible
+      rafRef.current = requestAnimationFrame(loop);
+      if (!isVisible.current) return;
+
       const elapsed = (now - startTime) / 1000;
       const W = canvas!.width;
       const H = canvas!.height;
 
       if (viewRef.current === "helix") {
-        // Gentle scroll phase — half rotation every ~8 seconds
         const phase = elapsed * 0.4;
         drawHelix(ctx!, W, H, phase);
       } else {
         drawBasePairs(ctx!, W, H);
       }
-
-      rafRef.current = requestAnimationFrame(loop);
     }
 
     rafRef.current = requestAnimationFrame(loop);
@@ -501,6 +518,7 @@ export function DNAScene() {
 
   return (
     <div
+      ref={containerRef}
       className="relative w-full rounded-2xl overflow-hidden"
       style={{
         background: "#ffffff",

@@ -1,8 +1,18 @@
 import { Html, OrbitControls } from "@react-three/drei";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import { Component, type ReactNode, Suspense, useRef, useState } from "react";
+import {
+  Component,
+  type ReactNode,
+  Suspense,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import * as THREE from "three";
 import { TextureLoader } from "three";
+
+// Module-level visibility flag — toggled by IntersectionObserver
+let rnaSceneVisible = true;
 
 // Per-texture error boundary prevents one failed image from blanking the scene
 class TextureErrorBoundary extends Component<
@@ -122,12 +132,10 @@ function MRNAStrand() {
   const groupRef = useRef<THREE.Group>(null);
 
   useFrame((state) => {
-    if (groupRef.current) {
-      groupRef.current.rotation.y = state.clock.getElapsedTime() * 0.28;
-      // gentle float
-      groupRef.current.position.y =
-        Math.sin(state.clock.elapsedTime * 0.5) * 0.08;
-    }
+    if (!rnaSceneVisible || !groupRef.current) return;
+    groupRef.current.rotation.y = state.clock.getElapsedTime() * 0.28;
+    groupRef.current.position.y =
+      Math.sin(state.clock.elapsedTime * 0.5) * 0.08;
   });
 
   const bases = BASE_SEQ.map((base, i) => {
@@ -262,11 +270,9 @@ function PulsingBase({
 }: { pos: [number, number, number]; color: string; pulseOffset: number }) {
   const meshRef = useRef<THREE.Mesh>(null);
   useFrame((state) => {
-    if (meshRef.current) {
-      const s =
-        1 + Math.sin(state.clock.elapsedTime * 1.4 + pulseOffset) * 0.06;
-      meshRef.current.scale.setScalar(s);
-    }
+    if (!rnaSceneVisible || !meshRef.current) return;
+    const s = 1 + Math.sin(state.clock.elapsedTime * 1.4 + pulseOffset) * 0.06;
+    meshRef.current.scale.setScalar(s);
   });
   return (
     <mesh ref={meshRef} position={pos}>
@@ -402,11 +408,10 @@ function TRNAMolecule() {
   const groupRef = useRef<THREE.Group>(null);
 
   useFrame((state) => {
-    if (groupRef.current) {
-      groupRef.current.rotation.y = state.clock.getElapsedTime() * 0.28;
-      groupRef.current.position.y =
-        Math.sin(state.clock.elapsedTime * 0.6) * 0.06;
-    }
+    if (!rnaSceneVisible || !groupRef.current) return;
+    groupRef.current.rotation.y = state.clock.getElapsedTime() * 0.28;
+    groupRef.current.position.y =
+      Math.sin(state.clock.elapsedTime * 0.6) * 0.06;
   });
 
   return (
@@ -535,12 +540,10 @@ function RRNAMolecule() {
   const groupRef = useRef<THREE.Group>(null);
 
   useFrame((state) => {
-    if (groupRef.current) {
-      groupRef.current.rotation.y = state.clock.getElapsedTime() * 0.22;
-      // gentle float
-      groupRef.current.position.y =
-        Math.sin(state.clock.elapsedTime * 0.45) * 0.07;
-    }
+    if (!rnaSceneVisible || !groupRef.current) return;
+    groupRef.current.rotation.y = state.clock.getElapsedTime() * 0.22;
+    groupRef.current.position.y =
+      Math.sin(state.clock.elapsedTime * 0.45) * 0.07;
   });
 
   return (
@@ -700,9 +703,25 @@ const VIEW_BUTTONS: Array<{ id: RNAView; label: string; color: string }> = [
 
 export function RNAScene() {
   const [view, setView] = useState<RNAView>("mRNA");
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  // Gate all useFrame work when the canvas is offscreen
+  useEffect(() => {
+    const el = wrapperRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        rnaSceneVisible = entries[0]?.isIntersecting ?? false;
+      },
+      { rootMargin: "100px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section
+      ref={wrapperRef}
       className="rounded-2xl border overflow-hidden"
       style={{ borderColor: "rgba(155,89,255,0.3)", background: NAVY_BG }}
       aria-label="Interactive RNA molecular structure viewer"

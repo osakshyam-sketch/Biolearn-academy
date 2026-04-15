@@ -10,13 +10,13 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 
-// ─── Accent color tokens ───────────────────────────────────────────────────────
+// ── Accent color tokens ────────────────────────────────────────────────────────
 
-const GREEN = "0.73 0.18 155";
-const GREEN_DIM = "0.73 0.18 155 / 0.18";
-const GREEN_BORDER = "0.73 0.18 155 / 0.35";
+const GREEN = "0.55 0.16 155";
+const GREEN_DIM = "0.55 0.16 155 / 0.12";
+const GREEN_BORDER = "0.55 0.16 155 / 0.30";
 
-// ─── Category data ─────────────────────────────────────────────────────────────
+// ── Category data ──────────────────────────────────────────────────────────────
 
 interface AppExample {
   title: string;
@@ -31,6 +31,7 @@ interface AppCategory {
   imageUrl: string;
   imageAlt: string;
   accentOklch: string;
+  anchorId: string;
   examples: AppExample[];
 }
 
@@ -38,136 +39,185 @@ const CATEGORIES: AppCategory[] = [
   {
     id: "medicine",
     icon: "💊",
-    name: "Medicine",
-    tagline: "Saving lives with engineered molecules",
+    name: "Medicine & Therapeutics",
+    tagline:
+      "Engineered molecules that target disease with molecular precision",
     imageUrl:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Syringe_icon.svg/240px-Syringe_icon.svg.png",
     imageAlt:
       "Medical syringe representing biotechnology medicine applications",
-    accentOklch: "0.70 0.20 350",
+    accentOklch: "0.55 0.18 350",
+    anchorId: "biotech-medical",
     examples: [
       {
-        title: "Recombinant Insulin",
+        title: "Recombinant Insulin (Humulin, 1982)",
         detail:
-          "The first recombinant protein approved for human use (1982). Human insulin gene was cloned into E. coli, enabling cheap, scalable production for millions of diabetics worldwide — replacing animal-derived insulin.",
+          "The world's first recombinant protein pharmaceutical. Human insulin gene inserted into E. coli → fermentation → purification. Identical to native human insulin, replaced animal-derived insulin for hundreds of millions of diabetics globally. Launched the entire biotech pharma industry.",
       },
       {
         title: "Monoclonal Antibodies",
         detail:
-          "Engineered antibodies (e.g., trastuzumab for HER2+ breast cancer, adalimumab for rheumatoid arthritis) that bind a single specific antigen with high affinity. Produced in CHO cell bioreactors.",
+          "Kohler & Milstein's hybridoma technology (1975 Nobel Prize) fuses antibody-producing B cells with myeloma cells for immortal, single-specificity antibody production. Today 100+ approved mAbs — trastuzumab (HER2+ breast cancer), adalimumab (rheumatoid arthritis), pembrolizumab (PD-1 checkpoint), bevacizumab (VEGF). ADCs (antibody-drug conjugates) add cytotoxic payloads for targeted cancer therapy. Bispecific antibodies engage two antigens simultaneously.",
       },
       {
-        title: "Recombinant Vaccines",
+        title: "Gene Therapy (AAV, Lentivirus)",
         detail:
-          "Hepatitis B vaccine uses a recombinant yeast-produced antigen, eliminating safety risks of blood-derived vaccines. mRNA vaccines (COVID-19) use lipid nanoparticles to deliver mRNA encoding viral proteins.",
+          "FDA-approved: Luxturna (RPE65 gene in AAV2 for inherited retinal blindness), Zolgensma (SMN1 in AAV9 for spinal muscular atrophy — single infusion, ~$2M), Hemgenix (Factor IX in AAV5 for hemophilia B), Casgevy (CRISPR for sickle cell disease). Ex vivo (edit cells outside body, reinfuse) vs in vivo (inject vector directly). Viral vectors: AAV (4.7 kb limit, non-integrating), lentivirus (integrating, larger cargo).",
       },
       {
-        title: "Gene Therapy",
+        title: "CAR-T Cell Therapy",
         detail:
-          "Delivering functional gene copies to correct genetic disorders. Approved therapies include Zolgensma (SMA) and Luxturna (inherited retinal dystrophy), using viral vectors to restore missing function.",
+          "Chimeric Antigen Receptor T cells are genetically engineered to express a receptor that recognizes cancer cell surface antigens (CD19 for B-cell malignancies, BCMA for multiple myeloma). Patient's own T cells are extracted, transduced with lentiviral CAR vector, expanded, and reinfused. FDA-approved: Kymriah, Yescarta, Breyanzi, Abecma. Challenge: cytokine release syndrome, CAR-T exhaustion. Next-gen: allogeneic ('off-the-shelf') CAR-T using CRISPR-edited donor T cells.",
+      },
+      {
+        title: "mRNA Vaccines & Therapeutics",
+        detail:
+          "COVID-19 mRNA vaccines (BNT162b2, mRNA-1273) deliver lipid-nanoparticle-encapsulated mRNA encoding spike protein. Cells translate it, immune system responds, mRNA degrades within days — no viral particles, no DNA. Platform is extraordinarily rapid: sequence-to-vaccine in days. RNAi drugs: Onpattro (siRNA for transthyretin amyloidosis, 2018 — first approved siRNA), Inclisiran (PCSK9-targeting siRNA for cholesterol).",
+      },
+      {
+        title: "Antisense Oligonucleotides & CRISPR",
+        detail:
+          "ASOs (Spinraza for spinal muscular atrophy — modifies SMN2 splicing to include exon 7) are chemical analogs of RNA that modulate target gene expression. CRISPR-based: Casgevy (BCL11A editing for sickle cell) and Lyfgenia (both approved 2023). Base editing and prime editing advancing through trials for point-mutation diseases (progeria, phenylketonuria, Duchenne muscular dystrophy).",
+      },
+    ],
+  },
+  {
+    id: "diagnostics",
+    icon: "🔬",
+    name: "Diagnostics & Precision Medicine",
+    tagline:
+      "Detecting disease with molecular precision — from single viral copies to rare tumor mutations",
+    imageUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Enzymes_lock_and_key.svg/320px-Enzymes_lock_and_key.svg.png",
+    imageAlt: "Molecular diagnostics representation",
+    accentOklch: "0.52 0.15 210",
+    anchorId: "biotech-diagnostics",
+    examples: [
+      {
+        title: "PCR-Based Diagnostics",
+        detail:
+          "RT-qPCR detects viral RNA at single-copy sensitivity. COVID-19 RT-qPCR: gold standard, Ct <40 = positive. HIV viral load by RT-qPCR: monitors antiretroviral therapy. HPV genotyping for cervical cancer screening. BRCA1/2 mutation testing by Sanger or NGS sequencing. KRAS/BRAF cancer mutation panels for targeted therapy selection.",
+      },
+      {
+        title: "ELISA & Immunoassays",
+        detail:
+          "Enzyme-Linked Immunosorbent Assay: sandwich ELISA (two antibodies sandwich the antigen, HRP-linked detection) gives quantitative protein measurement. Lateral flow assays (pregnancy tests, COVID antigen tests) use colloidal gold-conjugated antibodies — results in 15 minutes, no equipment. ELISA is the workhorse of clinical immunology: HIV antibody screening, hepatitis B/C serology, troponin for heart attack, PSA for prostate cancer.",
+      },
+      {
+        title: "Next-Generation Sequencing (NGS)",
+        detail:
+          "Illumina sequencing by synthesis: all fragments sequenced in parallel, billions of reads per run. Clinical oncology: comprehensive genomic profiling (FoundationOne CDx) identifies actionable mutations. Liquid biopsy (ctDNA): cancer mutations in blood without biopsy. Prenatal: cell-free fetal DNA for chromosomal abnormalities. Pharmacogenomics: CYP2D6, TPMT, DPYD variants predict drug metabolism and toxicity.",
+      },
+      {
+        title: "Biosensors",
+        detail:
+          "Electrochemical glucose biosensors (glucose oxidase enzyme on an electrode) have been used by diabetics for decades — one test strip contains an immobilized enzyme. More advanced: aptamer-based biosensors for cancer biomarkers, plasmonic biosensors using gold nanoparticles for point-of-care pathogen detection, CRISPR-based SHERLOCK/DETECTR for single-molecule nucleic acid detection.",
       },
     ],
   },
   {
     id: "agriculture",
     icon: "🌾",
-    name: "Agriculture",
-    tagline: "Engineering crops for a growing world",
+    name: "Agriculture & Food",
+    tagline: "Engineering crops and livestock for a growing, changing world",
     imageUrl:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/24701-nature-natural-beauty.jpg/320px-24701-nature-natural-beauty.jpg",
     imageAlt: "Green crop field representing agricultural biotechnology",
-    accentOklch: "0.72 0.18 142",
+    accentOklch: "0.55 0.16 142",
+    anchorId: "biotech-agricultural",
     examples: [
       {
-        title: "Bt Crops",
+        title: "Bt Crops (Insect Resistance)",
         detail:
-          "Bacillus thuringiensis (Bt) toxin genes introduced into corn, cotton, and soy confer insect resistance, reducing pesticide use by up to 40% while increasing yield in pest-prone regions.",
+          "Bacillus thuringiensis (Bt) produces Cry proteins (δ-endotoxins) lethal to specific insects that bind to receptors in the midgut epithelium and cause cell lysis — harmless to vertebrates. Bt maize and Bt cotton: up to 40% reduction in insecticide use, significant yield protection in regions where European corn borer or bollworm cause catastrophic losses. Over 100 million hectares planted globally.",
       },
       {
-        title: "Herbicide-Tolerant Crops",
+        title: "Herbicide-Tolerant Crops & CRISPR Varieties",
         detail:
-          "Crops engineered to withstand broad-spectrum herbicides (e.g., glyphosate-tolerant soy) allow more efficient weed control, enabling no-till farming that reduces soil erosion.",
+          "Roundup Ready crops: EPSPS gene from Agrobacterium gives glyphosate tolerance — enables no-till farming (reduced soil erosion). Controversial due to herbicide resistance evolution in weeds. CRISPR has produced: non-browning mushrooms (PPO knockout), waxy corn (high amylopectin — USDA approved without GMO review), disease-resistant wheat (TaMLO knockout for powdery mildew), GABA-enriched tomatoes (Japan approved 2021 — first consumer CRISPR food).",
       },
       {
-        title: "Golden Rice",
+        title: "Golden Rice & Nutritional Enhancement",
         detail:
-          "Engineered with β-carotene biosynthesis genes to address Vitamin A deficiency, which causes ~500,000 cases of childhood blindness per year in developing countries.",
+          "Golden Rice introduces the β-carotene biosynthesis pathway (psy and crtI genes from daffodil and bacterium) into rice endosperm. Vitamin A deficiency affects 190 million children globally, causing 500,000 cases of preventable blindness/year. Golden Rice 2 contains 37 μg/g β-carotene in dry weight. After 25 years of regulatory navigation, approved for food use in Bangladesh, Philippines, and Australia. A compelling humanitarian application that also illustrates regulatory challenges.",
       },
       {
-        title: "Disease-Resistant Varieties",
+        title: "Animal Biotechnology & Pharming",
         detail:
-          "GM papayas (ringspot virus-resistant) saved Hawaii's papaya industry in the 1990s. CRISPR-edited wheat with reduced gluten sensitivity is under development.",
+          "BST (bovine somatotropin) from recombinant bacteria increases milk yield 10–15% in dairy cattle. Transgenic pigs with human DAF genes resist immune rejection (xenotransplantation research). Pharming: ATryn (antithrombin) produced in goat milk (first recombinant protein from transgenic animal, 2009 FDA approval). PRRS-resistant pigs via CRISPR CD163 knockout protect an industry losing ~$600M/year. AquAdvantage salmon (FDA approved 2015) grows twice as fast via growth hormone promoter transgene.",
       },
     ],
   },
   {
     id: "industry",
     icon: "🏭",
-    name: "Industry",
-    tagline: "Cleaner production through biology",
+    name: "Industrial & White Biotechnology",
+    tagline:
+      "Biology-based manufacturing — cleaner, more specific, more efficient than chemistry",
     imageUrl:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Enzymes_lock_and_key.svg/320px-Enzymes_lock_and_key.svg.png",
-    imageAlt:
-      "Enzyme lock and key diagram representing industrial biotechnology",
-    accentOklch: "0.70 0.18 210",
+    imageAlt: "Industrial bioprocess representation",
+    accentOklch: "0.52 0.15 210",
+    anchorId: "biotech-industrial",
     examples: [
-      {
-        title: "Biofuels",
-        detail:
-          "Engineered microorganisms (yeast, algae, bacteria) ferment agricultural waste and biomass into bioethanol and biodiesel. Cellulosic ethanol uses fungal cellulases to break down plant cell walls.",
-      },
       {
         title: "Industrial Enzymes",
         detail:
-          "Recombinant enzymes in laundry detergents (proteases, lipases, amylases) work at low temperatures, saving energy. Over 500 industrial enzymes are produced via microbial fermentation.",
+          "Over 500 industrial enzymes produced by recombinant microorganisms. Proteases (Subtilisin from Bacillus) in laundry detergent — cold-water washing saves ~60% energy vs hot. Amylases convert starch to glucose in food/bioethanol production. Lipases in biodiesel transesterification and cheese ripening. Cellulases (Trichoderma reesei) break down plant cell wall cellulose for bioethanol. Pectinases clarify fruit juices. Chymosin (rennin) from recombinant yeast — replaces calf rennin in most commercial cheese production globally.",
       },
       {
-        title: "Bioplastics",
+        title: "Biofuels",
         detail:
-          "Polyhydroxyalkanoates (PHAs) produced by engineered bacteria offer biodegradable alternatives to petroleum-based plastics, breaking down in soil within months vs. hundreds of years.",
+          "First-generation bioethanol (corn/sugarcane fermentation by Saccharomyces cerevisiae) — 15 billion gallons/year in US, ~10% gasoline blend. Second-generation cellulosic ethanol: engineered cellulase + hemicellulase cocktails break agricultural residues (corn stover, wheat straw) into fermentable sugars. Consolidated bioprocessing: single microorganism produces both enzymes and ethanol. Biodiesel from Chlorella microalgae lipid transesterification. Biogas/biomethane from anaerobic digestion of organic waste — direct renewable natural gas replacement.",
       },
       {
-        title: "Mining & Materials",
+        title: "Bioplastics & Biomaterials",
         detail:
-          "Bioleaching uses Acidithiobacillus bacteria to extract copper, gold, and uranium from low-grade ores — an eco-friendlier alternative to smelting, now recovering ~15% of global copper.",
+          "Polyhydroxyalkanoates (PHAs): produced by Cupriavidus necator and engineered E. coli as carbon/energy storage granules — biodegradable in soil within months, properties similar to polypropylene. Polylactic acid (PLA): fermentation of glucose → lactic acid → polymerization — used in packaging, 3D printing filaments, surgical sutures that dissolve in tissue. Spider silk proteins produced in yeast for biomedical applications. Bacterial cellulose for wound dressings. Biocomposite materials from mycelium (fungal networks) as packaging alternatives to polystyrene.",
+      },
+      {
+        title: "Metabolic Engineering & Synthetic Biology",
+        detail:
+          "Engineering cellular metabolism to produce non-native compounds. Amyris engineered S. cerevisiae to produce artemisinic acid (antimalarial precursor) from glucose — replaced expensive plant extraction. DuPont engineered E. coli to produce 1,3-propanediol from glucose for Sorona polymer (textile applications). Ginkgo Bioworks' cell programming platform programs organisms to produce fragrance compounds, cannabinoids, and specialty chemicals. Directed evolution (Frances Arnold, Nobel 2018) engineers enzymes by iterative mutation + selection for industrial applications.",
       },
     ],
   },
   {
     id: "environment",
     icon: "🌍",
-    name: "Environment",
-    tagline: "Harnessing biology to heal ecosystems",
+    name: "Environmental Biotechnology",
+    tagline: "Harnessing biology to monitor, clean, and restore ecosystems",
     imageUrl:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/240px-The_Earth_seen_from_Apollo_17.jpg",
     imageAlt: "Earth from space representing environmental biotechnology",
-    accentOklch: "0.72 0.18 172",
+    accentOklch: "0.52 0.14 172",
+    anchorId: "biotech-environmental",
     examples: [
       {
-        title: "Bioremediation",
+        title: "Bioremediation of Pollutants",
         detail:
-          "Microorganisms degrade pollutants in contaminated soil and water. Pseudomonas and Rhodococcus species break down petroleum hydrocarbons; Geobacter reduces uranium to insoluble forms, containing radioactive contamination.",
+          "Pseudomonas putida degrades aromatic hydrocarbons (benzene, toluene, xylene) — deployed after oil spills. Dehalococcoides mccartyi reductively dechlorinates PCE/TCE chlorinated solvents in contaminated groundwater (bioaugmentation). Geobacter sulfurreducens reduces uranium(VI) to insoluble uranium(IV), immobilizing radioactive contamination. Phytoremediation: Thlaspi caerulescens hyperaccumulates zinc and cadmium in shoots — harvest plants to remove heavy metals. FAST-PETase (engineered PETase from Ideonella sakaiensis): breaks PET plastic into reusable monomers at 50°C, 50x faster than wild-type.",
       },
       {
         title: "Wastewater Treatment",
         detail:
-          "Activated sludge bioreactors use microbial communities to remove organic waste, nitrogen, and phosphorus from sewage. Engineered biofilms now achieve >99% removal of key pollutants.",
+          "Activated sludge process uses diverse aerobic microbial communities to mineralize organic waste (BOD removal >95%). Nitrification (Nitrosomonas + Nitrobacter) converts NH₄⁺ → NO₃⁻; denitrification (Paracoccus denitrificans) converts NO₃⁻ → N₂ gas for nitrogen removal. Anaerobic digestion: methanogenic archaea (Methanobacterium) convert organic matter → CH₄ + CO₂ (biogas). Enhanced biological phosphorus removal (EBPR): Accumulibacter polyphosphate-accumulating organisms take up excess P. Constructed wetlands use emergent plant-microbe associations for tertiary treatment.",
       },
       {
-        title: "Biosensors for Monitoring",
+        title: "Carbon Capture & Algal Biotechnology",
         detail:
-          "Genetically engineered whole-cell biosensors (bacteria expressing reporter genes) detect heavy metals, pesticides, and toxins in water and soil at nanomolar concentrations.",
+          "Photobioreactors culture microalgae (Chlorella, Spirulina, Nannochloropsis) to capture CO₂ using photosynthesis at 10–50x the carbon fixation rate per unit area vs terrestrial crops. Algal biomass → biodiesel (lipid extraction), bioethanol (starch fermentation), biogas, and high-value compounds (astaxanthin, omega-3 fatty acids, phycocyanin). Synthetic biology: engineered Synechococcus cyanobacteria excrete ethanol or butanol directly from CO₂ and sunlight without harvesting. Carbon-negative biochar production from agricultural waste.",
       },
       {
-        title: "Plastic-Degrading Enzymes",
+        title: "Biosensors & Environmental Monitoring",
         detail:
-          "PETase enzyme (discovered in Ideonella sakaiensis) and engineered FAST-PETase variant break down PET plastics at room temperature, offering a biological recycling route for plastic waste.",
+          "Whole-cell biosensors: bacteria engineered with metal-responsive promoters (mer operon for mercury, arsenic-responsive ArsR-controlled reporter) that drive GFP or luciferase expression. Detection at nanomolar concentrations in field samples. Immunoassay strips detect pesticide residues in soil/water. CRISPR-DETECTR (Cas12a): on-site detection of pathogen DNA in water supplies. Electrochemical biosensors with enzyme-functionalized electrodes for online monitoring of BOD, nitrates, and endocrine disruptors in waterways.",
       },
     ],
   },
 ];
 
-// ─── Application category card ─────────────────────────────────────────────────
+// ── Application category card ──────────────────────────────────────────────────
 
 interface AppCardProps {
   category: AppCategory;
@@ -181,6 +231,7 @@ function AppCard({ category, isExpanded, onToggle, index }: AppCardProps) {
 
   return (
     <motion.div
+      id={category.anchorId}
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -191,22 +242,21 @@ function AppCard({ category, isExpanded, onToggle, index }: AppCardProps) {
       }}
       className="rounded-2xl overflow-hidden"
       style={{
-        background: "oklch(0.17 0.03 262)",
+        background: "oklch(0.985 0.008 75)",
         border: `1px solid oklch(${isExpanded ? accent : GREEN_BORDER})`,
         boxShadow: isExpanded
-          ? `0 0 28px oklch(${accent} / 0.18)`
-          : `0 0 12px oklch(${GREEN} / 0.06)`,
+          ? `0 4px 24px oklch(${accent} / 0.12)`
+          : "0 2px 8px oklch(0.55 0.16 155 / 0.04)",
         transition: "border-color 0.3s ease, box-shadow 0.3s ease",
       }}
     >
-      {/* Card header / trigger */}
       <button
         type="button"
         className="w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
         style={
           {
             "--tw-ring-color": `oklch(${GREEN})`,
-            "--tw-ring-offset-color": "oklch(0.13 0.06 262)",
+            "--tw-ring-offset-color": "oklch(0.97 0.012 75)",
           } as React.CSSProperties
         }
         aria-expanded={isExpanded}
@@ -217,16 +267,15 @@ function AppCard({ category, isExpanded, onToggle, index }: AppCardProps) {
       >
         <motion.div
           className="flex items-center gap-4 p-5"
-          whileHover={{ scale: 1.015 }}
-          whileFocus={{ scale: 1.015 }}
+          whileHover={{ scale: 1.01 }}
+          whileFocus={{ scale: 1.01 }}
           transition={{ duration: 0.2 }}
         >
-          {/* Image */}
           <div
             className="relative w-16 h-16 rounded-xl overflow-hidden flex-shrink-0"
             style={{
-              background: `oklch(${accent} / 0.12)`,
-              border: `1px solid oklch(${accent} / 0.3)`,
+              background: `oklch(${accent} / 0.08)`,
+              border: `1px solid oklch(${accent} / 0.25)`,
             }}
           >
             <img
@@ -240,8 +289,6 @@ function AppCard({ category, isExpanded, onToggle, index }: AppCardProps) {
               }}
             />
           </div>
-
-          {/* Text info */}
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
               <span className="text-xl" role="img" aria-hidden="true">
@@ -256,20 +303,18 @@ function AppCard({ category, isExpanded, onToggle, index }: AppCardProps) {
               <span
                 className="ml-auto rounded-full px-2.5 py-0.5 text-xs font-semibold hidden sm:inline-flex"
                 style={{
-                  background: `oklch(${accent} / 0.15)`,
+                  background: `oklch(${accent} / 0.10)`,
                   color: `oklch(${accent})`,
-                  border: `1px solid oklch(${accent} / 0.35)`,
+                  border: `1px solid oklch(${accent} / 0.25)`,
                 }}
               >
                 {category.examples.length} examples
               </span>
             </div>
-            <p className="text-sm text-muted-foreground leading-snug">
+            <p className="text-sm" style={{ color: "oklch(0.45 0.04 75)" }}>
               {category.tagline}
             </p>
           </div>
-
-          {/* Expand icon */}
           <div
             className="flex-shrink-0 ml-2"
             style={{ color: `oklch(${accent})` }}
@@ -284,7 +329,6 @@ function AppCard({ category, isExpanded, onToggle, index }: AppCardProps) {
         </motion.div>
       </button>
 
-      {/* Expanded details */}
       <AnimatePresence initial={false}>
         {isExpanded && (
           <motion.section
@@ -298,9 +342,7 @@ function AppCard({ category, isExpanded, onToggle, index }: AppCardProps) {
           >
             <div
               className="px-5 pb-5 pt-1"
-              style={{
-                borderTop: `1px solid oklch(${accent} / 0.2)`,
-              }}
+              style={{ borderTop: `1px solid oklch(${accent} / 0.15)` }}
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
                 {category.examples.map((ex, i) => (
@@ -311,8 +353,8 @@ function AppCard({ category, isExpanded, onToggle, index }: AppCardProps) {
                     transition={{ delay: i * 0.08, duration: 0.4 }}
                     className="rounded-xl p-4"
                     style={{
-                      background: `oklch(${accent} / 0.08)`,
-                      border: `1px solid oklch(${accent} / 0.2)`,
+                      background: `oklch(${accent} / 0.06)`,
+                      border: `1px solid oklch(${accent} / 0.18)`,
                     }}
                   >
                     <h4
@@ -321,7 +363,10 @@ function AppCard({ category, isExpanded, onToggle, index }: AppCardProps) {
                     >
                       {ex.title}
                     </h4>
-                    <p className="text-xs text-muted-foreground leading-relaxed">
+                    <p
+                      className="text-xs leading-relaxed"
+                      style={{ color: "oklch(0.38 0.03 75)" }}
+                    >
                       {ex.detail}
                     </p>
                   </motion.div>
@@ -335,211 +380,219 @@ function AppCard({ category, isExpanded, onToggle, index }: AppCardProps) {
   );
 }
 
-// ─── Quiz questions ─────────────────────────────────────────────────────────────
+// ── Quiz questions ─────────────────────────────────────────────────────────────
 
 const BIOTECH_APP_QUIZ: QuizQuestion[] = [
   {
     id: "bta1",
-    topic: "biotech-applications",
     question:
-      "Recombinant human insulin, the first biotech drug approved for human use, was produced using which host organism?",
+      "What was the first recombinant protein pharmaceutical, when was it approved, and what organism was used to produce it?",
     options: [
-      "Chinese Hamster Ovary (CHO) cells",
-      "Saccharomyces cerevisiae yeast",
-      "Escherichia coli bacteria",
-      "Tobacco plant cells",
+      "Erythropoietin (EPO), 1989, CHO cells",
+      "Human insulin (Humulin), 1982, Escherichia coli",
+      "Hepatitis B surface antigen, 1986, Saccharomyces cerevisiae",
+      "Tissue plasminogen activator (tPA), 1987, CHO cells",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation:
-      "The first recombinant insulin (Humulin, 1982) was produced in Escherichia coli by inserting the human insulin gene. This was a landmark in biotechnology, replacing animal-derived insulin and making production far more scalable.",
+      "Humulin (human insulin), approved by the FDA in 1982, was the world's first recombinant protein pharmaceutical — produced by inserting the human insulin gene into E. coli, which then expressed it during fermentation. Before this, diabetics relied on pig or cow insulin that caused immunological reactions in some patients. This approval launched the modern biotech industry. Genentech, founded by Herbert Boyer and Robert Swanson, developed the technology; Eli Lilly manufactured and marketed it. It also established the regulatory pathway that all subsequent recombinant biologics have followed.",
+    topic: "biotech-applications",
   },
   {
     id: "bta2",
-    topic: "biotech-applications",
     question:
-      "What is the primary purpose of a monoclonal antibody in medicine?",
+      "How do monoclonal antibodies target cancer cells, and what makes ADCs (antibody-drug conjugates) more potent than naked antibodies?",
     options: [
-      "To replicate DNA in laboratory settings",
-      "To bind specifically to a single antigen target with high precision",
-      "To synthesize recombinant proteins in bacteria",
-      "To deliver mRNA into human cells",
+      "mAbs block all cell surface receptors nonspecifically; ADCs add a fluorescent marker for imaging",
+      "mAbs bind a specific tumor-associated antigen to block growth signaling or recruit immune cells; ADCs additionally carry a cytotoxic payload delivered directly inside the cancer cell",
+      "mAbs cause tumor cells to release pro-apoptotic signals; ADCs amplify this signal using a second antibody",
+      "mAbs and ADCs are identical — 'ADC' simply refers to mAbs approved for cancer indications",
     ],
     correctIndex: 1,
     explanation:
-      "Monoclonal antibodies are engineered to bind one specific antigen target. This precision enables their use as cancer therapies (e.g., trastuzumab targeting HER2), autoimmune treatments, and diagnostics.",
+      "Monoclonal antibodies bind one specific antigen — for cancer, often a receptor overexpressed on tumor cells. Trastuzumab binds HER2 on breast cancer cells: it blocks growth signaling AND marks cells for antibody-dependent cellular cytotoxicity (immune cells recognize the Fc region and destroy the tumor cell). But some tumors require direct killing. ADCs solve this: a cytotoxic drug (like auristatin MMAE or DM1, 100–1000x more potent than conventional chemotherapy) is chemically linked to the antibody via a cleavable linker. The antibody delivers the payload specifically to antigen-expressing cells; the linker cleaves inside the cell, releasing drug only where it's needed. FDA-approved ADCs include Kadcyla (T-DM1 for HER2+ breast cancer) and Enhertu (T-DXd, approved for multiple HER2-expressing cancers).",
+    topic: "biotech-applications",
   },
   {
     id: "bta3",
-    topic: "biotech-applications",
     question:
-      "GM crops expressing Bt toxin genes primarily provide what benefit?",
+      "How do Bt crops produce insect resistance, and why are Cry proteins considered safe for humans?",
     options: [
-      "Increased vitamin content for human nutrition",
-      "Resistance to herbicide chemicals",
-      "Protection against insect pests, reducing pesticide use",
-      "Enhanced drought tolerance",
+      "Bt crops secrete a plant hormone that repels insects; Cry proteins bind to human taste receptors causing bitterness",
+      "Bt crops express Bacillus thuringiensis Cry proteins that form pores in insect midgut epithelial cells — these proteins require specific receptor proteins absent in vertebrates, making them non-toxic to humans",
+      "Bt crops accumulate natural insecticide precursors that insects metabolize into toxins; humans lack this metabolic pathway",
+      "Cry proteins are inactivated by human stomach acid, while insect midguts are basic, allowing toxin activation only in insects",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation:
-      "Bt (Bacillus thuringiensis) toxin genes confer insect resistance — crops like Bt corn and Bt cotton produce proteins that are toxic to specific insect pests, reducing the need for chemical pesticides by up to 40%.",
+      "Bacillus thuringiensis Cry proteins (δ-endotoxins) are natural insecticidal proteins that have been used as organic pesticide sprays for decades. In Bt crops, the cry gene is expressed constitutively in plant tissues. When susceptible insects eat Bt plant tissue, the alkaline pH of their midgut (pH 8–12, vs acidic human stomach pH 1–3) solubilizes the Cry protoxin, and midgut proteases activate it. The activated toxin binds to specific receptor proteins (cadherin, APN, ALP) on the brush border of the insect midgut epithelium — proteins that are structurally absent in vertebrate gut cells. The toxin inserts into the membrane and forms ion channels, disrupting osmotic balance and killing the cells. Human gut pH and receptors are so different that Cry proteins pass through with no biological activity — hence their established safety record after 30+ years of organic farming use.",
+    topic: "biotech-applications",
   },
   {
     id: "bta4",
-    topic: "biotech-applications",
     question:
-      "Golden Rice was engineered to address which specific nutritional deficiency in developing countries?",
+      "What is phytoremediation, and what biochemical property makes hyperaccumulator plants effective?",
     options: [
-      "Vitamin C (ascorbic acid) deficiency",
-      "Iron (Fe) deficiency anemia",
-      "Vitamin A deficiency causing childhood blindness",
-      "Calcium deficiency causing rickets",
+      "Phytoremediation uses plant-associated bacteria to degrade toxins in the rhizosphere; hyperaccumulators have mutations in metal-binding enzymes",
+      "Phytoremediation uses living plants to concentrate heavy metals from contaminated soil in their shoots; hyperaccumulators have upregulated metal transporter proteins and chelators (metallothioneins, phytochelatins) that allow accumulation 100–1000x soil concentration",
+      "Phytoremediation involves genetically engineered trees that sequester CO₂; hyperaccumulators are defined by carbon fixation rates exceeding 20 kg/year",
+      "Phytoremediation is used only for radioactive contamination; regular plants are used for chemical pollutants",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation:
-      "Golden Rice was engineered to produce β-carotene (a Vitamin A precursor) to address Vitamin A deficiency, which causes up to 500,000 cases of childhood blindness per year in regions that depend heavily on rice.",
+      "Phytoremediation exploits plants' natural ability to absorb soil minerals through their roots. Hyperaccumulators — plants like Thlaspi caerulescens (zinc/cadmium), Alyssum bertolonii (nickel), and some Pteris ferns (arsenic) — accumulate metals 100–1000x the concentration found in normal plants or background soil. The mechanism involves: upregulated expression of metal transporter proteins (ZIP family, HMA family) in root cell membranes that actively pump metals from soil water; intracellular chelation by phytochelatins (glutathione-derived peptides) and metallothioneins; vacuolar sequestration to tolerate high metal concentrations without toxicity; and efficient xylem loading to translocate metals to above-ground shoots. You harvest the shoots and dispose of them as hazardous waste — removing contamination without excavating the soil. Slow but low-cost and ecosystem-friendly.",
+    topic: "biotech-applications",
   },
   {
     id: "bta5",
-    topic: "biotech-applications",
-    question: "Bioremediation refers to which environmental process?",
+    question:
+      "What is directed evolution, and why did Frances Arnold win the Nobel Prize for it?",
     options: [
-      "Using radiation to sterilize contaminated soil",
-      "Using microorganisms to degrade or detoxify environmental pollutants",
-      "Filtering industrial wastewater through chemical membranes",
-      "Burning contaminated biomass to reduce waste volume",
+      "Directed evolution is a CRISPR-based method that makes programmed mutations in specific genes — Arnold won for applying it to clinical gene therapy",
+      "Directed evolution applies iterative random mutagenesis + functional selection to proteins, allowing engineers to evolve novel enzymes with properties impossible to design rationally — Arnold used it to create enzymes for green chemistry, winning the 2018 Nobel Prize in Chemistry",
+      "Directed evolution is a computational protein design method — Arnold won for designing the first enzyme that catalyzes a reaction not found in nature",
+      "Directed evolution refers to SELEX (systematic evolution of ligands by exponential enrichment) — Arnold won for applying it to RNA aptamer drug discovery",
     ],
     correctIndex: 1,
     explanation:
-      "Bioremediation uses naturally occurring or engineered microorganisms to break down or neutralize pollutants such as petroleum hydrocarbons, heavy metals, and industrial chemicals in contaminated soil and water.",
+      "Frances Arnold at Caltech won the 2018 Nobel Prize in Chemistry for pioneering directed evolution of enzymes. The principle is beautifully Darwinian: introduce random mutations into an enzyme gene (by error-prone PCR, DNA shuffling, or site-saturation mutagenesis), express all variants in bacterial cells, screen or select for improved function (higher activity, greater stability, altered selectivity), then use the best variant as the starting point for the next round. Repeat for 5–10+ generations. The method doesn't require understanding protein structure — you let selection find improvements empirically. Arnold's lab evolved cytochrome P450 enzymes to catalyze carbene insertions into C-H bonds and Si-C bond formation — reactions that don't exist in nature — enabling green synthesis of pharmaceuticals with less toxic waste than chemical synthesis. Directed evolution has produced enzymes used in detergents, biofuels, drug synthesis, and diagnostics.",
+    topic: "biotech-applications",
   },
   {
     id: "bta6",
-    topic: "biotech-applications",
-    question: "Gene therapy works by:",
+    question:
+      "How do mRNA vaccines differ mechanistically from traditional protein subunit vaccines?",
     options: [
-      "Removing defective genes with surgical procedures",
-      "Delivering functional copies of genes to correct genetic disorders",
-      "Editing genes using restriction enzymes only",
-      "Stimulating the immune system with recombinant proteins",
+      "mRNA vaccines contain live attenuated virus; subunit vaccines contain killed virus",
+      "mRNA vaccines deliver genetic instructions for cells to produce the antigen in situ; subunit vaccines directly deliver pre-made protein antigen — mRNA generates a stronger immune response because antigen is presented on MHC I (cellular immunity), not just MHC II",
+      "mRNA vaccines are only effective against RNA viruses; subunit vaccines work against DNA viruses",
+      "mRNA vaccines require adjuvants to stimulate immunity; subunit vaccines are self-adjuvanting",
     ],
     correctIndex: 1,
     explanation:
-      "Gene therapy delivers functional gene copies (often via viral vectors) to cells with missing or defective genes. Approved therapies like Zolgensma (SMA) and Luxturna (retinal dystrophy) have shown dramatic therapeutic benefits.",
+      "Traditional subunit vaccines inject purified protein antigen — it's taken up by antigen-presenting cells, processed, and displayed on MHC II molecules to activate helper T cells and B cells (humoral immunity). mRNA vaccines take a fundamentally different route: lipid nanoparticles deliver mRNA into cells, ribosomes translate it into protein inside the cell, and the protein is processed through the endogenous pathway. Peptides appear on both MHC II (for T helper and B cell activation) AND MHC I (triggering cytotoxic T cells). This broader immune activation explains why mRNA COVID vaccines produced such strong responses. Additional advantages: no live pathogen, no risk of reversion, rapid design (sequence-to-immunogen in days), the platform is reusable (swap out the mRNA sequence). Nucleoside modification (replacing uridine with N1-methylpseudouridine) reduces innate immune stimulation and improves stability — key insights from Katalin Karikó and Drew Weissman (Nobel Prize 2023).",
+    topic: "biotech-applications",
   },
   {
     id: "bta7",
-    topic: "biotech-applications",
     question:
-      "Which microorganism is most commonly used in cellulosic biofuel production?",
+      "What is cellulosic biofuel and why is it considered second-generation compared to corn ethanol?",
     options: [
-      "Clostridium botulinum",
-      "Fungi producing cellulase enzymes (e.g., Trichoderma reesei)",
-      "Helicobacter pylori",
-      "Mycobacterium tuberculosis",
+      "Cellulosic biofuel uses offshore algae instead of land crops — second-generation means offshore production",
+      "Cellulosic biofuel converts the cellulose/hemicellulose in agricultural waste (corn stover, wheat straw) to ethanol using engineered cellulase enzymes — second-generation means it doesn't compete with food crops for arable land",
+      "Cellulosic biofuel is produced by second-fermentation of corn ethanol to increase energy density",
+      "Second-generation means it uses genetically modified yeast instead of wild-type yeast for fermentation",
     ],
     correctIndex: 1,
     explanation:
-      "Cellulosic biofuel production requires cellulase enzymes to break down cellulose in plant biomass. Trichoderma reesei and related fungi are major producers of commercial cellulases used in second-generation biofuel processes.",
+      "First-generation biofuels (corn or sugarcane ethanol) ferment food-crop starch or sucrose — raising food vs fuel land-use conflicts. Cellulosic (second-generation) biofuels instead use the structural polysaccharides — cellulose (glucose polymer, β-1,4 linkage) and hemicellulose (mixed pentose/hexose polymer) — from agricultural residues like corn stover, wheat straw, rice husks, or wood chips. These are waste products not competing with food. The challenge: cellulose's crystalline structure makes it resistant to enzymatic degradation. Trichoderma reesei and Aspergillus niger produce cellulase cocktails (endoglucanases, exocellobiohydrolases, beta-glucosidases) that work synergistically to break cellulose to glucose. Modern cellulase cocktails (Cellic CTec3 from Novozymes) are >100x more efficient than 1980s enzymes — enough to make cellulosic ethanol economically viable. The fermentation organism matters too: wild-type S. cerevisiae can't ferment pentose sugars from hemicellulose, so engineered strains expressing pentose metabolism pathways are used.",
+    topic: "biotech-applications",
   },
   {
     id: "bta8",
-    topic: "biotech-applications",
     question:
-      "Polyhydroxyalkanoates (PHAs) are biotechnology products important for which application?",
+      "How does the SHERLOCK CRISPR diagnostic platform detect pathogens, and what makes it suitable for field use?",
     options: [
-      "Cancer immunotherapy",
-      "Biodegradable plastic alternatives",
-      "Recombinant vaccine production",
-      "Water purification membranes",
+      "SHERLOCK uses Cas9 to cut pathogen DNA, then measures the size of cut fragments on a gel — portable because no sequencer is needed",
+      "SHERLOCK uses Cas13 (an RNA-targeting CRISPR protein) that, upon binding its target RNA, unleashes non-specific collateral RNase activity that cleaves a fluorescent RNA reporter — a positive signal requires no gel or lab equipment",
+      "SHERLOCK is an antibody-based lateral flow assay brand owned by Sherlock Biosciences — not CRISPR-based",
+      "SHERLOCK uses a two-step process: RT-PCR amplification followed by standard ELISA readout of PCR products",
     ],
     correctIndex: 1,
     explanation:
-      "PHAs are biodegradable polyesters produced by engineered bacteria. They serve as sustainable alternatives to petroleum-based plastics, decomposing in soil within months rather than centuries.",
+      "SHERLOCK (Specific High-sensitivity Enzymatic Reporter UnLOCKing) was developed by the Broad Institute and exploits a remarkable property of Cas13: when it finds and binds its target RNA, it activates a non-specific 'collateral' RNase activity that promiscuously cleaves any nearby single-stranded RNA. By adding a fluorescent RNA reporter (quencher-dye-quencher design), Cas13 activation produces a detectable fluorescent signal. Sensitivity: attomolar (10⁻¹⁸ M) — comparable to RT-qPCR. The system detects Zika, dengue, and SARS-CoV-2 RNA with high specificity. Combined with SHERPA paper strip readout (colloidal gold lateral flow), results are visible by eye in 30–60 minutes without any laboratory equipment. DETECTR (Cas12a-based) achieves similar sensitivity for DNA targets. These CRISPR diagnostics platforms were rapidly deployed during COVID-19 and represent a major advance in accessible molecular diagnostics.",
+    topic: "biotech-applications",
   },
   {
     id: "bta9",
-    topic: "biotech-applications",
     question:
-      "Which technology uses biological agents to extract metals from low-grade ores?",
+      "What is synthetic biology, and what does the 'minimal genome' project (JCVI-syn3.0) tell us about life?",
     options: [
-      "Biomagnification",
-      "Bioleaching",
-      "Bioprecipitation",
-      "Biosedimentation",
+      "Synthetic biology means synthesizing natural proteins in the laboratory; JCVI-syn3.0 is a computer simulation of a minimal bacterial genome",
+      "Synthetic biology applies engineering principles (standardized parts, design cycles, predictable assembly) to build or redesign biological systems; JCVI-syn3.0 is a bacterium with a chemically synthesized 473-gene genome — the smallest self-replicating organism ever created, revealing ~35% of genes have unknown functions",
+      "Synthetic biology exclusively develops synthetic DNA — JCVI-syn3.0 replaced bacterial chromosomes with artificial chromosomes that still use natural bases",
+      "JCVI-syn3.0 is a mammalian cell line, not a bacterium; synthetic biology refers to eukaryotic cell engineering only",
     ],
     correctIndex: 1,
     explanation:
-      "Bioleaching uses acidophilic bacteria like Acidithiobacillus ferrooxidans to oxidize sulfide ores, releasing trapped metals (copper, gold, uranium). This eco-friendlier alternative to smelting now recovers ~15% of global copper.",
+      "Synthetic biology treats biology as an engineering discipline: standardized biological 'parts' (promoters, ribosome binding sites, terminators — BioBricks registry), functional 'devices' (switches, oscillators), and complete 'systems' assembled predictably. J. Craig Venter's institute (JCVI) synthesized a complete bacterial genome from scratch in 2010 (Mycoplasma mycoides JCVI-syn1.0), transplanted it into an enucleated cell, and created a self-replicating organism with a chemically synthesized chromosome. In 2016, they systematically removed every non-essential gene to create JCVI-syn3.0: 473 genes, 531 kb genome — the most stripped-down self-replicating cell possible. Remarkably, ~35% of its 473 genes have no known function — we don't know what they do, yet the cell needs them to survive. This 'minimal genome' project reveals how much we still don't understand about fundamental cell biology, even in the simplest organisms.",
+    topic: "biotech-applications",
   },
   {
     id: "bta10",
-    topic: "biotech-applications",
     question:
-      "mRNA vaccines for COVID-19 work by introducing mRNA that encodes:",
+      "How do liquid biopsies using ctDNA overcome the limitations of traditional tissue biopsies for cancer monitoring?",
     options: [
-      "A live attenuated virus",
-      "A complete viral DNA genome",
-      "The viral spike protein, triggering an immune response",
-      "An antibody that directly neutralizes the virus",
+      "Liquid biopsies are cheaper forms of standard tissue biopsy that use a needle instead of surgery",
+      "ctDNA (circulating tumor DNA) fragments shed by tumors into blood can be sequenced from a blood draw — detecting cancer mutations, monitoring treatment response, and tracking resistance without repeated invasive tissue sampling",
+      "Liquid biopsies detect circulating tumor cells (whole cells in blood) that are cultured in the lab to create organoids for drug testing",
+      "ctDNA liquid biopsies are only useful for blood cancers because solid tumors don't shed DNA into circulation",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation:
-      "COVID-19 mRNA vaccines (Pfizer-BioNTech, Moderna) deliver lipid nanoparticle-encapsulated mRNA encoding the viral spike protein. Host cells translate this mRNA, producing spike protein that trains the immune system to recognize and fight the virus.",
+      "Tumors continuously shed small DNA fragments into the bloodstream through cell death and active secretion — called circulating tumor DNA (ctDNA). These fragments carry the tumor's specific mutations (KRAS, TP53, EGFR, etc.) and copy number changes. Ultra-sensitive detection methods — ddPCR and targeted NGS panels — can detect ctDNA at 0.01–0.1% variant allele frequency in a background of normal cell-free DNA. Advantages over tissue biopsy: blood draw is minimally invasive (can be done repeatedly), ctDNA represents the full tumor heterogeneity (not just one biopsy site), and liquid biopsies can detect molecular residual disease after surgery, monitor treatment response in real time, and identify emerging resistance mutations before clinical relapse by imaging. Approved liquid biopsy tests include Guardant360 CDx (Guardant Health) and FoundationOne Liquid CDx (Roche) for multiple solid tumor types.",
+    topic: "biotech-applications",
   },
 ];
 
-// ─── Explanation paragraphs ────────────────────────────────────────────────────
+// ── Explanation paragraphs ─────────────────────────────────────────────────────
 
 const EXPLANATIONS = [
   {
     id: "overview",
+    anchorId: "biotech-overview",
     heading:
-      "Biotechnology Applications: Transforming Every Sector of Human Life",
-    body: `Biotechnology — the use of living systems, organisms, or their derivatives to develop products and processes — has evolved from a laboratory curiosity into one of the most impactful industries on Earth. From the first recombinant insulin produced in 1982 to mRNA vaccines deployed globally against COVID-19, biotechnology has repeatedly demonstrated its power to solve problems that conventional chemistry and engineering could not. Today, the global biotechnology market exceeds $1 trillion and spans medicine, agriculture, industry, and environmental management. Every sector benefits from biology's unique ability to work at the molecular level with extraordinary precision.
+      "How Biotechnology Became the Most Transformative Industry of the 21st Century",
+    body: `The timeline is worth pausing on. Cohen and Boyer spliced the first recombinant DNA in 1973. In 1976, Genentech became the first biotech company, founded to commercialize recombinant DNA. In 1982, the first biotech drug reached patients. By 2024, the global biotech market exceeded $1.5 trillion and encompassed medicine, agriculture, industrial manufacturing, and environmental management. That's five decades from basic bacterial experiments to trillion-dollar industry — among the fastest technology transitions in human history.
 
-The breadth of biotechnology applications reflects biology's versatility. A single enzyme discovered in a deep-sea vent organism can revolutionize molecular diagnostics (Taq polymerase from Thermus aquaticus enabling PCR). A bacterial gene can save thousands of acres of crops from insect damage. A engineered microorganism can digest oil spills or extract metals from waste rock. Understanding these applications not only illuminates the power of biotechnology but also raises important questions about regulation, ethics, and equitable access — questions that every biotechnology student must grapple with.`,
+What makes biotechnology uniquely powerful is that it operates at the same molecular scale as biology itself. A chemical manufacturing process produces millions of identical molecules — but it can't distinguish between a cancer cell and a healthy one, or sense that a contaminant is present and respond. Biology can do these things naturally. Biotechnology harnesses those capabilities and reprograms them toward human goals. The result is medicines that target specific molecular defects, crops that protect themselves against pests, microbes that seek out pollution and eat it, and factories that run at room temperature with water as their only byproduct. This section maps the breadth of what biotechnology has achieved — and where it's headed.`,
   },
   {
     id: "medicine",
-    heading: "Medical Biotechnology: Engineering Molecules to Fight Disease",
-    body: `Medical biotechnology has produced some of the most transformative therapies in the history of medicine. Recombinant DNA technology, pioneered in the 1970s and 1980s, enabled researchers to insert human genes into microbial or mammalian cell factories, producing human proteins that were previously available only in tiny amounts from donor tissues. Recombinant human insulin (Humulin, 1982) was the first example — produced by engineering the human insulin gene into E. coli, it replaced animal-derived insulin for millions of diabetics and set the template for an industry.
+    anchorId: "biotech-medicine-detail",
+    heading: "Medical Biotechnology: From Molecules to Approved Medicines",
+    body: `Medical biotechnology has delivered treatments for diseases that were previously untreatable. The first wave was recombinant proteins: insulin (1982), growth hormone (1985), erythropoietin (1989), granulocyte colony-stimulating factor (1991). These replaced animal-derived or extracted proteins with purer, more consistent, more scalable human-sequence equivalents. They also demonstrated the commercial model that still drives the industry: a novel biological molecule discovered in academia, developed by a biotech startup, licensed or acquired by a pharma company, and approved for a defined medical indication.
 
-Monoclonal antibodies represent perhaps the most powerful and versatile class of biotechnology drugs. Produced by immortalized hybridoma cells or, more recently, by Chinese Hamster Ovary (CHO) bioreactors, monoclonal antibodies can be engineered to bind any molecular target with exquisite specificity. Trastuzumab (Herceptin) targets the HER2 receptor overexpressed in ~20% of breast cancers. Adalimumab (Humira) blocks TNF-α signaling in rheumatoid arthritis and Crohn's disease. Over 100 monoclonal antibody therapies are now approved, representing the largest class of biopharmaceuticals by revenue. Beyond proteins, biotechnology has enabled entirely new modalities: gene therapy, which delivers functional genes to correct inherited disorders, and mRNA vaccines, which instruct cells to produce antigens and mount immune responses without any viral particles.`,
+The second wave was monoclonal antibodies. Köhler and Milstein's hybridoma technology (1975 Nobel Prize) was too slow and generated murine antibodies that patients rejected. Chimeric, humanized, and fully human antibody technologies solved this. Trastuzumab (Herceptin, 1998) transformed HER2-overexpressing breast cancer from a poor-prognosis disease to one with over 75% 5-year survival. Rituximab (1997) changed the treatment of B-cell lymphoma. Adalimumab (Humira) became the best-selling drug in history for inflammatory diseases. By 2024, monoclonal antibodies represent 9 of the top 10 best-selling drugs globally. The third wave — gene therapy, CAR-T, mRNA therapeutics, CRISPR — is the most radical yet: instead of delivering a drug that modulates disease biology, these approaches edit, replace, or reprogram the patient's own cells. First approvals have arrived. More are coming.`,
   },
   {
     id: "agriculture",
-    heading: "Agricultural Biotechnology: Engineering Crops for a Hungry World",
-    body: `Agricultural biotechnology uses genetic modification, tissue culture, molecular markers, and increasingly CRISPR-based editing to improve crop traits. The most widely adopted GM crops globally are insect-resistant Bt crops (expressing Bacillus thuringiensis toxin genes) and herbicide-tolerant crops (expressing genes that neutralize broad-spectrum herbicides). Bt corn and Bt cotton have reduced insecticide applications by hundreds of millions of kilograms annually and increased yields significantly in countries where insect pests previously caused catastrophic losses. Herbicide-tolerant crops enable no-till farming, which reduces soil erosion and fuel use.
+    anchorId: "biotech-agriculture-detail",
+    heading:
+      "Agricultural Biotechnology: Feeding 10 Billion People on a Warming Planet",
+    body: `Agricultural biotechnology's mandate has never been more urgent. The UN projects global population reaching 9.7 billion by 2050, while climate change is reducing yields in the world's most productive agricultural zones, and antibiotic resistance is threatening livestock production. First-generation GM crops — Bt insect resistance and herbicide tolerance — addressed specific agronomic problems with proven economic benefits. Bt cotton adoption in India reduced pesticide applications by 50% and increased smallholder income by ~50% in the regions studied. Herbicide-tolerant soybeans enabled conservation tillage across South American farmlands, reducing soil erosion substantially.
 
-Beyond these first-generation trait modifications, agricultural biotechnology is producing crops with enhanced nutritional profiles, improved stress tolerance, and reduced allergenicity. Golden Rice — engineered to produce β-carotene in the grain endosperm — targets Vitamin A deficiency, which the WHO estimates causes preventable blindness in up to half a million children annually. Drought-tolerant maize varieties (developed using both conventional breeding assisted by molecular markers and transgenic approaches) are being deployed across sub-Saharan Africa. Disease-resistant crops, including GM papaya varieties that saved Hawaii's papaya industry from the ringspot virus in the 1990s, demonstrate biotechnology's ability to solve problems that conventional breeding cannot. The ongoing debate around GM crops centers not on scientific consensus about safety but on governance, intellectual property, and socioeconomic equity.`,
+Second-generation traits address nutrition (Golden Rice), disease resistance (cassava mosaic virus, banana Fusarium wilt), and climate adaptation (drought-tolerant maize, salinity-tolerant rice via DREB transcription factor overexpression). CRISPR has opened a new regulatory pathway in several countries: 'null-segregant' CRISPR edits that don't introduce foreign DNA are treated differently from transgenic GMOs — potentially allowing faster approval for varieties addressing food security needs. The controversy around GM agriculture is real but often misconceived: scientific consensus on safety is clear, but concerns about intellectual property concentration, herbicide resistance evolution, and inequitable access to benefits are legitimate governance issues that require political solutions, not scientific debate.`,
   },
   {
     id: "industrial",
-    heading:
-      "Industrial Biotechnology: Bio-Based Manufacturing for a Sustainable Future",
-    body: `Industrial biotechnology — sometimes called the "white biotechnology" sector — applies biological systems to manufacturing, replacing energy-intensive chemical processes with enzymatic reactions that work at ambient temperature and pressure with high specificity. Industrial enzymes are the workhorses of this sector: proteases, lipases, amylases, and cellulases produced in microbial fermenters are added to detergents, textiles, paper, food, and biofuel production processes. Modern laundry detergents contain engineered enzyme cocktails that remove protein, fat, and starch stains at cold-water temperatures, reducing household energy consumption by an estimated 60% compared to hot-water washing.
+    anchorId: "biotech-industrial-detail",
+    heading: "Industrial Biotechnology: Cleaner Chemistry at Scale",
+    body: `Industrial biotechnology (also called white biotechnology, to distinguish from red for medical and green for agricultural) asks a fundamental question: could we make the things we need using biology instead of petrochemistry? The answer, increasingly, is yes — and often better. Enzyme biocatalysis is already embedded in everyday life: the protease in your laundry detergent, the amylase in your bread, the rennet in your cheese, the cellulase in your paper, the lipase in your biodiesel. These are recombinant enzymes produced at industrial scale in microbial fermenters, replacing chemical equivalents that required harsh conditions.
 
-Biofuels represent one of industrial biotechnology's largest markets. First-generation bioethanol (from corn starch or sugarcane sucrose) and biodiesel (from vegetable oils or algae lipids) are now blended into transportation fuels globally. Second-generation cellulosic biofuels go further, using engineered cellulases and hemicellulases to unlock the energy stored in agricultural residues (corn stover, wheat straw) that would otherwise be burned or left in fields. Engineered microorganisms — bacteria, yeast, and algae — are being developed to produce jet fuel, plastics precursors, and specialty chemicals directly from CO₂ or agricultural waste. Bioplastics, particularly polyhydroxyalkanoates (PHAs) produced by bacterial fermentation, offer a biodegradable alternative to petroleum-derived plastics, a critical development as plastic pollution reaches every corner of the biosphere.`,
+The next frontier is metabolic engineering — redesigning entire cellular metabolic networks to produce target chemicals from renewable feedstocks. Ginkgo Bioworks has industrialized this process: they maintain a 'cell programming' facility that takes a target molecule, designs the biosynthetic pathway, programs it into a host organism, tests thousands of variants in parallel, and delivers an optimized production strain. Amyris used this approach for artemisinic acid (antimalarial), farnesene (jet fuel precursor), and cannabinoids. The tools have become dramatically more powerful: whole-genome synthesis, automated high-throughput screening, machine learning-assisted pathway design. Industrial biotech doesn't just replace chemistry — it opens access to chemical structures that were previously impossible or impossibly expensive to produce any other way.`,
   },
   {
     id: "environment",
+    anchorId: "biotech-environment-detail",
     heading:
-      "Environmental Biotechnology: Biology as a Tool for Ecological Restoration",
-    body: `Environmental biotechnology harnesses the metabolic capabilities of microorganisms to address pollution, waste treatment, and ecological monitoring. Bioremediation — using bacteria, fungi, or plants to break down or immobilize contaminants — has been applied successfully to petroleum-contaminated soil (Exxon Valdez spill response), chlorinated solvent plumes in groundwater (reductive dechlorination by Dehalococcoides species), and even radioactive metals (uranium immobilization by Geobacter sulfurreducens). The fundamental advantage of bioremediation over chemical treatments is that microorganisms can seek out contaminants, reproduce to match the substrate supply, and in many cases mineralize pollutants completely to CO₂ and water.
+      "Environmental Biotechnology: Nature's Own Toolkit for Cleaning Up",
+    body: `One of the most hopeful areas of biotechnology is also one of the least visible to consumers: environmental applications. Microorganisms have been degrading organic compounds, cycling nutrients, and processing waste for billions of years. Environmental biotechnology identifies, improves, and deploys these capabilities for solving pollution problems. Bioremediation has moved from academic curiosity to deployed technology. After the Deepwater Horizon oil spill in 2010, naturally occurring Oceanospirillaceae and Alcanivorax bacteria degraded much of the dispersed hydrocarbon plume — researchers monitored and in some cases augmented these populations by providing nutrients (biostimulation). Chlorinated solvent contamination from industrial sites is addressed by introducing Dehalococcoides mccartyi, an anaerobe that uses chlorinated compounds as terminal electron acceptors — dechlorinating PCE all the way to ethylene.
 
-Modern wastewater treatment plants are sophisticated biological systems. Activated sludge bioreactors use diverse microbial communities to remove organic matter, nitrogen (via nitrification and denitrification), and phosphorus from municipal and industrial wastewater. Anaerobic digestion converts organic waste into biogas (methane and CO₂), providing both pollution control and renewable energy. Looking further into the future, synthetic biology is enabling designer organisms: bacteria with inducible reporter genes that glow in the presence of specific heavy metals, serving as biosensors for environmental monitoring; engineered algae that absorb excess phosphorus from agricultural runoff; and enzymes like PETase, discovered in Ideonella sakaiensis and now dramatically improved by directed evolution, that break down PET plastic into reusable monomers — offering a biological path to solving the global plastic crisis.`,
+The plastic degradation problem has attracted enormous attention since Yoshida and colleagues discovered Ideonella sakaiensis in 2016 — a bacterium that uses two enzymes (PETase and MHETase) to break PET plastic into terephthalic acid and ethylene glycol monomers, which it uses as carbon sources. FAST-PETase, an engineered variant, breaks down consumer plastic bottles at 50°C within a week — approaching the practical rate needed for industrial plastic recycling. Synthetic biology is expanding the toolkit: researchers have engineered bacteria to produce electrical current while degrading waste (microbial fuel cells), algae to capture CO₂ while producing biofuels, and cyanobacteria to fix nitrogen in soils, reducing fertilizer need. These are not magic solutions, but they are credible, scalable contributions to environmental recovery.`,
   },
   {
-    id: "future",
+    id: "emerging",
+    anchorId: "biotech-emerging",
     heading:
-      "The Future of Biotechnology Applications: Challenges and Prospects",
-    body: `The next decade of biotechnology applications will be shaped by the convergence of several enabling technologies: CRISPR-based gene editing (enabling precise, affordable modification of any genome), synthetic biology (engineering entire biological pathways and circuits from scratch), artificial intelligence (accelerating protein structure prediction, drug discovery, and process optimization), and advanced biomanufacturing (continuous fermentation, cell-free systems, and organoid models). These technologies are being combined in ways that were science fiction a decade ago: AI-designed proteins being synthesized by engineered microbes, personalized cancer vaccines produced using tumor genomics data, and organisms engineered to produce any target molecule with unprecedented efficiency.
+      "Emerging Biotechnologies: Convergence, Complexity, and What's Next",
+    body: `The most significant trend in biotechnology today is convergence — AI, synthetic biology, materials science, and advanced biomanufacturing are combining in ways that create capabilities none of them had separately. AlphaFold2, released in 2021, predicted the 3D structures of virtually all known proteins with accuracy matching experimental methods — a computational breakthrough that has compressed drug discovery timelines by years. RFdiffusion and ProteinMPNN now design novel proteins from scratch that fold predictably, enabling entirely new enzyme functions and therapeutic molecules that don't exist in nature. Organoids — miniature human organs grown in culture from stem cells — allow drug testing on human tissue without patients, radically improving preclinical prediction.
 
-Ethical, regulatory, and equity considerations are inseparable from the technical story of biotechnology. Who owns the intellectual property of engineered crop genomes? How should gene therapies that cost millions of dollars per dose be made accessible globally? What biosafety measures should govern the release of engineered organisms into the environment? These are not abstract philosophical questions — they determine whether biotechnology's benefits are distributed equitably or captured only by wealthy nations and corporations. Biotechnology students who understand both the science and these broader dimensions will be best equipped to contribute meaningfully to the field and to the governance structures that ensure its responsible development for all of humanity.`,
+Nanobiotechnology bridges biology and materials science: gold nanoparticles conjugated to antibodies target drug delivery specifically to tumor cells; quantum dots label specific cellular structures for single-molecule imaging; liposomes encapsulate mRNA or siRNA for in vivo delivery. DNA origami uses DNA's predictable base-pairing to fold synthetic DNA into precise 3D structures — functional nanomachines being explored for targeted drug delivery and molecular computing. Cell-free biology extracts and concentrates cellular machinery outside living cells for rapid protein production, prototyping of genetic circuits, and on-demand biosynthesis of small molecules. The pace of advance feels genuinely different from a decade ago — more capabilities, more integration between fields, more clinical translation. The governance challenge is to ensure that these capabilities are developed responsibly and that their benefits reach people who need them most, not just those who can pay for them.`,
   },
 ];
 
-// ─── Main section ──────────────────────────────────────────────────────────────
+// ── Main section ───────────────────────────────────────────────────────────────
 
 export default function BiotechApplicationsSection() {
   const [expandedId, setExpandedId] = useState<string | null>("medicine");
@@ -552,15 +605,14 @@ export default function BiotechApplicationsSection() {
     <section
       className="px-6 py-16 max-w-5xl mx-auto"
       data-ocid="biotech-applications-section"
+      style={{ background: "oklch(0.97 0.012 75)" }}
     >
-      {/* Header */}
       <SectionHeader
         topicId="biotech-applications"
         title="Biotechnology Applications"
-        subtitle="From engineered insulin to biofuels and biodegradable plastics — discover how biotechnology is solving humanity's greatest challenges across medicine, agriculture, industry, and the environment."
+        subtitle="From engineered insulin to biodegradable plastics to mRNA vaccines — how biotechnology is answering some of humanity's hardest questions, across medicine, agriculture, industry, and the environment."
       />
 
-      {/* Interactive application category cards */}
       <AnimatedEntrance direction="up" delay={0.1}>
         <div className="mb-14">
           <h3
@@ -569,9 +621,9 @@ export default function BiotechApplicationsSection() {
           >
             🔬 Application Categories
           </h3>
-          <p className="text-sm text-muted-foreground mb-6">
-            Click a category to explore specific examples and real-world
-            applications. Use{" "}
+          <p className="text-sm mb-6" style={{ color: "oklch(0.45 0.04 75)" }}>
+            Click a category to explore real examples with detailed mechanisms.
+            Use{" "}
             <kbd
               className="rounded px-1.5 py-0.5 text-xs font-mono"
               style={{
@@ -595,7 +647,6 @@ export default function BiotechApplicationsSection() {
             </kbd>{" "}
             to expand.
           </p>
-
           <ul
             className="flex flex-col gap-4"
             aria-label="Biotechnology application categories"
@@ -614,19 +665,19 @@ export default function BiotechApplicationsSection() {
         </div>
       </AnimatedEntrance>
 
-      {/* Deep explanations */}
       <StaggerContainer
-        className="flex flex-col gap-8 mb-16"
+        className="flex flex-col gap-7 mb-16"
         staggerDelay={0.09}
       >
         {EXPLANATIONS.map((section) => (
           <StaggerItem key={section.id}>
             <div
+              id={section.anchorId}
               className="rounded-2xl p-7"
               style={{
-                background: "oklch(0.17 0.03 262)",
-                border: `1px solid oklch(${GREEN_BORDER})`,
-                boxShadow: `0 0 24px oklch(${GREEN} / 0.05)`,
+                background: "oklch(0.985 0.008 75)",
+                border: "1px solid oklch(0.87 0.02 75)",
+                borderLeft: "3px solid oklch(0.55 0.16 155 / 0.6)",
               }}
               data-ocid={`explanation-${section.id}`}
             >
@@ -639,7 +690,8 @@ export default function BiotechApplicationsSection() {
               {section.body.split("\n\n").map((paragraph) => (
                 <p
                   key={paragraph.slice(0, 40)}
-                  className="text-muted-foreground leading-relaxed mb-4 last:mb-0 text-[0.95rem]"
+                  className="leading-relaxed mb-4 last:mb-0 text-[0.95rem]"
+                  style={{ color: "oklch(0.30 0.03 75)" }}
                 >
                   {paragraph}
                 </p>
@@ -649,18 +701,19 @@ export default function BiotechApplicationsSection() {
         ))}
       </StaggerContainer>
 
-      {/* Quiz */}
       <AnimatedEntrance direction="up" delay={0.1}>
         <div className="mb-4">
           <h3
             className="font-display text-2xl font-bold mb-2"
             style={{ color: `oklch(${GREEN})` }}
           >
-            💉 Test Your Knowledge
+            💉 Test Your Biotechnology Applications Knowledge
           </h3>
-          <p className="text-muted-foreground mb-6">
-            10 questions covering recombinant proteins, GM crops,
-            bioremediation, gene therapy, biofuels, and more.
+          <p className="mb-6" style={{ color: "oklch(0.45 0.04 75)" }}>
+            10 questions spanning medical (mAbs, gene therapy, mRNA vaccines),
+            agricultural (Bt, Golden Rice), industrial (directed evolution,
+            cellulosic biofuel), environmental (phytoremediation, FAST-PETase),
+            diagnostics (ctDNA, SHERLOCK), and synthetic biology.
           </p>
           <QuizEngine
             topicId="biotech-applications"

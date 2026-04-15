@@ -79,10 +79,10 @@ export default {
       },
       boxShadow: {
         xs: "0 1px 2px 0 rgba(0,0,0,0.05)",
-        "glow-biomolecule": "0 0 20px oklch(0.72 0.18 142 / 0.4)",
-        "glow-cell": "0 0 20px oklch(0.68 0.19 262 / 0.4)",
-        "glow-dna": "0 0 20px oklch(0.70 0.20 290 / 0.4)",
-        "glow-protein": "0 0 20px oklch(0.68 0.22 36 / 0.4)",
+        "glow-biomolecule": "0 0 12px oklch(0.6 0.12 145 / 0.3)",
+        "glow-cell": "0 0 12px oklch(0.58 0.11 240 / 0.3)",
+        "glow-dna": "0 0 12px oklch(0.58 0.1 280 / 0.3)",
+        "glow-protein": "0 0 12px oklch(0.62 0.14 35 / 0.3)",
       },
       keyframes: {
         "accordion-down": {

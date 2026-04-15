@@ -4,11 +4,16 @@ import {
   Component,
   type ReactNode,
   Suspense,
+  useEffect,
   useMemo,
   useRef,
   useState,
 } from "react";
 import * as THREE from "three";
+
+// Module-level visibility flag — toggled by IntersectionObserver on the canvas wrapper
+// eslint-disable-next-line prefer-const
+let proteinSceneVisible = true;
 
 class SceneErrorBoundary extends Component<
   { children: ReactNode; fallback?: ReactNode },
@@ -77,11 +82,9 @@ function AminoAcidBead({
 }) {
   const meshRef = useRef<THREE.Mesh>(null);
   useFrame((state) => {
-    if (meshRef.current) {
-      const s =
-        1 + Math.sin(state.clock.elapsedTime * 1.1 + pulseOffset) * 0.07;
-      meshRef.current.scale.setScalar(s);
-    }
+    if (!proteinSceneVisible || !meshRef.current) return;
+    const s = 1 + Math.sin(state.clock.elapsedTime * 1.1 + pulseOffset) * 0.07;
+    meshRef.current.scale.setScalar(s);
   });
   return (
     <mesh ref={meshRef} position={position}>
@@ -103,7 +106,8 @@ function PrimaryChain() {
   const spread = 0.55;
 
   useFrame((_, delta) => {
-    if (groupRef.current) groupRef.current.rotation.y += delta * 0.22;
+    if (!proteinSceneVisible || !groupRef.current) return;
+    groupRef.current.rotation.y += delta * 0.22;
   });
 
   const positions = useMemo(
@@ -282,8 +286,8 @@ function AlphaHelix({
   const [hovered, setHovered] = useState(false);
 
   useFrame((_, delta) => {
-    if (meshRef.current)
-      meshRef.current.rotation.y += delta * (hovered ? 0.7 : 0.2);
+    if (!proteinSceneVisible || !meshRef.current) return;
+    meshRef.current.rotation.y += delta * (hovered ? 0.7 : 0.2);
   });
 
   const curve = useMemo(() => {
@@ -455,8 +459,8 @@ function TertiaryFoldScene({ paused }: { paused: boolean }) {
   const groupRef = useRef<THREE.Group>(null);
 
   useFrame((_, delta) => {
-    if (groupRef.current && !paused)
-      groupRef.current.rotation.y += delta * 0.18;
+    if (!proteinSceneVisible || !groupRef.current || paused) return;
+    groupRef.current.rotation.y += delta * 0.18;
   });
 
   const loopFrom = useMemo(() => new THREE.Vector3(-0.6, 0.9, 0), []);
@@ -570,8 +574,8 @@ function SecondaryScene({ paused }: { paused: boolean }) {
   const groupRef = useRef<THREE.Group>(null);
 
   useFrame((_, delta) => {
-    if (groupRef.current && !paused)
-      groupRef.current.rotation.y += delta * 0.18;
+    if (!proteinSceneVisible || !groupRef.current || paused) return;
+    groupRef.current.rotation.y += delta * 0.18;
   });
 
   const loopFrom = useMemo(() => new THREE.Vector3(-0.6, 0.9, 0), []);
@@ -668,10 +672,26 @@ export function ProteinScene({
   onLevelChange,
 }: { level: StructureLevel; onLevelChange: (l: StructureLevel) => void }) {
   const [paused, setPaused] = useState(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  // Gate all useFrame work when the canvas is offscreen
+  useEffect(() => {
+    const el = wrapperRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        proteinSceneVisible = entries[0]?.isIntersecting ?? false;
+      },
+      { rootMargin: "100px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section aria-label="Interactive protein structure viewer">
       <div
+        ref={wrapperRef}
         className="relative w-full rounded-2xl overflow-hidden"
         style={{ height: "480px", background: NAVY_BG }}
         onPointerEnter={() => setPaused(true)}

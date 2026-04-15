@@ -9,168 +9,165 @@ import type { QuizQuestion } from "@/types/biology";
 import { Scissors } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-// ────────────────────────────────────────────────────────────
-// TEAL accent for CRISPR: oklch(0.72 0.18 172)
-// ────────────────────────────────────────────────────────────
-const TEAL = "oklch(0.72 0.18 172)";
-const TEAL_DIM = "oklch(0.72 0.18 172 / 0.25)";
-const TEAL_BORDER = "oklch(0.72 0.18 172 / 0.4)";
+// ── CRISPR accent: teal ──────────────────────────────────────────────────────
+const TEAL = "oklch(0.52 0.14 172)";
+const TEAL_DIM = "oklch(0.52 0.14 172 / 0.15)";
+const TEAL_BORDER = "oklch(0.52 0.14 172 / 0.35)";
 
-// ────────────────────────────────────────────────────────────
-// Quiz questions
-// ────────────────────────────────────────────────────────────
+// ── Quiz questions ───────────────────────────────────────────────────────────
 const CRISPR_QUIZ: QuizQuestion[] = [
   {
     id: "cr1",
-    question: "What does CRISPR stand for?",
+    question: "What does CRISPR stand for, and where was it first discovered?",
     options: [
-      "Clustered Regularly Interspaced Short Palindromic Repeats",
-      "Catalytic RNA Interference and Splicing Protein Regulator",
-      "Controlled Recombinant Integration of Specific Promoter Regions",
-      "Comprehensive RNA Insertion System for Protein Replacement",
+      "Clustered Regularly Interspaced Short Palindromic Repeats — found in bacterial immune systems",
+      "Catalytic RNA Interference and Splicing Protein Regulator — found in yeast",
+      "Controlled Recombinant Integration of Specific Promoter Regions — synthetic construct",
+      "Comprehensive RNA Insertion System for Protein Replacement — mammalian cells",
     ],
     correctIndex: 0,
     explanation:
-      "CRISPR stands for Clustered Regularly Interspaced Short Palindromic Repeats — repetitive DNA sequences naturally found in bacterial genomes that serve as a molecular memory of past viral infections.",
+      "CRISPR stands for 'Clustered Regularly Interspaced Short Palindromic Repeats' — first noticed by Yoshizumi Ishino in 1987 in E. coli, then properly characterized by Francisco Mojica in the 1990s as part of bacterial adaptive immunity. Every time a bacterium survived a viral attack, it filed a genetic 'mugshot' of the virus into its CRISPR array. Scientists — specifically Charpentier and Doudna — then borrowed this system in 2012 and turned it into a programmable gene-editing tool.",
     topic: "crispr",
   },
   {
     id: "cr2",
     question:
-      "What is the primary function of the Cas9 protein in CRISPR-Cas9?",
+      "In the CRISPR-Cas9 mechanism, what is the PAM sequence, and why can't Cas9 cut without it?",
     options: [
-      "It synthesizes a new DNA strand to replace the deleted sequence",
-      "It acts as a molecular scissors, cutting double-stranded DNA at a specific site",
-      "It carries the edited gene from the laboratory into the patient's cells",
-      "It transcribes the guide RNA from the target DNA template",
+      "A Protective Activation Motif that shields Cas9 from cellular proteasomes",
+      "Protospacer Adjacent Motif (NGG for SpCas9) — a docking signal Cas9 must find before interrogating nearby DNA",
+      "A Post-Activation Marker added after successful cutting to signal DNA repair machinery",
+      "A Primer Annealing Motif used to amplify CRISPR-edited regions by PCR",
     ],
     correctIndex: 1,
     explanation:
-      "Cas9 is a nuclease (molecular scissors) that creates a precise double-strand break in DNA at the location specified by the guide RNA. Its two cutting domains (RuvC and HNH) each sever one strand of the double helix.",
+      "Before Cas9 even compares DNA to its guide RNA, it scans for PAM sequences. For the most common Cas9 (from Streptococcus pyogenes), that's NGG on the non-template strand. Think of the PAM as a 'permission slip' — without it, Cas9 won't engage the DNA at all. This is actually a safety feature bacteria evolved so Cas9 wouldn't attack its own CRISPR array. It also limits where CRISPR can target: no nearby NGG, no cut. Newer Cas variants (Cas12a uses TTTV on the 5' side) have different PAM requirements and expand the targetable space.",
     topic: "crispr",
   },
   {
     id: "cr3",
-    question: "What is the role of guide RNA (gRNA) in CRISPR-Cas9?",
+    question:
+      "What is the difference between NHEJ and HDR as DNA repair pathways after a Cas9 cut?",
     options: [
-      "It degrades the Cas9 protein after editing is complete",
-      "It provides energy in the form of ATP for the DNA-cutting reaction",
-      "It directs the Cas9 protein to the correct target DNA sequence through complementary base pairing",
-      "It repairs the cut DNA by filling in missing nucleotides",
+      "NHEJ requires a donor template; HDR is template-free and produces precise edits",
+      "NHEJ is fast and error-prone (creates indels/knockouts); HDR is precise but requires a donor template and only works in S/G2 phase",
+      "Both pathways produce identical outcomes — the choice depends on cell type only",
+      "HDR operates on mitochondrial DNA only; NHEJ handles nuclear DNA",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation:
-      "The guide RNA (gRNA) — typically a single guide RNA combining crRNA and tracrRNA — contains a 20-nucleotide spacer sequence that is complementary to the target DNA. It acts as a molecular GPS, directing Cas9 to the precise genomic location to be edited.",
+      "After Cas9 makes a double-strand break, the cell has a few options. NHEJ (Non-Homologous End Joining) is the 24/7 emergency repair crew — it glues the ends back together quickly but sloppily, often dropping or adding a base pair. Those indels frameshift the gene, which researchers love for knockouts. HDR (Homology-Directed Repair) is precision surgery — you supply a repair template flanked by sequences matching the cut site, and the cell copies it in. But HDR is picky: it only works reliably during S and G2 phases when cells are actively dividing. That's why HDR is harder in post-mitotic tissues like neurons. There's also MMEJ (Microhomology-Mediated End Joining), which uses small homologous sequences flanking the break and creates predictable deletions — useful for programmed editing.",
     topic: "crispr",
   },
   {
     id: "cr4",
-    question: "What is the PAM sequence and why is it essential for CRISPR?",
+    question:
+      "How does CRISPR-Cas12a (Cpf1) differ from Cas9 in its cutting mechanism and guide RNA requirements?",
     options: [
-      "A Protective Activation Motif that shields Cas9 from cellular degradation",
-      "A Protospacer Adjacent Motif — a short DNA sequence (NGG for SpCas9) required adjacent to the target site for Cas9 to bind and cut",
-      "A Post-Activation Marker added to DNA after successful editing",
-      "A Primer Annealing Motif used to amplify the edited gene by PCR",
+      "Cas12a requires both crRNA and tracrRNA like Cas9, and creates blunt-ended cuts",
+      "Cas12a uses only a single crRNA (no tracrRNA needed), PAM on 5' side (TTTV), and creates a staggered cut with 5-nt overhang",
+      "Cas12a targets RNA instead of DNA and is used exclusively for diagnostics",
+      "Cas12a is larger than Cas9 and requires lipid nanoparticle delivery only",
     ],
     correctIndex: 1,
     explanation:
-      "The PAM (Protospacer Adjacent Motif) is a short sequence (5'-NGG-3' for the commonly used SpCas9) that must be immediately downstream of the target site. Cas9 first scans the genome for PAM sequences before interrogating nearby DNA for guide RNA complementarity.",
+      "Great question to test whether you really know your Cas proteins! Cas9 needs a two-part guide (crRNA + tracrRNA, usually fused into one sgRNA) and recognizes PAM on the 3' side (NGG). Cas12a is simpler: it processes its own crRNA without needing tracrRNA, recognizes PAM on the 5' side (TTTV), and cuts in a staggered way, leaving 5-nucleotide 5' overhangs. Those sticky ends are actually useful for some applications. Cas12a is also smaller (helpful for AAV delivery) and has collateral cleavage activity on single-stranded DNA — which is exploited in DETECTR diagnostics. Cas13 is the RNA-targeting cousin, used in SHERLOCK for pathogen detection.",
     topic: "crispr",
   },
   {
     id: "cr5",
     question:
-      "After Cas9 cuts DNA, which repair pathway introduces targeted insertions or deletions (indels)?",
+      "What is base editing, and what are its key advantages over standard CRISPR-Cas9?",
     options: [
-      "Homology-Directed Repair (HDR) using a provided DNA template",
-      "Non-Homologous End Joining (NHEJ), an error-prone repair mechanism",
-      "Base Excision Repair (BER) triggered by oxidative damage",
-      "Mismatch Repair (MMR) correcting replication errors",
+      "Base editing uses Cas9 to cut both strands, then HDR to precisely change one nucleotide — same as standard CRISPR",
+      "Base editing fuses a deaminase to a 'dead' or nickase Cas9, converting individual nucleotides (C→T or A→G) without creating a double-strand break",
+      "Base editing amplifies the target region using PCR before making changes, then reintegrates the edited sequence",
+      "Base editing is used only in plant cells because mammalian DNA repair suppresses the conversion",
     ],
     correctIndex: 1,
     explanation:
-      "Non-Homologous End Joining (NHEJ) is the cell's default repair mechanism for double-strand breaks. It is error-prone and frequently introduces small insertions or deletions (indels) at the cut site, which can disrupt a gene's reading frame and knock out gene function.",
+      "Here's why base editing is exciting: standard CRISPR cuts both DNA strands, which triggers the cell's alarm bells and can cause unwanted mutations during repair. Base editors avoid this entirely. Cytosine base editors (CBEs) fuse a cytidine deaminase to a nCas9 (nickase) — the guide RNA still locates the target, but instead of cutting, it converts C to U (read as T), achieving C→T changes. Adenine base editors (ABEs) evolved tRNA adenosine deaminases to work on DNA, enabling A→G conversions. No DSB, no donor template needed. The catch is 'bystander edits' — if multiple C or A bases are in the editing window, all of them may get converted. Next-gen base editors with narrower activity windows are addressing this.",
     topic: "crispr",
   },
   {
     id: "cr6",
     question:
-      "Which CRISPR repair strategy allows precise replacement of a DNA sequence with a new one?",
+      "Prime editing is described as a 'search and replace' function for the genome. How does it actually work?",
     options: [
-      "NHEJ, because it randomly inserts or deletes nucleotides",
-      "HDR (Homology-Directed Repair) using a donor DNA template with homology arms",
-      "RNA interference (RNAi) post-transcriptional silencing",
-      "Transposon-mediated insertion at random genomic locations",
+      "It uses two separate Cas9 proteins that each cut one strand, with a repair template delivered between them",
+      "It uses a pegRNA (containing both guide and repair template) plus a reverse transcriptase fused to nCas9 to directly write new sequence without a DSB",
+      "It works by NHEJ after inserting a reverse-transcribed copy of the desired sequence at the cut site",
+      "Prime editing is only possible in embryonic stem cells where chromatin is fully accessible",
     ],
     correctIndex: 1,
     explanation:
-      "Homology-Directed Repair (HDR) can be exploited by providing a donor DNA template with sequences homologous to regions flanking the cut. The cell copies the template into the break, allowing precise correction or insertion of a desired sequence.",
+      "Prime editing, developed by David Liu's lab in 2019, is genuinely elegant. The 'prime editing guide RNA' (pegRNA) does two jobs: its 5' spacer region directs nCas9 to the target, and its 3' extension contains a primer binding site plus a reverse transcriptase (RT) template carrying the desired edit. After nCas9 nicks one strand, the RT template hybridizes to the cut strand, reverse transcriptase copies in the new sequence, and mismatch repair resolves the edit into permanent DNA. No DSB, no donor template floating free in the cell. PE2 adds a mutant reverse transcriptase for better efficiency; PE3 nicks the complementary strand to bias mismatch repair toward incorporating the edit. It can make any small substitution, insertion, or deletion — it's the most versatile single-component system available.",
     topic: "crispr",
   },
   {
     id: "cr7",
     question:
-      "How does CRISPR-Cas9 differ fundamentally from earlier gene editing tools like ZFNs and TALENs?",
+      "Which FDA-approved CRISPR therapy for sickle cell disease works by reactivating fetal hemoglobin, and how?",
     options: [
-      "CRISPR cannot edit mammalian cells, while ZFNs and TALENs can",
-      "CRISPR targets DNA using programmable RNA, making it faster and cheaper to design than protein-based ZFN/TALEN systems",
-      "ZFNs and TALENs use guide RNA while CRISPR uses engineered proteins",
-      "CRISPR only edits mitochondrial DNA, unlike ZFNs which target nuclear DNA",
+      "Zolgensma — it replaces the sickle hemoglobin gene with a corrected copy via AAV delivery",
+      "Casgevy (exa-cel) — it edits the BCL11A enhancer in patient hematopoietic stem cells to reactivate fetal hemoglobin (HbF)",
+      "Luxturna — it delivers CRISPR machinery directly into red blood cells in the bloodstream",
+      "Hemgenix — it uses base editing to directly correct the HbS point mutation in beta-globin",
     ],
     correctIndex: 1,
     explanation:
-      "ZFNs and TALENs require engineering new proteins for each new target — an expensive, time-consuming process. CRISPR uses a simple RNA molecule for targeting, making it orders of magnitude cheaper, faster, and easier to design for any genomic location.",
+      "Casgevy (exagamglogene autotemcel), FDA-approved December 2023, is the world's first approved CRISPR medicine. Here's the beautiful logic: people with sickle cell have broken adult hemoglobin (HbS), but during fetal development everyone makes fetal hemoglobin (HbF) that works perfectly. After birth, a transcription factor called BCL11A switches HbF off. Casgevy uses CRISPR to disrupt the BCL11A enhancer in a patient's own hematopoietic stem cells (drawn from the bone marrow, edited ex vivo, then infused back after conditioning). HbF turns back on and compensates for HbS. In clinical trials, 29 of 29 patients were free of vaso-occlusive crises for at least 12 months. That's a dramatic result for a disease that had no cure.",
     topic: "crispr",
   },
   {
     id: "cr8",
     question:
-      "Which medical application of CRISPR has shown promising clinical trial results for sickle cell disease?",
+      "What delivery method is most commonly used for CRISPR in current clinical trials, and what are its advantages?",
     options: [
-      "Replacing the patient's entire hemoglobin gene with a synthetic DNA version",
-      "Reactivating fetal hemoglobin (HbF) expression by disrupting the BCL11A enhancer using CRISPR editing of patient stem cells",
-      "Injecting purified Cas9 protein directly into red blood cells",
-      "Using CRISPR to target and destroy the bone marrow cells producing abnormal hemoglobin",
+      "Adeno-associated virus (AAV) — unlimited payload capacity and permanent integration",
+      "Lipid nanoparticles (LNPs) — can deliver mRNA or RNP cargo, non-viral, transient expression reduces off-target risk",
+      "Retrovirus — random integration provides permanent editing without need for nuclear localization",
+      "Microinjection — most efficient method for in vivo tissue delivery",
     ],
     correctIndex: 1,
     explanation:
-      "A breakthrough clinical approach uses CRISPR to edit a patient's own hematopoietic stem cells, disrupting the BCL11A enhancer to reactivate fetal hemoglobin (HbF) expression. HbF compensates for the defective adult hemoglobin in sickle cell disease. The FDA approved this approach (Casgevy) in 2023.",
+      "Lipid nanoparticles have become the dominant delivery platform for many CRISPR clinical applications — the same technology that delivered mRNA COVID vaccines. LNPs can package CRISPR as mRNA (Cas9 mRNA + guide RNA) or as ribonucleoprotein (RNP — pre-assembled Cas9 + guide). Because the cargo doesn't integrate into the genome, expression is transient: Cas9 acts, edits, and degrades. That actually reduces off-target risk since the editing machinery isn't sitting around for weeks. AAV is still used widely for delivery to specific tissues (eye, liver, muscle) but has a 4.7 kb payload limit that constrains larger Cas proteins. For ex vivo editing (editing cells outside the body), electroporation of RNPs is the most efficient method.",
     topic: "crispr",
   },
   {
     id: "cr9",
     question:
-      "What is a major ethical concern surrounding germline CRISPR editing?",
+      "What are off-target effects in CRISPR, and how are researchers addressing them?",
     options: [
-      "That it will make genetic diseases more common by introducing new mutations",
-      "That edits to embryos, eggs, or sperm are heritable and passed to future generations, raising concerns about consent and long-term unknown effects",
-      "That CRISPR is too expensive for academic labs to use responsibly",
-      "That guide RNA molecules could be repurposed to delete entire chromosomes",
+      "Off-target effects occur when guide RNA degrades before reaching the nucleus",
+      "Cas9 cuts DNA at unintended sites with sequences similar to the guide — addressed with high-fidelity Cas9 variants, better guide design, and whole-genome sequencing",
+      "Off-target effects refer to immune reactions against the Cas9 protein in patients",
+      "They occur when CRISPR edits only one allele instead of both copies of the target gene",
     ],
     correctIndex: 1,
     explanation:
-      "Germline editing (editing embryos, eggs, or sperm) produces heritable changes affecting all cells in future offspring and their descendants. Unlike somatic editing (affecting only one individual), germline changes cannot be consented to by future generations, raising profound ethical questions about 'designer babies', equity, and unintended consequences.",
+      "Cas9 tolerates mismatches between the guide RNA and DNA — especially near the 5' end of the guide (far from the PAM). This means there may be other genomic sites with similar enough sequences that Cas9 cuts there too. In a therapeutic context, an off-target cut in a tumor suppressor could be dangerous. Researchers are addressing this on multiple fronts: computational tools like Cas-OFFinder predict likely off-target sites so they can be assessed by sequencing; high-fidelity Cas9 variants (eSpCas9, HiFi Cas9, evoCas9) have mutations that make the protein more 'demanding' — it requires a tighter match before committing to cut; and shorter guides (17-18 nt instead of 20) can improve specificity. Whole-genome sequencing of edited cells before clinical use is now standard practice in gene therapy programs.",
     topic: "crispr",
   },
   {
     id: "cr10",
-    question: "What is the 'off-target effect' problem in CRISPR editing?",
+    question:
+      "What ethical distinction separates somatic cell CRISPR editing from germline CRISPR editing?",
     options: [
-      "When the guide RNA fails to enter the cell nucleus and is degraded in the cytoplasm",
-      "When Cas9 cuts DNA at unintended genomic sites with sequences similar to the target, potentially causing harmful mutations",
-      "When edited cells are rejected by the immune system because Cas9 is a foreign protein",
-      "When CRISPR edits only one allele instead of both copies of the target gene",
+      "Somatic editing is banned globally; germline editing is permitted under medical supervision",
+      "Somatic edits affect only one patient and are not inherited; germline edits (in embryos/gametes) are heritable by all future descendants",
+      "There is no ethical distinction — both types require the same regulatory oversight globally",
+      "Germline editing only affects mitochondrial genes, so it has minimal hereditary consequences",
     ],
     correctIndex: 1,
     explanation:
-      "Off-target effects occur when Cas9 cleaves DNA at sites other than the intended target due to imperfect base-pairing tolerance. This can cause unintended mutations, potentially disrupting tumor suppressor genes or other critical sequences. Researchers are developing high-fidelity Cas9 variants and improved guide RNA design to minimize this risk.",
+      "This is the most important ethical question in all of biotechnology right now. Somatic gene editing — modifying the cells of a living person — affects only that individual. The edit stops with them. This is why therapies like Casgevy are medically and ethically permissible: one patient, one treatment, no effect on future generations. Germline editing — modifying eggs, sperm, or early embryos — is fundamentally different. Those edits get inherited. The children and grandchildren of the edited person carry them forever without any possibility of consent. The 2018 case of He Jiankui, who created genome-edited babies in China, shocked the world precisely because he crossed this line without scientific consensus, without proper consent, and with an unjustified medical rationale. He was convicted and imprisoned. The WHO, National Academies, and virtually every scientific body agrees: germline editing must not proceed clinically until safety, efficacy, and governance frameworks are firmly established.",
     topic: "crispr",
   },
 ];
 
-// ────────────────────────────────────────────────────────────
-// CRISPR Mechanism Animated Diagram
-// ────────────────────────────────────────────────────────────
+// ── CRISPR Mechanism Animated Diagram ─────────────────────────────────────────
 
 const DNA_BASES_TOP = [
   "A",
@@ -205,10 +202,10 @@ const DNA_BOT_IDS = DNA_BASES_BOT.map((b, i) => `bot-${b}-pos${i}`);
 const DNA_BP_IDS = DNA_BASES_TOP.map((_, i) => `bp-pos${i}`);
 
 const BASE_COLORS: Record<string, string> = {
-  A: "oklch(0.75 0.20 142)", // green
-  T: "oklch(0.75 0.20 36)", // orange
-  G: "oklch(0.75 0.20 290)", // purple
-  C: "oklch(0.75 0.20 200)", // cyan
+  A: "oklch(0.55 0.18 142)",
+  T: "oklch(0.58 0.18 36)",
+  G: "oklch(0.55 0.18 290)",
+  C: "oklch(0.55 0.18 200)",
 };
 
 type MechanismStep = "scan" | "bind" | "cut" | "repair";
@@ -217,22 +214,22 @@ const STEPS: { id: MechanismStep; label: string; desc: string }[] = [
   {
     id: "scan",
     label: "1 · Guide RNA Scanning",
-    desc: "The single guide RNA (sgRNA) — a ~100 nt molecule combining targeting and scaffold sequences — forms a complex with Cas9 and scans along double-stranded DNA, searching for a complementary 20-nucleotide sequence adjacent to a PAM site (5′-NGG-3′).",
+    desc: "The guide RNA (sgRNA) piggybacks on Cas9 and slides along the DNA double helix, hunting for a 20-letter sequence that matches its own — while simultaneously checking for the PAM motif (NGG). It's checking millions of base pairs fast, like a barcode scanner sweeping a crowded shelf.",
   },
   {
     id: "bind",
-    label: "2 · Cas9 Binding",
-    desc: "Upon finding its target, Cas9 unwinds the DNA double helix and the guide RNA base-pairs with the complementary strand (R-loop formation). Cas9 undergoes a conformational change, repositioning its two nuclease domains (HNH and RuvC) over each DNA strand.",
+    label: "2 · Cas9 Binding & R-loop",
+    desc: "Found it! Cas9 unzips the double helix at the target site, the guide RNA hybridizes to the complementary strand (forming an R-loop), and the protein locks into place. Both cutting blades — HNH and RuvC — rotate into their active conformations. The complex is now primed.",
   },
   {
     id: "cut",
-    label: "3 · DNA Double-Strand Break",
-    desc: "Both nuclease domains activate simultaneously: HNH cuts the strand complementary to the guide RNA, and RuvC cuts the non-complementary strand. This creates a blunt-ended double-strand break (DSB) precisely 3 bp upstream of the PAM sequence.",
+    label: "3 · Double-Strand Break",
+    desc: "Both nuclease domains fire simultaneously — HNH snips the strand complementary to the guide, RuvC snips the other. The result: a clean blunt-ended double-strand break exactly 3 bp upstream of the PAM. The DNA is severed in two. The cell's damage sensors go off immediately.",
   },
   {
     id: "repair",
-    label: "4 · DNA Repair",
-    desc: "The cell detects the break and activates repair pathways. NHEJ (non-homologous end joining) rejoins the ends imprecisely, often introducing indels that disrupt the gene. If a repair template is provided, HDR (homology-directed repair) copies the template sequence into the break — enabling precise gene correction.",
+    label: "4 · DNA Repair Choice",
+    desc: "The cell scrambles to fix the break. NHEJ glues ends back fast but often drops/adds bases — creating indels that disrupt the gene (knockout). HDR, if you supply a repair template, copies in your exact sequence change (knock-in). MMEJ creates predictable deletions using short microhomologies flanking the break.",
   },
 ];
 
@@ -243,7 +240,6 @@ function CRISPRDiagram() {
   const scanRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const stepIdx = STEPS.findIndex((s) => s.id === step);
 
-  // Auto-advance through steps
   useEffect(() => {
     const timer = setTimeout(() => {
       const next = (stepIdx + 1) % STEPS.length;
@@ -252,7 +248,6 @@ function CRISPRDiagram() {
     return () => clearTimeout(timer);
   }, [stepIdx]);
 
-  // Scan animation: move guide RNA left-to-right
   useEffect(() => {
     if (step === "scan") {
       setScanPos(0);
@@ -267,7 +262,6 @@ function CRISPRDiagram() {
     };
   }, [step]);
 
-  // Cut flash
   useEffect(() => {
     if (step === "cut") {
       setCutAnim(false);
@@ -277,19 +271,18 @@ function CRISPRDiagram() {
     setCutAnim(false);
   }, [step]);
 
-  const cutIndex = 6; // cut site index in the DNA
+  const cutIndex = 6;
 
   return (
     <section
       className="rounded-2xl overflow-hidden"
       style={{
-        background: "oklch(0.14 0.05 262)",
+        background: "oklch(0.97 0.01 75)",
         border: `1px solid ${TEAL_BORDER}`,
-        boxShadow: `0 0 40px ${TEAL_DIM}`,
+        boxShadow: "0 2px 24px oklch(0.52 0.14 172 / 0.10)",
       }}
       aria-label="CRISPR-Cas9 mechanism animated diagram"
     >
-      {/* Step tabs */}
       <div
         className="flex gap-1 flex-wrap p-3 border-b"
         style={{ borderColor: TEAL_BORDER }}
@@ -306,9 +299,9 @@ function CRISPRDiagram() {
             onClick={() => setStep(s.id)}
             className="flex-1 rounded-lg px-3 py-2 text-xs font-semibold transition-smooth focus:outline-none focus-visible:ring-2"
             style={{
-              background: step === s.id ? TEAL_DIM : "oklch(0.19 0.04 262)",
-              color: step === s.id ? TEAL : "oklch(0.62 0.06 262)",
-              border: `1px solid ${step === s.id ? TEAL_BORDER : "oklch(0.26 0.04 262)"}`,
+              background: step === s.id ? TEAL_DIM : "oklch(0.93 0.015 75)",
+              color: step === s.id ? TEAL : "oklch(0.45 0.04 75)",
+              border: `1px solid ${step === s.id ? TEAL_BORDER : "oklch(0.86 0.02 75)"}`,
               minWidth: "120px",
             }}
           >
@@ -317,29 +310,25 @@ function CRISPRDiagram() {
         ))}
       </div>
 
-      {/* Visual area */}
       <div
         className="relative flex flex-col items-center justify-center py-10 px-4"
         style={{ minHeight: "280px" }}
         aria-live="polite"
         aria-atomic="true"
       >
-        {/* DNA double helix representation */}
         <div
           className="relative flex flex-col items-center gap-0"
           aria-label="DNA double helix"
         >
-          {/* Top strand label */}
           <div className="flex items-center gap-1 mb-2">
             <span className="text-xs font-bold" style={{ color: TEAL }}>
               5′
             </span>
-            <span className="text-xs text-muted-foreground">
+            <span className="text-xs" style={{ color: "oklch(0.50 0.04 75)" }}>
               Template strand
             </span>
           </div>
 
-          {/* Top DNA strand */}
           <div
             className="flex items-center gap-1 mb-1"
             role="img"
@@ -360,12 +349,12 @@ function CRISPRDiagram() {
                       isCutSite && cutAnim
                         ? "oklch(0.70 0.25 22 / 0.4)"
                         : isTarget
-                          ? `${BASE_COLORS[base]}33`
-                          : `${BASE_COLORS[base]}1a`,
-                    border: `1.5px solid ${isCutSite && cutAnim ? "oklch(0.75 0.22 22)" : isTarget ? BASE_COLORS[base] : `${BASE_COLORS[base]}66`}`,
+                          ? `${BASE_COLORS[base]}25`
+                          : `${BASE_COLORS[base]}15`,
+                    border: `1.5px solid ${isCutSite && cutAnim ? "oklch(0.75 0.22 22)" : isTarget ? BASE_COLORS[base] : `${BASE_COLORS[base]}55`}`,
                     color: BASE_COLORS[base],
                     boxShadow: isTarget
-                      ? `0 0 8px ${BASE_COLORS[base]}55`
+                      ? `0 0 8px ${BASE_COLORS[base]}40`
                       : undefined,
                     transform:
                       isCutSite && cutAnim ? "translateY(-3px)" : undefined,
@@ -378,7 +367,6 @@ function CRISPRDiagram() {
             })}
           </div>
 
-          {/* Connecting lines (base pairs) */}
           <div className="flex items-center gap-1 my-0.5">
             {DNA_BASES_TOP.map((_, i) => {
               const isBreak =
@@ -413,8 +401,8 @@ function CRISPRDiagram() {
                         height: "8px",
                         background:
                           i >= 4 && i <= 9 && step !== "scan"
-                            ? `${TEAL}88`
-                            : "oklch(0.35 0.04 262)",
+                            ? `${TEAL}66`
+                            : "oklch(0.78 0.02 75)",
                       }}
                     />
                   )}
@@ -423,7 +411,6 @@ function CRISPRDiagram() {
             })}
           </div>
 
-          {/* Bottom DNA strand */}
           <div
             className="flex items-center gap-1 mt-1"
             role="img"
@@ -444,12 +431,12 @@ function CRISPRDiagram() {
                       isCutSite && cutAnim
                         ? "oklch(0.70 0.25 22 / 0.4)"
                         : isTarget
-                          ? `${BASE_COLORS[base]}33`
-                          : `${BASE_COLORS[base]}1a`,
-                    border: `1.5px solid ${isCutSite && cutAnim ? "oklch(0.75 0.22 22)" : isTarget ? BASE_COLORS[base] : `${BASE_COLORS[base]}66`}`,
+                          ? `${BASE_COLORS[base]}25`
+                          : `${BASE_COLORS[base]}15`,
+                    border: `1.5px solid ${isCutSite && cutAnim ? "oklch(0.75 0.22 22)" : isTarget ? BASE_COLORS[base] : `${BASE_COLORS[base]}55`}`,
                     color: BASE_COLORS[base],
                     boxShadow: isTarget
-                      ? `0 0 8px ${BASE_COLORS[base]}55`
+                      ? `0 0 8px ${BASE_COLORS[base]}40`
                       : undefined,
                     transform:
                       isCutSite && cutAnim ? "translateY(3px)" : undefined,
@@ -462,17 +449,15 @@ function CRISPRDiagram() {
             })}
           </div>
 
-          {/* Bottom label */}
           <div className="flex items-center gap-1 mt-2">
             <span className="text-xs font-bold" style={{ color: TEAL }}>
               3′
             </span>
-            <span className="text-xs text-muted-foreground">
+            <span className="text-xs" style={{ color: "oklch(0.50 0.04 75)" }}>
               Non-template strand
             </span>
           </div>
 
-          {/* Guide RNA — shown as scanning slider or bound */}
           {step === "scan" && (
             <div
               className="absolute flex flex-col items-center pointer-events-none"
@@ -486,10 +471,9 @@ function CRISPRDiagram() {
               <div
                 className="rounded-lg px-2 py-1 text-xs font-bold whitespace-nowrap"
                 style={{
-                  background: `${TEAL}22`,
+                  background: TEAL_DIM,
                   border: `1px solid ${TEAL_BORDER}`,
                   color: TEAL,
-                  animation: "pulse-glow-teal 2s ease-in-out infinite",
                 }}
               >
                 sgRNA scanning →
@@ -498,13 +482,12 @@ function CRISPRDiagram() {
                 style={{
                   width: "2px",
                   height: "14px",
-                  background: `${TEAL}88`,
+                  background: `${TEAL}66`,
                 }}
               />
             </div>
           )}
 
-          {/* Cas9 protein bubble — shown when binding */}
           {(step === "bind" || step === "cut") && (
             <div
               className="absolute flex flex-col items-center pointer-events-none"
@@ -521,10 +504,10 @@ function CRISPRDiagram() {
               <div
                 className="rounded-2xl px-4 py-2 text-xs font-bold flex items-center gap-2"
                 style={{
-                  background: `${TEAL}22`,
+                  background: TEAL_DIM,
                   border: `2px solid ${TEAL}`,
                   color: TEAL,
-                  boxShadow: `0 0 18px ${TEAL}55`,
+                  boxShadow: `0 0 16px ${TEAL}33`,
                 }}
               >
                 <span style={{ fontSize: "18px" }}>🔬</span>
@@ -534,13 +517,12 @@ function CRISPRDiagram() {
                 style={{
                   width: "2px",
                   height: "20px",
-                  background: `${TEAL}88`,
+                  background: `${TEAL}66`,
                 }}
               />
             </div>
           )}
 
-          {/* Repair template — shown in repair step */}
           {step === "repair" && (
             <div
               className="absolute flex flex-col items-center pointer-events-none"
@@ -551,9 +533,9 @@ function CRISPRDiagram() {
                 <div
                   className="rounded-lg px-3 py-2 text-xs font-semibold"
                   style={{
-                    background: "oklch(0.65 0.20 290 / 0.2)",
-                    border: "1px solid oklch(0.65 0.20 290 / 0.6)",
-                    color: "oklch(0.75 0.18 290)",
+                    background: "oklch(0.65 0.20 290 / 0.12)",
+                    border: "1px solid oklch(0.65 0.20 290 / 0.4)",
+                    color: "oklch(0.45 0.18 290)",
                   }}
                 >
                   NHEJ (indels)
@@ -561,26 +543,35 @@ function CRISPRDiagram() {
                 <div
                   className="rounded-lg px-3 py-2 text-xs font-semibold"
                   style={{
-                    background: `${TEAL}22`,
+                    background: TEAL_DIM,
                     border: `1px solid ${TEAL_BORDER}`,
                     color: TEAL,
                   }}
                 >
                   HDR (precise)
                 </div>
+                <div
+                  className="rounded-lg px-3 py-2 text-xs font-semibold"
+                  style={{
+                    background: "oklch(0.65 0.18 36 / 0.12)",
+                    border: "1px solid oklch(0.65 0.18 36 / 0.4)",
+                    color: "oklch(0.50 0.16 36)",
+                  }}
+                >
+                  MMEJ
+                </div>
               </div>
               <div
                 style={{
                   width: "2px",
                   height: "18px",
-                  background: "oklch(0.45 0 0)",
+                  background: "oklch(0.70 0.02 75)",
                 }}
               />
             </div>
           )}
         </div>
 
-        {/* Base color legend */}
         <div
           className="flex gap-3 flex-wrap justify-center mt-8"
           aria-label="DNA base color legend"
@@ -590,15 +581,18 @@ function CRISPRDiagram() {
               <div
                 className="h-5 w-5 rounded flex items-center justify-center text-xs font-bold"
                 style={{
-                  background: `${color}22`,
-                  border: `1px solid ${color}88`,
+                  background: `${color}15`,
+                  border: `1px solid ${color}66`,
                   color,
                 }}
                 aria-hidden="true"
               >
                 {base}
               </div>
-              <span className="text-xs text-muted-foreground">
+              <span
+                className="text-xs"
+                style={{ color: "oklch(0.50 0.04 75)" }}
+              >
                 {base === "A"
                   ? "Adenine"
                   : base === "T"
@@ -612,7 +606,6 @@ function CRISPRDiagram() {
         </div>
       </div>
 
-      {/* Step description */}
       <div
         className="px-5 pb-5"
         role="tabpanel"
@@ -620,12 +613,15 @@ function CRISPRDiagram() {
       >
         <div
           className="rounded-xl p-4"
-          style={{ background: `${TEAL}0f`, border: `1px solid ${TEAL}2a` }}
+          style={{ background: TEAL_DIM, border: `1px solid ${TEAL_BORDER}` }}
         >
           <p className="text-xs font-bold mb-1" style={{ color: TEAL }}>
             {STEPS[stepIdx].label}
           </p>
-          <p className="text-sm leading-relaxed text-muted-foreground">
+          <p
+            className="text-sm leading-relaxed"
+            style={{ color: "oklch(0.30 0.03 75)" }}
+          >
             {STEPS[stepIdx].desc}
           </p>
         </div>
@@ -634,113 +630,152 @@ function CRISPRDiagram() {
   );
 }
 
-// ────────────────────────────────────────────────────────────
-// Explanation paragraphs
-// ────────────────────────────────────────────────────────────
+// ── Explanation paragraphs ─────────────────────────────────────────────────────
 const EXPLANATIONS = [
   {
-    title: "What Is Genetic Engineering?",
+    title: "The Surprising Origin: Bacterial Self-Defense",
+    anchorId: "crispr-origin",
     color: TEAL,
-    text: "Genetic engineering is the direct manipulation of an organism's DNA using laboratory techniques to alter, add, or remove specific genes. Unlike traditional selective breeding, which works through generations of controlled mating, genetic engineering allows scientists to make targeted changes at the molecular level within a single generation. The field emerged in the 1970s with the development of recombinant DNA technology — tools that could cut DNA at specific sites and splice foreign genes into new organisms. Early tools included restriction enzymes (molecular scissors from bacteria), DNA ligases (biological glue), and plasmid vectors (circular DNA carriers). These foundational techniques revolutionized medicine, agriculture, and basic research: insulin for diabetes was among the first human proteins produced in bacteria using recombinant DNA. Today, genetic engineering underpins vaccine production, cancer therapy, crop improvement, and the rapidly advancing field of gene therapy for inherited diseases.",
+    text: "CRISPR didn't start in a biotech lab — it started in bacteria's ongoing war against viruses. Francisco Mojica, a Spanish microbiologist, noticed something odd in the 1990s: bacteria had repetitive sequences interspersed with unique spacers in their genomes. By the early 2000s, he'd pieced together what they were: each spacer was a genetic 'mugshot' of a virus that had previously attacked the bacterium. When a new viral infection came, the bacterium transcribed these spacers into small RNA molecules and used them — along with Cas proteins — to identify and destroy the viral DNA. It was adaptive immunity, bacterial-style, operating purely through molecular recognition. Yoshizumi Ishino had actually spotted the sequences first in 1987 without knowing what they were. It took Mojica's systematic work to realize their function. Then in 2012, Jennifer Doudna and Emmanuelle Charpentier published their landmark paper showing the system could be reprogrammed to cut any DNA sequence by simply changing 20 letters of the guide RNA. The Nobel Prize in Chemistry followed in 2020 — the fastest-ever translation from basic discovery to prize recognition.",
   },
   {
-    title: "A Brief History of Gene Editing Tools",
-    color: "oklch(0.76 0.18 185)",
-    text: "Before CRISPR, scientists developed two major protein-based gene editing platforms. Zinc Finger Nucleases (ZFNs), introduced in the late 1990s, used engineered zinc finger protein domains fused to the FokI nuclease to cut DNA at predetermined sequences. Designing ZFNs for a new target required months of protein engineering work and was accessible only to specialist labs. Transcription Activator-Like Effector Nucleases (TALENs), described around 2011, were somewhat easier to design — each TALEN module recognized a single DNA base, allowing modular assembly — but still required protein engineering for every new target. Both platforms produced double-strand breaks and enabled gene knockout and correction, proving the concept of precision genome editing. However, the protein-based design process remained slow, expensive, and technically demanding. The CRISPR-Cas9 system, repurposed from a bacterial immune defense mechanism by Jennifer Doudna, Emmanuelle Charpentier, and colleagues in 2012, replaced protein-based targeting with programmable RNA — cutting the design cycle from months to days and making precision gene editing accessible to virtually every molecular biology laboratory worldwide.",
+    title: "Before CRISPR: ZFNs, TALENs, and Why They Weren't Enough",
+    anchorId: "crispr-history",
+    color: "oklch(0.52 0.14 185)",
+    text: "Scientists had gene editing tools before CRISPR — they just weren't practical at scale. Zinc Finger Nucleases (ZFNs) used engineered zinc finger protein domains to recognize specific DNA sequences, fused to a FokI nuclease that cut DNA when two ZFN units dimerized. TALENs (Transcription Activator-Like Effector Nucleases) were similar but used a different protein scaffold for DNA recognition and were slightly easier to design. Both worked. The problem was engineering: for every new target gene, you had to design, make, and validate an entirely new protein. That took months of specialized work and cost thousands of dollars per target. Multiplexing — editing multiple genes at once — was essentially impossible. Then CRISPR arrived and made the recognition element out of RNA, not protein. To target a new sequence, you just order a synthetic 20-nucleotide oligonucleotide. Designing a new guide RNA takes an afternoon; a new ZFN pair took a semester. That difference in accessibility is why CRISPR transformed the field almost overnight and why labs that had never done gene editing before could suddenly deploy it within months.",
   },
   {
-    title: "How CRISPR-Cas9 Works: The Molecular Mechanism",
-    color: "oklch(0.74 0.19 160)",
-    text: "The CRISPR-Cas9 system has two essential components: the Cas9 protein and the single guide RNA (sgRNA). The Cas9 protein is a large (~160 kDa) endonuclease derived from Streptococcus pyogenes. It contains two nuclease domains — HNH, which cleaves the DNA strand complementary to the guide RNA, and RuvC, which cleaves the non-complementary strand — as well as a recognition lobe that holds the guide RNA. The sgRNA is a roughly 100-nucleotide RNA molecule consisting of two functional parts: a 20-nucleotide spacer sequence at the 5′ end that is designed to be complementary to the genomic target, and a scaffold sequence that folds into a complex secondary structure and anchors the RNA to Cas9. In the cell, the Cas9-sgRNA complex scans along DNA in a three-dimensional diffusion-and-search process, transiently opening short stretches to interrogate the sequence. When the complex encounters a PAM sequence (5′-NGG-3′ on the non-template strand for SpCas9), it locally unwinds the DNA and the sgRNA spacer invades the duplex to form an R-loop. If sufficient complementarity exists across the 20-base protospacer, Cas9 undergoes a conformational change that positions both nuclease domains for cleavage, creating a blunt-ended double-strand break exactly 3 base pairs upstream of the PAM.",
+    title: "The CRISPR-Cas9 Mechanism in Molecular Detail",
+    anchorId: "crispr-cas9",
+    color: "oklch(0.52 0.14 160)",
+    text: "Let's trace exactly what happens when CRISPR-Cas9 edits a gene. You start by designing a single guide RNA (sgRNA) — a 100-nucleotide RNA that combines the CRISPR RNA (crRNA, containing your 20-nt target sequence) and the trans-activating crRNA (tracrRNA, which anchors to Cas9). This sgRNA and Cas9 protein together form a ribonucleoprotein (RNP) complex. Inside the cell, the complex diffuses into the nucleus and begins scanning. Cas9 doesn't read every base: it first checks for PAM sequences (NGG for SpCas9) on the non-template strand. Finding one, it unwinds a few base pairs and checks whether the adjacent ~20 nucleotides match the guide through Watson-Crick base pairing — a process called R-loop formation. If the match is sufficient (tolerating up to ~5 mismatches, especially at the PAM-distal end), the HNH domain cleaves the strand complementary to the guide and the RuvC domain cleaves the other strand simultaneously. The cut is blunt-ended, precisely 3 bp upstream of the PAM. The entire recognition-and-cut process, once the PAM is found, happens in seconds. The cell senses the double-strand break within milliseconds and begins mobilizing repair machinery.",
   },
   {
-    title: "DNA Repair Pathways Harnessed by CRISPR",
-    color: "oklch(0.72 0.18 172)",
-    text: "Once Cas9 creates a double-strand break, the cell activates one of two main repair pathways — and the choice between them determines the editing outcome. Non-Homologous End Joining (NHEJ) is the default, fast, error-prone pathway. Cellular machinery rapidly joins the broken ends, frequently inserting or deleting a small number of nucleotides (indels) in the process. If indels occur within a protein-coding exon they often shift the reading frame, introducing a premature stop codon and destroying gene function. Researchers exploit NHEJ for gene knockout — a powerful tool to study gene function and a therapeutic strategy for diseases caused by gain-of-function mutations (such as some forms of hereditary blindness). Homology-Directed Repair (HDR) is a slower, more precise pathway that uses a homologous DNA template to faithfully copy sequence across the break. By providing a synthetic donor template flanked by sequences matching the genomic region around the break, scientists can insert, correct, or replace any DNA sequence with single-nucleotide precision. HDR is the pathway of choice for gene correction in therapeutic applications, though it is less efficient than NHEJ and is most active in dividing cells during the S and G2 phases of the cell cycle.",
+    title: "DNA Repair After Cutting: NHEJ, HDR, and MMEJ",
+    anchorId: "crispr-repair",
+    color: "oklch(0.52 0.14 172)",
+    text: "A double-strand break is among the most dangerous forms of DNA damage — left unrepaired, it can cause chromosomal rearrangements. Cells have three main repair responses. Non-Homologous End Joining (NHEJ) is the default path: the Ku70/Ku80 complex binds both broken ends, recruits DNA-PKcs to hold them together, and ligates them back. It's fast — within minutes — but the resection of overhangs and gap-filling frequently introduces insertions or deletions (indels) of 1-50 bp. If an indel falls within a coding sequence and disrupts the reading frame, it creates a premature stop codon and functionally destroys the protein. This is how researchers achieve gene knockouts. Homology-Directed Repair (HDR) uses a homologous template — either the sister chromatid or an exogenously supplied donor DNA with ~50-500 bp homology arms flanking the desired change. The cell uses the template as a guide for accurate repair, copying in whatever sequence you placed between the homology arms. HDR only operates during S and G2 phases (when sister chromatids are available), which limits efficiency in post-mitotic cells. Microhomology-Mediated End Joining (MMEJ) kicks in when there are 5-25 bp microhomologous sequences near the break ends — it creates predictable deletions but without a template, making it useful for programmable frameshift approaches.",
   },
   {
-    title: "Medical Applications of CRISPR",
-    color: "oklch(0.75 0.17 142)",
-    text: "CRISPR's therapeutic potential spans monogenic diseases, cancer, and infectious diseases. The most clinically advanced application is for hemoglobin disorders: in 2023, the FDA approved Casgevy (exagamglogene autotemcel), a CRISPR-based therapy for sickle cell disease and transfusion-dependent beta-thalassemia that edits a patient's own hematopoietic stem cells to reactivate fetal hemoglobin, compensating for the defective adult hemoglobin. In oncology, CAR-T cell therapies are being enhanced with CRISPR edits to knock out genes that limit T cell persistence or cause exhaustion, creating more potent living drugs against leukemia and other cancers. For infectious diseases, researchers are exploring in vivo CRISPR delivery to disable HIV proviruses integrated into patient T cells, and CRISPR-based diagnostics (SHERLOCK, DETECTR) have been developed for rapid, ultra-sensitive nucleic acid detection of pathogens including SARS-CoV-2. Looking ahead, base editing and prime editing — CRISPR-derived technologies that can change individual nucleotides without creating double-strand breaks — promise even safer and more precise correction of the thousands of known pathogenic point mutations underlying inherited diseases.",
+    title: "Beyond Cas9: A Whole Family of CRISPR Tools",
+    anchorId: "crispr-base-prime-editing",
+    color: "oklch(0.55 0.14 142)",
+    text: "CRISPR-Cas9 is the most famous tool, but the CRISPR family is diverse. Cas12a (Cpf1) recognizes a T-rich PAM (TTTV) on the 5' side, processes its own crRNA without needing tracrRNA, and cuts in a staggered fashion leaving 5-nucleotide 5' overhangs — useful for directional insertions. Its smaller size and collateral single-stranded DNA cleavage activity have made it the workhorse for DETECTR-based diagnostics. Cas13 is the RNA-cutter — it targets RNA rather than DNA, making it ideal for transcriptome editing and for SHERLOCK diagnostics. When Cas13 binds its target RNA, it unleashes non-specific RNase activity that can cleave fluorescent reporter RNAs as a readout signal — sensitive enough to detect attomolar concentrations of pathogen RNA. Base editors take a quieter approach: instead of cutting, cytosine base editors (CBEs) fuse a deaminase enzyme to nCas9 and convert C→T in a small editing window, while adenine base editors (ABEs) convert A→G using an evolved tRNA adenosine deaminase. No double-strand break, no donor template. Prime editors add a reverse transcriptase to nCas9 and encode the desired edit in the pegRNA's extension, writing new sequence directly into the genome like a molecular word-processor. Each tool has its optimal use case, and researchers now choose among them depending on what the editing task requires.",
   },
   {
-    title: "Agricultural and Environmental Applications",
-    color: "oklch(0.73 0.16 195)",
-    text: "Beyond medicine, CRISPR is transforming agriculture and environmental biotechnology. In crop science, CRISPR is used to knock out genes that cause browning in mushrooms and apples, increase yield in tomatoes and rice, introduce drought and disease resistance, and reduce allergenicity in wheat and peanuts. Because CRISPR can create changes identical to naturally occurring mutations, many CRISPR-edited crops are being regulated differently from conventional GMOs in several countries, potentially accelerating their path to market. In livestock, CRISPR has been used to produce pigs resistant to PRRS virus (a major threat to pork production) and to knock out genes that cause bovine respiratory disease. In the environment, gene drives — CRISPR systems engineered to spread rapidly through wild populations — are being developed to suppress malaria-transmitting mosquito populations and potentially eradicate invasive species. However, gene drives raise profound ecological concerns about the irreversibility of releasing self-propagating genetic changes into wild ecosystems, demanding careful containment and international regulatory oversight.",
+    title: "CRISPR in the Clinic: Real Approvals, Real Patients",
+    anchorId: "crispr-applications",
+    color: "oklch(0.52 0.14 195)",
+    text: "The decade from 2012 to 2022 was proof-of-concept. Then 2023 happened, and CRISPR became real medicine. In December 2023, the FDA approved two CRISPR-based therapies for sickle cell disease on the same day — Casgevy (Vertex/CRISPR Therapeutics) and Lyfgenia (bluebird bio). Casgevy uses CRISPR to disrupt the BCL11A erythroid enhancer, reactivating fetal hemoglobin. Lyfgenia uses a gene-addition approach via lentiviral vector. In clinical trials, most patients receiving Casgevy were free of painful vaso-occlusive crises — the most debilitating feature of the disease — for at least a year. In cancer, CRISPR-edited CAR-T cells are being tested in trials at multiple institutions. Researchers knock out the T cell receptor (to reduce rejection in allogeneic cells), PD-1 (to improve persistence), and TRAC locus, while inserting the chimeric antigen receptor targeting CD19 or BCMA. The idea is to make 'off-the-shelf' CAR-T cells from healthy donor T cells rather than a patient's own exhausted cells. For HIV, CRISPR is being used in preclinical studies to excise latent proviral HIV from infected CD4+ cells — targeting the long terminal repeats that flank the integrated viral genome.",
   },
   {
-    title: "Ethics, Regulation, and the Future of CRISPR",
-    color: "oklch(0.70 0.18 262)",
-    text: "The power of CRISPR raises urgent ethical and regulatory questions. In 2018, a Chinese scientist shocked the scientific community by announcing the birth of the first genome-edited human babies — twin girls whose CCR5 gene had been disrupted in an attempt to confer HIV resistance. The experiment was widely condemned as premature, unsafe, and ethically unjustifiable because germline edits are heritable and the long-term consequences are unknown, the girls faced no imminent HIV risk, and the process bypassed standard oversight. This scandal accelerated international efforts to establish governance frameworks for human germline editing. Most regulatory bodies distinguish sharply between somatic editing (changing cells in a living patient, affecting only that individual) and germline editing (editing embryos or reproductive cells, affecting all future generations). Somatic therapies have a clear regulatory pathway analogous to other cell and gene therapies. Germline editing in humans for reproductive purposes remains prohibited or heavily restricted in most jurisdictions. Looking forward, the CRISPR toolbox continues to expand rapidly: base editors (adenine and cytosine base editors), prime editors, epigenome editors, and CRISPR-based transcriptional regulators offer increasingly precise control over genome function. The challenge for the scientific community, regulators, ethicists, and the public is to develop the governance structures that allow beneficial applications — curing genetic diseases, improving food security, controlling infectious disease vectors — while preventing misuse and ensuring equitable access globally.",
+    title: "CRISPR in Agriculture: Editing the Farm",
+    anchorId: "crispr-agriculture",
+    color: "oklch(0.50 0.14 262)",
+    text: "CRISPR's reach extends well beyond the clinic. In agriculture, the most significant advantage is that many CRISPR edits don't introduce foreign DNA — they just disrupt or modify existing genes. Regulatory bodies in several countries treat these 'null-segregant' CRISPR crops differently from transgenic GMOs. The US USDA cleared CRISPR-edited waxy corn (high-amylopectin starch), high-oleic soybeans, and disease-resistant wheat varieties without requiring GMO regulatory review. Japan approved CRISPR tomatoes with higher GABA content (claimed cardiovascular benefit) in 2021 — the first CRISPR food to reach consumers. Researchers have used CRISPR to knock out the PPO gene (polyphenol oxidase) in mushrooms, preventing browning; to disrupt the TaMLO susceptibility gene in wheat, conferring powdery mildew resistance; and to modify waxy maize starch for industrial uses. In livestock, CRISPR has produced hornless cattle (by editing the POLLED locus, eliminating the need for painful dehorning), pigs resistant to PRRS virus (worth ~$600M annually to US pork producers), and tilapia with improved cold tolerance. Gene drives — CRISPR systems that bias their own inheritance so they spread through wild populations — represent the most powerful and ethically fraught agricultural application. A self-spreading gene drive that makes female mosquitoes infertile could theoretically eliminate malaria-transmitting Anopheles gambiae from a region. That could save hundreds of thousands of lives per year. It could also unpredictably cascade through an ecosystem. This is not a simple calculation.",
+  },
+  {
+    title: "The Ethics of Rewriting the Human Germline",
+    anchorId: "crispr-ethics",
+    color: "oklch(0.50 0.14 210)",
+    text: "In November 2018, a Chinese researcher named He Jiankui announced the birth of twin girls — Lulu and Nana — whose CCR5 gene had been disrupted by CRISPR in embryos before implantation. CCR5 encodes the co-receptor that HIV uses to enter T cells; people naturally lacking both copies (about 1% of Northern Europeans) have strong HIV resistance. On the surface, the goal seemed protective. In practice, it was a violation of every principle of responsible science. The girls were not at meaningful risk of HIV. The editing was performed without adequate safety evidence. Informed consent was questionable. Off-target analysis was insufficient. And most importantly — the edits are germline changes, heritable by all their future descendants, who had absolutely no say. He was convicted of 'illegal medical practice' and sentenced to three years in prison. An international scientific commission convened by the WHO and National Academies concluded that germline editing should not proceed clinically until it meets a very high bar: no reasonable alternative treatment exists, benefit is compelling, safety is demonstrated, international governance consensus is established, and ongoing oversight is guaranteed. The underlying technology continues advancing. Base editing and prime editing can now make single-nucleotide corrections in embryos with extraordinary precision. The scientific capability is racing ahead of the governance frameworks. That gap — between what is technically possible and what is societally agreed — is the defining challenge for CRISPR ethics in the coming decade.",
   },
 ];
 
-// ────────────────────────────────────────────────────────────
-// Application spotlight cards
-// ────────────────────────────────────────────────────────────
+// ── Application spotlight cards ────────────────────────────────────────────────
 const APP_CARDS = [
   {
     icon: "💉",
     label: "Gene Therapy",
-    desc: "Sickle cell disease & thalassemia — FDA-approved Casgevy (2023)",
+    desc: "Casgevy (sickle cell/thalassemia) — FDA approved Dec 2023. BCL11A editing reactivates fetal hemoglobin.",
     color: TEAL,
   },
   {
     icon: "🦠",
-    label: "Infectious Disease",
-    desc: "HIV provirus excision, CRISPR diagnostics for SARS-CoV-2",
-    color: "oklch(0.75 0.18 185)",
+    label: "CRISPR Diagnostics",
+    desc: "SHERLOCK (Cas13) and DETECTR (Cas12a) — attomolar sensitivity for COVID-19, Zika, and other pathogens",
+    color: "oklch(0.52 0.14 185)",
   },
   {
     icon: "🌱",
     label: "Crop Engineering",
-    desc: "Disease-resistant, high-yield, non-browning edited crops",
-    color: "oklch(0.74 0.18 142)",
+    desc: "Non-browning mushrooms, GABA tomatoes, powdery mildew-resistant wheat, hornless cattle",
+    color: "oklch(0.52 0.14 142)",
   },
   {
     icon: "🧫",
     label: "Cancer Immunotherapy",
-    desc: "CRISPR-enhanced CAR-T cells with improved persistence and potency",
-    color: "oklch(0.73 0.19 160)",
+    desc: "Allogeneic CRISPR CAR-T cells targeting CD19, BCMA — multiple Phase I/II trials active",
+    color: "oklch(0.52 0.14 160)",
   },
   {
     icon: "🦟",
     label: "Gene Drives",
-    desc: "Population-level mosquito control to reduce malaria transmission",
-    color: "oklch(0.72 0.17 195)",
+    desc: "Population-suppression drives against Anopheles gambiae for malaria control — contained field trials",
+    color: "oklch(0.52 0.14 195)",
   },
   {
-    icon: "🔬",
-    label: "Basic Research",
-    desc: "High-throughput genome-wide knockout screens reveal gene function",
-    color: "oklch(0.70 0.18 220)",
+    icon: "🧬",
+    label: "Base & Prime Editing",
+    desc: "Point mutation correction without DSB — therapeutic potential for sickle cell, progeria, cancer",
+    color: "oklch(0.50 0.14 220)",
   },
 ];
 
-// ────────────────────────────────────────────────────────────
-// Main section
-// ────────────────────────────────────────────────────────────
+// ── Cas comparison table data ──────────────────────────────────────────────────
+const CAS_COMPARISON = [
+  ["Feature", "Cas9 (SpCas9)", "Cas12a (Cpf1)", "Cas13", "Base Editors"],
+  ["Target", "dsDNA", "dsDNA", "ssRNA", "dsDNA"],
+  ["PAM", "NGG (3' side)", "TTTV (5' side)", "No PAM", "NGG (via dCas9/nCas9)"],
+  [
+    "Cut type",
+    "Blunt DSB",
+    "Staggered 5' overhang",
+    "RNA cleavage",
+    "No DSB (nick or none)",
+  ],
+  [
+    "Guide RNA",
+    "sgRNA (crRNA+tracrRNA)",
+    "crRNA only (self-processes)",
+    "crRNA",
+    "sgRNA",
+  ],
+  [
+    "Key use",
+    "Knockout/HDR/base editing",
+    "Knock-in, diagnostics",
+    "RNA knockdown, diagnostics",
+    "Point mutation repair",
+  ],
+];
+
+// ── Main section ───────────────────────────────────────────────────────────────
 export default function CRISPRSection() {
   return (
-    <section className="px-4 py-16 md:px-8" aria-labelledby="crispr-heading">
+    <section
+      className="px-4 py-16 md:px-8"
+      aria-labelledby="crispr-heading"
+      style={{ background: "oklch(0.97 0.012 75)" }}
+    >
       <div className="mx-auto max-w-5xl">
-        {/* Header */}
         <AnimatedEntrance direction="left">
           <SectionHeader
             topicId="crispr"
             title="Genetic Engineering & CRISPR"
-            subtitle="From bacterial immune systems to molecular scissors: how CRISPR-Cas9 is rewriting the code of life — one base pair at a time."
+            subtitle="Bacteria invented it. Scientists borrowed it. And now we're using it to rewrite the code of life — one base pair at a time."
           />
           <div
             className="mb-6 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold"
             style={{
-              background: `${TEAL}1a`,
+              background: TEAL_DIM,
               border: `1px solid ${TEAL_BORDER}`,
               color: TEAL,
             }}
           >
             <Scissors className="h-3.5 w-3.5" aria-hidden="true" />
-            Guide RNA · Cas9 Nuclease · Double-Strand Break · DNA Repair
+            Guide RNA · Cas9 Nuclease · DSB · NHEJ/HDR · Base Editing · Prime
+            Editing
           </div>
         </AnimatedEntrance>
 
@@ -750,7 +785,7 @@ export default function CRISPRSection() {
             <div
               className="flex items-center justify-between px-5 py-3 rounded-t-2xl border-b"
               style={{
-                background: "oklch(0.17 0.05 262)",
+                background: "oklch(0.96 0.015 75)",
                 borderColor: TEAL_BORDER,
                 borderTop: `1px solid ${TEAL_BORDER}`,
                 borderLeft: `1px solid ${TEAL_BORDER}`,
@@ -764,7 +799,10 @@ export default function CRISPRSection() {
               >
                 Interactive CRISPR-Cas9 Mechanism Diagram
               </h3>
-              <span className="text-xs text-muted-foreground">
+              <span
+                className="text-xs"
+                style={{ color: "oklch(0.50 0.04 75)" }}
+              >
                 Auto-advances · Click steps to explore
               </span>
             </div>
@@ -773,14 +811,16 @@ export default function CRISPRSection() {
         </AnimatedEntrance>
 
         {/* Explanation paragraphs */}
-        <StaggerContainer className="mb-12 space-y-8" staggerDelay={0.08}>
+        <StaggerContainer className="mb-12 space-y-6" staggerDelay={0.08}>
           {EXPLANATIONS.map((para) => (
             <StaggerItem key={para.title}>
               <div
+                id={para.anchorId}
                 className="rounded-2xl p-6"
                 style={{
-                  background: "oklch(0.18 0.05 262)",
-                  border: `1px solid ${para.color}25`,
+                  background: "oklch(0.985 0.008 75)",
+                  border: "1px solid oklch(0.88 0.02 75)",
+                  borderLeft: `3px solid ${para.color}`,
                 }}
               >
                 <h3
@@ -789,7 +829,10 @@ export default function CRISPRSection() {
                 >
                   {para.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                <p
+                  className="leading-relaxed text-sm md:text-base"
+                  style={{ color: "oklch(0.30 0.03 75)" }}
+                >
                   {para.text}
                 </p>
               </div>
@@ -797,89 +840,48 @@ export default function CRISPRSection() {
           ))}
         </StaggerContainer>
 
-        {/* Application spotlight */}
-        <AnimatedEntrance direction="up" delay={0.05}>
-          <div className="mb-12">
-            <h3
-              className="font-display text-2xl font-bold mb-2 accent-biotech glow-biotech"
-              style={{ color: TEAL }}
-            >
-              Six Frontiers of CRISPR Applications
-            </h3>
-            <p className="text-muted-foreground text-sm mb-6">
-              From curing genetic diseases to engineering entire ecosystems —
-              CRISPR's reach spans every domain of biology.
-            </p>
-            <StaggerContainer
-              className="grid grid-cols-2 md:grid-cols-3 gap-4"
-              staggerDelay={0.07}
-            >
-              {APP_CARDS.map((card) => (
-                <StaggerItem key={card.label}>
-                  <div
-                    className="rounded-2xl p-5 flex flex-col gap-2 h-full transition-smooth hover:scale-[1.02]"
-                    style={{
-                      background: `${card.color}0e`,
-                      border: `1px solid ${card.color}30`,
-                    }}
-                  >
-                    <span className="text-3xl" aria-hidden="true">
-                      {card.icon}
-                    </span>
-                    <span
-                      className="font-display font-bold text-base"
-                      style={{ color: card.color }}
-                    >
-                      {card.label}
-                    </span>
-                    <span className="text-xs text-muted-foreground leading-relaxed">
-                      {card.desc}
-                    </span>
-                  </div>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
-          </div>
-        </AnimatedEntrance>
-
-        {/* CRISPR vs older tools comparison */}
+        {/* Cas protein comparison table */}
         <AnimatedEntrance direction="up" delay={0.05}>
           <div
             className="mb-12 rounded-2xl overflow-hidden"
             style={{
-              background: "oklch(0.17 0.05 262)",
-              border: `1px solid ${TEAL_BORDER}`,
+              background: "oklch(0.985 0.008 75)",
+              border: "1px solid oklch(0.86 0.025 75)",
             }}
           >
             <div
               className="px-5 py-4 border-b"
-              style={{ borderColor: TEAL_BORDER }}
+              style={{ borderColor: "oklch(0.86 0.025 75)" }}
             >
               <h3
                 className="font-display text-lg font-bold"
                 style={{ color: TEAL }}
               >
-                CRISPR vs. Earlier Gene Editing Technologies
+                CRISPR Cas Protein Comparison
               </h3>
-              <p className="text-xs text-muted-foreground mt-1">
-                How RNA-guided targeting transformed the field
+              <p
+                className="text-xs mt-1"
+                style={{ color: "oklch(0.50 0.04 75)" }}
+              >
+                Cas9, Cas12a, Cas13, and base editors — each optimized for
+                different tasks
               </p>
             </div>
             <div className="overflow-x-auto">
               <table
                 className="w-full text-sm"
-                aria-label="Comparison of gene editing technologies"
+                aria-label="Comparison of CRISPR Cas proteins"
               >
                 <thead>
-                  <tr style={{ background: `${TEAL}0f` }}>
-                    {["Feature", "ZFNs", "TALENs", "CRISPR-Cas9"].map((h) => (
+                  <tr style={{ background: `${TEAL}08` }}>
+                    {CAS_COMPARISON[0].map((h) => (
                       <th
                         key={h}
                         scope="col"
                         className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wide"
                         style={{
                           color: TEAL,
-                          borderBottom: `1px solid ${TEAL_BORDER}`,
+                          borderBottom: "1px solid oklch(0.86 0.025 75)",
                         }}
                       >
                         {h}
@@ -888,35 +890,13 @@ export default function CRISPRSection() {
                   </tr>
                 </thead>
                 <tbody>
-                  {[
-                    [
-                      "Targeting mechanism",
-                      "Protein–DNA",
-                      "Protein–DNA",
-                      "RNA–DNA",
-                    ],
-                    ["Design time", "Months", "Weeks", "Days"],
-                    ["Cost to design", "High", "Moderate", "Low"],
-                    ["Multiplexing", "Difficult", "Moderate", "Easy"],
-                    [
-                      "Off-target risk",
-                      "Moderate",
-                      "Lower",
-                      "Low (engineered variants)",
-                    ],
-                    [
-                      "Cut type",
-                      "DSB (staggered)",
-                      "DSB (blunt)",
-                      "DSB (blunt) / nickase",
-                    ],
-                  ].map((row, ri) => (
+                  {CAS_COMPARISON.slice(1).map((row, ri) => (
                     <tr
                       key={row[0]}
                       style={{
                         background:
-                          ri % 2 === 0 ? "transparent" : "oklch(0.15 0.05 262)",
-                        borderBottom: "1px solid oklch(0.22 0.04 262)",
+                          ri % 2 === 0 ? "transparent" : "oklch(0.96 0.01 75)",
+                        borderBottom: "1px solid oklch(0.90 0.015 75)",
                       }}
                     >
                       {row.map((cell, ci) => (
@@ -926,10 +906,10 @@ export default function CRISPRSection() {
                           style={{
                             color:
                               ci === 0
-                                ? "oklch(0.80 0.06 262)"
-                                : ci === 3
+                                ? "oklch(0.28 0.03 75)"
+                                : ci === 1
                                   ? TEAL
-                                  : "oklch(0.62 0.06 262)",
+                                  : "oklch(0.45 0.04 75)",
                             fontWeight: ci === 0 ? "600" : "400",
                           }}
                         >
@@ -944,18 +924,198 @@ export default function CRISPRSection() {
           </div>
         </AnimatedEntrance>
 
+        {/* CRISPR vs older tools comparison */}
+        <AnimatedEntrance direction="up" delay={0.05}>
+          <div
+            className="mb-12 rounded-2xl overflow-hidden"
+            style={{
+              background: "oklch(0.985 0.008 75)",
+              border: "1px solid oklch(0.86 0.025 75)",
+            }}
+          >
+            <div
+              className="px-5 py-4 border-b"
+              style={{ borderColor: "oklch(0.86 0.025 75)" }}
+            >
+              <h3
+                className="font-display text-lg font-bold"
+                style={{ color: TEAL }}
+              >
+                CRISPR vs. Earlier Gene Editing Technologies
+              </h3>
+              <p
+                className="text-xs mt-1"
+                style={{ color: "oklch(0.50 0.04 75)" }}
+              >
+                How RNA-guided targeting transformed the field
+              </p>
+            </div>
+            <div className="overflow-x-auto">
+              <table
+                className="w-full text-sm"
+                aria-label="Comparison of gene editing technologies"
+              >
+                <thead>
+                  <tr style={{ background: `${TEAL}08` }}>
+                    {["Feature", "ZFNs", "TALENs", "CRISPR-Cas9"].map((h) => (
+                      <th
+                        key={h}
+                        scope="col"
+                        className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wide"
+                        style={{
+                          color: TEAL,
+                          borderBottom: "1px solid oklch(0.86 0.025 75)",
+                        }}
+                      >
+                        {h}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    [
+                      "Targeting mechanism",
+                      "Protein–DNA zinc fingers",
+                      "Protein–DNA TALE repeats",
+                      "RNA–DNA (20-nt guide)",
+                    ],
+                    [
+                      "Design time",
+                      "Months of protein engineering",
+                      "Weeks",
+                      "Days — order a synthetic oligo",
+                    ],
+                    [
+                      "Cost per target",
+                      "$5,000–$20,000+",
+                      "$1,000–$5,000",
+                      "$50–$200",
+                    ],
+                    [
+                      "Multiplexing",
+                      "Very difficult",
+                      "Difficult",
+                      "Easy — multiple guides simultaneously",
+                    ],
+                    [
+                      "Off-target risk",
+                      "Moderate–High",
+                      "Lower than ZFNs",
+                      "Low with HiFi variants",
+                    ],
+                    [
+                      "Cut type",
+                      "DSB (staggered)",
+                      "DSB (blunt)",
+                      "DSB blunt / nickase / base edit",
+                    ],
+                    [
+                      "Clinical use",
+                      "ZFN HIV trials (Sangamo)",
+                      "Fewer clinical programs",
+                      "Many approved/Phase III therapies",
+                    ],
+                  ].map((row, ri) => (
+                    <tr
+                      key={row[0]}
+                      style={{
+                        background:
+                          ri % 2 === 0 ? "transparent" : "oklch(0.96 0.01 75)",
+                        borderBottom: "1px solid oklch(0.90 0.015 75)",
+                      }}
+                    >
+                      {row.map((cell, ci) => (
+                        <td
+                          key={`${row[0]}-${ci}`}
+                          className="px-4 py-3"
+                          style={{
+                            color:
+                              ci === 0
+                                ? "oklch(0.28 0.03 75)"
+                                : ci === 3
+                                  ? TEAL
+                                  : "oklch(0.45 0.04 75)",
+                            fontWeight: ci === 0 ? "600" : "400",
+                          }}
+                        >
+                          {cell}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </AnimatedEntrance>
+
+        {/* Application spotlight */}
+        <AnimatedEntrance direction="up" delay={0.05}>
+          <div className="mb-12">
+            <h3
+              className="font-display text-2xl font-bold mb-2"
+              style={{ color: TEAL }}
+            >
+              Six Frontiers of CRISPR Applications
+            </h3>
+            <p
+              className="text-sm mb-6"
+              style={{ color: "oklch(0.45 0.04 75)" }}
+            >
+              From curing genetic diseases to engineering entire ecosystems —
+              CRISPR's reach spans every domain of biology.
+            </p>
+            <StaggerContainer
+              className="grid grid-cols-2 md:grid-cols-3 gap-4"
+              staggerDelay={0.07}
+            >
+              {APP_CARDS.map((card) => (
+                <StaggerItem key={card.label}>
+                  <div
+                    className="rounded-2xl p-5 flex flex-col gap-2 h-full transition-smooth hover:scale-[1.02]"
+                    style={{
+                      background: `${card.color}0a`,
+                      border: `1px solid ${card.color}25`,
+                    }}
+                  >
+                    <span className="text-3xl" aria-hidden="true">
+                      {card.icon}
+                    </span>
+                    <span
+                      className="font-display font-bold text-base"
+                      style={{ color: card.color }}
+                    >
+                      {card.label}
+                    </span>
+                    <span
+                      className="text-xs leading-relaxed"
+                      style={{ color: "oklch(0.40 0.04 75)" }}
+                    >
+                      {card.desc}
+                    </span>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+        </AnimatedEntrance>
+
         {/* Quiz */}
         <AnimatedEntrance direction="up" delay={0.05}>
           <div className="mb-4">
             <h3
               className="font-display text-2xl font-bold mb-1"
-              style={{ color: TEAL, textShadow: `0 0 20px ${TEAL}60` }}
+              style={{ color: TEAL }}
             >
               Test Your CRISPR Knowledge
             </h3>
-            <p className="text-muted-foreground text-sm mb-6">
-              10 questions covering the mechanism, applications, repair
-              pathways, and ethics of CRISPR-Cas9.
+            <p
+              className="text-sm mb-6"
+              style={{ color: "oklch(0.45 0.04 75)" }}
+            >
+              10 questions covering Cas proteins, mechanism, base editing, prime
+              editing, clinical applications, and ethics.
             </p>
             <QuizEngine topicId="crispr" questions={CRISPR_QUIZ} />
           </div>

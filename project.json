@@ -1,25 +1,22 @@
 {
-  "overview": "BioLearn Academy is an interactive educational biology website covering core biology (Biomolecules, Cells, DNA, RNA, Proteins) and biotechnology topics (CRISPR, PCR, Cloning, Gel Electrophoresis, and more). Features realistic animated structures, detailed explanations, and quizzes with instant feedback.",
+  "overview": "BioLearn Academy is an interactive biology and biotechnology education platform with rich animated visuals, detailed explanations written in a warm conversational tone, and beginner-friendly quizzes covering everything from biomolecules to CRISPR.",
   "features": [
-    "Interactive 3D cell, DNA, RNA, and protein animations with realistic images",
-    "Natural subtle animations — gentle floating, slow rotation, soft pulsing",
-    "8 biotechnology topic sections (CRISPR, PCR, Cloning, Gel Electrophoresis, and more)",
-    "8-10 question quizzes per topic with instant feedback and score tracking",
-    "Permanent labeled overlays on all biological structures",
-    "Full WCAG accessibility — keyboard navigation, ARIA, screen reader support",
-    "Navy/dark-blue themed design with topic-specific color coding",
-    "One-click sidebar navigation to any topic"
+    "Conversational, mentor-like writing throughout all topics",
+    "Light airy background palette across all sections",
+    "Animated 2D cell, DNA, and protein structure diagrams",
+    "Comprehensive coverage of biology and 8 biotechnology topics",
+    "Interactive quizzes with instant feedback after every topic",
+    "One-click sidebar navigation to any section",
+    "Full accessibility support with keyboard navigation and screen reader labels"
   ],
   "category": "education",
   "tags": [
     "biology",
-    "education",
-    "interactive",
-    "3d",
-    "animations",
     "biotechnology",
-    "science",
+    "education",
+    "crispr",
+    "interactive",
     "quizzes"
   ],
-  "last_updated": "2026-04-09T11:18:19.394Z"
+  "last_updated": "2026-04-11T12:37:44.104Z"
 }
