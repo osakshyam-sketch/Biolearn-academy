@@ -66,11 +66,13 @@ export function QuizEngine({ topicId, questions }: QuizEngineProps) {
   const cardBg = getCardBg(topic.color);
   const cardBorder = getCardBorder(topic.color);
 
-  // Move focus to first answer option when question changes
+  // Move focus to first answer option when question changes.
+  // preventScroll: true ensures focusing the element never causes
+  // the browser to scroll down to the quiz on initial mount.
   useEffect(() => {
     if (phase === "quiz" && !showFeedback) {
       const timer = setTimeout(() => {
-        firstOptionRef.current?.focus();
+        firstOptionRef.current?.focus({ preventScroll: true });
       }, 400);
       return () => clearTimeout(timer);
     }

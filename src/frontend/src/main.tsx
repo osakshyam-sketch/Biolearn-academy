@@ -4,6 +4,12 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 
+// Prevent browser from restoring the previous scroll position on load.
+// Must run before React mounts so the page always starts at the top.
+if (typeof window !== "undefined" && "scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
+
 BigInt.prototype.toJSON = function () {
   return this.toString();
 };

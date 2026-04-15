@@ -5,7 +5,7 @@ import { BIOTECH_NAV_ITEMS, NAV_ITEMS } from "@/types/biology";
 import {
   type ReactNode,
   useCallback,
-  useEffect,
+  useLayoutEffect,
   useRef,
   useState,
 } from "react";
@@ -45,8 +45,9 @@ function LayoutInner({ children }: LayoutProps) {
   const [quizScores] = useState<Partial<Record<TopicId, number>>>({});
   const [totalQuestions] = useState<Partial<Record<TopicId, number>>>({});
 
-  // Always start at the top on first load — never land on the last scrolled section
-  useEffect(() => {
+  // Always start at the top on first load — runs synchronously before paint
+  // so it wins the race against any delayed scroll restoration or hash jumps.
+  useLayoutEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
     setActiveSection(null);
   }, []);
