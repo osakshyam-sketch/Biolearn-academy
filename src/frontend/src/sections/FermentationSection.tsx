@@ -548,24 +548,23 @@ function BioreactorDiagram() {
 const quizQuestions: QuizQuestion[] = [
   {
     id: "ferm-q1",
-    topic: "fermentation",
     question:
-      "What distinguishes anaerobic fermentation from aerobic respiration?",
+      "What is the difference between fermentation and aerobic respiration?",
     options: [
-      "Anaerobic fermentation requires oxygen; aerobic respiration does not",
-      "Anaerobic fermentation occurs without oxygen and produces less ATP than aerobic respiration",
-      "Aerobic respiration produces lactic acid; anaerobic fermentation produces CO₂",
-      "They are identical processes — the terms are interchangeable",
+      "Fermentation uses oxygen; aerobic respiration does not",
+      "Fermentation works without oxygen and produces much less energy; aerobic respiration uses oxygen and extracts far more energy from the same glucose",
+      "Aerobic respiration produces lactic acid; fermentation produces CO₂",
+      "They are the same process — the terms are interchangeable",
     ],
     correctIndex: 1,
     explanation:
-      "Anaerobic fermentation happens when there's no oxygen available. The cell still runs glycolysis to get 2 ATP from glucose, but then needs to recycle NADH back to NAD⁺ — it does this by reducing pyruvate to lactate or ethanol. Aerobic respiration uses oxygen as the final electron acceptor and squeezes ~30–32 ATP from that same glucose molecule. The oxygen really does make all the difference.",
+      "Here's the key difference: fermentation is what cells do when there's no oxygen available. Both processes start with glycolysis — breaking glucose into pyruvate and making 2 ATP molecules. But glycolysis also produces NADH, and NADH needs to offload its electrons somewhere, or the whole process grinds to a halt. With oxygen, the mitochondria handle this and extract another 28–30 ATP in the process — that's aerobic respiration. Without oxygen, fermentation steps in: it recycles NADH back to NAD⁺ by reducing pyruvate to lactate or ethanol. The payoff is only 2 ATP per glucose — a tiny fraction of aerobic respiration. This is why your muscles can sprint anaerobically, but only briefly before that burning feeling builds up. And this is why yeast can survive in a sealed bottle of grape juice — no oxygen needed, just sugar and fermentation.",
+    topic: "fermentation",
   },
   {
     id: "ferm-q2",
-    topic: "fermentation",
     question:
-      "Which enzyme directly converts pyruvate to lactate in lactic acid fermentation?",
+      "Which enzyme converts pyruvate to lactate in lactic acid fermentation, and why does this matter?",
     options: [
       "Pyruvate decarboxylase",
       "Alcohol dehydrogenase",
@@ -574,13 +573,13 @@ const quizQuestions: QuizQuestion[] = [
     ],
     correctIndex: 2,
     explanation:
-      "Lactate dehydrogenase (LDH) is the key enzyme here — it reduces pyruvate directly to lactate, simultaneously oxidizing NADH back to NAD⁺. That NAD⁺ regeneration is the whole point: it lets glycolysis keep running even without oxygen. Your muscles do this during intense exercise, and Lactobacillus bacteria do it in yogurt, kimchi, and sauerkraut.",
+      "Lactate dehydrogenase (LDH) is the key enzyme here — and it's doing two jobs at once. It converts pyruvate to lactate, AND it simultaneously converts NADH back to NAD⁺. That NAD⁺ recycling is the whole point — glycolysis can't keep going without a constant supply of NAD⁺ to pick up electrons. LDH elegantly keeps the whole system running. Your muscles use this when you sprint and oxygen can't be delivered fast enough — the resulting lactic acid is what creates that burning sensation. Meanwhile, Lactobacillus bacteria are doing the same chemistry in yogurt, cheese, kimchi, and sauerkraut — their lactic acid preserves the food and gives it that tangy flavor. Fun fact: the soreness you feel two days after a hard workout (called DOMS) is NOT from lactic acid — that's a common myth. The soreness comes from inflammation during muscle fibre repair. The burning during exercise is from acidity, but it clears within minutes of stopping.",
+    topic: "fermentation",
   },
   {
     id: "ferm-q3",
-    topic: "fermentation",
     question:
-      "Which microorganism is most widely used in alcoholic fermentation for brewing and baking?",
+      "Which organism is responsible for making both beer and bread, and how does it do both at once?",
     options: [
       "Escherichia coli",
       "Saccharomyces cerevisiae",
@@ -589,106 +588,105 @@ const quizQuestions: QuizQuestion[] = [
     ],
     correctIndex: 1,
     explanation:
-      "Saccharomyces cerevisiae — brewer's and baker's yeast. It converts pyruvate first to acetaldehyde (releasing CO₂ via pyruvate decarboxylase) then to ethanol (via alcohol dehydrogenase). The ethanol makes your beer; the CO₂ makes your bread rise. Humans have been exploiting this organism for at least 9,000 years, making it one of the most commercially important organisms on Earth.",
+      "Saccharomyces cerevisiae — brewer's and baker's yeast — is one of humanity's oldest and most valuable microbial partners. It's been used for at least 9,000 years! Here's how it works: the yeast converts glucose into pyruvate, then removes CO₂ to make acetaldehyde, then converts acetaldehyde to ethanol. Every glucose molecule going through this pathway releases two CO₂ molecules and two ethanol molecules. In beer brewing, the ethanol is the whole point — that's your alcohol. In bread baking, the CO₂ is the point — those gas bubbles get trapped in the sticky gluten network of the dough and make it rise and become light and airy. The baking process kills the yeast, drives off the remaining CO₂, and evaporates the small amount of alcohol. Same organism, same chemistry, two completely different products depending on what you do with it. Different Saccharomyces strains even produce different flavour compounds — breweries carefully guard their own proprietary yeast strains.",
+    topic: "fermentation",
   },
   {
     id: "ferm-q4",
-    topic: "fermentation",
-    question:
-      "What is the primary function of an impeller in a stirred-tank bioreactor?",
+    question: "What does the impeller do inside a bioreactor?",
     options: [
-      "To sterilize the growth medium by heat generation",
-      "To control pH by releasing acid or base",
-      "To mix the broth and maintain oxygen and nutrient distribution",
-      "To filter product from the fermentation broth",
+      "It sterilises the growth medium by generating heat",
+      "It controls pH by releasing acid or base",
+      "It mixes the contents of the vessel to distribute oxygen, nutrients, and temperature evenly throughout",
+      "It filters the product out of the fermentation broth continuously",
     ],
     correctIndex: 2,
     explanation:
-      "The impeller is the spinning mixing device inside the vessel. Without it, oxygen introduced at the bottom would create steep concentration gradients — cells near the sparger get oxygen while cells elsewhere starve. The impeller distributes oxygen, nutrients, and heat evenly throughout the broth. In large vessels at 50,000+ litre scale, this is genuinely challenging engineering.",
+      "The impeller is essentially a set of rotating blades — it's the mixing system inside the bioreactor vessel. Without mixing, oxygen bubbled in from the bottom would stay near the bottom, leaving cells in the upper part of the tank starved of oxygen. Nutrients added from above would sit at the surface. Temperature gradients would build up. The impeller fixes all of this by constantly circulating the broth, making sure every cell in the tank has roughly equal access to oxygen, nutrients, and a stable temperature. This sounds straightforward in a small lab vessel. In a 50,000-litre industrial bioreactor, it's a genuine engineering challenge — getting everything mixed uniformly in a tank the size of a house requires careful design of impeller placement, speed, and the baffles (vertical plates) on the vessel walls that prevent the liquid from just spinning in circles.",
+    topic: "fermentation",
   },
   {
     id: "ferm-q5",
-    topic: "fermentation",
     question:
-      "In fed-batch fermentation, what is added during the process — and why?",
+      "In fed-batch fermentation, what is added during the process and why does this work better than adding everything at the start?",
     options: [
-      "Nothing — fed-batch is a closed system like batch fermentation",
-      "Product is continuously removed to prevent inhibition",
-      "Substrate (e.g. glucose) is added continuously or intermittently to prevent substrate inhibition and extend growth",
-      "Cells are removed at regular intervals to maintain constant density",
+      "Nothing is added — fed-batch is a closed system just like batch fermentation",
+      "Product is continuously removed to prevent it from inhibiting the microorganism",
+      "Fresh substrate (like glucose) is fed in gradually during fermentation, preventing the high concentrations that cause cells to make unwanted by-products",
+      "Cells are removed at regular intervals to prevent overcrowding",
     ],
     correctIndex: 2,
     explanation:
-      "Fed-batch is the dominant mode for high-value products like antibiotics and recombinant proteins. By feeding in substrate gradually, you prevent the substrate from accumulating to inhibitory concentrations, extend the productive growth phase, and achieve much higher final cell densities than simple batch. Most commercial penicillin and insulin production uses this approach.",
+      "Here's the problem with giving cells all their glucose upfront: when glucose concentration is very high, E. coli (for example) switches to overflow metabolism and starts making acetate instead of your product — a wasteful and inhibitory by-product. Yeast does something similar, making too much ethanol at high glucose. Fed-batch solves this by feeding glucose in gradually, keeping the concentration in a 'sweet spot' — enough to support active growth and production, but not so much that overflow metabolism kicks in. This dramatically increases the amount of useful product you get from the same amount of starting material. Most commercial production of antibiotics, recombinant proteins, and amino acids uses fed-batch. The feeding strategy can be sophisticated — many industrial processes use sensors measuring dissolved oxygen or CO₂ output to automatically adjust the feed rate based on how actively the cells are actually metabolizing. Smart biology, smart engineering working together.",
+    topic: "fermentation",
   },
   {
     id: "ferm-q6",
-    topic: "fermentation",
     question:
-      "Which antibiotic is produced by Penicillium chrysogenum through industrial fermentation?",
+      "Which antibiotic is produced by Penicillium mould through industrial fermentation?",
     options: ["Streptomycin", "Tetracycline", "Penicillin", "Vancomycin"],
     correctIndex: 2,
     explanation:
-      "Penicillin! Alexander Fleming noticed in 1928 that Penicillium mold was killing bacteria on a contaminated culture plate. The work of Florey and Chain in the 1940s to develop industrial fermentation at scale transformed it into a medicine that saved millions of lives in World War II. Production titers have improved from 1 unit/ml in early processes to over 50,000 units/ml today through decades of strain improvement.",
+      "Penicillin — one of the most important medicines in history! Alexander Fleming noticed in 1928 that a Penicillium mould contaminating his bacterial culture was killing bacteria around it. He correctly identified a bactericidal substance and named it penicillin — but he couldn't purify it or make enough of it to be useful. For over a decade, it remained a curiosity. Then in the early 1940s, Howard Florey and Ernst Chain developed methods to purify and concentrate penicillin. The first patient treated with purified penicillin was a policeman dying of a blood infection — he began recovering dramatically, but supplies ran out after four days and he died. By 1944, industrial-scale fermentation was producing enough penicillin to treat thousands of Allied soldiers. Early production yielded just 1 unit per millilitre of fermentation broth. Through decades of strain improvement and process optimization, modern industrial fermentation achieves over 50,000 units per millilitre — a 50,000-fold improvement. Fleming, Florey, and Chain shared the 1945 Nobel Prize.",
+    topic: "fermentation",
   },
   {
     id: "ferm-q7",
-    topic: "fermentation",
     question:
-      "What is a key challenge when scaling up fermentation from laboratory to industrial scale?",
+      "What is one of the biggest challenges when scaling up fermentation from a small lab flask to a large industrial vessel?",
     options: [
-      "Microorganisms behave differently at larger scales due to oxygen and mixing limitations",
-      "Industrial bioreactors cannot maintain sterile conditions",
-      "Large-scale fermentation always produces toxic byproducts",
-      "Scale-up is straightforward since microorganism behaviour is independent of vessel size",
-    ],
-    correctIndex: 0,
-    explanation:
-      "What works in a 1-litre flask often doesn't work the same way in a 10,000-litre tank. Mixing time, oxygen transfer rate (kLa), heat removal, and shear forces all change non-linearly with scale. You can get oxygen-poor dead zones, pH gradients, and temperature hotspots that simply don't exist at lab scale. That's why pilot-scale testing at 100–1,000 litres is almost always required before committing to full industrial production.",
-  },
-  {
-    id: "ferm-q8",
-    topic: "fermentation",
-    question: "How is recombinant human insulin produced commercially?",
-    options: [
-      "Extracted from the pancreases of pigs and purified",
-      "Synthesised chemically from amino acids in industrial reactors",
-      "Produced by genetically engineered Escherichia coli or yeast via fermentation",
-      "Isolated from human blood donors",
+      "Microorganisms behave identically at all scales — scale-up is straightforward",
+      "Industrial bioreactors cannot maintain sterile conditions at large scale",
+      "Mixing time, oxygen transfer, and heat removal all change in complex ways with scale — what works perfectly in a small flask often doesn't work the same in a 10,000-litre vessel",
+      "Large-scale fermentation always produces toxic by-products that small scale doesn't",
     ],
     correctIndex: 2,
     explanation:
-      "The human insulin gene is inserted into E. coli or Saccharomyces cerevisiae. These microorganisms grow in large fermenters, express the insulin protein, and it's then extracted, properly folded (insulin forms disulfide bonds between A and B chains), purified by chromatography, and formulated for injection. Every person with diabetes who uses recombinant insulin is benefiting directly from this process, first commercialised in 1982.",
+      "There's a saying in bioprocess engineering: 'scale-up is where careers go to die' — and it's only half a joke. The core problem is that volume scales as a cube while surface area scales as a square. When you go from a 1-litre flask to a 10,000-litre vessel, the volume increases 10,000-fold but the surface area for heat removal doesn't keep up. Oxygen transfer, mixing time, and temperature gradients all behave differently. In a small flask, shaking provides excellent mixing in seconds. In a large bioreactor, mixing time after adding a pulse of acid for pH control might be 30–60 seconds. During those 60 seconds, cells near the acid injection point experience a brief pH crash that cells elsewhere never see. These micro-environments affect cell growth, product quality, and metabolism in ways you only discover at large scale. This is why pharmaceutical companies invest heavily in pilot-scale experiments (typically 200–2,000 litres) before committing to full production scale — learning at intermediate size is much less costly than discovering problems in a $100 million production facility.",
+    topic: "fermentation",
+  },
+  {
+    id: "ferm-q8",
+    question: "How is recombinant human insulin produced today?",
+    options: [
+      "Extracted from the pancreases of pigs and chemically modified to the human sequence",
+      "Synthesised chemically from amino acids",
+      "Produced by genetically engineered E. coli or yeast that express the human insulin gene during fermentation",
+      "Isolated from donated human blood",
+    ],
+    correctIndex: 2,
+    explanation:
+      "The human insulin gene is inserted into E. coli bacteria or baker's yeast (Saccharomyces cerevisiae). These microorganisms grow in large stainless steel fermentation tanks, producing human insulin protein. The insulin is then extracted from the fermentation broth, purified extensively, refolded correctly (insulin has two chains connected by disulfide bonds that must form properly), and formulated into the injectable solution used by people with diabetes. The entire process, from gene insertion to purified medicine, is a marvel of modern biotechnology. Before 1982, every person with diabetes in the world relied on insulin extracted from pig or cow pancreas glands. Today, every person with diabetes who uses insulin is directly benefiting from microbial fermentation. The scale of this is staggering: hundreds of millions of people rely on recombinant insulin every single day.",
+    topic: "fermentation",
   },
   {
     id: "ferm-q9",
-    topic: "fermentation",
-    question:
-      "What is the first principle of ABE fermentation, and which organism performs it?",
+    question: "What is ABE fermentation and why is it historically important?",
     options: [
-      "Acetate–Butanol–Ethanol fermentation by Saccharomyces cerevisiae",
-      "Acetone–Butanol–Ethanol fermentation by Clostridium acetobutylicum — the first industrial bioprocess",
+      "Acetic–Butanol–Ethanol fermentation by Saccharomyces cerevisiae — the first food fermentation process",
+      "Acetone–Butanol–Ethanol fermentation by Clostridium acetobutylicum — the first large-scale industrial bioprocess in history",
       "Acetic–Butyric–Ethanol fermentation by Lactobacillus acidophilus",
-      "Acetaldehyde–Butanol–Ethylene by Aspergillus niger",
+      "Aldehyde–Butane–Ethylene fermentation by Aspergillus niger",
     ],
     correctIndex: 1,
     explanation:
-      "ABE (Acetone–Butanol–Ethanol) fermentation is performed by Clostridium acetobutylicum and holds the distinction of being the first large-scale industrial bioprocess — developed during World War I when Chaim Weizmann used it to produce acetone for cordite explosive manufacture. It's a remarkable piece of biotechnology history and also the origin of industrial butanol production.",
+      "ABE (Acetone–Butanol–Ethanol) fermentation holds a remarkable distinction: it's the first industrial bioprocess ever scaled up for mass production. Clostridium acetobutylicum ferments sugars to produce acetone, butanol, and ethanol simultaneously. During World War I, Britain desperately needed acetone to manufacture cordite explosive. Conventional supplies were completely inadequate. Chaim Weizmann, a Russian-born biochemist working in Manchester, developed the fermentation process and scaled it up to produce the acetone Britain needed. It is not an exaggeration to say this fermentation helped change the course of the war. Weizmann later became the first President of Israel — and his scientific contribution during the war is often cited as one reason Britain supported the creation of a Jewish homeland in Palestine. Butanol is now attracting renewed interest as a biofuel because it has a higher energy content than ethanol and can be blended with gasoline at higher concentrations.",
+    topic: "fermentation",
   },
   {
     id: "ferm-q10",
-    topic: "fermentation",
     question:
-      "In a chemostat (continuous fermentation), what determines the steady-state cell density?",
+      "In a chemostat (continuous fermentation), what controls the growth rate of the cells?",
     options: [
-      "The initial inoculum size",
-      "The dilution rate — fresh medium in, culture out — which equals the specific growth rate at steady state",
+      "The initial cell density in the vessel",
+      "The dilution rate — fresh medium is pumped in at a constant rate while culture flows out at the same rate, and cells must grow at exactly that rate to avoid being washed out",
       "The temperature setting of the vessel jacket",
-      "The stirrer speed in revolutions per minute",
+      "The stirrer speed",
     ],
     correctIndex: 1,
     explanation:
-      "A chemostat is elegant in its simplicity: fresh medium flows in at a constant rate (dilution rate D), and culture flows out at the same rate. At steady state, the cells grow exactly fast enough to compensate for the dilution — so D equals the specific growth rate μ. By adjusting D, you control growth rate. This makes the chemostat a powerful tool for physiological studies and can give higher volumetric productivity than batch, though contamination risk over long runs is a real concern.",
+      "A chemostat is elegant in its simplicity. Fresh medium flows in at a constant rate (the dilution rate, D), and culture flows out at the same rate, keeping the volume constant. At steady state, cells grow at exactly the rate needed to compensate for being diluted — otherwise they would either wash out (growing slower than D) or fill the vessel (growing faster than D). So the dilution rate directly controls how fast the cells grow: set D to a low value and you get slow-growing cells (good for studying secondary metabolite production); set it high and you get fast-growing cells. This precise control is why chemostats are invaluable for research — you can hold every growth condition constant and change just one variable at a time, which is the foundation of good experimental design. For industrial use, the main challenge with continuous fermentation is that over weeks and months, fast-growing mutants that have stopped making your product accumulate — genetic drift is a real problem when you're running the same culture indefinitely.",
+    topic: "fermentation",
   },
 ];
 
@@ -698,75 +696,74 @@ const explanations = [
   {
     id: "history",
     anchorId: "fermentation-types",
-    heading: "A Brief History: From Yogurt to Nobel Prizes",
+    heading: "Fermentation: From Ancient Bread to Modern Medicine",
     color: "oklch(0.52 0.14 175)",
-    body: `Humans have been harnessing fermentation for thousands of years — bread, beer, wine, cheese, yogurt — without having the faintest idea of the chemistry involved. The understanding came much later. In 1857, Louis Pasteur demonstrated that fermentation was caused by living microorganisms, not by a purely chemical process as many chemists of the time believed. He coined the phrase "la vie sans air" — life without air — and laid the groundwork for microbiology as a discipline.
+    body: `Humans have been using fermentation for thousands of years — bread, beer, wine, cheese, yogurt, vinegar — without having the faintest idea of the chemistry involved. For most of history, fermentation was magic: mix flour and water, leave it, and it rises. Grape juice turns into wine. Milk becomes cheese. Nobody knew why.
 
-The next big conceptual leap came from Eduard Buchner in 1897. He ground up yeast cells and squeezed out their juice, expecting it to be inert. Instead, it fermented sugar. This "cell-free fermentation" proved that enzymes — not intact living cells — were doing the chemical work, and it earned Buchner the Nobel Prize in Chemistry in 1907. That insight launched biochemistry as we know it. From there to penicillin production in the 1940s, to recombinant insulin in the 1980s, to today's monoclonal antibody bioreactors worth hundreds of billions of dollars — it's all one continuous story of humanity learning to redirect microbial chemistry toward useful ends.`,
+The understanding came much later. In 1857, Louis Pasteur showed for the first time that fermentation was caused by living microorganisms — tiny creatures invisible to the naked eye. He coined the phrase "la vie sans air" — life without air. Before Pasteur, many scientists believed fermentation was a purely chemical reaction. His experiments with sealed flasks proved it required living cells. This was a major turning point in the history of biology. Then in 1897, Eduard Buchner ground up yeast cells, squeezed out their juice, and discovered that the cell-free extract could still ferment sugar. The cells themselves weren't needed — just their enzymes. This "cell-free fermentation" proved enzymes were doing the work, earned Buchner a Nobel Prize in 1907, and launched biochemistry as a discipline. From that discovery to today's multi-billion dollar bioreactor industry is one continuous story of humanity learning to understand and redirect microbial chemistry.`,
   },
   {
     id: "biochemistry",
     anchorId: "fermentation-biochemistry",
-    heading: "The Biochemistry: What's Actually Happening in That Flask?",
+    heading: "What's Actually Happening When Fermentation Occurs",
     color: "oklch(0.52 0.14 175)",
-    body: `At the heart of fermentation is a problem of electron bookkeeping. Glycolysis breaks glucose (6 carbons) into two pyruvate molecules (3 carbons each), yielding 2 ATP and 2 NADH. Here's the catch: those 2 NADH molecules need to donate their electrons somewhere, or NAD⁺ runs out and glycolysis stops completely. In aerobic cells, the electron transport chain handles this — and generates an additional 28–30 ATP along the way. Without oxygen, fermentation takes over.
+    body: `Let's trace what happens to a glucose molecule during fermentation — step by step. First, glycolysis breaks glucose (a 6-carbon sugar) into two pyruvate molecules (each 3 carbons), releasing a small amount of energy as 2 ATP. Glycolysis also produces 2 NADH molecules — think of NADH as a full electron carrier that needs to be emptied before it can work again. That emptying is the central problem fermentation solves.
 
-Lactic acid fermentation is the simplest solution: lactate dehydrogenase (LDH) directly reduces pyruvate to lactate, oxidising NADH back to NAD⁺ in one step. Lactobacillus species are homofermentative (only lactate as product) or heterofermentative (Leuconostoc — producing lactate, ethanol, and CO₂). Alcoholic fermentation takes two steps: pyruvate decarboxylase removes CO₂ from pyruvate to form acetaldehyde, then alcohol dehydrogenase reduces acetaldehyde to ethanol using NADH. Two CO₂ are released and two ethanol molecules are produced per glucose. Beyond these two classics, there's propionic acid fermentation (Propionibacterium in Swiss cheese — the CO₂ produces the holes), acetic acid fermentation (Acetobacter oxidises ethanol to acetic acid — that's your vinegar), mixed acid fermentation in E. coli (producing acetate, formate, succinate, and ethanol in varying ratios), and the remarkable ABE fermentation by Clostridium acetobutylicum — which produces acetone, butanol, and ethanol simultaneously and was the first industrial bioprocess in history.`,
+In alcoholic fermentation (the kind yeast does), pyruvate first loses a CO₂ molecule to become acetaldehyde, then picks up electrons from NADH to become ethanol. The NADH becomes NAD⁺ again, ready to accept more electrons from glycolysis. Two CO₂ molecules and two ethanol molecules are produced per glucose. In lactic acid fermentation (what your muscles and Lactobacillus bacteria do), it's even simpler: pyruvate directly accepts electrons from NADH to become lactate, regenerating NAD⁺ in one step. These are the two most common types, but fermentation is a remarkably diverse process. Propionic acid fermentation (done by Propionibacterium in Swiss cheese) makes propionic acid and CO₂ — the CO₂ bubbles create those characteristic holes in the cheese! Acetic acid fermentation (Acetobacter) converts ethanol to acetic acid — that's how wine becomes vinegar. Each type of fermentation is just a different solution to the same problem: recycling NADH without oxygen.`,
   },
   {
     id: "types",
     anchorId: "fermentation-types-batch",
-    heading:
-      "Types of Fermentation Processes: Batch, Fed-batch, and Continuous",
+    heading: "Batch, Fed-Batch, and Continuous: Three Ways to Ferment",
     color: "oklch(0.58 0.18 36)",
-    body: `Industrial fermentation isn't one thing — it's a spectrum of process modes, each with distinct advantages and the right application niche. Batch fermentation is the simplest: inoculate a closed vessel, grow until nutrients are exhausted, harvest everything at the end. The microbial culture goes through distinct phases — lag (adapting to new environment), exponential/log (rapid doubling), stationary (nutrients limiting, production phase for many secondary metabolites like antibiotics), and death (starvation and cell lysis). Batch is easy to validate, each run is a discrete lot with clear traceability, and if contamination strikes you lose one batch, not your entire facility. Pharmaceutical GMP (Good Manufacturing Practice) favours batch for precisely this auditability.
+    body: `Industrial fermentation isn't one thing — it's three different process modes, each with its own strengths. Batch fermentation is the simplest: fill the vessel with nutrients and microorganisms, close it, let fermentation run until nutrients are exhausted, then harvest everything. The culture goes through distinct phases — a lag phase (cells adapting to new conditions), an exponential phase (rapid doubling every 20–90 minutes), a stationary phase (nutrients limiting, often when secondary metabolites like antibiotics are produced), and a death phase (nutrients gone, cells dying). Batch is easy to validate, each run is a distinct lot, and if something goes wrong you lose one batch rather than your whole facility. That traceability makes it the preferred approach for pharmaceutical manufacturing.
 
-Fed-batch is the workhorse of modern bioprocessing. Instead of adding all substrate at once, you feed it in gradually — often following a pre-programmed feeding strategy that responds to dissolved oxygen or CO₂ evolution as proxies for cell metabolism. This prevents substrate inhibition (glucose repression in yeast, acetate overflow in E. coli), extends the productive phase, and achieves cell densities 10–100x higher than batch. Most antibiotic and recombinant protein production runs as fed-batch. Continuous fermentation (chemostat) pumps fresh medium in while removing culture at the same rate, maintaining cells at a fixed density and growth rate indefinitely. Productivity per unit volume can exceed batch, but the risk of contamination and genetic drift accumulates over long runs. Perfusion culture is an advanced variant used in mammalian cell culture for monoclonal antibody production — cells are retained inside the vessel by a filter while spent medium is continuously replaced, achieving extraordinarily high cell densities (>100 million cells/mL) and productivity.`,
+Fed-batch is the dominant mode for high-value products. Instead of adding all the nutrient at the start, you feed it in gradually throughout the run — usually with a sophisticated strategy that responds to signals from the culture (oxygen levels, CO₂ production, pH changes) to figure out how hungry the cells are and how fast to feed them. This prevents the problem of overflow metabolism (cells making by-products when flooded with glucose) and allows the culture to reach much higher cell densities. Most commercial antibiotic, insulin, and monoclonal antibody production runs as fed-batch. Continuous fermentation (chemostat) is the third mode: fresh medium flows in constantly, spent broth flows out at the same rate, and the culture runs indefinitely at a steady state. Productivity per unit of vessel volume is high, but contamination risk accumulates over long runs and genetic drift (fast-growing mutant cells that have stopped making your product) becomes a problem. Continuous fermentation is used mainly for commodity products and in research.`,
   },
   {
     id: "bioreactor",
     anchorId: "fermentation-bioreactor",
-    heading: "Inside a Bioreactor: The Engineering Behind the Biology",
+    heading: "Inside a Bioreactor: Life Support for Billions of Microbes",
     color: "oklch(0.52 0.15 175)",
-    body: `A bioreactor looks like a fancy metal tank, but it's actually a tightly controlled life-support system for billions of microorganisms. The stirred-tank reactor (STR) is the most common industrial design — a cylindrical stainless steel vessel with a rotating impeller (mixing blades), a sparger (porous ring that disperses oxygen as tiny bubbles from the bottom), baffles (vertical plates on the vessel wall that disrupt circular flow and improve mixing), and a cooling jacket through which temperature-controlled water circulates. Sensors — pH, dissolved oxygen (DO), temperature, foam, biomass — monitor the culture in real time and feed data to control loops that adjust acid/base addition, agitation speed, and airflow automatically.
+    body: `A bioreactor might look like a fancy metal tank, but it's actually a precisely controlled life-support system. The stirred-tank reactor (STR) is the most common design — a cylindrical stainless steel vessel with a rotating impeller for mixing, a sparger (a ring with tiny holes at the bottom) that disperses oxygen as tiny bubbles, baffles (vertical plates on the walls) that prevent the liquid from spinning in circles and improve turbulent mixing, and a cooling jacket with temperature-controlled water circulating through it. Sensors monitor pH, dissolved oxygen, temperature, and foam level in real time, feeding data to control systems that automatically add acid or base, adjust stirrer speed, and increase or decrease airflow.
 
-But STRs aren't the only option, and the right bioreactor depends on the organism. Airlift bioreactors circulate culture using rising gas bubbles rather than mechanical agitation — they're gentler on shear-sensitive organisms like mammalian cells and filamentous fungi. Bubble column reactors are simpler still: just a column with a sparger, no mechanical parts, easy to sterilise. Packed bed and fluidised bed bioreactors immobilise cells or enzymes on support materials, keeping the biocatalyst retained while substrate flows through — useful for biotransformations and enzyme catalysis. Hollow-fibre bioreactors use bundles of semi-permeable membranes, giving anchorage-dependent mammalian cells an enormous surface area to grow on. And wave bioreactors — single-use bags rocked on a platform — have become the standard for small-batch clinical manufacturing; the disposable bag eliminates cross-contamination risk between batches and speeds turnaround. Photobioreactors are specialised designs for microalgae, incorporating transparent tubes or flat panels and an artificial or natural light source alongside CO₂ supply. The variety of reactor designs directly reflects the variety of biology being exploited.`,
+But stirred-tank reactors aren't the only option. Airlift bioreactors circulate the culture using rising air bubbles rather than spinning blades — gentler on sensitive organisms like mammalian cells that can be damaged by the shear forces from impellers. Bubble column reactors are even simpler: just a column with a sparger at the bottom, no moving parts, easy to sterilize. Wave bioreactors (single-use plastic bags rocked on a platform) have become standard for small-scale clinical manufacturing — the disposable bag eliminates cross-contamination risk between batches and lets you set up quickly. Photobioreactors contain transparent chambers for growing light-dependent microalgae, with lighting systems and CO₂ supply built in. The wide variety of bioreactor designs directly reflects the enormous variety of biology being exploited — different organisms need different environments to thrive.`,
   },
   {
     id: "scale-up",
     anchorId: "fermentation-scale-up",
-    heading: "Scale-Up: Where Engineering Meets Humility",
+    heading: "Scale-Up: The Hardest Part of Bioprocess Engineering",
     color: "oklch(0.52 0.14 142)",
-    body: `There's a saying in bioprocess engineering: "scale-up is where careers go to die." It's only half a joke. What works perfectly in a 1-litre shake flask often fails catastrophically in a 50,000-litre production vessel — and understanding why requires grappling with fluid dynamics, mass transfer, and microbial physiology all at once.
+    body: `Here's a challenge that catches many people by surprise: making something work in a small lab flask and making the same thing work in a 50,000-litre production vessel are two completely different problems. What works perfectly at small scale often fails at large scale, not because the biology changed, but because the physics of large vessels is fundamentally different. The ratio of surface area to volume decreases as a vessel gets larger — this means heat removal becomes harder, oxygen bubbles have further to travel, and mixing takes much longer. In a 1-litre lab flask, you can mix uniformly in under a second. In a 20,000-litre bioreactor, mixing after a pH adjustment event might take 30–60 seconds. During those seconds, cells near the acid injection point experience a brief pH crash that cells on the other side of the vessel never see.
 
-The oxygen transfer coefficient kLa (the rate at which oxygen moves from gas bubbles into the liquid phase) is one of the most critical parameters. It depends on bubble size, power input, turbulence, and fluid viscosity in complex, non-linear ways. Achieve the right kLa in a small vessel with one set of conditions, and replicating it at 100x scale while maintaining geometric similarity of the vessel usually requires completely different agitation speeds and gas flows. Mixing time — how long it takes a slug of acid to become uniformly distributed after pH control dosing — scales with vessel diameter and can go from fractions of a second in a lab flask to 30–60 seconds in a 20,000-litre vessel. During those 60 seconds, cells near the acid dosing port experience a pH crash that cells elsewhere never see. Those physiological stress cycles affect cell growth, metabolite production, and product quality in ways that are only discovered at large scale. Process Analytical Technology (PAT) — an FDA framework for continuous monitoring of critical process parameters using in-line sensors and mathematical models (soft sensors) — has become the standard approach for managing this complexity and ensuring consistent product quality during scale-up and production.`,
+These local variations — called concentration and pH gradients — stress cells in ways that don't show up at small scale, affecting product quality, yield, and cell health. Understanding this requires combining fluid dynamics (how liquids move in large tanks) with microbial physiology (how cells respond to changing conditions) and process chemistry (how pH, oxygen, and nutrients interact). This is why pharmaceutical companies run processes at multiple intermediate scales (bench, pilot, manufacturing) rather than jumping straight from lab to production. Process Analytical Technology (PAT) — continuous in-line monitoring using sensors and mathematical models — has become the standard approach for catching problems early. Getting scale-up right is one of the hardest and most economically important challenges in modern biotechnology.`,
   },
   {
     id: "upstream",
     anchorId: "fermentation-upstream",
-    heading: "Upstream Processing: Building the Perfect Microbial Workforce",
+    heading: "Upstream Processing: Preparing the Perfect Microbial Team",
     color: "oklch(0.52 0.16 290)",
-    body: `Before a drop of product is made, there's extensive work upstream. Strain development is the foundation: you need a microorganism that produces your target molecule at high yield, with good genetic stability, tolerance to the process conditions, and ideally without making unwanted byproducts. Early industrial strains were improved by random mutagenesis — exposing cells to UV light or chemical mutagens and screening tens of thousands of colonies for improved production. Modern metabolic engineering takes a rational approach: delete genes for competing pathways, overexpress biosynthetic genes, engineer cofactor balance, introduce synthetic promoters and regulators. CRISPR has made this dramatically faster.
+    body: `Before any product comes out of a bioreactor, there's significant work to do getting the right microorganism into the right conditions. Strain development is the foundation. The microorganism needs to produce your target molecule at high yield with good genetic stability, be tolerant to the process conditions (temperature, pH, oxygen levels), and ideally not make too many by-products that complicate purification. Traditional strain improvement used random mutagenesis — exposing cells to UV light or chemicals and screening tens of thousands of colonies for rare improved producers. This is how penicillin production improved 50,000-fold over decades. Modern metabolic engineering takes a rational approach: delete competing pathways, overexpress biosynthetic genes, improve cofactor availability. CRISPR has made this much faster and more precise.
 
-Media optimisation is equally important. The composition of the growth medium — carbon source, nitrogen source, mineral salts, vitamins, trace metals, antifoam agents — profoundly affects cell behaviour, product yield, and product quality. Dissolved oxygen control strategies, induction timing for recombinant protein expression (if using inducible promoters like the E. coli lac promoter or the T7 system), and feeding profiles for fed-batch processes are all upstream variables that must be systematically optimised. Then there's the seed train: inoculating the final production bioreactor directly from a cryopreserved vial would be impractical (the ratio of inoculum to working volume would be impossibly small). Instead, cells are progressively scaled through shake flasks, then successively larger bioreactors — each step 10–30x larger than the last — until the production vessel is reached with a healthy, productive inoculum at the right cell density.`,
+Media design is equally important. The exact composition of the growth medium — carbon source (glucose, glycerol, sucrose), nitrogen source (ammonia, corn steep liquor), mineral salts, vitamins, and trace metals — profoundly affects cell behavior and product yield. Sometimes a tiny amount of an unexpected trace element makes a major difference. Then there's the seed train: you can't inoculate a 10,000-litre production bioreactor directly from a frozen vial — the cell density would be far too low. Instead, cells are grown progressively through increasingly larger vessels (shake flask → 10L → 200L → production vessel), each step 10–50 times larger than the last, building up cell density and health step by step until the production vessel is ready to receive a vigorous, productive inoculum.`,
   },
   {
     id: "downstream",
     anchorId: "fermentation-industrial",
-    heading: "Downstream Processing: Getting Your Product Out — Pure",
+    heading: "Downstream Processing: Purifying Your Product",
     color: "oklch(0.58 0.18 36)",
-    body: `Making the product in the bioreactor is only half the battle. Downstream processing (DSP) — isolating the product from the culture broth in a pure, safe, and stable form — can represent 50–80% of total production costs for biopharmaceuticals. The specific steps depend on whether the product is secreted outside the cell or retained intracellularly, how large and stable it is, and how pure it needs to be.
+    body: `Making the product is only half the job. Getting it out of the fermentation broth in a pure, safe, stable form — downstream processing — is the other half, and it can cost more than the fermentation itself. For a biopharmaceutical like a monoclonal antibody, downstream processing represents 50–70% of total production costs. Every step adds cost and removes product, so minimizing the number of steps while achieving the required purity is the central challenge.
 
-A typical monoclonal antibody downstream process looks like this: the culture is first clarified by centrifugation and depth filtration to remove cells and cell debris. Then comes Protein A affinity chromatography — the single most powerful purification step in bioprocessing, exploiting the near-perfect specificity of Protein A (from Staphylococcus) for the Fc region of antibodies. One column pass reduces impurities by several orders of magnitude. Subsequent polishing steps (ion exchange chromatography, hydrophobic interaction chromatography) remove remaining host cell proteins, DNA, viruses, and aggregates. Ultrafiltration/diafiltration concentrates the product and exchanges it into the final formulation buffer. Finally, the purified antibody may be lyophilised (freeze-dried) to improve shelf-life, mixed with excipients (stabilisers, surfactants, tonicity agents), filled into vials, and tested for purity, potency, safety, and sterility before release. For a product that costs $100,000 per year per patient, each step needs to be extraordinarily reliable.`,
+Here's what a typical monoclonal antibody purification looks like. First, cells are separated by centrifugation and filtration — the 'clarification' step. Then comes Protein A affinity chromatography: Protein A (a protein from Staphylococcus bacteria) specifically binds the constant region of antibodies. One pass through a Protein A column can reduce all other impurities by hundreds or thousands of fold. Then come 'polishing' steps — ion exchange chromatography, hydrophobic interaction chromatography — to remove remaining host cell proteins, DNA fragments, viruses, and aggregated antibody. Ultrafiltration concentrates the antibody and exchanges the buffer to the final formulation. Finally the purified antibody is mixed with stabilizers, filled into sterile vials, and tested exhaustively for purity, potency, safety, and sterility before any patient ever receives it. For a product that can cost $100,000 per patient per year, every step needs to work flawlessly, batch after batch.`,
   },
   {
     id: "applications",
     anchorId: "fermentation-economy",
-    heading: "Industrial Applications: The Fermentation Economy",
+    heading: "Fermentation Products: More Than You Realise",
     color: "oklch(0.52 0.14 142)",
-    body: `Stop and count how many products in your life depend on fermentation. Beer, wine, cheese, yogurt, sourdough, soy sauce, miso, kombucha, vinegar — fermentation has fed and delighted humans for millennia. But the modern industrial fermentation economy goes far beyond food. Antibiotics from Streptomyces and Penicillium fermentation have saved hundreds of millions of lives and transformed surgery, medicine, and animal husbandry. Recombinant insulin (E. coli and yeast since 1982) supplies every diabetic on the planet. Erythropoietin for anaemia, human growth hormone, interferons, vaccines, monoclonal antibodies — the global market for fermentation-derived biopharmaceuticals exceeds $200 billion annually.
+    body: `Take a moment to count how many products in your daily life came from fermentation. Your bread (yeast producing CO₂). Beer and wine (yeast producing ethanol). Yogurt and cheese (bacteria producing lactic acid). Soy sauce, miso, kimchi, sauerkraut, vinegar — all fermentation products. These have been part of human culture for thousands of years. But the modern fermentation economy extends far beyond food in ways most people never think about.
 
-Industrial enzymes made by microbial fermentation appear everywhere you don't expect them: in laundry detergent (proteases, lipases, and amylases cleaning your clothes at cold temperatures), in cheese production (chymosin — the enzyme that curdles milk, formerly extracted from calf stomachs, now produced by recombinant fermentation), in bread (amylases improving texture and extending shelf-life), and even in your jeans (cellulases give denim its stonewashed appearance without actual stones). Citric acid — Aspergillus niger fermentation — is the world's most widely used food acidulant, produced at over 2 million tonnes per year. Glutamate (MSG) and lysine from Corynebacterium glutamicum fermentation run into millions of tonnes annually. Bioethanol from Saccharomyces fermentation of corn and sugarcane is blended into petrol in most countries. Bioplastics (PLA from lactic acid fermentation), biogas from anaerobic digestion of organic waste, single-cell protein (Quorn from Fusarium mycoprotein fermentation), and omega-3 fatty acids from microalgae are all growing parts of the fermentation economy. It's not just a traditional technology — it's an expanding platform that underpins much of what keeps modern civilisation running.`,
+Every person with diabetes who uses insulin is using a fermentation product made by bacteria. Every patient treated with penicillin or amoxicillin owes that treatment to mould fermentation. The vitamin C in your orange juice is almost certainly made by microbial fermentation. The citric acid in your soft drink and salad dressing is made by Aspergillus niger fungi in massive fermentation tanks — over 2 million tonnes per year globally. The glutamate in MSG (and the natural umami flavour in many foods) comes from Corynebacterium glutamicum fermentation. The laundry detergent enzyme that cleans your clothes at cold temperature, the rennet that makes your cheese set, the amylase that improves your bread texture — fermentation. Bioethanol blended into petrol in most countries. Bioplastics. Single-cell protein for animal feed. Omega-3 fatty acids from microalgae. Look at the world through a fermentation lens and you start seeing it everywhere — a remarkable testament to billions of years of microbial evolution, now harnessed to serve human needs at global scale.`,
   },
 ];
 

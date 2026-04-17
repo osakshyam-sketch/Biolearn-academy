@@ -463,151 +463,151 @@ const BIOMOLECULE_QUIZ: QuizQuestion[] = [
     id: "bm1",
     topic: "biomolecules",
     question:
-      "Which of these correctly describes the difference between alpha and beta glycosidic linkages?",
+      "You eat a bowl of oats (starch) and a stick of celery (cellulose). Both are made of glucose. Why can you digest one but not the other?",
     options: [
-      "Alpha linkages point upward; beta linkages point downward — both are found in starch",
-      "Alpha linkages (as in starch/glycogen) are digestible by humans; beta linkages (as in cellulose) are not, because our enzymes can't break them",
-      "Alpha linkages are in RNA; beta linkages are in DNA",
-      "Both alpha and beta linkages are found in triglycerides",
+      "Starch has more glucose units than cellulose, so it's easier to break apart",
+      "Starch uses alpha-glycosidic bonds that your digestive enzymes can break; cellulose uses beta-glycosidic bonds that your enzymes can't recognise",
+      "Cellulose contains nitrogen atoms that make it indigestible",
+      "Starch is soluble in water; cellulose is not, so it can't mix with digestive juices",
     ],
     correctIndex: 1,
     explanation:
-      "This is one of biology's most elegant examples of how geometry determines function. Starch and cellulose are both made of glucose chains — but starch uses alpha-1,4-glycosidic bonds, and cellulose uses beta-1,4-glycosidic bonds. That single geometric difference means your amylase enzyme can digest starch easily but can't touch cellulose at all. Cows and termites can only digest cellulose because they have gut microbes that produce beta-glucosidases — not because they evolved different stomachs.",
+      "Here's the cool part — both starch and cellulose are made from the exact same molecule: glucose. The only difference is the shape of the bond linking the glucose units together. Starch uses alpha bonds, which our enzyme amylase is perfectly shaped to grab and break. Cellulose uses beta bonds, which have a slightly different geometry that our enzymes can't fit into. Cows and termites can digest cellulose only because they carry gut microbes that have the right enzyme. Same building blocks, one tiny geometric difference — totally different outcome.",
   },
   {
     id: "bm2",
     topic: "biomolecules",
     question:
-      "Which disaccharide causes lactose intolerance in people lacking lactase?",
+      "Your friend can't drink milk without getting a stomach ache. What's most likely happening?",
     options: [
-      "Sucrose (glucose + fructose)",
-      "Maltose (glucose + glucose)",
-      "Lactose (glucose + galactose)",
-      "Cellobiose (glucose + glucose, beta linkage)",
+      "Their stomach acid is too strong and breaks the milk proteins too quickly",
+      "They're allergic to the fat in milk (lactose intolerance is actually a fat intolerance)",
+      "They lack the enzyme lactase, so undigested lactose reaches gut bacteria that ferment it, causing bloating and discomfort",
+      "Milk contains a type of sugar (fructose) that is toxic in large amounts",
     ],
     correctIndex: 2,
     explanation:
-      "Lactose is glucose bonded to galactose via a beta-1,4-glycosidic link. To digest it, your small intestine needs lactase. Most mammals (and many adult humans) produce less lactase after weaning — a completely normal evolutionary adaptation, since most adults historically didn't drink milk. Without lactase, undigested lactose reaches the colon where gut bacteria ferment it, producing gas, bloating, and diarrhea. Fascinating side note: humans with Northern European ancestry evolved persistent lactase expression — a genetic mutation that spread rapidly when dairy farming became widespread ~10,000 years ago.",
+      "Lactose is a sugar made of glucose and galactose stuck together. To digest it, your small intestine needs an enzyme called lactase to split that bond. Most mammals actually produce less lactase after they're weaned — it's a completely normal evolutionary thing, since adults historically didn't drink milk. Without lactase, the undigested lactose travels to your large intestine where bacteria happily ferment it, producing gas and causing that uncomfortable bloating. Fun fact: humans with Northern European ancestry evolved to keep making lactase as adults — a genetic change that spread rapidly when dairy farming began about 10,000 years ago.",
   },
   {
     id: "bm3",
     topic: "biomolecules",
     question:
-      "What is the key structural difference between a saturated and an unsaturated fatty acid?",
+      "Why is butter solid at room temperature while olive oil is liquid?",
     options: [
-      "Saturated fatty acids contain nitrogen; unsaturated ones do not",
-      "Saturated fatty acids have no carbon-carbon double bonds, making them straight chains; unsaturated ones have one or more double bonds, causing 'kinks'",
-      "Unsaturated fatty acids have more carbon atoms than saturated ones",
-      "Saturated fatty acids are liquid at room temperature; unsaturated ones are solid",
+      "Butter has more carbon atoms, making it heavier and therefore solid",
+      "Butter is mostly saturated fats (no double bonds, straight chains that pack tightly); olive oil is mostly unsaturated fats (double bonds cause kinks that prevent tight packing)",
+      "Olive oil has been processed to remove the saturated fats, making it liquid",
+      "Butter is solid because it contains water mixed in; pure fat would be liquid",
     ],
     correctIndex: 1,
     explanation:
-      "Saturated means every carbon in the chain is fully 'saturated' with hydrogen atoms — no double bonds, perfectly straight chains that pack tightly together (solid at room temperature, like butter or lard). Unsaturated fatty acids have one or more C=C double bonds that introduce a rigid kink, preventing tight packing — so they're liquid at room temperature (think olive oil). Trans fats are artificially straightened unsaturated fats (via industrial hydrogenation), which is why they behave like saturated fats and are associated with cardiovascular disease.",
+      "Think of it like this: saturated fatty acids are perfectly straight chains, like uncooked spaghetti that stacks neatly. They pack tightly together and become solid at room temperature — that's butter, lard, or coconut oil. Unsaturated fatty acids have one or more double bonds that create a kink in the chain, like cooked spaghetti. These kinked molecules can't stack neatly, so they stay liquid — that's your olive oil or sunflower oil. Trans fats are artificially straightened unsaturated fats (by adding hydrogen), which is why they behave like saturated fats and are linked to heart disease.",
   },
   {
     id: "bm4",
     topic: "biomolecules",
     question:
-      "What makes a phospholipid amphipathic, and why does this matter for membrane formation?",
+      "Why do phospholipids automatically form a double layer (bilayer) when you put them in water — without any instructions needed?",
     options: [
-      "It has both carbon and nitrogen atoms, allowing it to bond with anything",
-      "It has a water-loving (hydrophilic) phosphate head and water-hating (hydrophobic) fatty acid tails — causing spontaneous bilayer formation in water",
-      "It is positively charged, attracting negatively charged water molecules",
-      "It contains a steroid ring that stabilizes the membrane",
+      "Phospholipids are electrically charged and water molecules pull them into a flat sheet",
+      "The phosphate heads love water (hydrophilic) and the fatty acid tails hate water (hydrophobic), so they organise themselves into a bilayer to hide the tails from water",
+      "Enzymes in the cell assemble phospholipid bilayers as part of normal metabolism",
+      "Phospholipids form bilayers only at body temperature; at other temperatures they form spheres",
     ],
     correctIndex: 1,
     explanation:
-      "Amphipathic means 'both loves' — the molecule has a hydrophilic end (the charged phosphate head) and hydrophobic ends (the two fatty acid tails). Drop phospholipids in water and the tails self-organize away from water into the interior, while the heads face out into the aqueous environment — automatically forming a bilayer. No assembly instructions needed; thermodynamics drives it. This self-assembly principle is why cell membranes could plausibly arise spontaneously in early Earth conditions, which is a key part of theories about the origin of life.",
+      "Phospholipids have a split personality. Their phosphate 'head' loves water and wants to face it. Their fatty acid 'tails' are oily and desperately want to escape from water. The smartest solution? Line up in two rows with all tails hiding in the middle and all heads facing the water on both sides — a bilayer. No assembly instructions needed. This happens purely because of physics. This self-assembling property is actually one reason scientists think cell membranes could have formed spontaneously on early Earth, billions of years ago.",
   },
   {
     id: "bm5",
     topic: "biomolecules",
     question:
-      "Cholesterol is a steroid lipid. What two roles does it play in cell membranes?",
+      "Cholesterol gets a bad reputation, but your cells actually need it. What does it do in your cell membranes?",
     options: [
-      "It stores energy and provides color to the membrane",
-      "It acts as a buffer — preventing membranes from being too rigid at low temperatures and too fluid at high temperatures, while also reducing permeability to ions",
-      "It forms hydrogen bonds with water, making the membrane hydrophilic",
-      "It catalyzes phospholipid synthesis and controls membrane thickness",
+      "Cholesterol provides energy for the cell by being burned like a fuel molecule",
+      "Cholesterol acts as a 'thermostat' — keeping membranes from becoming too rigid in the cold or too floppy in the heat, while also reducing leakiness",
+      "Cholesterol forms the outer protective shell of every cell, replacing the need for a cell wall",
+      "Cholesterol activates enzymes inside the membrane to control which proteins enter the cell",
     ],
     correctIndex: 1,
     explanation:
-      "Cholesterol is the membrane's thermostat. At low temperatures, it inserts between phospholipids and disrupts their tight packing, keeping the membrane fluid. At high temperatures, it restricts phospholipid movement, preventing the membrane from becoming too fluid. It also makes membranes less permeable to small polar molecules and ions. Interestingly, cholesterol is essential for life — it's the precursor to all steroid hormones (testosterone, estrogen, cortisol) and bile acids. The health concern is about having too much in the wrong lipoproteins, not about eliminating it entirely.",
+      "Cholesterol is actually essential — your body can't live without it. In your cell membranes, it acts like a natural thermostat. In cold conditions, it pushes between the phospholipids and prevents them from packing too tightly (which would freeze the membrane). In warm conditions, it restrains the phospholipids from moving too freely (which would make the membrane too leaky). It's the goldilocks molecule. And cholesterol is also the starting material for all your steroid hormones — testosterone, oestrogen, cortisol — plus vitamin D and bile acids. The health concern is about having too much in the wrong form in your blood, not about eliminating it from your body entirely.",
   },
   {
     id: "bm6",
     topic: "biomolecules",
     question:
-      "Which of the 20 amino acids is unique in containing a thiol (–SH) group that can form disulfide bridges?",
+      "Which amino acid can form disulfide bridges — and why does that matter for how proteins hold their shape?",
     options: [
-      "Serine (has –OH group)",
-      "Cysteine (has –SH group)",
-      "Methionine (has –S–CH₃ group)",
-      "Tyrosine (has aromatic –OH group)",
+      "Serine — because its –OH group forms bridges when two serines are close together",
+      "Cysteine — because its –SH group can form a covalent –S–S– bond with another cysteine, acting like a molecular staple",
+      "Methionine — because it also contains sulfur and forms bridges in all proteins",
+      "Lysine — because its positive charge attracts neighbouring amino acids and pins them in place",
     ],
     correctIndex: 1,
     explanation:
-      "Cysteine is special because its thiol group (–SH) can be oxidized to form a covalent disulfide bond (–S–S–) with another cysteine in the same or different protein. These disulfide bridges act like molecular staples, locking parts of the protein into a fixed conformation. They're especially important in secreted proteins (like antibodies and insulin) that face harsh oxidizing environments. Interestingly, insulin is actually synthesized as proinsulin — a single chain — and two disulfide bridges hold the functional two-chain form together after proteolytic processing.",
+      "Cysteine is the one with the special trick. Its side chain ends in a thiol group (–SH), and when two cysteine residues come close together in just the right conditions, they form a covalent disulfide bond (–S–S–). These bonds are like molecular staples that lock parts of a protein into a fixed shape, making it much more stable. They're especially important in proteins that get secreted outside cells — like antibodies and insulin — where conditions are tougher. Here's a fun fact: insulin is made as a single chain that then gets clipped and held together by exactly two disulfide bridges to create the active form.",
   },
   {
     id: "bm7",
     topic: "biomolecules",
     question:
-      "What is the difference between a purine and a pyrimidine nucleobase, and which are found in DNA?",
+      "Why does adenine (A) always pair with thymine (T) in DNA, and never with guanine (G)?",
     options: [
-      "Purines are single-ring structures; pyrimidines are double-ring structures — DNA has A (purine) and G (purine), C (pyrimidine) and T (pyrimidine)",
-      "Purines are double-ring structures (Adenine, Guanine); pyrimidines are single-ring structures (Cytosine, Thymine in DNA; Uracil in RNA)",
-      "Purines are found only in RNA; pyrimidines only in DNA",
-      "Purines and pyrimidines are identical in structure but differ in their sugar attachment",
+      "A and T have the same molecular weight, so they naturally attract each other",
+      "A and G are both large double-ring molecules (purines) — two purines together would be too wide for the helix. A pairs with T because one purine plus one pyrimidine gives exactly the right width every time",
+      "A only pairs with T because T was the first base in the DNA alphabet to evolve",
+      "Adenine and thymine share an identical chemical formula, so they bond automatically",
     ],
     correctIndex: 1,
     explanation:
-      "The distinction matters because it explains why A always pairs with T (not G), and G always pairs with C (not A). Each base pair consists of one purine and one pyrimidine — the double ring of the purine plus the single ring of the pyrimidine fits perfectly in the helix's fixed-width interior. A purine-purine pair would be too wide; a pyrimidine-pyrimidine pair too narrow. DNA uses A, G, C, and T (thymine). RNA replaces thymine with uracil — which is simply thymine without a methyl group, cheaper to synthesize for a short-lived molecule.",
+      "Think of the DNA double helix like a ladder with a fixed-width frame. Adenine and guanine are both large, double-ring structures (called purines). If two purines tried to pair up, the rung would be too wide and would buckle the ladder. Cytosine and thymine are smaller, single-ring structures (called pyrimidines). If two pyrimidines paired, the rung would be too narrow. But one purine plus one pyrimidine? Perfect width every time. A pairs with T (and G pairs with C) also because the hydrogen bond pattern matches perfectly — it's like a lock and key arrangement. This strict pairing rule is exactly why you can copy DNA accurately: each strand is a perfect template for building its partner.",
   },
   {
     id: "bm8",
     topic: "biomolecules",
     question:
-      "ATP is called the 'energy currency' of the cell. Why does breaking one phosphate bond release energy?",
+      "ATP is called the 'energy currency' of the cell. What makes it release energy when it's broken down?",
     options: [
-      "ATP contains a radioactive phosphate group that releases radiation",
-      "The three phosphate groups are negatively charged and repel each other — breaking the terminal bond releases the strain energy stored in that repulsion",
-      "ATP contains a high-energy carbon-nitrogen bond that releases energy when hydrolyzed",
-      "The energy comes from the ribose sugar oxidation, not from the phosphate bonds",
+      "ATP contains a radioactive atom that releases radiation when the molecule breaks apart",
+      "ATP has three phosphate groups all pushing against each other because they're all negatively charged — breaking off the end phosphate releases the strain energy stored in that repulsion",
+      "ATP releases energy by burning carbon atoms in the same way wood burns in a fire",
+      "The energy in ATP comes from the ribose sugar being split open, not from the phosphate groups",
     ],
     correctIndex: 1,
     explanation:
-      "It's all about electrostatic repulsion. ATP has three phosphate groups in a row, all negatively charged — they're constantly pushing against each other. That strain stores energy like a compressed spring. When ATP is hydrolyzed to ADP + Pᵢ, the repulsion is relieved and ~30.5 kJ/mol is released. That energy is used to drive endergonic (energy-requiring) reactions, power motor proteins, pump ions against gradients, and synthesize molecules. Your body recycles roughly your own body weight in ATP every day — making and breaking it continuously through cellular respiration.",
+      "Imagine three balloons full of air, pressed tightly together — there's a lot of stored pressure between them. ATP's three phosphate groups are all negatively charged, which means they constantly repel each other like the same poles of three magnets being forced together. That repulsion is the stored energy. When ATP is broken down to ADP (removing one phosphate), the tension is released and about 30.5 kilojoules of energy comes out — enough to power a tiny molecular motor, pump an ion against its gradient, or drive a chemical reaction. Here's an astonishing number: your body recycles roughly its own body weight in ATP every single day. You make it and break it continuously through cellular respiration.",
   },
   {
     id: "bm9",
     topic: "biomolecules",
     question:
-      "Why does cellulose provide structural support in plant cell walls but cannot be used as energy storage?",
+      "Plants make cellulose for their cell walls but can't use it for energy. Why not just make starch for both purposes?",
     options: [
-      "Cellulose is too large to enter the mitochondria for energy production",
-      "Cellulose uses beta-1,4-glycosidic bonds, which form straight, rigid fibers ideal for structure but uncleavable by most organisms' digestive enzymes",
-      "Cellulose contains phosphorus atoms that make it indigestible",
-      "Cellulose is always found outside the cell, so cells cannot access it for energy",
+      "Plants don't have the enzymes to convert cellulose back to glucose, so they use separate molecules for separate jobs",
+      "The beta-1,4-glycosidic bonds in cellulose cause glucose chains to form straight, rigid fibres perfect for structure — but the same geometry makes it impossible for most organisms to break it down for energy",
+      "Cellulose contains phosphorus atoms that prevent it from entering the energy pathway",
+      "Cellulose is always found outside the cell, so the energy-releasing enzymes inside the cell can't reach it",
     ],
     correctIndex: 1,
     explanation:
-      "The beta-1,4-glycosidic bonds in cellulose cause the glucose chains to form long, straight fibers that stack together and form strong hydrogen bonds with neighboring chains — creating microfibrils with extraordinary tensile strength. Compare that to starch's alpha-1,4-glycosidic bonds, which cause the chain to coil into a helix — accessible to amylase and easily broken down. The same monomer (glucose), two different bond geometries, completely different biological roles. This is one of biochemistry's most beautiful examples of structure determining function.",
+      "This is one of biology's most beautiful examples of how a tiny molecular difference creates completely different results. Starch and cellulose are both made of glucose. But the bond angle connecting glucose units in starch makes the chain coil into a helix — easy for amylase to grab and break. Cellulose's bond angle makes the chain run straight, and those straight chains stack alongside each other and form thousands of hydrogen bonds, creating a fibre of extraordinary strength — the same fibre that makes wood hard. The geometry that makes it structurally perfect is exactly what makes it enzymatically indestructible for most organisms. Cellulose is actually the most abundant organic polymer on Earth, and almost none of us can digest a single gram of it.",
   },
   {
     id: "bm10",
     topic: "biomolecules",
     question:
-      "What is the role of coenzymes like NAD⁺ and FAD in cellular metabolism?",
+      "What are NAD⁺ and FAD, and why do you need vitamins B2 and B3 in your diet to make them?",
     options: [
-      "They are structural components of the cell membrane that carry lipid molecules",
-      "They are derived from vitamins (NAD⁺ from niacin/B3, FAD from riboflavin/B2) and serve as electron and hydrogen carriers in metabolic reactions like glycolysis and the citric acid cycle",
-      "They are enzymes that directly catalyze the hydrolysis of phosphodiester bonds",
-      "They are storage forms of glucose that can be rapidly mobilized for energy",
+      "NAD⁺ and FAD are structural parts of the cell membrane that help transport glucose molecules across it",
+      "They are electron carriers made from vitamins B3 and B2 — they pick up electrons during energy metabolism and deliver them to the electron transport chain to make ATP. Without enough vitamins, you can't make enough of them",
+      "NAD⁺ and FAD are enzymes that directly break down glucose in the cytoplasm",
+      "They are storage forms of energy like glycogen, released when cells need fuel rapidly",
     ],
     correctIndex: 1,
     explanation:
-      "NAD⁺ and FAD are electron carriers — molecular taxis that pick up electrons (as NADH and FADH₂) during glycolysis and the citric acid cycle, and deliver them to the electron transport chain to generate ATP. Here's the vitamin connection: NAD⁺ is synthesized from niacin (vitamin B3), and FAD from riboflavin (vitamin B2). That's why B-vitamin deficiencies can impair energy metabolism — you're literally short of the electron carriers that power ATP production. It's a direct link between dietary vitamins and cellular biochemistry that most people never appreciate.",
+      "NAD⁺ and FAD are like molecular taxis for electrons. During metabolism (glycolysis, the citric acid cycle), they pick up electrons from fuel molecules and become NADH and FADH₂ — now they're loaded taxis. Then they drive those electrons to the electron transport chain, where the energy is used to make ATP. Here's the connection to vitamins: NAD⁺ is built from niacin (vitamin B3), and FAD is built from riboflavin (vitamin B2). That's why B-vitamin deficiencies can make you feel exhausted — you're literally running low on the electron carriers that power your cells. It's a direct, elegant link from what you eat to how your cells make energy.",
   },
 ];
 
@@ -616,62 +616,64 @@ const BIOMOLECULE_QUIZ: QuizQuestion[] = [
 const explanations = [
   {
     id: "intro",
-    heading: "So, What Actually *Are* Biomolecules?",
-    body: `Here's a fun way to think about it: your entire body is basically a remarkably sophisticated chemistry experiment. Every heartbeat, every thought, every time you digest a meal — it's all driven by molecular machines called biomolecules. And "organic molecule" just means carbon-based; carbon happens to be one of the most bond-happy atoms on the periodic table, capable of forming four bonds at once and chaining with other carbons endlessly. That's why life chose it.
+    heading: "So, What Actually Are Biomolecules?",
+    body: `Here's a fun way to think about it: your entire body is basically a remarkably sophisticated chemistry experiment. Every heartbeat, every thought, every time you digest a meal — it's all driven by tiny molecular machines called biomolecules. And "organic molecule" just means carbon-based — carbon happens to be one of the most bond-friendly atoms on the periodic table, able to form four bonds at once and chain with other carbons in almost endless ways. That's why life chose it as its backbone.
 
-Biomolecules fall into four major families: carbohydrates, lipids, nucleic acids, and proteins. Don't let those words intimidate you — they're really just different tools in the cell's toolkit. Carbohydrates store and deliver energy. Lipids build membranes and stash long-term fuel. Nucleic acids hold the genetic blueprint and read it out. Proteins do, well, almost everything else. And here's what makes it fascinating: they're not independent. A gene in your DNA tells a ribosome how to build a protein, and that protein might then break down a carbohydrate or assemble a lipid. It's a remarkably circular, self-sustaining system.`,
+Biomolecules fall into four major families: carbohydrates, lipids, nucleic acids, and proteins. These aren't scary categories — they're just different tools in the cell's toolkit. Carbohydrates store and deliver energy. Lipids build membranes and stash long-term fuel. Nucleic acids hold the genetic blueprint. Proteins do almost everything else. Here's what makes it genuinely fascinating: these four families aren't working independently. A gene in your DNA (a nucleic acid) carries instructions for building a protein, and that protein might then break down a carbohydrate or assemble a lipid. It's a beautifully circular, self-sustaining system — and understanding it means understanding life itself.`,
   },
   {
     id: "carbohydrates",
     heading: "Carbohydrates — Not Just Empty Calories",
-    body: `Carbohydrates are the cell's first-choice fuel, and their diversity is extraordinary. The simplest are monosaccharides — single sugar units that cells can use directly. Glucose (C₆H₁₂O₆) is the six-carbon pyranose ring that feeds cellular respiration. Fructose (fruit sugar) and galactose (milk sugar) have the same molecular formula as glucose but different three-dimensional arrangements — they're structural isomers, and that geometric difference changes how enzymes recognize and process them. Ribose and deoxyribose are five-carbon monosaccharides (pentoses) that form the backbone of RNA and DNA respectively. The way a sugar's –OH groups point in space defines whether it is recognized by receptors, digestible by enzymes, or built into structural polymers.
+    body: `Carbohydrates are the cell's first-choice fuel, and their variety is remarkable once you start exploring. The simplest ones are called monosaccharides — single sugar units that cells can use directly. Glucose (C₆H₁₂O₆) is the six-carbon ring that fuels cellular respiration. Fructose (fruit sugar) and galactose (milk sugar) have the exact same formula as glucose but different three-dimensional shapes — they look the same on paper but fit differently into enzyme pockets, which completely changes how the body handles them. Ribose and deoxyribose are five-carbon sugars that form the backbone of RNA and DNA respectively. The way a sugar's –OH groups point in space determines everything about how it behaves.
 
-Link two monosaccharides via a glycosidic bond and you get a disaccharide. Sucrose (table sugar) is glucose + fructose, joined by an alpha-1,beta-2-glycosidic bond — non-reducing because both anomeric carbons are involved. Lactose (milk sugar) is glucose + galactose via beta-1,4 linkage. Maltose (in germinating grains) is glucose + glucose via alpha-1,4 linkage — a reducing sugar because one anomeric carbon remains free. The nature of that glycosidic bond matters enormously: alpha-1,4 bonds in starch make it digestible; beta-1,4 bonds in cellulose make it indigestible to humans (though bacteria with beta-glucosidases can break it down, which is why herbivores with the right gut microbiome can survive on grass).
+Link two monosaccharides with a bond called a glycosidic link and you get a disaccharide. Sucrose (table sugar) is glucose + fructose. Lactose (milk sugar) is glucose + galactose. Maltose is glucose + glucose — it forms when starch starts breaking down, which is why germinating grains taste sweet. The nature of the bond matters enormously: the alpha bond in starch makes it digestible; the beta bond in cellulose makes it indigestible to most animals.
 
-Polysaccharides are long chains of monosaccharides serving two master roles. For energy storage: glycogen is the animal world's emergency pantry — a highly branched glucose polymer (with alpha-1,4 main chains and alpha-1,6 branch points every 8–12 residues) stored in liver (releasing glucose to blood) and muscle (fueling contraction). Plants use starch: amylose is an unbranched helix held by alpha-1,4 bonds; amylopectin is branched like glycogen, with branch points every 24–30 residues. For structural roles: cellulose (beta-1,4 glucose, the most abundant organic polymer on Earth) forms the rigid cell walls of every plant; chitin (N-acetylglucosamine polymer with beta-1,4 bonds) armors insect and crustacean exoskeletons and fungal cell walls; peptidoglycans form bacterial cell walls. Beyond these classic roles, glycoproteins (sugars covalently attached to proteins) and proteoglycans (core proteins with large glycosaminoglycan chains) line cell surfaces for molecular recognition, lubrication of joint cartilage, and coordinating cell signaling.`,
+Polysaccharides are long chains of monosaccharides, and they do two very different jobs. For energy storage: glycogen is the body's emergency fuel reserve — a branching glucose polymer stored in the liver and muscles, ready to be broken down quickly when blood sugar drops. Plants store energy as starch, in two forms: amylose (a long, coiling chain) and amylopectin (a branching tree-like structure). For structure: cellulose forms the rigid walls of every plant cell and is the most abundant organic polymer on Earth; chitin armours insect and crustacean shells; peptidoglycan builds bacterial cell walls. It's the same molecule — glucose — being used in completely different ways depending on just the geometry of the connecting bonds.`,
   },
   {
     id: "lipids",
     heading: "Lipids — The Underappreciated Molecules",
-    body: `Lipids get a bad reputation in popular culture, but your cells couldn't survive without them. The most familiar are triglycerides — three fatty acid chains esterified onto a glycerol backbone — which are your body's preferred long-term energy storage. One gram of fat stores about 9 kcal, more than twice the 4 kcal from a gram of carbohydrate or protein. That's because fats are mostly C–H bonds, which are more reduced (energy-rich) than the C–OH bonds in carbohydrates.
+    body: `Lipids get a bad reputation in popular culture, but your cells couldn't survive without them. The most familiar are triglycerides — three fatty acid chains connected to a glycerol backbone — which are your body's preferred long-term energy storage. One gram of fat stores about 9 calories, more than twice the 4 calories from a gram of carbohydrate or protein. That's because fats are mostly carbon-hydrogen bonds, which are energy-rich in a way that the carbon-oxygen bonds in carbohydrates simply aren't.
 
-Fatty acids vary in chain length (typically 12–22 carbons) and saturation. Saturated fatty acids (no double bonds: palmitic acid C16:0, stearic C18:0) pack tightly into solids at room temperature — think butter, lard. Monounsaturated fatty acids have one double bond (oleic acid, C18:1, the main component of olive oil). Polyunsaturated fatty acids have two or more double bonds: omega-6 fatty acids (linoleic acid, C18:2, precursor to arachidonic acid) and omega-3 fatty acids (alpha-linolenic acid C18:3; EPA and DHA found in fish oils) are essential — your body can't synthesize them, so they must come from diet. Both kink the chain, keeping cell membranes fluid and reducing inflammation via eicosanoid synthesis. Trans fatty acids — produced by partial hydrogenation — are unsaturated but with an unnatural trans configuration that behaves metabolically like saturated fats and is strongly associated with cardiovascular disease; most countries are phasing them out of food supplies.
+Fatty acids vary in their carbon chain length and whether they have any double bonds. Saturated fatty acids have no double bonds, so their chains are perfectly straight — they stack tightly together and form solids at room temperature, like butter and lard. Unsaturated fatty acids have one or more double bonds, which create kinks in the chain that prevent tight packing, so they're liquid — like olive oil or sunflower oil. Omega-3 and omega-6 fatty acids are especially important: your body can't make them, so they must come from food. They're critical for reducing inflammation and supporting brain development. The human brain is about 60% fat by dry weight — so eating well literally shapes your thinking.
 
-The real MVP of lipids is the phospholipid. Its glycerol backbone carries two fatty acid tails (hydrophobic) and a phosphate group linked to a polar head group — either choline (phosphatidylcholine), serine (phosphatidylserine), ethanolamine (phosphatidylethanolamine), or inositol (phosphatidylinositol). That combination makes phospholipids amphipathic: hydrophilic head, hydrophobic tails. Drop phospholipids in water and they spontaneously form a bilayer — no blueprint needed, just thermodynamics. That bilayer is the foundation of every cell membrane on Earth. Steroids are a structurally distinct lipid class — built around a four-ring carbon scaffold. Cholesterol moderates membrane fluidity, acting as a thermal buffer. Its derivatives — testosterone, estrogen, progesterone, cortisol, aldosterone, vitamin D — are steroid hormones that travel to cell nuclei and directly regulate gene expression. Waxes (long-chain fatty acids esterified to alcohols) waterproof plant cuticles and insect exoskeletons. Eicosanoids (prostaglandins, leukotrienes, thromboxanes) are 20-carbon lipid signaling molecules derived from arachidonic acid that coordinate inflammation, fever, pain, and immune responses — aspirin and ibuprofen work by blocking eicosanoid synthesis.`,
+The real star of lipid biology is the phospholipid. It has two fatty acid tails (hydrophobic, water-hating) and a phosphate head (hydrophilic, water-loving). This split personality means that when you put phospholipids in water, they automatically arrange into a bilayer — tails hiding in the middle, heads facing the water on both sides. No instructions needed; it's pure physics. That bilayer is the foundation of every cell membrane on Earth. Steroids are another lipid family built around a four-ring carbon framework. Cholesterol — the most famous steroid — is the starting material for testosterone, oestrogen, cortisol, vitamin D, and bile acids. It's also the membrane's thermostat. Calling cholesterol purely bad is like blaming the post office for delivering junk mail.`,
   },
   {
     id: "proteins-overview",
     heading: "Proteins — The Molecular Workforce",
-    body: `Proteins deserve their own full section (which they get — check out the Proteins section for the deep dive!), but no biomolecules overview is complete without appreciating how uniquely versatile they are. Just 20 standard amino acids, combined in different sequences and lengths, generate thousands of structurally and functionally distinct proteins. What makes amino acids different from each other is the R group (side chain). Nonpolar aliphatic side chains (glycine, alanine, valine, leucine, isoleucine, proline, methionine) are hydrophobic and tend to cluster in protein interiors, driving folding. Aromatic side chains (phenylalanine, tryptophan, tyrosine) are hydrophobic but also participate in pi-stacking interactions. Polar uncharged side chains (serine, threonine, cysteine, asparagine, glutamine) can form hydrogen bonds with water and other polar groups. Charged side chains split into acidic (aspartate and glutamate carry negative charges) and basic (lysine, arginine, histidine carry positive charges at physiological pH), forming ionic interactions and salt bridges.
+    body: `Proteins deserve their own full section (and they get one — check out the Proteins section for the deep dive!), but no tour of biomolecules is complete without appreciating just how versatile they are. Just 20 standard amino acids, linked in different sequences and lengths, give rise to thousands of proteins with completely different shapes and jobs.
 
-Peptide bonds (–CO–NH–) link amino acids together in a polypeptide chain, with the sequence reading from the N-terminus (free amino group) to the C-terminus (free carboxyl group). The peptide bond has partial double-bond character due to resonance, making it planar — a constraint that profoundly shapes how proteins fold. From primary sequence, proteins fold into secondary structures: alpha-helices (held by backbone hydrogen bonds every 3.6 residues) and beta-sheets (parallel or antiparallel hydrogen bonds between strands). Secondary structures pack into compact tertiary structures stabilized by hydrophobic interactions, hydrogen bonds, ionic bonds, van der Waals forces, and in secreted proteins, disulfide bridges. Some proteins assemble into quaternary complexes (hemoglobin: 4 subunits; collagen: 3 intertwined chains). Molecular chaperones (Hsp70, Hsp90, the GroEL/GroES chaperonin barrel) assist folding in the crowded cellular environment and refold stress-denatured proteins. Misfolded proteins that can't be salvaged are tagged with ubiquitin and degraded by the 26S proteasome. When this quality-control system fails, aggregated proteins accumulate — the molecular basis of Alzheimer's (amyloid-beta), Parkinson's (alpha-synuclein), and prion diseases.`,
+What makes each amino acid unique is its side chain, called the R group. Nonpolar side chains are hydrophobic — they cluster in protein interiors, away from water, driving the folding process. Polar side chains can form hydrogen bonds. Charged side chains attract or repel water and other charged molecules, which is why they tend to sit on the protein's surface. Cysteine has a thiol group that can form a covalent bond with another cysteine — like a molecular staple that locks part of a protein into a fixed shape.
+
+Amino acids are linked by peptide bonds — a special bond between the carboxyl group of one amino acid and the amino group of the next, releasing water as they join. Remarkably, this bond has partial double-bond character, meaning the atoms around it are locked in a flat, rigid plane. That constraint is one of the reasons proteins fold into consistent, reproducible shapes. From simple primary sequences, proteins build up secondary structures (helices and sheets), then fold into complex three-dimensional shapes (tertiary structure), and some even assemble into multi-unit complexes (quaternary structure). When protein folding goes wrong — as in Alzheimer's and Parkinson's disease — the consequences can be devastating, which tells you just how critically important getting the shape right actually is.`,
   },
   {
     id: "nucleotides",
     heading: "Nucleotides — Tiny Molecules With Huge Jobs",
-    body: `Think of nucleotides as the alphabet of genetics, but they're much more than just letters. Each nucleotide is a three-part assembly: a nitrogenous base, a five-carbon pentose sugar, and one or more phosphate groups. The bases come in two structural families: double-ring purines (adenine and guanine — remember, purines are Pure As Gold: Purines = A and G) and single-ring pyrimidines (cytosine in both DNA and RNA; thymine in DNA only; uracil in RNA only — CUT the PYrimidines). In DNA the sugar is deoxyribose (2'-deoxy, lacking a hydroxyl group); in RNA it's ribose (with a 2'-OH group that makes RNA more reactive, more prone to hydrolysis, and less stable than DNA — perfect for a temporary messenger).
+    body: `Think of nucleotides as the alphabet of genetics — but they're so much more than just letters in a code. Each nucleotide is a three-part package: a nitrogenous base, a five-carbon sugar, and one or more phosphate groups. The bases come in two families: the larger double-ring purines (adenine and guanine — easy to remember as "Pure As Gold") and the smaller single-ring pyrimidines (cytosine, thymine in DNA, and uracil in RNA). The sugar in DNA is deoxyribose (lacking one oxygen atom), while RNA uses ribose. That one missing oxygen makes DNA significantly more stable — which is why DNA is the long-term archive while RNA is the short-lived messenger.
 
-Nucleotides link into polymers through phosphodiester bonds, connecting the 3' carbon of one sugar to the 5' carbon of the next, creating a directional backbone. DNA strands run antiparallel: one 5'→3', the complementary strand 3'→5'. This directionality is critical — all DNA and RNA polymerases can only synthesize in the 5'→3' direction, adding nucleotides to the 3' end. The two DNA strands are held together by hydrogen bonds between complementary bases: A pairs with T (2 H-bonds, weaker), G pairs with C (3 H-bonds, stronger). G-C rich regions need more energy to separate — which is why G-C content affects DNA melting temperature, relevant to PCR primer design and understanding genomic stability in thermophiles.
+Nucleotides connect to each other through phosphodiester bonds, always in the same direction: 5' to 3'. The two strands of DNA run antiparallel — one going 5'→3', the other going 3'→5'. This directionality matters enormously because all DNA polymerases can only add new nucleotides to the 3' end. Complementary bases pair up across the two strands: A with T via 2 hydrogen bonds, G with C via 3 hydrogen bonds. The extra hydrogen bond between G and C makes those regions slightly stronger — relevant for understanding DNA stability, PCR primer design, and why some genomes are more robust than others.
 
-But nucleotides wear many hats beyond being genetic letters. ATP (adenosine triphosphate) is the cell's universal energy currency — cleaving its terminal phosphate releases ~30.5 kJ/mol to power nearly every energy-demanding reaction in the cell. GTP fuels ribosomal translocation and G-protein signaling. NAD⁺ and FAD (both nucleotide derivatives) are coenzymes that carry electrons and hydrogen atoms in metabolic pathways — and they're synthesized from dietary vitamins B3 and B2, which is why B-vitamin deficiencies impair energy metabolism. Cyclic AMP (cAMP, made from ATP by adenylyl cyclase when hormones like glucagon or adrenaline bind surface receptors) is a second messenger that relays hormonal signals deep inside the cell to activate protein kinase A. Coenzyme A (CoA, containing adenine nucleotide plus pantothenic acid — vitamin B5) is essential for activating acetyl groups for fatty acid synthesis and the citric acid cycle. The versatility of the nucleotide scaffold is one of evolution's most repeatedly exploited design motifs.`,
+But nucleotides don't stop at being genetic letters. ATP (adenosine triphosphate) is the cell's universal energy currency — breaking off its terminal phosphate group releases energy that powers almost every energy-demanding process in the cell. NAD⁺ and FAD, both nucleotide derivatives, carry electrons in metabolic reactions, and they're built from dietary vitamins B3 and B2 respectively. Cyclic AMP (cAMP) is a tiny molecule made from ATP that carries hormonal signals deep into cells — it's how adrenaline tells your heart to beat faster. The same basic nucleotide scaffold serves as genetic code, energy currency, signalling molecule, and metabolic carrier. That kind of molecular versatility is one of evolution's greatest tricks.`,
   },
   {
     id: "enzymes-cofactors",
     heading: "Enzymes, Cofactors, and the Vitamins Behind Them",
-    body: `You've probably learned that enzymes are proteins that speed up reactions — but the full picture is richer. Enzymes work by binding their substrate in an active site and stabilizing the transition state, lowering the activation energy so the reaction proceeds orders of magnitude faster than it would spontaneously. The classic 'lock and key' analogy captures the specificity but not the dynamics. The better model is 'induced fit' — both enzyme and substrate change shape slightly when they meet, optimizing the active site geometry around the transition state. Many enzymes need additional non-protein components to function: these are cofactors.
+    body: `You've probably learned that enzymes are proteins that speed up reactions — and that's true, but the full picture is richer and more interesting. Enzymes work by binding their target molecule (the substrate) in a specially shaped pocket called the active site, and then stabilising the transition state — the teetering, high-energy moment of a reaction — making it easier for the reaction to complete. The classic "lock and key" model captures the specificity nicely, but the better analogy is "induced fit": both the enzyme and the substrate change shape slightly when they meet, wrapping around each other perfectly. Many enzymes need additional non-protein helpers called cofactors to work.
 
-Inorganic cofactors are metal ions that stabilize charged intermediates, mediate electron transfer, or coordinate substrate binding. Zinc (Zn²⁺) is crucial for DNA polymerase (coordinating the nucleotide triphosphate), carbonic anhydrase (catalyzing CO₂ hydration in red blood cells), and alcohol dehydrogenase. Iron (Fe²⁺/Fe³⁺) is in hemoglobin and myoglobin (O₂ transport), cytochromes of the electron transport chain, catalase (decomposing H₂O₂), and non-heme iron-sulfur clusters. Magnesium (Mg²⁺) is required by virtually all kinases (it chelates ATP, orienting the phosphate for transfer) and by ribosomes for their structure and catalysis. Copper (Cu²⁺) is found in cytochrome c oxidase (Complex IV), ceruloplasmin, and lysyl oxidase for collagen crosslinking. Manganese (Mn²⁺) is in the oxygen-evolving complex of photosystem II and in manganese superoxide dismutase.
+Inorganic cofactors are metal ions. Zinc is in DNA polymerase and carbonic anhydrase (the enzyme in your red blood cells that handles CO₂). Iron sits at the heart of haemoglobin, myoglobin, and the electron transport chain enzymes. Magnesium is needed by virtually every kinase enzyme — it coordinates ATP to position the phosphate for transfer. Copper is in the enzyme that finishes off the electron transport chain (Complex IV). These aren't just structural extras; they're often the actual catalytic centres where chemistry happens.
 
-Organic cofactors called coenzymes are typically derived from vitamins and must come from the diet because most animals lost the ability to synthesize them. Thiamine pyrophosphate (TPP, from vitamin B1/thiamine) is used by pyruvate dehydrogenase and alpha-ketoglutarate dehydrogenase for decarboxylation reactions. NAD⁺/NADH (from B3/niacin) participate in over 500 oxidation-reduction reactions — a deficiency causes pellagra, characterized by the 4 D's: dermatitis, diarrhea, dementia, and death. FAD/FADH₂ (from B2/riboflavin) are electron carriers in succinate dehydrogenase and fatty acid oxidation. Pyridoxal phosphate (PLP, from B6/pyridoxine) is involved in nearly all amino acid transamination and decarboxylation reactions. Cobalamin (B12, the only vitamin with a cobalt atom) is essential for methyl group transfer and for maintaining the myelin sheaths of neurons — deficiency causes pernicious anemia and neurological damage. Biotin is a prosthetic group on carboxylase enzymes that add CO₂. Tetrahydrofolate (from folate/B9) carries one-carbon units for nucleotide synthesis, which is why folate deficiency causes megaloblastic anemia and why pregnant women take folic acid to prevent neural tube defects. Vitamin C (ascorbate) is required for proline hydroxylation in collagen synthesis — scurvy was the sailors' disease because of collagen-deficient connective tissue failing without dietary vitamin C.`,
+Organic cofactors — called coenzymes — are usually made from vitamins. This is why vitamins matter beyond just avoiding deficiency diseases. Thiamine (B1) is part of the enzyme that converts pyruvate to acetyl-CoA — deficiency causes beriberi and the neurological condition Wernicke's encephalopathy. NAD⁺ comes from niacin (B3) — deficiency causes pellagra (the 4 D's: dermatitis, diarrhoea, dementia, death). FAD comes from riboflavin (B2). Pyridoxal phosphate (from B6) is involved in almost every amino acid reaction in the body. Vitamin B12 is the only vitamin containing cobalt, and it's essential for maintaining the myelin sheath of nerves. Folate (B9) carries single-carbon units for making DNA nucleotides — which is why pregnant women take folic acid to prevent neural tube defects. Vitamin C is needed to make collagen — sailors died of scurvy from weak connective tissue without it. Every time you eat a balanced meal, you're restocking your enzyme toolkit.`,
   },
   {
     id: "interconnections",
     heading: "How These Four Families Talk to Each Other",
-    body: `Biomolecules never work in isolation. They form a remarkably integrated system where each family enables, regulates, and converts into the others. When you eat a meal, carbohydrates get broken down to glucose, which feeds glycolysis. Glycolysis products feed the citric acid cycle, which generates electron-carrying NADH and FADH₂ (nucleotide coenzymes) to the electron transport chain, which makes ATP (another nucleotide) that powers every energy-requiring process in the cell.
+    body: `Biomolecules never work in isolation — they form a remarkably integrated system where each family enables, regulates, and converts into the others. Here's a simple example: when you eat a meal, carbohydrates break down to glucose, which feeds glycolysis. Glycolysis products fuel the citric acid cycle, which generates electron-carrying NADH and FADH₂ (both nucleotide derivatives) to the electron transport chain, which uses them to make ATP (another nucleotide) that powers every energy-requiring process in the cell. That's four biomolecule families working together in a single continuous process.
 
-When you eat more glucose than you need for immediate energy, enzymes (proteins!) activate a signaling cascade triggered by insulin (a protein hormone), causing GLUT4 transporters (membrane proteins) to shuttle glucose into muscle and fat cells, where it's stored as glycogen (carbohydrate) or converted to fatty acids via acetyl-CoA (lipid). If you're fasting, glucagon (another protein hormone) signals the liver to break down glycogen and release glucose; if fasting continues, fat mobilization (lipolysis) releases fatty acids from adipose tissue to be oxidized in the mitochondria; if that's insufficient, amino acids are deaminated and converted to glucose in gluconeogenesis — you're actually consuming protein to make carbohydrate.
+When you eat more glucose than you need right now, a protein hormone (insulin) triggers a signalling cascade that activates membrane transport proteins (GLUT4) to move glucose into muscle and fat cells, where protein enzymes convert it to glycogen (carbohydrate) or fatty acids (lipid). If you're fasting, a different protein hormone (glucagon) reverses this: it triggers glycogen breakdown and, if fasting continues, fat breakdown (lipolysis). If fat stores run low, amino acids from proteins are converted to glucose through gluconeogenesis — your body literally making carbohydrate from protein.
 
-At the molecular level, these connections run even deeper: DNA (a nucleotide polymer) carries the instructions for building every protein; RNA (another nucleotide polymer) carries those instructions to ribosomes; the ribosome itself is an RNA-protein complex (a ribozyme — the peptidyl transferase center is catalytic RNA, not protein); the finished proteins catalyze virtually every reaction involving carbohydrates, lipids, and nucleic acids; and all of this chemistry happens inside compartments defined by phospholipid membranes. Life, at its core, is these four molecular families in a self-sustaining cycle — and recognizing those connections transforms biochemistry from memorization into one of the most logically coherent bodies of knowledge in science.`,
+At the molecular level, these connections run even deeper. DNA (a nucleotide polymer) carries instructions for building every protein. RNA (another nucleotide polymer) carries those instructions to ribosomes. The ribosome itself is an RNA-protein complex — and crucially, its catalytic centre is RNA, not protein. The finished proteins then catalyse virtually every reaction involving carbohydrates, lipids, and other nucleic acids. All of this chemistry happens inside compartments defined by phospholipid membranes. Life, at its core, is these four molecular families in a self-sustaining cycle — and recognising those connections transforms biochemistry from memorisation into one of the most logically beautiful subjects in science.`,
   },
 ];
 
@@ -680,27 +682,27 @@ At the molecular level, these connections run even deeper: DNA (a nucleotide pol
 const INTERESTING_FACTS = [
   {
     icon: "🧬",
-    fact: "Your body recycles roughly its own weight in ATP every day — making and breaking ~40 kg of it continuously through cellular respiration.",
+    fact: "Your body recycles roughly its own body weight in ATP every single day — making and breaking it continuously. You never actually run out of ATP; you run out of the ability to remake it.",
   },
   {
     icon: "🌿",
-    fact: "Cellulose is the most abundant organic polymer on Earth — every plant cell wall is made of it, yet humans can't digest a single gram of it.",
+    fact: "Cellulose is the most abundant organic polymer on Earth — every plant cell wall is packed with it. Yet humans can't digest a single gram of it. Same molecule as starch (glucose), completely different bond geometry.",
   },
   {
     icon: "💧",
-    fact: "A phospholipid bilayer self-assembles spontaneously in water — no instructions needed, just the physics of water-fearing tails hiding from water.",
+    fact: "A phospholipid bilayer self-assembles spontaneously in water — no machinery or instructions needed. The physics of water-repelling tails drives the whole thing automatically.",
   },
   {
     icon: "🔬",
-    fact: "The 20 amino acids can be combined into chains of 100–300 residues with 20¹⁰⁰ possible sequences — more combinations than atoms in the universe.",
+    fact: "With 20 amino acids and an average protein length of around 300 residues, the number of possible protein sequences is 20³⁰⁰ — more combinations than atoms in the observable universe. And yet only a tiny fraction of those sequences fold into useful, stable shapes.",
   },
   {
     icon: "🍊",
-    fact: "Vitamin C (ascorbic acid) is technically a carbohydrate derivative — a six-carbon lactone — and works as a cofactor by donating electrons to keep iron in its active Fe²⁺ state in collagen-synthesizing enzymes.",
+    fact: "Vitamin C (ascorbic acid) is technically a carbohydrate derivative — a six-carbon molecule — that happens to also be an excellent antioxidant. Without it, you can't properly make collagen. That's why scurvy destroys connective tissue.",
   },
   {
-    icon: "🐟",
-    fact: "Omega-3 fatty acids EPA and DHA are essential for brain development — the reason breast milk and many infant formulas are enriched with them. The human brain is roughly 60% fat by dry weight.",
+    icon: "🧠",
+    fact: "The human brain is about 60% fat by dry weight — and omega-3 fatty acids EPA and DHA are critical for normal brain development and function. You are, in part, what fats you eat.",
   },
 ];
 
@@ -717,7 +719,7 @@ export default function BiomoleculesSection() {
       <SectionHeader
         topicId="biomolecules"
         title="Biomolecules"
-        subtitle="Life's molecular building blocks — from simple sugars to complex proteins, discover the chemistry that powers every living cell."
+        subtitle="Life's molecular building blocks — from simple sugars to complex proteins, here's the chemistry that powers every living cell, explained clearly from the ground up."
       />
 
       {/* Animated molecule diagrams */}
@@ -741,7 +743,7 @@ export default function BiomoleculesSection() {
               <MoleculeCard
                 name="Glucose"
                 badge="Monosaccharide"
-                caption="The cell's primary fuel. A 6-carbon pyranose ring used in glycolysis and cellular respiration. Alpha form in starch; beta form in cellulose."
+                caption="The cell's go-to fuel. A 6-carbon ring that powers cellular respiration. In starch it uses alpha bonds; in cellulose, beta bonds — same molecule, totally different destiny."
                 diagram={<GlucoseRing />}
               />
             </StaggerItem>
@@ -749,7 +751,7 @@ export default function BiomoleculesSection() {
               <MoleculeCard
                 name="Fatty Acid"
                 badge="Lipid monomer"
-                caption="A hydrocarbon chain with a carboxyl head. Saturated = no double bonds (solid); unsaturated = kinks (liquid). Two tails anchor every phospholipid."
+                caption="A hydrocarbon chain with an acid head. Saturated = straight chains, solid (butter). Unsaturated = kinked chains, liquid (olive oil). Two tails anchor every phospholipid."
                 diagram={<FattyAcidChain />}
               />
             </StaggerItem>
@@ -757,7 +759,7 @@ export default function BiomoleculesSection() {
               <MoleculeCard
                 name="Nucleotide"
                 badge="DNA/RNA monomer"
-                caption="Three-part unit: a nitrogenous base (purine or pyrimidine), pentose sugar, and phosphate group. ATP is a nucleotide that powers the entire cell."
+                caption="Three-part unit: a nitrogenous base, pentose sugar, and phosphate group. ATP is a nucleotide that powers the entire cell — not just a genetic building block."
                 diagram={<NucleotideDiagram />}
               />
             </StaggerItem>
@@ -765,7 +767,7 @@ export default function BiomoleculesSection() {
               <MoleculeCard
                 name="Amino Acid"
                 badge="Protein monomer"
-                caption="A central α-carbon flanked by an amino group, carboxyl group, and unique R-group. The R-group's properties (charge, polarity, size) determine everything."
+                caption="A central carbon flanked by an amino group, carboxyl group, hydrogen, and a unique side chain (R group). The R group's chemistry determines everything about how the protein folds."
                 diagram={<AminoAcidDiagram />}
               />
             </StaggerItem>
@@ -847,9 +849,9 @@ export default function BiomoleculesSection() {
             🧬 Test Your Knowledge
           </h3>
           <p className="text-muted-foreground mb-6">
-            10 questions spanning all four biomolecule families — a mix of
-            concepts, mechanisms, and real-world connections. Don't worry if you
-            miss some; the explanations are the real learning.
+            10 questions covering all four biomolecule families — from everyday
+            examples to molecular details. Don't worry if you miss some; the
+            explanations are where the real learning happens.
           </p>
           <QuizEngine topicId="biomolecules" questions={BIOMOLECULE_QUIZ} />
         </div>

@@ -32,7 +32,7 @@ const PHASES: PhaseInfo[] = [
     label: "Denaturation",
     temp: "95 °C",
     description:
-      "Crank up the heat. At 95°C, hydrogen bonds snap and the two strands peel apart. Your double-stranded DNA becomes two single-stranded templates, ready to be copied. GC-rich regions need a little extra convincing — three hydrogen bonds vs two for AT pairs.",
+      "Crank up the heat! At 95°C, the hydrogen bonds holding the two DNA strands together snap open — like a zip being pulled apart. The double helix separates into two single strands. Each strand now serves as a template that can be copied. This step is why we need Taq polymerase — a regular enzyme would fall apart at this temperature, but Taq was designed by nature to thrive in near-boiling conditions.",
     color: "oklch(0.60 0.19 22)",
     dimColor: "oklch(0.60 0.19 22 / 0.12)",
   },
@@ -41,7 +41,7 @@ const PHASES: PhaseInfo[] = [
     label: "Annealing",
     temp: "55–65 °C",
     description:
-      "Cool it down to the primer's sweet spot — usually 5°C below Tm. Primers snap onto their complementary sequences, locking in the address of exactly what gets copied. Forward primer on one strand, reverse on the other, flanking your target.",
+      "Cool down to 55–65°C. The primers — short pieces of DNA that mark your target — drift through the solution and find their matching sequences on the single-stranded template. When a primer finds its match, it sticks to it through base pairing. One primer binds to the start of your target, one to the end. Together they mark exactly what gets copied. The exact temperature here is critical — too hot and nothing sticks; too cool and primers stick to the wrong places.",
     color: "oklch(0.52 0.14 195)",
     dimColor: "oklch(0.52 0.14 195 / 0.12)",
   },
@@ -50,7 +50,7 @@ const PHASES: PhaseInfo[] = [
     label: "Extension",
     temp: "72 °C",
     description:
-      "Taq polymerase's sweet spot. It reads the template 3'→5' and builds a new strand 5'→3', snapping in complementary dNTPs at ~1 kb/min. After cycle 2, defined-length products matching your primer pair start accumulating exponentially.",
+      "Warm up to 72°C — Taq polymerase's favourite temperature. Starting from the 3' end of each primer, Taq reads the template and builds a new complementary DNA strand, snapping in matching bases one at a time. It moves at about 1,000 letters per minute. After each cycle, the total amount of DNA roughly doubles. After 30 cycles, one molecule becomes over a billion copies. That's exponential amplification!",
     color: "oklch(0.55 0.16 142)",
     dimColor: "oklch(0.55 0.16 142 / 0.12)",
   },
@@ -598,37 +598,37 @@ const PCR_COMPONENTS = [
   {
     name: "Template DNA",
     symbol: "🧬",
-    role: "The original DNA to be copied — could be from a cheek swab, a hair root, an ancient bone, anything with intact DNA.",
+    role: "The original DNA you want to copy. It could come from a cheek swab, a drop of blood, a hair root, or even an ancient bone — anything with intact DNA. You can start with just a tiny amount.",
     color: "oklch(0.55 0.14 262)",
   },
   {
     name: "Forward & Reverse Primers",
     symbol: "→←",
-    role: "Short ~18-25 nt oligonucleotides flanking the target. GC content 40–60%, Tm ~60°C, 3' end stability critical. Change primers, change what gets amplified.",
+    role: "Short DNA sequences (about 18–25 letters each) that act like bookmarks. One marks the start of your target, one marks the end. Change the primers and you copy a completely different region of the genome.",
     color: TEAL,
   },
   {
     name: "Taq Polymerase",
     symbol: "⚙",
-    role: "Heat-stable DNA polymerase from Thermus aquaticus hot-spring bacteria. Survives 95°C denaturation. No proofreading — use Phusion/Q5 for high-fidelity cloning.",
+    role: "A heat-resistant enzyme from bacteria that live in Yellowstone's boiling hot springs. It survives the 95°C heating step that would destroy any normal enzyme, making automated PCR possible.",
     color: "oklch(0.55 0.16 142)",
   },
   {
     name: "dNTPs",
     symbol: "ATGC",
-    role: "dATP, dTTP, dGTP, dCTP — the four DNA building blocks. Taq snaps them in one by one. Run out and the reaction stops mid-strand.",
+    role: "The four DNA building blocks: A, T, G, and C. Taq polymerase snaps them into place one by one to build the new DNA strand. If you run out of dNTPs, the reaction stops mid-copy.",
     color: "oklch(0.58 0.16 52)",
   },
   {
     name: "MgCl₂ & Buffer",
     symbol: "Mg²⁺",
-    role: "Mg²⁺ is Taq's essential cofactor — stabilizes the dNTP binding and helps coordinate the phosphodiester bond formation. pH stability from the buffer prevents premature denaturation.",
+    role: "Magnesium ions are a critical helper that Taq polymerase absolutely needs to function. The buffer keeps the pH stable so nothing breaks down during the heating and cooling cycles.",
     color: "oklch(0.60 0.18 36)",
   },
   {
     name: "Thermal Cycler",
     symbol: "♨",
-    role: "The machine that does it all — precisely cycling three temperatures, 25–40 times, automatically. Modern cyclers take ~1.5 hours for 35 cycles.",
+    role: "The machine that does all the work — it precisely cycles between three temperatures, over and over, 25–40 times automatically. A typical run of 35 cycles takes about 1.5 hours.",
     color: "oklch(0.55 0.16 290)",
   },
 ];
@@ -639,74 +639,74 @@ const EXPLANATIONS = [
   {
     id: "intro",
     anchorId: "pcr-standard",
-    heading: "What Is PCR and Why Did It Win a Nobel Prize?",
-    body: `In 1983, Kary Mullis was driving along California Highway 128 at night when the idea struck him: what if you could copy a specific piece of DNA exponentially? Not just once, but doubling it every cycle until you had billions of copies from a single starting molecule? He pulled over, scribbled notes by flashlight, and effectively invented one of the most important tools in the history of biology. He won the Nobel Prize in Chemistry in 1993 — and rightly so.
+    heading: "PCR: The DNA Photocopier That Changed Everything",
+    body: `Imagine you have one specific sentence buried inside a book that's three billion letters long — and you need to copy that sentence billions of times so you can actually study it. That's exactly what PCR does. The idea came to Kary Mullis in 1983 while he was driving along a California highway at night. He pulled over and scribbled notes in the dark, and within a few years his idea became one of the most transformative tools in the history of science. He won the Nobel Prize in Chemistry in 1993.
 
-Before PCR, detecting a specific DNA sequence in a complex sample required enormous amounts of material, radioactive probes, and days of work. A forensic sample from a hair root, an ancient piece of bone, a few viral copies in a blood sample — these were essentially unworkable. PCR transformed molecular biology's relationship with quantity: when you can amplify any sequence a billionfold, the limiting factor in biology stopped being how much material you had. Today PCR appears in essentially every molecular biology protocol in existence — it's the universal amplifier, the photocopier of genes, and understanding it deeply unlocks almost everything else in the field.`,
+Before PCR, studying a specific gene was extraordinarily difficult. You needed enormous amounts of starting material, and the techniques were slow, radioactive, and exhausting. A cheek swab, a few skin cells left on a door handle, a strand of hair — these were essentially useless for DNA analysis before PCR. After PCR, any of these tiny samples could yield enough DNA to work with in a few hours. Today, PCR appears in virtually every molecular biology experiment ever done. Understanding how it works gives you the foundation for understanding COVID testing, cancer diagnostics, forensic DNA, ancient DNA research — and dozens of other technologies.`,
   },
   {
     id: "components",
     anchorId: "pcr-components",
-    heading: "The Chemistry: What's Actually in a PCR Tube",
-    body: `A PCR reaction contains just six things, and understanding each one helps you troubleshoot when things go wrong. Template DNA provides the starting material — it should be reasonably pure (absorbance ratio A260/A280 of ~1.8 for DNA), though PCR is forgiving enough to amplify from crude extracts, dried blood spots, or even ancient bone. Primers are the specificity element: two short oligonucleotides (~18–25 nt) that hybridize to the sequence flanking your target. For good primers, aim for GC content of 40–60%, melting temperatures (Tm) within 2–5°C of each other, no strong secondary structures (hairpins), and no self-complementarity. The 3' end is especially important — a G or C at the 3' end ('GC clamp') improves priming efficiency. Always BLAST check your primers against the whole genome to verify specificity.
+    heading: "What's Actually Inside a PCR Tube?",
+    body: `A PCR reaction looks like a tiny, colourless drop of liquid — but inside it contains everything needed to copy a specific piece of DNA billions of times. Let's go through each ingredient simply.
 
-Taq polymerase is the engine. It's thermostable (survives 95°C), synthesizes DNA 5'→3' at ~1 kb/min at 72°C, and has no 3'→5' proofreading activity — meaning it makes about 1 error per 1000 bases. For diagnostic PCR, that error rate doesn't matter. For cloning (where you'll express the amplified sequence), use a high-fidelity polymerase like Phusion or Q5 that has proofreading activity and error rates 10–50x lower. Magnesium ions are the hidden critical component: Mg²⁺ concentration affects Taq activity, primer annealing stringency, and product fidelity. Too little Mg²⁺: no product. Too much: nonspecific bands everywhere. The sweet spot is usually 1.5–2.5 mM for standard Taq.`,
+Template DNA is your starting material — the original DNA that contains the sequence you want. You don't need much; PCR can technically work from just a single molecule. Primers are two short DNA sequences (about 18–25 letters each) that act as bookmarks — they find and stick to the two ends of your target. One goes at the start, one at the end. Change the primers and you copy a completely different part of the genome. Taq polymerase is the engine: a heat-resistant enzyme originally found in bacteria living in Yellowstone's boiling hot springs. It reads the template and builds a new copy. dNTPs are the four DNA building blocks (A, T, G, C) that polymerase snaps into place one by one. And magnesium ions are the critical helper that Taq absolutely needs — get this concentration wrong and nothing happens. Every ingredient has a specific job, and all of them must be present for the reaction to work.`,
   },
   {
     id: "denaturation",
     anchorId: "pcr-denaturation",
-    heading: "Step 1 — Denaturation: Unzipping the Double Helix",
-    body: `Every PCR cycle begins by heating the reaction to 94–98°C (typically 95°C). At this temperature, the hydrogen bonds holding the two DNA strands together break — the double helix denatures into two single-stranded templates, each one now accessible to primers. The initial denaturation (before cycle 1) usually runs longer — 2 to 5 minutes — to ensure complete melting of all sequences, particularly GC-rich regions which have three hydrogen bonds per base pair compared to two for AT pairs.
+    heading: "Step 1: Denaturation — Pulling the DNA Strands Apart",
+    body: `Every PCR cycle starts with a burst of intense heat — typically 94–95°C. At that temperature, the hydrogen bonds holding the two DNA strands together snap open, and the double helix separates into two individual strands. Each strand is now a template waiting to be copied. This is called denaturation.
 
-The denaturation step is fast — usually just 15–30 seconds per cycle. Taq polymerase can withstand 95°C because it comes from Thermus aquaticus, a bacterium that lives in Yellowstone's boiling hot springs where temperatures reach 85–95°C continuously. The enzyme's protein structure is stabilized by unique hydrophobic cores and modified amino acids that prevent unfolding at temperatures that would instantly destroy a human enzyme. Without this thermostability, you'd have to add fresh enzyme after every denaturation step — which is exactly what researchers had to do before Taq was discovered in 1988. Saiki and colleagues isolated Taq and the modern, automated PCR was born.`,
+Here's an interesting story behind this step: the reason PCR works so smoothly is because of a bacterium called Thermus aquaticus, found living in the scorching hot springs of Yellowstone National Park, where temperatures regularly reach 85–95°C. This bacterium evolved enzymes that function perfectly in near-boiling water. When scientists first figured out PCR, they had to manually add fresh enzyme after every heating step, because normal enzymes would be destroyed by the heat. Using Taq polymerase from Thermus aquaticus solved this completely — the enzyme just sits in the tube through all the heating, totally unharmed. That discovery made PCR automated, practical, and affordable.`,
   },
   {
     id: "annealing",
     anchorId: "pcr-annealing",
-    heading: "Step 2 — Annealing: The Art of Primer Design",
-    body: `At 55–65°C, the reaction cools and primers compete with the complementary strand to rehybridize with the template. A well-designed primer wins this competition at the exact right temperature — specific enough to bind only its intended target, stable enough to stay bound until extension begins. The annealing temperature is typically set 5°C below the primer's calculated melting temperature (Tm). Getting this right is one of the most important variables in PCR.
+    heading: "Step 2: Annealing — Primers Find Their Matching Sequences",
+    body: `After the heating step separates the DNA strands, the reaction cools down to 55–65°C. Now, the primers drift through the solution looking for their matching sequences. When a primer finds its match, it sticks to it through complementary base pairing — the same natural attraction that holds the double helix together normally. Once a primer is attached, the polymerase has a starting point and begins copying.
 
-Tm calculation isn't simple. The basic formula for short oligos is Tm = 4(G+C) + 2(A+T), but this is very approximate. More accurate calculations use nearest-neighbor thermodynamic parameters that account for stacking interactions between adjacent bases. Most primer design software (Primer3, IDT OligoAnalyzer, NCBI Primer-BLAST) uses these more accurate models. The annealing step is quick — typically 20–30 seconds — but the temperature gradient of the thermal cycler matters: some cyclers aren't as precise as others in hitting the exact setpoint, which is why different machines occasionally give different results with the same protocol. Touchdown PCR exploits this by starting each cycle at a high annealing temperature (increasing specificity) and gradually lowering it over successive cycles — you get the specificity of a high Tm but the efficiency of a lower one.`,
+The exact annealing temperature matters a lot. Set it too high and the primers won't bind — the reaction produces nothing. Set it too low and primers might stick to the wrong places, giving you extra unwanted products. The ideal temperature is usually about 5°C below the primer's melting temperature, which depends on how long the primer is and how many G-C pairs it contains (G-C pairs need more energy to separate than A-T pairs). Good primer design is one of the most important skills in PCR — it's often the difference between a reaction that works beautifully and one that gives you puzzling results for weeks.`,
   },
   {
     id: "extension",
     anchorId: "pcr-extension",
-    heading: "Step 3 — Extension: Building Billions of Copies",
-    body: `At 72°C — Taq's optimal temperature — the extension step creates new DNA strands. Starting from the 3' end of each primer, Taq reads the template strand in the 3'→5' direction and synthesizes a new complementary strand in the 5'→3' direction, incorporating dNTPs one by one. The synthesis rate is ~1 kb per minute, so extension time is set based on amplicon size: a 2 kb product needs ~2 minutes; a 500 bp product needs ~30 seconds. Extend too briefly and you get truncated products; extend too long and nonspecific bands accumulate.
+    heading: "Step 3: Extension — Building the New Copy",
+    body: `At 72°C — Taq polymerase's ideal working temperature — the copying begins. Starting from where the primer is attached, the polymerase reads the template and adds matching DNA letters one at a time, building a new strand. It works at about 1,000 letters per minute. Extension time is set based on how long your target is: a 500-letter target needs about 30 seconds; a 2,000-letter target needs about 2 minutes.
 
-Here's the elegant mathematics of exponential amplification. After cycle 1, you have doubled the amount of template — but both new molecules are 'long' products (they extend indefinitely from the primer). After cycle 2, you get the first 'short' products with defined ends exactly matching your two primer positions. After each subsequent cycle, the short defined-length products double. After 10 cycles: ~1000 copies. After 20 cycles: ~1 million. After 30 cycles: ~1 billion. The 2ⁿ exponential means that even starting from a single DNA molecule, 30 cycles gives you enough material to see clearly on a gel. This is why PCR can detect HIV in a sample containing just 50 viral particles per milliliter, or identify a criminal from the DNA in three skin cells left on a door handle.`,
+Here's the beautiful maths that makes PCR so powerful. After cycle 1, you've roughly doubled your DNA. After cycle 2, you've doubled it again. After 10 cycles: about 1,000 copies. After 20 cycles: around 1 million. After 30 cycles: over 1 billion. All from a single starting molecule — in about 90 minutes. This exponential growth is why PCR can detect HIV when there are only 50 viral particles in a millilitre of blood, or identify a person from just three skin cells left on a surface. The numbers are almost unbelievable, but the maths of doubling is relentless.`,
   },
   {
     id: "rt-pcr",
     anchorId: "pcr-rt",
-    heading: "RT-PCR: Turning RNA Into Something You Can Amplify",
-    body: `Standard PCR works on DNA, but sometimes your target is RNA — viral genomes, gene expression measurements, COVID-19 detection. Enter RT-PCR (Reverse Transcription PCR). The first step uses an enzyme called reverse transcriptase (RT), borrowed from retroviruses like HIV that naturally convert their RNA genome into DNA. You mix the RNA sample with RT, primers, and dNTPs, incubate at ~42°C, and the enzyme synthesizes a complementary DNA (cDNA) copy of the RNA. Then you do normal PCR on the cDNA.
+    heading: "RT-PCR: When Your Target Is RNA, Not DNA",
+    body: `Standard PCR only works on DNA. But many important viruses — including SARS-CoV-2, influenza, and HIV — store their genetic information as RNA. And when scientists want to measure gene expression (how actively a gene is being used in a cell), the relevant molecule is also RNA. Enter RT-PCR: Reverse Transcription PCR.
 
-Critical point that confuses students: RT-PCR is NOT the same as real-time qPCR. RT-PCR = reverse transcription + PCR (detects RNA). Real-time PCR = quantitative PCR (measures how much). RT-qPCR combines both: you convert RNA to cDNA, then quantify it by real-time PCR. The COVID-19 diagnostic test that was performed billions of times globally is RT-qPCR: SARS-CoV-2 has an RNA genome, so RT converts it to cDNA, then qPCR quantifies and confirms the presence of specific viral sequences. A positive test result means the assay detected viral cDNA at a Ct value indicating clinically meaningful viral load.`,
+The reverse transcription step uses an enzyme called reverse transcriptase, which is borrowed from retroviruses like HIV that naturally convert their RNA genome into DNA inside host cells. You incubate the RNA sample with this enzyme and it produces a complementary DNA (cDNA) copy. Then you run regular PCR on that cDNA. One important note: RT-PCR (reverse transcription + PCR) is not the same as real-time qPCR. These terms get mixed up constantly in news coverage. What was used for COVID-19 testing was actually RT-qPCR: the RT step converts viral RNA to cDNA, and then quantitative PCR amplifies and measures it. Every positive COVID test result came from this exact combination.`,
   },
   {
     id: "qpcr",
     anchorId: "pcr-qpcr",
-    heading: "Quantitative PCR (qPCR): From Detection to Measurement",
-    body: `Regular PCR gives you a yes/no answer: "Is this sequence present?" qPCR adds a number: "How much of it is there?" A fluorescent reporter is added to the reaction. As new DNA accumulates each cycle, fluorescence increases. The instrument reads fluorescence after every extension step and plots an amplification curve. The key output is the Ct value (cycle threshold) — the cycle at which fluorescence first crosses above background noise. Low Ct = lots of starting material. High Ct = very little. Each unit difference in Ct represents roughly a 2x difference in starting quantity.
+    heading: "qPCR: Measuring How Much DNA You Have",
+    body: `Regular PCR tells you whether a DNA sequence is present. qPCR (quantitative PCR, also called real-time PCR) goes further — it tells you exactly how much of it there is. A fluorescent signal is added to the reaction that grows stronger every time a new DNA copy is made. The instrument watches this signal build up cycle by cycle and notes the exact cycle where it first rises above the background noise. This is called the Ct (cycle threshold) value.
 
-Two main detection chemistries: SYBR Green intercalates non-specifically into any double-stranded DNA and fluoresces ~1000x brighter when bound. It's cheap and flexible — works with any primer pair — but it detects all amplified DNA including primer-dimers and nonspecific products. The melt curve analysis at the end helps discriminate: your specific product should have a single sharp melting peak. TaqMan probes are more specific: a 20-30 nt oligonucleotide labeled with a fluorescent reporter at the 5' end and a quencher at the 3' end hybridizes inside your amplicon. As Taq extends through the probe, its 5'→3' exonuclease activity clips off the fluorescent label, separating it from the quencher and generating signal. TaqMan probes only work with their specific sequence — no false positives from primer-dimers. The ΔΔCt method uses reference genes (housekeeping genes like GAPDH, beta-actin, or HPRT) to normalize between samples, calculating relative expression differences. Absolute quantification uses a standard curve of known concentrations.`,
+Low Ct means the target was present in large amounts — it reached the threshold quickly. High Ct means very little was present — it took many more cycles to build up enough signal. Every 3.3 cycles of difference represents roughly a 10-fold difference in starting amount. In COVID testing, a patient with a Ct of 15 carried vastly more virus than one with a Ct of 35. This is why qPCR is used for measuring viral load in HIV treatment, tracking gene activity when a drug is given, or detecting how many cancer cells are in a sample. It's one of the most powerful measurement tools in modern biology.`,
   },
   {
     id: "digital",
     anchorId: "pcr-digital",
-    heading: "Digital PCR: The Most Precise Quantification Yet",
-    body: `Quantitative PCR is impressive, but it has a weakness: it measures relative fluorescence, which requires a standard curve for absolute quantification and can be noisy at very low target abundances. Digital PCR (dPCR) solves this elegantly. The reaction is partitioned into thousands to millions of individual chambers — either physical partitions (chip-based digital PCR) or water-in-oil droplets (droplet digital PCR, ddPCR from Bio-Rad). Each partition contains either zero or one template molecule. PCR runs in every partition simultaneously. After amplification, each partition is either fluorescent (contained a template molecule that amplified) or not. You simply count the positive and negative partitions and use Poisson statistics to calculate the absolute number of starting molecules. No standard curve needed — just counting.
+    heading: "Digital PCR: The Most Precise Counting Method in Biology",
+    body: `qPCR is incredibly useful, but at very low amounts of target DNA — when only a handful of molecules are present — it can become unreliable. Digital PCR solves this with an elegant idea: instead of measuring one big reaction, split it into thousands of tiny individual reactions. Each one is so small that it contains either one template molecule or none. PCR happens in every compartment at once. When it's done, you count: how many compartments lit up, and how many stayed dark? That gives you an absolute count without any guesswork.
 
-Digital PCR shines where qPCR struggles: detecting rare variants in a large background (1 mutant cell in 10,000 normal cells), measuring copy number variations, quantifying ctDNA (circulating tumor DNA) in liquid biopsies for cancer monitoring, verifying GMO content at precisely defined thresholds, and standardizing reference materials. Liquid biopsy is particularly exciting: a blood draw can yield ctDNA fragments shed by tumors, and ddPCR can detect KRAS mutations or HER2 amplifications from those few fragments in a sea of normal DNA — potentially catching cancer recurrence months before imaging would show it.`,
+Droplet digital PCR (ddPCR) creates 20,000 or more tiny oil droplets — each about the size of a cell — and runs PCR in all of them simultaneously. Afterwards, a laser counts fluorescent versus non-fluorescent droplets. This makes ddPCR perfect for detecting cancer-related mutations in blood. Tumours shed small fragments of their DNA into the bloodstream (called circulating tumour DNA). In a background of normal DNA, a cancer mutation might appear in only 1 in every 10,000 molecules. Regular qPCR struggles to detect this; digital PCR can find it reliably. This means doctors could potentially detect cancer recurrence or treatment resistance from a simple blood draw, months before it would show up on any scan.`,
   },
   {
     id: "variants",
     anchorId: "pcr-applications",
-    heading: "The PCR Family: Specialized Variants for Special Problems",
-    body: `The core PCR idea has spawned an entire family of techniques. Nested PCR uses two sequential amplification rounds: an outer primer pair amplifies a broad region, then an inner pair amplifies just the target within that product. Two rounds of specificity, extreme sensitivity — useful for detecting rare pathogens in complex clinical samples. Multiplex PCR runs multiple primer pairs simultaneously in one reaction, amplifying several targets at once — that's how current COVID panels detect multiple respiratory viruses from one swab. Hot-start PCR adds a wax barrier or anti-Taq antibody that keeps the enzyme inactive until the first high-temperature denaturation step, preventing nonspecific priming when everything is mixed cold.
+    heading: "The PCR Family: Different Tools for Different Problems",
+    body: `The core PCR idea has inspired a whole family of techniques, each built to solve a specific problem. Multiplex PCR runs several pairs of primers in one tube at the same time, amplifying multiple targets at once — this is how a modern respiratory test can check for COVID-19, influenza A, influenza B, and RSV all from one swab. Nested PCR uses two rounds of amplification for extra sensitivity: a first pair of primers amplifies a broad region, then a second pair amplifies just the specific target within that. Two layers of specificity make it extraordinarily powerful for detecting rare pathogens.
 
-Colony PCR screens bacterial colonies directly — pick a colony with a toothpick, dip it into a PCR tube, amplify with primers flanking your cloning site. White colonies on blue-white plates are screened for the right insert in minutes. Long-range PCR uses engineered polymerase mixtures capable of amplifying fragments up to 20–30 kb. And then there's LAMP — Loop-Mediated Isothermal Amplification — which achieves PCR-like sensitivity at a constant 60–65°C, without any thermal cycling at all. LAMP uses a set of 4–6 primers that generate a complex stem-loop structure that amplifies exponentially. The result is 10⁹ copies in 30–60 minutes, detected by eye using a colorimetric dye, without any specialized equipment. That's why LAMP is the foundation for point-of-care diagnostics in field settings, low-resource hospitals, and remote locations where a thermal cycler isn't available.`,
+Hot-start PCR keeps the polymerase inactive until the first high-temperature step, preventing messy side-products that form when everything is mixed at room temperature. Colony PCR lets researchers screen hundreds of bacterial colonies in minutes — touch a toothpick to a colony, drop it in a PCR tube, and a band on the gel tells you which colony has your gene. And LAMP — Loop-Mediated Isothermal Amplification — achieves PCR-level sensitivity without any temperature cycling, at a constant 60°C, with results visible as a colour change by eye. No thermal cycler needed at all. LAMP tests have been used in remote villages, on research ships, and in home testing kits — bringing molecular diagnostics to places that could never access traditional lab equipment. PCR isn't one technique — it's a whole way of thinking about DNA amplification.`,
   },
 ];
 
@@ -770,150 +770,147 @@ const PCR_VARIANTS = [
 const PCR_QUIZ: QuizQuestion[] = [
   {
     id: "pcr1",
-    question: "Who invented PCR, in what year, and what did they win for it?",
+    question: "What is PCR, and why did it change biology so dramatically?",
     options: [
-      "Frederick Sanger, 1977 — Nobel Prize for DNA sequencing",
-      "Kary Mullis, 1983 — Nobel Prize in Chemistry 1993",
-      "James Watson, 1953 — Nobel Prize with Crick and Franklin",
-      "Herbert Boyer, 1973 — Nobel Prize with Cohen for recombinant DNA",
+      "A way to read DNA letter by letter — the first method ever to sequence a genome",
+      "A technique that makes billions of copies of a specific piece of DNA from a very tiny starting amount — making it possible to study DNA from almost any source",
+      "A method to cut DNA at specific locations using special enzymes",
+      "A process for transferring DNA from one organism to another using a virus",
     ],
     correctIndex: 1,
     explanation:
-      "Kary Mullis had the insight for PCR in 1983 while driving in California and received the Nobel Prize in Chemistry in 1993 — shared with Michael Smith. The key innovation that made it practical was recognizing that thermostable DNA polymerase (Taq from Thermus aquaticus hot-spring bacteria) could survive the repeated denaturation steps, allowing fully automated cycling without adding fresh enzyme every cycle.",
+      "PCR stands for Polymerase Chain Reaction, and the name tells you exactly what it does — it uses a polymerase enzyme to chain together a reaction that copies DNA over and over. The idea came to Kary Mullis in 1983 while driving at night in California. Before PCR, working with a specific gene required large amounts of starting material and days of difficult work. After PCR, a few cells from a cheek swab, a single hair root, or a drop of ancient blood could yield enough DNA to study in just a couple of hours. Mullis won the Nobel Prize in 1993 for this discovery. Today, PCR is used in COVID testing, cancer diagnosis, forensic science, and almost every molecular biology experiment in the world.",
     topic: "pcr",
   },
   {
     id: "pcr2",
     question:
-      "What happens molecularly during the annealing step of PCR, and how is annealing temperature chosen?",
+      "Why does PCR need two primers — a forward and a reverse primer — and what do they do during the annealing step?",
     options: [
-      "DNA strands separate; temperature chosen to melt G-C bonds preferentially",
-      "Primers hybridize to their complementary template sequences; temperature set ~5°C below primer Tm for optimal specificity",
-      "Taq polymerase begins synthesizing DNA; temperature is Taq's optimal working temperature",
-      "dNTPs are incorporated; temperature prevents premature termination",
+      "Two primers are needed because DNA has two strands, and each primer copies one strand from the same starting point",
+      "One primer marks the start of your target sequence, the other marks the end — together they define exactly what gets copied. During annealing, they cool down and stick to their matching sequences on the DNA",
+      "The two primers need to stick to each other first before attaching to the DNA template",
+      "Primers mark where the DNA should be cut, not where it gets copied",
     ],
     correctIndex: 1,
     explanation:
-      "During annealing, the temperature drops and primers compete with the complementary strand to bind the single-stranded template. The annealing temperature is typically set ~5°C below the primer's melting temperature (Tm). Too high: primers can't bind, no product. Too low: primers bind nonspecifically to off-target sequences, multiple bands. Good primer design — GC content 40–60%, similar Tm for forward and reverse, no hairpins or dimers, GC clamp at 3' end — is essential for getting clean, specific PCR.",
+      "Think of primers like bookmarks placed at the start and end of a paragraph you want to copy. The forward primer sticks to one end of your target on one DNA strand, and the reverse primer sticks to the other end on the complementary strand. Together, they define exactly which piece of DNA gets amplified — change the primers and you copy a completely different region. During annealing, the reaction cools to 55–65°C after the DNA has been separated, allowing the primers to find and stick to their matching sequences. The temperature has to be just right: too hot and the primers won't stick; too cold and they might stick in the wrong places. This is why designing good primers is one of the most important parts of setting up a PCR experiment.",
     topic: "pcr",
   },
   {
     id: "pcr3",
-    question:
-      "Why is Taq polymerase thermostable, and what is its major limitation for cloning applications?",
+    question: "Why is Taq polymerase special, and where does it come from?",
     options: [
-      "Taq comes from cold-adapted organisms and works at low temperatures; it lacks processivity",
-      "Taq from Thermus aquaticus hot-spring bacteria survives 95°C cycles; it lacks 3'→5' proofreading, so errors accumulate",
-      "Taq is chemically modified in the lab; its limitation is slow synthesis speed",
-      "Taq works at all temperatures but lacks an active site for GC-rich sequences",
+      "Taq polymerase comes from human cells and was genetically modified to survive high temperatures",
+      "Taq is a heat-resistant enzyme from bacteria that live in Yellowstone's boiling hot springs — it survives the intense heat needed to separate DNA strands, making automatic PCR possible",
+      "Taq is a chemical catalyst, not a biological enzyme, which is why it survives high temperatures",
+      "Taq polymerase was designed by scientists in the 1960s specifically for PCR",
     ],
     correctIndex: 1,
     explanation:
-      "Taq comes from Thermus aquaticus, found in Yellowstone's boiling hot springs — its proteins evolved to function at 85–95°C and not denature when you heat the reaction to 95°C every cycle. Its major limitation is no 3'→5' proofreading exonuclease activity, giving an error rate of roughly 1 per 1,000 bases. For diagnostic PCR (just checking presence/absence), this doesn't matter. For cloning — where you'll express the PCR product — one wrong base can mutate the protein. For cloning, use Phusion, Q5, or other proofreading polymerases with 10–50x lower error rates.",
+      "Here's a wonderful example of nature solving a problem before scientists even knew they had it. Thermus aquaticus is a bacterium discovered in the boiling hot springs of Yellowstone National Park, where water temperatures reach 85–95°C. This bacterium evolved enzymes that work perfectly in near-boiling conditions. When PCR was first invented, scientists had to add fresh regular polymerase after every heating step because the heat destroyed it — imagine doing that 30 times in one experiment! Once researchers started using Taq polymerase, the enzyme survived every heating step intact, sitting in the tube through the entire reaction. Suddenly PCR could run automatically in a thermal cycler machine. That one discovery — a hot spring bacterium in Wyoming — made PCR the universal tool it is today.",
     topic: "pcr",
   },
   {
     id: "pcr4",
-    question:
-      "What is the Ct value in qPCR, and what does a Ct of 15 vs a Ct of 35 tell you?",
+    question: "In qPCR, what does the Ct value tell you about a sample?",
     options: [
-      "Ct is the total number of PCR cycles run; Ct 15 means 15 cycles, Ct 35 means 35 cycles",
-      "Ct is the cycle at which fluorescence crosses threshold — Ct 15 indicates abundant starting material, Ct 35 indicates very little",
-      "Ct measures reaction temperature in Celsius; higher Ct means higher annealing temperature used",
-      "Ct is the primer concentration in the reaction; Ct 15 = 15 nM primer",
+      "The Ct value tells you the temperature at which your DNA melted apart",
+      "The Ct value is the PCR cycle at which fluorescence first rises above background noise — a lower Ct means more starting material was present; a higher Ct means very little was there",
+      "The Ct value tells you how many different DNA sequences are in your sample",
+      "Ct stands for 'copy total' — the exact number of DNA molecules in the sample",
     ],
     correctIndex: 1,
     explanation:
-      "The Ct (cycle threshold) value is the PCR cycle at which fluorescence first rises above the baseline noise. Since PCR doubles the target each cycle, every 3.3 Ct units represents roughly a 10-fold difference in starting material. Ct 15 means fluorescence crossed threshold very early — you started with a large amount of target (high viral load, high gene expression). Ct 35 means it took 35 cycles before enough product accumulated to detect — you started with very little target. COVID-19 tests often use Ct 40 as the cutoff, meaning any amplification by cycle 40 is considered positive.",
+      "qPCR doesn't just tell you whether DNA is present — it tells you how much was there to begin with. Here's how it works: a fluorescent signal is added that grows stronger every time a new DNA copy is made. A detector watches this signal build up cycle by cycle, and notes the exact cycle where it first rises clearly above the background level. That's the Ct value — the cycle threshold. Because PCR doubles the DNA every cycle, something that reaches the threshold at cycle 15 had a LOT more starting material than something that only reaches it at cycle 35. Each 3.3 cycles difference represents a roughly 10-fold difference in starting amount. This is how COVID tests could tell the difference between someone with a heavy infection (low Ct around 15–20) and someone with only a trace of virus (high Ct around 37–39).",
     topic: "pcr",
   },
   {
     id: "pcr5",
     question:
-      "What is the difference between SYBR Green and TaqMan probe detection in qPCR?",
+      "What is the difference between SYBR Green and TaqMan probes in qPCR?",
     options: [
-      "SYBR Green detects RNA; TaqMan detects DNA only",
-      "SYBR Green intercalates in any dsDNA (non-specific but cheap); TaqMan uses sequence-specific probes cleaved by Taq's 5' exonuclease (specific but costly)",
-      "TaqMan requires reverse transcription; SYBR Green does not",
-      "SYBR Green is used for gel visualization; TaqMan is for real-time quantification only",
+      "SYBR Green detects RNA; TaqMan probes only detect DNA",
+      "SYBR Green is a dye that glows whenever any double-stranded DNA is present — simple and cheap but not specific to your exact target; TaqMan probes only glow when your specific target sequence is copied — far more accurate",
+      "TaqMan probes are used in standard PCR; SYBR Green is only for real-time detection",
+      "SYBR Green uses radioactivity; TaqMan uses fluorescence",
     ],
     correctIndex: 1,
     explanation:
-      "SYBR Green intercalates into any double-stranded DNA and fluoresces brightly. It's non-specific — it will detect your product AND any primer-dimers or nonspecific bands. A melt-curve analysis afterward helps confirm that there's only one product. TaqMan probes bind inside your amplicon between the two primers. As Taq extends, it hits the probe and its 5'→3' exonuclease activity clips off the fluorescent dye from the quencher, generating signal. Only your specific sequence produces signal — much higher specificity, less susceptible to false positives. TaqMan requires probe design and synthesis, which adds cost, but it's the standard for clinical diagnostics.",
+      "This is a really practical distinction to understand. SYBR Green is like a dye that lights up whenever any double-stranded DNA is present — it doesn't distinguish between your target and any other DNA that happened to get amplified by mistake. It's cheap and flexible, but you have to be careful that your primers are very specific. TaqMan probes are much more precise. They're short DNA sequences designed to match the inside of your specific target region, with a fluorescent dye on one end and a 'quencher' on the other. While the probe is intact, it doesn't glow. As the polymerase copies through the probe, it chews the probe apart, separating the dye from the quencher — and it lights up. Only your exact target triggers the signal. This is why clinical diagnostic tests like COVID-19 tests use TaqMan probes — you need to be absolutely certain you're detecting the right thing.",
     topic: "pcr",
   },
   {
     id: "pcr6",
-    question:
-      "Why is RT-PCR required for COVID-19 testing instead of standard PCR?",
+    question: "Why is RT-PCR used to detect COVID-19 instead of standard PCR?",
     options: [
-      "Standard PCR cannot be used in clinical settings due to biosafety regulations",
-      "SARS-CoV-2 has an RNA genome, and standard PCR only amplifies DNA, so reverse transcriptase must first convert viral RNA to cDNA",
-      "RT-PCR is more sensitive than PCR because it amplifies more cycles",
-      "Standard PCR cannot amplify viral sequences because viruses lack DNA polymerase",
+      "RT-PCR is more sensitive because it runs more cycles than standard PCR",
+      "SARS-CoV-2 stores its genetic information as RNA, not DNA — so reverse transcriptase must first convert the viral RNA into DNA, which can then be amplified by regular PCR",
+      "RT-PCR stands for 'Rapid Thermal PCR' — it was designed to run faster in clinical settings",
+      "Standard PCR cannot work with saliva or nasal swab samples, so RT-PCR was created for diagnostic use",
     ],
     correctIndex: 1,
     explanation:
-      "SARS-CoV-2 is a positive-sense single-stranded RNA virus — its genetic material is RNA, not DNA. Standard PCR only works on DNA templates. So before you can amplify and detect the viral genome, you need to reverse transcribe it: an enzyme called reverse transcriptase converts the viral RNA into complementary DNA (cDNA), which then serves as the template for qPCR. The full technique is RT-qPCR: Reverse Transcription + real-time quantitative PCR. The same approach detects influenza, HIV viral load, RSV, hepatitis C, and any other RNA virus.",
+      "This is an important distinction to understand. Standard PCR only works with DNA. But the coronavirus SARS-CoV-2 — like influenza, HIV, and many other viruses — carries its genetic information as RNA, not DNA. To detect it, scientists use a two-step approach. First, an enzyme called reverse transcriptase (borrowed from HIV, which naturally converts its RNA genome into DNA) copies the viral RNA into complementary DNA (cDNA). Then regular PCR amplifies that cDNA. The full name for what COVID tests actually used was RT-qPCR — the RT step converts RNA to DNA, and then quantitative PCR measures it. Every positive COVID test anyone has ever received used exactly this combination of two elegant biological tools working together.",
     topic: "pcr",
   },
   {
     id: "pcr7",
     question:
-      "What makes droplet digital PCR (ddPCR) superior to qPCR for liquid biopsy applications?",
+      "What makes digital PCR (ddPCR) better than regular qPCR for detecting very rare mutations?",
     options: [
-      "ddPCR runs at constant temperature, eliminating the need for a thermal cycler",
-      "ddPCR partitions reactions into thousands of droplets, enabling absolute quantification without a standard curve and detection of rare variants at 0.01% frequency",
-      "ddPCR uses DNA probes instead of RNA primers, improving specificity",
-      "ddPCR is cheaper and faster than qPCR for all applications",
+      "ddPCR is faster because it skips the temperature cycling steps",
+      "ddPCR splits the reaction into thousands of tiny droplets so each droplet contains either zero or one DNA molecule — then you simply count positive droplets, giving an exact number and detecting variants as rare as 1 in 10,000 molecules",
+      "ddPCR uses a different polymerase with no errors, making it more accurate",
+      "Digital PCR doesn't need primers, which makes it more accurate",
     ],
     correctIndex: 1,
     explanation:
-      "Liquid biopsy involves detecting circulating tumor DNA (ctDNA) — fragments of tumor genome released into the blood. The challenge: one mutant molecule among thousands of normal molecules. qPCR struggles at such low allele frequencies because background noise obscures rare signals. ddPCR partitions the reaction into 20,000+ droplets; each droplet contains either zero or one template molecule. After PCR, you count fluorescent vs. non-fluorescent droplets. Poisson statistics gives you absolute molecule counts — no standard curve — and you can detect variants present at 0.01% frequency. That's how liquid biopsies can catch cancer recurrence from a blood draw months before imaging detects a tumor.",
+      "Here's the clever logic behind digital PCR. Regular qPCR measures a relative signal and needs a reference curve to calculate how much DNA you started with. That works well for most purposes, but at very low amounts of DNA it becomes unreliable. Digital PCR does something fundamentally different: it splits the entire reaction into 20,000 or more tiny oil-water droplets. Each droplet is so small that it contains either one DNA molecule or none. PCR runs in all droplets at the same time. Afterwards, you simply count how many droplets lit up (contained the target) and how many stayed dark (didn't). It's like counting beans — no reference curve, no guesswork, just an absolute number. For detecting a cancer mutation that appears in only 1 in 10,000 blood cells, this precision is essential. qPCR can't find that signal reliably; digital PCR can.",
     topic: "pcr",
   },
   {
     id: "pcr8",
     question:
-      "How does LAMP (Loop-Mediated Isothermal Amplification) differ from PCR, and why is it important for field diagnostics?",
+      "What is LAMP, and why is it so useful in places without laboratory equipment?",
     options: [
-      "LAMP requires a thermal cycler like PCR but uses different enzymes",
-      "LAMP amplifies DNA at a constant single temperature (no cycling), using 4–6 primers that create self-looping structures, readable by a colorimetric dye without instruments",
-      "LAMP only works on RNA targets and is limited to viral diagnostics",
-      "LAMP uses gel electrophoresis for detection and is more expensive than standard PCR",
+      "LAMP is a PCR variant that uses UV light instead of heat to amplify DNA",
+      "LAMP amplifies DNA at a single constant temperature without any thermal cycling — it works in a simple heat block, and results appear as a visible colour change, no specialised equipment needed",
+      "LAMP only works for bacterial DNA, not viral RNA",
+      "LAMP uses gel electrophoresis to detect results, making it slower than PCR",
     ],
     correctIndex: 1,
     explanation:
-      "The beauty of LAMP is that it's isothermal — it works at a constant 60–65°C with no temperature cycling. It uses a strand-displacing DNA polymerase (typically Bst) and 4–6 primers that generate self-complementary stem-loop structures that amplify themselves recursively. The result: 10⁹ copies in 30–60 minutes, often visible by eye using a pH-sensitive dye that changes color when amplification occurs (turbidity or calcein fluorescence). No thermal cycler, no gel equipment, no specialized training needed. This is why LAMP-based diagnostics have been deployed in rural clinics in sub-Saharan Africa, on research ships, in battlefield medical units, and — with a simple heat block — in home testing kits for COVID-19. It's democratizing molecular diagnostics.",
+      "LAMP — Loop-Mediated Isothermal Amplification — is one of the most practically important molecular biology innovations for global health, and the idea is clever. Standard PCR needs a machine that precisely cycles between three different temperatures. LAMP doesn't need any temperature cycling at all. It works at a constant 60–65°C — any simple heat block works, even a flask of warm water. It uses a special set of 4–6 primers that create self-looping DNA structures that amplify themselves extraordinarily fast, producing a billion copies in 30–60 minutes. The result shows as a visible colour change in the tube — you can see with your own eyes whether it's positive, no special reader needed. LAMP-based tests have been used in remote African villages, on research ships, and in home testing kits. It's democratised molecular diagnostics, making sensitive DNA testing available to anyone, anywhere in the world.",
     topic: "pcr",
   },
   {
     id: "pcr9",
     question:
-      "In forensic DNA analysis, PCR amplifies STR loci. What are STRs and why do they create unique identifiers?",
+      "How does forensic DNA profiling use PCR to identify people from tiny samples?",
     options: [
-      "STRs are mitochondrial mutations unique to each person's maternal lineage",
-      "STRs (Short Tandem Repeats) are repetitive sequences whose number of repeats varies between individuals — the pattern across many loci creates a profile unique to each person",
-      "STRs are viral integration sites that differ between individuals based on exposure history",
-      "STRs are single-nucleotide polymorphisms in protein-coding genes used for medical diagnosis",
+      "PCR copies the entire genome from the sample, which is then compared letter by letter to a suspect's genome",
+      "PCR amplifies specific short tandem repeat (STR) regions — naturally varying sequences at about 20 locations in the genome — creating a unique pattern that acts like a DNA fingerprint for each person",
+      "PCR creates a fluorescent fingerprint directly from the physical structure of the DNA",
+      "PCR amplifies mitochondrial DNA from hair, which is identical in all related individuals",
     ],
     correctIndex: 1,
     explanation:
-      "Short Tandem Repeats (also called microsatellites) are repetitive sequences like (AGAT)n scattered throughout the genome, where different individuals carry different numbers of repeats at each locus. Because they're hypervariable — the number of repeats can change between generations — each person has a unique combination of repeat lengths across ~20 forensic STR loci (the US CODIS system uses 20). PCR amplifies each STR region; capillary electrophoresis separates the fragments by size; the resulting profile has a probability of coincidental match on the order of 1 in a quintillion for unrelated individuals. Cold cases have been solved decades later from degraded samples containing only a few dozen cells.",
+      "Forensic DNA profiling is one of the most impactful applications of PCR. Here's how it works: throughout your genome, there are regions called Short Tandem Repeats (STRs) — sequences like AGAT repeated over and over. Different people naturally have different numbers of repeats at each location. By looking at about 20 of these STR sites, the specific combination of repeat lengths you have is essentially unique to you. PCR amplifies these regions simultaneously from a tiny sample — even from just a few skin cells. The resulting pattern of band sizes acts as your DNA 'fingerprint.' The probability that two unrelated people share the same profile at all 20 sites is less than 1 in a quintillion. Cold cases have been solved from evidence collected decades ago using exactly this approach. It's a genuinely remarkable power to have as a society.",
     topic: "pcr",
   },
   {
     id: "pcr10",
-    question: "What is 'hot-start PCR' and what problem does it solve?",
+    question: "What is hot-start PCR and what problem does it solve?",
     options: [
-      "PCR started at elevated temperature to improve denaturation of GC-rich sequences",
-      "PCR using a Taq antibody or wax barrier that blocks polymerase activity until the first high-temperature step, preventing nonspecific priming at room temperature",
-      "PCR performed in a preheated thermal cycler to reduce ramp time",
-      "PCR with higher extension temperature (80°C) to improve strand displacement",
+      "Hot-start PCR heats the sample above 100°C first, then cools it slowly to improve strand separation",
+      "Hot-start PCR keeps the polymerase inactive until the first high-temperature step — preventing messy nonspecific products from forming when all the ingredients are mixed together at room temperature",
+      "Hot-start PCR is a faster version of standard PCR that finishes in under 30 minutes",
+      "Hot-start PCR is only used for ancient DNA samples that need gentler conditions",
     ],
     correctIndex: 1,
     explanation:
-      "When you mix all PCR components at room temperature, Taq polymerase is active at low temperatures — it can extend primers that have bound nonspecifically or extend primer-dimers that formed during setup. This generates smear-bands, multiple nonspecific products, and false positives. Hot-start PCR prevents this by inactivating Taq during setup. Two methods: (1) Anti-Taq antibodies that block the active site and denature at 95°C, releasing active enzyme only at denaturation step. (2) Aptamers that fold away from Taq at high temperature. Hot-start PCR gives cleaner results especially for GC-rich templates, multiplex PCR, and any protocol where nonspecific bands are a problem. Most modern diagnostic PCR kits include hot-start formulations.",
+      "Here's a practical problem that frustrated early PCR users. When you mix all your PCR ingredients together at room temperature, the polymerase is already active. It can start extending primers that accidentally stuck to slightly wrong locations while everything was cold. This creates 'nonspecific products' — extra bands on a gel that aren't what you wanted. Hot-start PCR solves this neatly. The polymerase is blocked by an antibody or chemical cap at room temperature. The block only releases when the reaction hits 95°C in the very first heating step — by which point everything is properly denatured and set up. The polymerase only starts working when conditions are ideal. The result: much cleaner, more specific reactions with fewer extra bands. Most modern PCR kits include hot-start formulations as standard because this small change makes a big practical difference in the quality of results.",
     topic: "pcr",
   },
 ];
@@ -930,7 +927,7 @@ export default function PCRSection() {
       <SectionHeader
         topicId="pcr"
         title="Polymerase Chain Reaction"
-        subtitle="The molecular photocopier that changed biology forever — one Nobel Prize-winning idea that now powers everything from COVID tests to ancient DNA research to liquid biopsies."
+        subtitle="PCR is like a molecular photocopier for DNA. Starting from just a tiny sample — even a single cell — it makes billions of copies of a specific piece of DNA in a couple of hours. That one idea unlocked everything from COVID testing to solving cold cases."
       />
 
       <AnimatedEntrance direction="up" delay={0.1}>

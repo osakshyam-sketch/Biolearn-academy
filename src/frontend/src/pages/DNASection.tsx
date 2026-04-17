@@ -15,151 +15,151 @@ const DNA_QUIZ: QuizQuestion[] = [
   {
     id: "dna-1",
     question:
-      "What is the key structural difference between B-DNA, A-DNA, and Z-DNA conformations?",
+      "Most of the DNA in your cells exists as 'B-DNA.' What does that actually mean, and when do the other forms (A-DNA and Z-DNA) appear?",
     options: [
-      "B-DNA is left-handed; A-DNA and Z-DNA are right-handed double helices",
-      "B-DNA is the most common right-handed helix (10 bp/turn); A-DNA is a wider right-handed helix (11 bp/turn) found in dehydrated conditions or RNA:DNA hybrids; Z-DNA is left-handed (12 bp/turn) with a zigzag backbone",
-      "All three are identical in structure but differ only in the base pair sequence they contain",
-      "A-DNA is found in bacteria; B-DNA in plants; Z-DNA in animals",
+      "B-DNA is left-handed; A-DNA and Z-DNA are right-handed versions found only in bacteria",
+      "B-DNA is the classic right-handed helix with ~10 base pairs per turn found under normal conditions; A-DNA is a wider, shorter right-handed form in dry conditions or RNA:DNA hybrids; Z-DNA is a rare left-handed form in GC-rich regions under stress",
+      "All three forms are structurally identical but differ in the sequence of bases they contain",
+      "A-DNA is found in bacteria, B-DNA in plants, and Z-DNA only in animals",
     ],
     correctIndex: 1,
     explanation:
-      "Great question! Most DNA in your cells exists as B-DNA — the classic Watson-Crick right-handed helix with ~10 base pairs per turn and a characteristic major/minor groove pattern. A-DNA forms when DNA is dehydrated or when one strand is RNA (as in RNA-DNA hybrids during transcription) — it's wider and shorter than B-DNA. Z-DNA is the odd one out: a left-handed helix with a zigzag phosphate backbone (the 'Z' refers to this zigzag). It forms in GC-rich sequences under torsional stress and may play roles in regulating transcription by serving as a recognition signal for certain proteins. The takeaway: DNA's structure isn't fixed — it can dynamically change conformation depending on local conditions.",
+      "Great question! The double helix isn't locked into one fixed shape. B-DNA is what most people picture — the right-handed helix with ~10 base pairs per turn and the classic wide major groove and narrow minor groove. It's the dominant form in cells under normal conditions. A-DNA forms when DNA is dehydrated (or when one strand is RNA, as in RNA-DNA hybrids during transcription) — it's shorter and wider than B-DNA. Z-DNA is the unusual one: it spirals to the left (a 'Z' zigzag pattern in the backbone) and forms in GC-rich stretches under torsional stress. Proteins exist that specifically recognise Z-DNA, suggesting it may play roles in regulating gene expression. The key takeaway: DNA's structure is dynamic and can shift conformations based on local conditions.",
     topic: "dna",
   },
   {
     id: "dna-2",
     question:
-      "During DNA replication, what problem does topoisomerase solve, and how?",
+      "As DNA unwinds during replication, it creates a problem ahead of the fork — like unwinding a twisted rope creates extra twisting further along. What enzyme solves this, and how?",
     options: [
-      "Topoisomerase synthesizes the RNA primers needed by DNA polymerase to start replication",
-      "Topoisomerase joins Okazaki fragments on the lagging strand by sealing nicks",
-      "As helicase unwinds the helix at the fork, positive supercoiling builds up ahead of it — topoisomerase I and II relieve this torsional stress by transiently cutting and rejoining the DNA strands",
-      "Topoisomerase removes the histone proteins from nucleosomes to expose DNA for replication",
+      "Primase synthesises short RNA primers that release the torsional stress ahead of the fork",
+      "Ligase seals the single-strand breaks that build up ahead of the replication fork",
+      "Topoisomerase cuts the DNA (one or both strands), allows a controlled rotation to release the tension, then reseals the cut — relieving the supercoiling ahead of the fork",
+      "Helicase runs backwards ahead of the fork, pre-unwinding the helix so no stress builds up",
     ],
     correctIndex: 2,
     explanation:
-      "Picture unwinding a coiled telephone cord — the more you unwind at one end, the more tightly twisted it gets further along. That's exactly what happens ahead of a replication fork: helicase unwinds the double helix, but the rotational stress has to go somewhere, and it builds up as positive supercoils ahead. Topoisomerase I cuts one strand, allows controlled rotation to release the stress, and reseals the cut. Topoisomerase II cuts both strands, passes another duplex segment through the break, and reseals. This is also why many antibiotics and chemotherapy drugs target topoisomerases — bacterial DNA gyrase (a type II topoisomerase) is targeted by fluoroquinolone antibiotics; human topoisomerase II is targeted by chemotherapy drugs like doxorubicin.",
+      "Imagine unwinding a coiled telephone cord from one end — the more you unwind, the tighter the coil gets further along. That's exactly what happens ahead of a replication fork: helicase unwinds the helix, but the rotational stress has to go somewhere. Topoisomerase is the solution. Type I topoisomerase cuts one strand, allows the DNA to rotate and release the strain, then reseals. Type II cuts both strands, passes another segment of DNA through the gap, and reseals. Here's an important clinical application: many antibiotics (like fluoroquinolones) work by targeting bacterial topoisomerase, and chemotherapy drugs like doxorubicin target human topoisomerase II. Understanding this enzyme is literally life-or-death medicine.",
     topic: "dna",
   },
   {
     id: "dna-3",
     question:
-      "What is the Meselson-Stahl experiment, and what did it prove about DNA replication?",
+      "The Meselson-Stahl experiment is called 'the most elegant experiment in molecular biology.' What did it prove?",
     options: [
-      "It proved that DNA is double-stranded by using X-ray crystallography",
-      "It proved semi-conservative replication by growing bacteria in heavy ¹⁵N medium then switching to ¹⁴N, showing each new DNA molecule has one old strand and one new strand via density-gradient centrifugation",
-      "It proved that DNA polymerase synthesizes DNA in the 3' to 5' direction",
-      "It disproved the RNA World hypothesis by showing DNA came before RNA",
+      "It proved DNA is double-stranded by using X-ray crystallography to image the helix directly",
+      "It proved DNA replication is semi-conservative — each new double helix keeps one original strand and builds one new strand — by tracking heavy and normal nitrogen through generations of bacterial cell division",
+      "It proved that DNA polymerase works in the 3' to 5' direction",
+      "It disproved the RNA World hypothesis by showing DNA came before RNA in evolution",
     ],
     correctIndex: 1,
     explanation:
-      "The Meselson-Stahl experiment (1958) is often called the most elegant experiment in molecular biology. They grew E. coli in ¹⁵N (heavy nitrogen) medium until all DNA was heavy, then switched to ¹⁴N (normal) medium. After one generation, all DNA was intermediate density — consistent with semi-conservative replication where each new double helix has one old heavy strand and one new light strand. After two generations, they saw both intermediate and light density DNA — exactly what semi-conservative replication predicts. This elegantly ruled out conservative replication (which would show only heavy and light) and dispersive replication (which would show all intermediate after two generations).",
+      "Here's the elegant logic of the experiment (1958). Meselson and Stahl grew bacteria in 'heavy' ¹⁵N medium until all their DNA contained heavy nitrogen. Then they switched to normal ¹⁴N medium. After one generation: all DNA was intermediate density — consistent with each new double helix having one old heavy strand and one new light strand. After two generations: they saw both intermediate and light DNA — exactly what semi-conservative replication predicts. This simple observation ruled out both conservative replication (which would give heavy and light, not intermediate) and dispersive replication (which would give only intermediate even after two generations). Same basic idea as telling old rope from new by weight, but for molecules.",
     topic: "dna",
   },
   {
     id: "dna-4",
     question:
-      "What is the difference between nucleosome, 30nm fiber, and chromosome — how does DNA go from 2 meters to fitting in a nucleus?",
+      "If you stretched out all the DNA in one human cell, it would be about 2 metres long. How does it fit inside a nucleus the size of a grain of sand?",
     options: [
-      "DNA is compressed by being chemically shortened — no structural proteins are needed",
-      "DNA wraps around histone octamers to form nucleosomes (beads on a string), nucleosomes coil into 30nm fibers, fibers form loops anchored to protein scaffolds, and loops are further organized into chromosome territories within the nucleus",
-      "DNA compression only occurs during cell division; the rest of the time it's fully uncoiled",
-      "All compression is accomplished by topoisomerases that tie DNA into knots",
+      "DNA is chemically compacted — enzymes shorten the actual molecule rather than fold it",
+      "DNA wraps around histone proteins to form nucleosomes (like thread around a spool), these stack into fibres, which form loops on a protein scaffold, which coil further into chromosomes — achieving about 10,000-fold compaction overall",
+      "DNA compression only happens during cell division — the rest of the time it floats freely in the nucleus",
+      "Topoisomerases tie DNA into knots that pack it tightly into the nucleus",
     ],
     correctIndex: 1,
     explanation:
-      "This packaging hierarchy is one of the most impressive feats of cellular engineering. Level 1: ~147 bp of DNA wraps 1.67 times around a histone octamer (two copies each of H2A, H2B, H3, and H4) to form a nucleosome, like beads on a string — already achieving ~7-fold compaction. Level 2: H1 linker histones help nucleosome arrays fold into a ~30nm chromatin fiber (~50-fold compaction total). Level 3: loops of 30nm fiber anchor to a protein scaffold to form rosettes (~1,000-fold compaction). Level 4: further coiling and condensation during mitosis achieves ~10,000-fold compaction into visible chromosomes. Open, transcriptionally active regions are euchromatin; silenced, tightly packed regions are heterochromatin. The extent of packing directly controls gene accessibility.",
+      "This packaging is one of the most impressive feats of cellular engineering. Level 1: ~147 base pairs of DNA wrap 1.7 times around a histone octamer to form a nucleosome — like thread wound around a spool. This already achieves ~7-fold compaction. Level 2: nucleosomes coil into a ~30nm fibre (~50-fold compaction). Level 3: this fibre forms loops anchored to a protein scaffold (~1,000-fold). Level 4: during cell division, further coiling creates the visible chromosome (~10,000-fold total). But here's the key insight beyond the packing: chromatin structure controls gene expression. Loosely packed regions (euchromatin) are transcriptionally active. Tightly packed regions (heterochromatin) are silent. The degree of compaction is an instruction.",
     topic: "dna",
   },
   {
     id: "dna-5",
     question:
-      "What are the three main DNA repair pathways, and what types of damage does each correct?",
+      "Your DNA is damaged thousands of times every day by radiation, chemicals, and normal cellular mistakes. What are the main repair mechanisms?",
     options: [
-      "Nucleotide excision repair (NER) fixes UV-induced pyrimidine dimers and bulky adducts; base excision repair (BER) corrects small base damage and oxidation; mismatch repair (MMR) corrects replication errors — wrong bases or small insertions/deletions",
-      "All DNA damage is repaired by a single universal repair pathway regardless of damage type",
-      "Only mitochondrial DNA has repair mechanisms; nuclear DNA relies entirely on proofreading by polymerase",
-      "NER corrects insertions; BER corrects deletions; MMR corrects transversions only",
+      "Nucleotide excision repair (NER) fixes UV-induced thymine dimers and bulky damage; base excision repair (BER) handles oxidised or missing bases; mismatch repair (MMR) corrects replication errors",
+      "DNA damage is repaired by a single universal mechanism regardless of the type of damage",
+      "Only mitochondrial DNA has repair mechanisms; nuclear DNA relies entirely on DNA polymerase proofreading",
+      "NER repairs insertions; BER repairs deletions; MMR repairs transversions only",
     ],
     correctIndex: 0,
     explanation:
-      "DNA repair is one of the most critical — and clinically relevant — aspects of molecular biology. Nucleotide excision repair (NER) is like a molecular cut-and-paste: it recognizes bulky distortions (UV-induced thymine dimers, chemical adducts), cuts out a ~25-30 nucleotide patch around the damage, and synthesizes new DNA. Defective NER causes xeroderma pigmentosum — extreme UV sensitivity with very high skin cancer risk. Base excision repair (BER) handles smaller damage: oxidized bases (8-oxoguanine from reactive oxygen species), deaminated cytosine, or abasic sites — a glycosylase removes the damaged base, leaving an AP site for further processing. Mismatch repair (MMR) corrects replication errors that escaped polymerase proofreading, identifying the newly synthesized strand and fixing mismatches. Inherited MMR gene mutations (MLH1, MSH2, MSH6, PMS2) cause Lynch syndrome — significantly elevated risk of colorectal, endometrial, and other cancers.",
+      "Your cells fix thousands of DNA lesions daily — mostly without you noticing. Nucleotide excision repair (NER) is like a molecular search-and-replace: it finds bulky distortions like UV-induced thymine dimers (where two adjacent thymine bases get stuck together by UV light), cuts out a ~30-nucleotide patch, and synthesises fresh DNA. Defective NER causes xeroderma pigmentosum — these patients get severe sunburns and have a very high risk of skin cancer even from small sun exposure. Base excision repair (BER) handles smaller damage: oxidised bases from reactive oxygen species, abasic sites. Mismatch repair (MMR) catches the rare errors that DNA polymerase's own proofreading misses. Inherited MMR gene mutations cause Lynch syndrome — significantly increased risk of colorectal and other cancers.",
     topic: "dna",
   },
   {
     id: "dna-6",
     question:
-      "What is epigenetic regulation via DNA methylation, and what is a CpG island?",
+      "What is epigenetics — and how can two cells with identical DNA sequences have completely different jobs in the body?",
     options: [
-      "DNA methylation physically breaks phosphodiester bonds to silence genes",
-      "DNA methylation (addition of a methyl group to cytosine, typically at CpG dinucleotides) is a heritable gene silencing mark; CpG islands are CpG-rich promoter regions that, when methylated, silence gene expression — involved in X-inactivation, imprinting, and cancer",
-      "DNA methylation is identical to histone acetylation and has the same effect on gene expression",
-      "CpG islands only exist in mitochondrial DNA and have no role in nuclear gene regulation",
+      "Epigenetics means cells deliberately mutate their DNA to adapt to their environment",
+      "Epigenetics refers to heritable changes in gene activity that don't change the DNA sequence itself — like methylating cytosines to silence genes, or modifying histones to open or close chromatin. These marks explain how all cells have the same DNA but different genes are active in each cell type",
+      "Epigenetics is identical to genetic mutation — the terms are interchangeable",
+      "Epigenetic changes only occur in stem cells and don't affect differentiated cells",
     ],
     correctIndex: 1,
     explanation:
-      "Epigenetics is about heritable changes in gene expression that don't change the DNA sequence itself. DNA methyltransferases (DNMTs) add a methyl group to the 5' carbon of cytosine, specifically at CpG dinucleotides. Methylated CpGs in promoter regions are associated with gene silencing — methyl-CpG binding proteins recruit repressor complexes. CpG islands are regions with unusually high CpG frequency, often found at gene promoters; when unmethylated, they're usually associated with active genes. In cancer, tumor suppressor gene promoters often become hypermethylated (silenced), while overall genome hypomethylation promotes chromosomal instability. X-chromosome inactivation in females involves methylating one X chromosome's genes. Genomic imprinting (where only the maternal or paternal copy of a gene is expressed) is also controlled by differential methylation.",
+      "This is one of the most important concepts in modern biology. Every cell in your body has the same DNA sequence — but a liver cell, a neuron, and a muscle cell look and behave completely differently. The reason is epigenetics. DNA methylation (adding a methyl group to cytosine, especially at CG sequences in gene promoters) is like a 'do not read' flag on a gene — it's associated with silencing. Histone modifications change how tightly DNA is wrapped, making genes more or less accessible. These marks are inherited when cells divide, so daughter cells remember their identity. Fascinatingly, your identical twin has the same DNA as you but gradually accumulates different epigenetic marks as you age and have different life experiences — which is partly why identical twins become less similar over time.",
     topic: "dna",
   },
   {
     id: "dna-7",
     question:
-      "What is the difference between a transition and a transversion mutation?",
+      "A mutation in a gene can have completely different consequences depending on where exactly the change happens. What's the difference between a silent, missense, and nonsense mutation?",
     options: [
-      "Transitions change a purine to a pyrimidine or vice versa; transversions change one purine to another purine or one pyrimidine to another pyrimidine",
-      "Transitions change one base for another of the same type (purine→purine or pyrimidine→pyrimidine); transversions swap a purine for a pyrimidine or vice versa",
-      "Transitions occur only in coding regions; transversions occur only in introns",
-      "Transitions are always silent mutations; transversions always change the amino acid",
+      "Silent mutations always cause disease; missense mutations are harmless; nonsense mutations only occur in introns",
+      "A silent mutation changes a codon but not the amino acid (due to the genetic code's redundancy); a missense mutation changes the amino acid; a nonsense mutation creates a premature stop codon, cutting the protein short",
+      "All three types of mutations cause disease with equal severity",
+      "Silent mutations change non-coding DNA; missense and nonsense mutations only occur in promoter regions",
     ],
     correctIndex: 1,
     explanation:
-      "Point mutations come in two flavors. Transitions maintain the structural type: A↔G (both purines) or C↔T (both pyrimidines). They're more common because the base structures are more similar, making them easier for polymerases to accidentally introduce. Transversions swap structural types: A/G (purine) ↔ C/T (pyrimidine). There are 4 possible transitions but 8 possible transversions — yet transitions actually occur more frequently in genomes. Neither is automatically silent or missense; that depends on the codon position affected. The clinically famous transition is C→T at methylated CpG sites (deamination of 5-methylcytosine produces thymine), which is the most common single-nucleotide change in human genetic disease.",
+      "Not all mutations are equal — where and what matters enormously. A silent mutation changes a base but the codon still codes for the same amino acid (because the genetic code is redundant — most amino acids have multiple codons). The protein is unchanged. A missense mutation changes one base, resulting in a different amino acid. The classic example: sickle cell disease is caused by a single missense mutation in haemoglobin — one amino acid (valine instead of glutamic acid) at position 6 causes the protein to form sticky fibres, deforming red blood cells. A nonsense mutation creates a stop codon in the middle of the protein — the ribosome stops early, producing a truncated, usually non-functional protein. A single base, a completely different outcome.",
     topic: "dna",
   },
   {
     id: "dna-8",
     question:
-      "What role do telomeres and telomerase play in chromosome stability and cancer?",
+      "Your chromosomes get slightly shorter every time your cells divide. Why does this happen, and how do cells that need to divide indefinitely (like stem cells and cancer cells) get around it?",
     options: [
-      "Telomeres are the centromeric regions; telomerase synthesizes them during S phase alongside normal replication",
-      "Telomeres are repetitive sequences (TTAGGG in humans) protecting chromosome ends from degradation and fusion; they shorten with each replication cycle because DNA polymerase can't fully copy the ends — telomerase (a ribonucleoprotein) extends them in germ cells and stem cells but is silenced in most somatic cells",
-      "Telomerase is identical to DNA ligase and simply seals the ends of chromosomes",
-      "Telomeres have no role in cancer — they only affect aging in model organisms",
+      "Telomeres are in the centromere region; telomerase synthesises them during S phase alongside normal replication",
+      "Telomeres are repetitive sequences (TTAGGG in humans) capping chromosome ends that shorten with each division because DNA polymerase can't copy the very end of a strand. Telomerase — a specialised enzyme carrying its own RNA template — extends them back, but it's silenced in most body cells",
+      "Chromosome shortening has no biological effect and doesn't affect cell lifespan",
+      "Telomerase is just another name for DNA ligase, which seals chromosome ends",
     ],
     correctIndex: 1,
     explanation:
-      "Telomeres are fascinating molecular clocks. Human telomeres are thousands of repeats of TTAGGG forming T-loop structures capped by a protein complex called shelterin, preventing chromosome ends from being 'seen' as double-strand breaks. Every replication cycle, the lagging strand's final Okazaki fragment can't be primed all the way to the end, causing progressive shortening — the 'end replication problem.' In most somatic cells, when telomeres become critically short, p53 triggers senescence or apoptosis. Telomerase (a reverse transcriptase carrying its own RNA template) extends telomeres in germ cells, stem cells, and — crucially — ~90% of cancer cells. Cancer cells reactivate telomerase to achieve replicative immortality. This makes telomerase an attractive cancer drug target; conversely, short telomeres are linked to aging, premature aging syndromes (dyskeratosis congenita), and fibrosis.",
+      "Telomeres are fascinating molecular clocks. Human telomeres are thousands of repeats of TTAGGG at chromosome ends, forming protective caps that prevent chromosomes from being mistaken for broken DNA. Every time a cell divides, the telomeres get a little shorter — this is called the 'end replication problem.' Most body cells have a limit of about 50–70 divisions (the Hayflick limit). Stem cells and germ cells express telomerase to rebuild their telomeres. Here's the cancer connection: about 90% of cancer cells reactivate telomerase — they've found a way to divide indefinitely, which is one key hallmark of cancer. This is why telomerase is an attractive target for cancer drugs. Short telomeres are also associated with ageing and some rare premature ageing syndromes.",
     topic: "dna",
   },
   {
     id: "dna-9",
     question:
-      "During replication, what is the proofreading function of DNA polymerase and what error rate does it achieve?",
+      "DNA polymerase copies DNA with remarkable accuracy. What's the mechanism that lets it catch and fix its own mistakes?",
     options: [
-      "DNA polymerase has no proofreading ability — all errors are corrected post-replication by mismatch repair",
-      "DNA polymerase III has a 3'→5' exonuclease activity that excises incorrectly incorporated bases during synthesis, achieving ~1 error per 10⁷ nucleotides — and with post-replication mismatch repair, the final error rate is ~1 per 10⁹",
-      "DNA polymerase proofreads by synthesizing RNA primers that flag incorrect bases",
-      "Proofreading is performed by the sliding clamp, not by the polymerase itself",
+      "DNA polymerase has no proofreading ability — mismatch repair proteins correct all errors after the fact",
+      "DNA polymerase has a built-in 3'→5' exonuclease that acts like a backspace key — if the wrong base is added, it reverses, removes the mistake, and tries again, achieving about 1 error per 10 million bases",
+      "Proofreading is done by the sliding clamp protein, not the polymerase itself",
+      "DNA polymerase checks each base pair using RNA primers that flag incorrect incorporations",
     ],
     correctIndex: 1,
     explanation:
-      "The accuracy of DNA replication is breathtaking. On its own, base pairing would give about 1 error in 10⁴ bases. DNA polymerase III adds a major improvement: its 3'→5' exonuclease domain acts as a built-in proofreader — if the wrong base is incorporated, the enzyme stalls, backs up, clips out the mismatch, and tries again, reducing errors to ~1 in 10⁷. Mismatch repair (MMR) sweeps up remaining errors afterward, achieving the final remarkable accuracy of ~1 error per 10⁹ base pairs. For context, copying the 3.2-billion-bp human genome means about 3 errors per genome per cell division — most of those in non-coding regions, and most corrected by repair. When MMR is defective, error rates skyrocket, leading to the 'microsatellite instability' signature seen in Lynch syndrome-related cancers.",
+      "The accuracy of DNA replication is genuinely breathtaking. Base pairing alone would give about 1 error in every 10,000 bases — not good enough for a 3.2-billion-base genome. DNA polymerase III has a built-in proofreading domain that works like a backspace key: if the wrong nucleotide is incorporated, the enzyme stalls, backs up, removes the incorrect base with a 3'→5' exonuclease, and tries again. This brings the error rate down to about 1 in 10 million. Then mismatch repair proteins sweep up remaining mistakes, bringing the final error rate to about 1 per billion base pairs. For context: copying the human genome produces about 3 errors total per cell division — most in non-coding DNA, most corrected by repair. When repair fails, as in Lynch syndrome, cancers develop.",
     topic: "dna",
   },
   {
     id: "dna-10",
     question:
-      "What is the difference between double-strand break repair via homologous recombination (HR) and non-homologous end joining (NHEJ)?",
+      "Double-strand breaks are the most dangerous type of DNA damage. What are the two main ways cells repair them, and why does it matter which one is used?",
     options: [
-      "HR and NHEJ are identical processes that differ only in the proteins used",
-      "HR uses a homologous template (usually the sister chromatid) for accurate repair and is active mainly in S/G2 phase; NHEJ directly ligates the broken ends without a template and is active throughout the cell cycle but is error-prone, often causing small insertions or deletions",
-      "NHEJ is always accurate; HR is always error-prone — NHEJ is the preferred repair pathway in rapidly dividing cells",
-      "HR repairs single-strand breaks; NHEJ repairs double-strand breaks — they never handle the same type of damage",
+      "Homologous recombination and non-homologous end joining are identical in accuracy; only the proteins involved differ",
+      "Homologous recombination (HR) uses a template (the sister chromatid) to repair accurately — active mainly in S/G2 phase; non-homologous end joining (NHEJ) directly glues broken ends without a template and is available anytime but sometimes makes small errors",
+      "NHEJ is always accurate; HR is error-prone and used only in bacteria",
+      "HR repairs single-strand breaks; NHEJ repairs only double-strand breaks — they never handle the same damage",
     ],
     correctIndex: 1,
     explanation:
-      "Double-strand breaks are the most dangerous DNA lesions — if left unrepaired, they cause chromosomal fragmentation. Cells have two main repair choices. Homologous recombination (HR) is like having a photocopy to work from: it uses the sister chromatid as a precise template, resecting the broken ends, finding homology, and synthesizing new DNA accurately. This is only possible in S and G2 phases when the sister chromatid is available. BRCA1/2 proteins are key HR players — which is why BRCA mutations dramatically increase cancer risk. Non-homologous end joining (NHEJ) is the emergency repair: it captures the broken ends, processes them (sometimes losing bases), and ligates them directly. It works throughout the cell cycle but frequently introduces small insertions or deletions at the junction. NHEJ is actually crucial for adaptive immunity — V(D)J recombination uses NHEJ-like mechanisms to generate antibody diversity by imprecisely joining gene segments.",
+      "Double-strand breaks are catastrophic — an unrepaired break can cause loss of an entire chromosome arm. Cells have two main strategies. Homologous recombination (HR) is precise: it uses the sister chromatid as a perfect template, resecting the broken ends and synthesising new DNA accurately. It's like having a photocopy to work from. But it only works in S and G2 phases when the sister chromatid is present. BRCA1 and BRCA2 proteins are key HR players — which is exactly why BRCA mutations dramatically increase breast and ovarian cancer risk. NHEJ is the emergency repair: it captures broken ends and ligates them directly. It works at any time, but sometimes loses a few base pairs at the junction — good enough for survival, but not perfect. Interestingly, the immune system exploits NHEJ's imprecision during V(D)J recombination to generate antibody diversity.",
     topic: "dna",
   },
 ];
@@ -169,44 +169,43 @@ const EXPLANATION_PARAGRAPHS = [
     anchorId: "dna-structure",
     title: "The Discovery That Changed Everything",
     content:
-      "In 1953, Watson and Crick published a paper that began with stunning restraint: 'We wish to suggest a structure for the salt of deoxyribose nucleic acid.' Two pages long. Changed everything. Their double helix model didn't just describe a molecule — it revealed how genetic information could be stored, copied faithfully, and passed down through generations. The structure practically suggested its own replication mechanism. What made it possible was years of work by others, especially Rosalind Franklin, whose X-ray diffraction images (particularly 'Photo 51') provided critical geometric evidence for the helix. It was one of those rare moments where a single structure unlocked an entire era of science — and sparked the molecular biology revolution.",
+      "In April 1953, Watson and Crick published a two-page paper that began with almost comical understatement: 'We wish to suggest a structure for the salt of deoxyribose nucleic acid.' Those two pages changed the course of biology forever. The double helix wasn't just a beautiful structure — it revealed how genetic information could be stored, copied, and passed down through generations. The moment you see it, you understand replication: the two strands are complementary templates for each other. What made the discovery possible was years of work by many scientists, especially Rosalind Franklin, whose X-ray diffraction images (particularly 'Photo 51') provided critical evidence for the helix dimensions. It's worth knowing: Franklin's contribution was significant and not fully credited during her lifetime.",
   },
   {
     anchorId: "dna-nucleotides",
-    title: "Building Blocks: What a Nucleotide Actually Is",
+    title: "What Is a Nucleotide — the Building Block of DNA?",
     content:
-      "DNA is a polymer — a long chain of repeating units called nucleotides. Each nucleotide is a three-part package: a five-carbon deoxyribose sugar, a phosphate group, and one of four nitrogenous bases — adenine (A), thymine (T), guanine (G), or cytosine (C). The 'deoxy' in deoxyribose tells you that this sugar lacks an –OH group at the 2' carbon, which RNA's ribose has. That one difference makes DNA more chemically stable, which is why DNA evolved as the long-term genetic archive. Nucleotides chain together through phosphodiester bonds — the phosphate connecting one nucleotide's 3' carbon to the next's 5' carbon — forming the sugar-phosphate backbone. Bases are divided into purines (adenine and guanine — double-ring) and pyrimidines (cytosine and thymine — single-ring). This size difference is why base pairing is always purine-pyrimidine: the helix maintains a uniform width throughout.",
+      "DNA is a polymer — a long chain of repeating units. Each unit is called a nucleotide, and every nucleotide is a three-part package: a five-carbon sugar called deoxyribose, a phosphate group, and one of four nitrogenous bases — adenine (A), thymine (T), guanine (G), or cytosine (C). The 'deoxy' in deoxyribose tells you this sugar is missing one oxygen atom compared to RNA's ribose — that single difference makes DNA more chemically stable, which is why DNA evolved as the long-term genetic archive. Nucleotides chain together through phosphodiester bonds — connecting the 3' carbon of one sugar to the 5' carbon of the next, always in the same direction. The bases are divided into purines (A and G — double-ring structures) and pyrimidines (C and T — single-ring). A always pairs with T (2 hydrogen bonds); G always pairs with C (3 hydrogen bonds). The extra hydrogen bond in G-C pairing makes GC-rich regions slightly more stable — relevant to why some organisms that live at very high temperatures have GC-rich genomes.",
   },
   {
     anchorId: "dna-types",
     title: "Three DNA Conformations: B, A, and Z",
     content:
-      "The double helix isn't locked into one rigid form. B-DNA is the most common conformation in aqueous cellular conditions — a right-handed helix with ~10 base pairs per turn, a helical rise of 3.4 Å per base pair, and the characteristic wide major groove and narrow minor groove. A-DNA forms when DNA is dehydrated or in RNA-DNA hybrids — it's also right-handed but shorter and wider, with ~11 bp per turn and more tilted base pairs. It also forms in the catalytic center of RNA polymerases during transcription.\n\nZ-DNA is the exotic outlier: a left-handed helix with a zigzag backbone (hence 'Z'), ~12 bp per turn, and a single deep groove instead of major/minor grooves. It forms preferentially in GC-rich sequences under torsional stress (like the negative supercoiling behind a moving RNA polymerase). Z-DNA binding proteins (like ADAR1) recognize and bind Z-DNA, suggesting it plays regulatory roles in transcription and may be involved in innate immune responses. The ability to switch between conformations gives DNA a repertoire of structural signals beyond its sequence.",
+      "The double helix isn't a rigid, fixed structure — it can shift between different conformations depending on conditions. B-DNA is what most people picture: a right-handed helix with about 10 base pairs per turn, characteristic wide major groove and narrower minor groove, and the geometry Watson and Crick described. It's the dominant form under normal cellular conditions. A-DNA forms when DNA is dehydrated or in RNA-DNA hybrids (which form during transcription and reverse transcription) — it's a right-handed helix but wider and shorter than B-DNA, with ~11 base pairs per turn.\n\nZ-DNA is the unusual one. It's a left-handed helix with a zig-zag backbone (hence 'Z'), and forms preferentially in alternating GC sequences under torsional stress — like the negative supercoiling that builds up behind a moving RNA polymerase. Z-DNA binding proteins exist (like ADAR1), suggesting Z-DNA has regulatory roles in transcription and may be part of the innate immune response to viral DNA. Understanding that DNA can shift conformations is important: DNA isn't just a static information storage medium, it's a dynamic molecule whose shape carries biological meaning.",
   },
   {
     anchorId: "dna-packaging",
-    title: "DNA Packaging: From Nucleosomes to Chromosomes",
+    title: "Fitting 2 Metres of DNA into a Space You Can't See",
     content:
-      "The human genome's 3.2 billion base pairs would stretch about 2 meters if laid end-to-end — yet it fits into a nucleus about 6–10 micrometers across. This requires a hierarchy of packaging so elegant it genuinely evokes admiration. At the first level, 147 bp of DNA wraps 1.67 times around a histone octamer (two copies each of H2A, H2B, H3, H4) to form a nucleosome — the 'bead' in the famous 'beads on a string' image. Linker histone H1 sits between nucleosomes, and linker DNA (~20–50 bp) connects adjacent beads. This alone achieves ~7-fold compaction.\n\nNucleosomes stack into a 30nm fiber (roughly 50-fold compaction), then form loops anchored to a protein scaffold, then further coil into the compact chromosomes visible during mitosis (~10,000-fold compaction total). But here's the key insight: chromatin structure regulates gene expression. Euchromatin (open, loosely packed) marks actively transcribed regions — accessible to RNA polymerase and transcription factors. Heterochromatin (tightly packed) marks silenced regions — constitutive heterochromatin (like centromeres and telomeres) is always compacted; facultative heterochromatin is silenced in a cell-type-specific way (like the inactivated X chromosome in females, called a Barr body). Histone modifications (acetylation, methylation, phosphorylation) and chromatin remodeling complexes constantly adjust this packaging.",
+      "The human genome's 3.2 billion base pairs would stretch about 2 metres if laid end to end — yet every cell squeezes this into a nucleus about 6 micrometres across. This requires a beautiful hierarchy of packaging. First level: 147 base pairs of DNA wrap 1.67 times around a histone octamer (two copies each of H2A, H2B, H3, and H4) to form a nucleosome — the 'beads on a string' visible in electron micrographs. Linker histone H1 and ~20–50 base pairs of linker DNA connect the beads. This already gives about 7-fold compaction.\n\nNucleosomes coil into a 30nm fibre (~50-fold compaction), which then forms loops anchored to protein scaffolds (~1,000-fold), which coil further into the visible chromosomes during cell division (~10,000-fold total). But this is more than just a packing problem — chromatin structure controls which genes can be expressed. Loosely packed euchromatin marks active genes accessible to RNA polymerase and transcription factors. Tightly packed heterochromatin marks silenced regions. The inactivated X chromosome in female cells (the Barr body) is a visible example of heterochromatin silencing at a chromosomal scale.",
   },
   {
     anchorId: "dna-replication",
-    title: "Replication: How DNA Copies Itself with Astonishing Accuracy",
+    title: "How Cells Copy Their Entire Genome Before Every Division",
     content:
-      "Every cell division requires copying the entire genome — ~3.2 billion base pairs in humans — with an error rate of about 1 mistake per billion bases. Replication is semi-conservative (proven by Meselson and Stahl in 1958 using heavy nitrogen isotopes): each new double helix keeps one original strand and gets one new one. It begins at specific origins of replication (humans have ~30,000 of them, allowing simultaneous multi-point replication); prokaryotes have a single origin (oriC) and their circular chromosome is replicated bidirectionally.\n\nAt each replication fork, helicase unwinds the double helix while single-strand binding proteins (SSBs) stabilize the exposed strands and topoisomerases relieve the supercoiling stress ahead. Primase synthesizes a short RNA primer (DNA polymerase can't start from scratch — it can only extend an existing strand). DNA Polymerase III then reads the template 3'→5' and synthesizes new DNA 5'→3', incorporating dNTPs with a remarkable 10⁻⁷ error rate from its own proofreading activity (3'→5' exonuclease removes mismatched bases). The leading strand is copied continuously in the direction of fork movement; the lagging strand is copied in pieces (Okazaki fragments, ~100–200 nt in eukaryotes) each needing its own RNA primer. After synthesis, RNA primers are replaced by DNA (by DNA Pol I in bacteria, Pol δ/ε in eukaryotes), and DNA ligase seals the nicks.",
+      "Every cell division requires copying 3.2 billion base pairs with extraordinary accuracy — and doing it in hours. Replication starts at specific sequences called origins of replication. Humans have about 30,000 of them, allowing the genome to be copied from many places simultaneously. At each origin, a protein complex unloads the replication machinery: helicase unwinds the double helix, single-strand binding proteins stabilise the exposed strands, topoisomerases relieve the torsional stress ahead, and primase synthesises short RNA primers (because DNA polymerase cannot start from scratch — it can only extend an existing strand).\n\nDNA polymerase then reads the template strand from 3' to 5' and synthesises new DNA in the 5' to 3' direction. One strand (the leading strand) is copied continuously in the direction the fork moves. The other strand (the lagging strand) must be copied in short fragments (Okazaki fragments, each starting with its own RNA primer) because it runs in the opposite direction from the fork. These fragments are later joined by DNA ligase. The entire process achieves an error rate of about 1 mistake per billion base pairs after proofreading and repair — meaning roughly 3 errors in the whole human genome per cell division.",
   },
   {
     anchorId: "dna-mutations",
-    title:
-      "DNA Mutations: From Single Base Changes to Chromosomal Rearrangements",
+    title: "Mutations: From Single Base Changes to Big Chromosomal Events",
     content:
-      "Mutations are changes in the DNA sequence, and they range from single nucleotide alterations to large-scale chromosomal rearrangements. Point mutations are changes at a single base pair. Transitions change a purine to another purine or a pyrimidine to another pyrimidine (more common); transversions swap a purine for a pyrimidine or vice versa (less common but happen). A point mutation's effect depends on where it lands: a silent mutation changes the codon but not the amino acid (thanks to genetic code degeneracy); a missense mutation changes one amino acid (sickle cell anemia is the classic example — a valine replaces glutamic acid in hemoglobin); a nonsense mutation introduces a premature stop codon, truncating the protein. Frameshift mutations (insertions or deletions not in multiples of three) completely alter the reading frame downstream, usually devastating.\n\nLarger-scale mutations include deletions, duplications, inversions, and translocations of chromosomal segments. Causes include spontaneous chemical changes (deamination, oxidation, tautomeric shifts), physical mutagens (UV light causing thymine dimers, ionizing radiation causing double-strand breaks), and chemical mutagens (alkylating agents, base analogs, intercalating agents). Most mutations are repaired; those that aren't are either neutral (in non-functional DNA), lethal (cell dies), or occasionally beneficial (the foundation of evolution).",
+      "A mutation is any permanent change to the DNA sequence. They range from swapping a single base to rearranging entire chromosomal segments. Point mutations are the simplest: a transition replaces one base with another of the same structural type (A↔G, or C↔T), while a transversion swaps a purine for a pyrimidine or vice versa. Whether a point mutation matters depends entirely on where it lands: a silent mutation changes the codon but not the amino acid (thanks to the genetic code's redundancy). A missense mutation changes one amino acid — sickle cell disease is caused by exactly one missense mutation in haemoglobin. A nonsense mutation creates a premature stop codon, producing a truncated, usually broken protein. A frameshift mutation (adding or deleting bases in a number that isn't a multiple of three) completely derails the reading frame downstream.\n\nLarger mutations include deletions, duplications, inversions, and translocations of chromosome segments — the kinds of changes visible through a microscope. Causes include spontaneous errors during replication, chemical damage from environmental toxins, UV radiation causing thymine dimers, and ionising radiation causing double-strand breaks. Most mutations are repaired or are neutral. Occasionally, a mutation is beneficial — and that's the molecular foundation of evolution.",
   },
   {
     anchorId: "dna-epigenetics",
     title: "Epigenetics: Regulating Genes Without Changing the Sequence",
     content:
-      "Here's a profound concept: two cells in your body can have identical DNA sequences but completely different patterns of gene expression — because of epigenetics. Epigenetic mechanisms are heritable changes in gene activity that don't alter the nucleotide sequence itself. DNA methylation is the best-understood: DNA methyltransferases add a methyl group to cytosines at CpG dinucleotides. Methylated cytosines in promoter regions (especially in CpG islands) generally silence gene expression, recruiting methyl-CpG binding proteins that attract repressor complexes. Maintenance methyltransferases copy the methylation pattern to daughter strands after replication, making this a heritable epigenetic mark.\n\nHistone modifications are another layer: acetylation of lysines on H3 and H4 tails generally opens chromatin and activates transcription (acetyl groups neutralize the positive charge, reducing histone-DNA attraction); deacetylation closes chromatin. Histone methylation can activate or repress depending on which residue is modified. Chromatin remodeling complexes use ATP energy to physically slide or reorganize nucleosomes, changing DNA accessibility. Genomic imprinting is a compelling example of epigenetics in action: for some genes, only the maternal or paternal allele is expressed (the other is epigenetically silenced). Errors in imprinting cause syndromes like Prader-Willi and Angelman. And X-chromosome inactivation in female mammals — where one X is silenced in each cell through methylation and Xist RNA — ensures dosage compensation with males.",
+      "Here's a genuinely mind-bending concept: two cells in your body — say, a liver cell and a neuron — have virtually identical DNA sequences, yet they look different, behave differently, express different genes, and have completely different identities. How? Epigenetics. Epigenetic mechanisms are changes in gene activity that are heritable (passed on when cells divide) but don't alter the DNA sequence itself.\n\nDNA methylation is the best understood: special enzymes add a methyl group to cytosine bases, especially at CG sequences called CpG dinucleotides. When promoter regions (the 'on switches' of genes) accumulate methylation, the genes tend to be silenced. These marks are copied faithfully when cells divide, so daughter cells inherit the same pattern of gene activity. Histone modifications are another layer: acetylating histone tails opens up chromatin and activates genes; methylation can either activate or silence depending on which histone and which position. Cancer cells often show aberrant epigenetic patterns — tumour suppressor genes get silenced by hypermethylation. Genomic imprinting is a striking example where only the maternal or paternal copy of a gene is expressed (the other is epigenetically silenced) — errors cause syndromes like Prader-Willi and Angelman. And X-inactivation in female mammals silences one X chromosome in each cell, driven by a long non-coding RNA called XIST.",
   },
 ];
 
@@ -217,7 +216,7 @@ export default function DNASection() {
         <SectionHeader
           topicId="dna"
           title="DNA: The Blueprint of Life"
-          subtitle="From the double helix's elegant geometry to its dynamic conformations, packaging, replication machinery, mutation types, repair pathways, and epigenetic regulation."
+          subtitle="From the double helix's elegant structure to replication, mutations, repair, and epigenetics — everything about DNA explained clearly, from basics to deep knowledge."
         />
 
         {/* Helix + First 2 paragraphs */}
@@ -614,9 +613,9 @@ export default function DNASection() {
               🧬 Test Your DNA Knowledge
             </h3>
             <p className="text-muted-foreground mb-6">
-              10 questions spanning DNA conformations, packaging, replication
-              machinery, mutation types, repair pathways, and epigenetics — with
-              teacher-style explanations throughout.
+              10 questions covering DNA structure, replication, mutations,
+              repair pathways, and epigenetics — each with a detailed
+              explanation to help you understand, not just memorise.
             </p>
             <QuizEngine topicId="dna" questions={DNA_QUIZ} />
           </div>

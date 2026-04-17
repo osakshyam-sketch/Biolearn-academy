@@ -18,151 +18,151 @@ const TEAL_BORDER = "oklch(0.52 0.14 172 / 0.35)";
 const CRISPR_QUIZ: QuizQuestion[] = [
   {
     id: "cr1",
-    question: "What does CRISPR stand for, and where was it first discovered?",
+    question:
+      "Where did scientists first find CRISPR — and why does that surprise people?",
     options: [
-      "Clustered Regularly Interspaced Short Palindromic Repeats — found in bacterial immune systems",
-      "Catalytic RNA Interference and Splicing Protein Regulator — found in yeast",
-      "Controlled Recombinant Integration of Specific Promoter Regions — synthetic construct",
-      "Comprehensive RNA Insertion System for Protein Replacement — mammalian cells",
+      "In bacteria, as part of their immune system for fighting viruses",
+      "In human white blood cells, as a natural cancer-fighting mechanism",
+      "In yeast, as a DNA repair tool discovered in a lab",
+      "In plants, as a way to protect against UV radiation",
     ],
     correctIndex: 0,
     explanation:
-      "CRISPR stands for 'Clustered Regularly Interspaced Short Palindromic Repeats' — first noticed by Yoshizumi Ishino in 1987 in E. coli, then properly characterized by Francisco Mojica in the 1990s as part of bacterial adaptive immunity. Every time a bacterium survived a viral attack, it filed a genetic 'mugshot' of the virus into its CRISPR array. Scientists — specifically Charpentier and Doudna — then borrowed this system in 2012 and turned it into a programmable gene-editing tool.",
+      "Here's the wonderful twist — CRISPR wasn't invented in a high-tech lab. It was hiding in bacteria the whole time! Bacteria don't have an immune system like ours, but they do have CRISPR: a clever system that stores 'mugshot' sequences of viruses that attacked them before. When the same virus comes back, the bacteria recognise it and destroy it. Francisco Mojica figured this out in the 1990s. Then in 2012, Jennifer Doudna and Emmanuelle Charpentier realised they could hijack this natural system to edit any DNA they wanted — and won the Nobel Prize for it. Nature had already built the tool; scientists just learned how to use it.",
     topic: "crispr",
   },
   {
     id: "cr2",
-    question:
-      "In the CRISPR-Cas9 mechanism, what is the PAM sequence, and why can't Cas9 cut without it?",
+    question: "Why does Cas9 need a PAM sequence before it will cut DNA?",
     options: [
-      "A Protective Activation Motif that shields Cas9 from cellular proteasomes",
-      "Protospacer Adjacent Motif (NGG for SpCas9) — a docking signal Cas9 must find before interrogating nearby DNA",
-      "A Post-Activation Marker added after successful cutting to signal DNA repair machinery",
-      "A Primer Annealing Motif used to amplify CRISPR-edited regions by PCR",
+      "The PAM sequence gives Cas9 energy to make the cut",
+      "The PAM is a short 'landing signal' that Cas9 must find first — without it, Cas9 won't even try to read the nearby DNA",
+      "The PAM sequence holds the two DNA strands together after cutting",
+      "The PAM tells Cas9 which direction to read the DNA",
     ],
     correctIndex: 1,
     explanation:
-      "Before Cas9 even compares DNA to its guide RNA, it scans for PAM sequences. For the most common Cas9 (from Streptococcus pyogenes), that's NGG on the non-template strand. Think of the PAM as a 'permission slip' — without it, Cas9 won't engage the DNA at all. This is actually a safety feature bacteria evolved so Cas9 wouldn't attack its own CRISPR array. It also limits where CRISPR can target: no nearby NGG, no cut. Newer Cas variants (Cas12a uses TTTV on the 5' side) have different PAM requirements and expand the targetable space.",
+      "Think of the PAM sequence like a parking spot sign — Cas9 won't stop unless it sees the right sign. For the most commonly used Cas9, the sign reads 'NGG' (two guanine bases next to any base). When Cas9 spots this sign, it slows down and checks: does the DNA nearby match my guide RNA? If yes, it cuts. If no PAM is found, Cas9 keeps moving without doing anything. This is actually a smart safety feature that bacteria evolved so Cas9 wouldn't accidentally cut its own CRISPR sequences. Interestingly, a different version called Cas12a looks for a different sign — TTTV — and expands the places scientists can target.",
     topic: "crispr",
   },
   {
     id: "cr3",
     question:
-      "What is the difference between NHEJ and HDR as DNA repair pathways after a Cas9 cut?",
+      "After Cas9 cuts DNA, the cell tries to repair it. What are the two main repair pathways?",
     options: [
-      "NHEJ requires a donor template; HDR is template-free and produces precise edits",
-      "NHEJ is fast and error-prone (creates indels/knockouts); HDR is precise but requires a donor template and only works in S/G2 phase",
-      "Both pathways produce identical outcomes — the choice depends on cell type only",
-      "HDR operates on mitochondrial DNA only; NHEJ handles nuclear DNA",
+      "NHEJ is slow and perfect; HDR is fast and imperfect",
+      "NHEJ is the quick-but-messy repair that often disrupts the gene; HDR is the precise repair that needs a template you provide",
+      "Both pathways always produce exactly the same result",
+      "NHEJ only works at night; HDR works during the day",
     ],
     correctIndex: 1,
     explanation:
-      "After Cas9 makes a double-strand break, the cell has a few options. NHEJ (Non-Homologous End Joining) is the 24/7 emergency repair crew — it glues the ends back together quickly but sloppily, often dropping or adding a base pair. Those indels frameshift the gene, which researchers love for knockouts. HDR (Homology-Directed Repair) is precision surgery — you supply a repair template flanked by sequences matching the cut site, and the cell copies it in. But HDR is picky: it only works reliably during S and G2 phases when cells are actively dividing. That's why HDR is harder in post-mitotic tissues like neurons. There's also MMEJ (Microhomology-Mediated End Joining), which uses small homologous sequences flanking the break and creates predictable deletions — useful for programmed editing.",
+      "When DNA breaks, cells panic a little — they have to fix it fast. NHEJ (Non-Homologous End Joining) is the emergency repair crew: it grabs the broken ends and sticks them back together quickly. But it's sloppy — it often drops or adds a few letters in the process, which breaks the gene's instructions. This is actually useful for researchers who want to disable a gene (called a knockout). HDR (Homology-Directed Repair) is like having a perfect blueprint to follow: you give the cell an exact template for the repair, and it copies it in precisely. The catch is that HDR only works when cells are actively dividing, so it's harder to use in cells like neurons that rarely divide. Scientists choose between these pathways depending on whether they want to disrupt or precisely fix a gene.",
     topic: "crispr",
   },
   {
     id: "cr4",
     question:
-      "How does CRISPR-Cas12a (Cpf1) differ from Cas9 in its cutting mechanism and guide RNA requirements?",
+      "How is Cas12a different from Cas9, and when might a scientist choose Cas12a?",
     options: [
-      "Cas12a requires both crRNA and tracrRNA like Cas9, and creates blunt-ended cuts",
-      "Cas12a uses only a single crRNA (no tracrRNA needed), PAM on 5' side (TTTV), and creates a staggered cut with 5-nt overhang",
-      "Cas12a targets RNA instead of DNA and is used exclusively for diagnostics",
-      "Cas12a is larger than Cas9 and requires lipid nanoparticle delivery only",
+      "Cas12a is just an older version of Cas9 with no meaningful differences",
+      "Cas12a needs a simpler guide RNA, looks for a different landing signal (TTTV), and makes a staggered cut — it's also useful in CRISPR-based disease detection tests",
+      "Cas12a cuts RNA instead of DNA",
+      "Cas12a is bigger and harder to deliver into cells than Cas9",
     ],
     correctIndex: 1,
     explanation:
-      "Great question to test whether you really know your Cas proteins! Cas9 needs a two-part guide (crRNA + tracrRNA, usually fused into one sgRNA) and recognizes PAM on the 3' side (NGG). Cas12a is simpler: it processes its own crRNA without needing tracrRNA, recognizes PAM on the 5' side (TTTV), and cuts in a staggered way, leaving 5-nucleotide 5' overhangs. Those sticky ends are actually useful for some applications. Cas12a is also smaller (helpful for AAV delivery) and has collateral cleavage activity on single-stranded DNA — which is exploited in DETECTR diagnostics. Cas13 is the RNA-targeting cousin, used in SHERLOCK for pathogen detection.",
+      "This is where it gets cool: the CRISPR toolbox has more than one tool! Cas12a is a different molecular scissors from a different bacterium. It's simpler in some ways — it doesn't need the full two-part guide RNA that Cas9 needs, it looks for a T-rich landing signal rather than NGG, and it cuts in a staggered way instead of straight across. That staggered cut is actually helpful for inserting new DNA. Here's an interesting fact: Cas12a has a remarkable extra trick — when it finds and cuts its target, it also starts cutting any nearby single-stranded DNA. Scientists have exploited this to build DETECTR, a CRISPR-based disease detection test that can identify viral infections like COVID-19 with incredible sensitivity.",
     topic: "crispr",
   },
   {
     id: "cr5",
     question:
-      "What is base editing, and what are its key advantages over standard CRISPR-Cas9?",
+      "What makes base editing different from standard CRISPR cutting, and why is it exciting for medicine?",
     options: [
-      "Base editing uses Cas9 to cut both strands, then HDR to precisely change one nucleotide — same as standard CRISPR",
-      "Base editing fuses a deaminase to a 'dead' or nickase Cas9, converting individual nucleotides (C→T or A→G) without creating a double-strand break",
-      "Base editing amplifies the target region using PCR before making changes, then reintegrates the edited sequence",
-      "Base editing is used only in plant cells because mammalian DNA repair suppresses the conversion",
+      "Base editing cuts both DNA strands just like Cas9, but more precisely",
+      "Base editing chemically converts one DNA letter to another without cutting the DNA at all — perfect for fixing single-letter spelling errors in genes",
+      "Base editing only works on RNA, not DNA",
+      "Base editing amplifies the target DNA before making changes",
     ],
     correctIndex: 1,
     explanation:
-      "Here's why base editing is exciting: standard CRISPR cuts both DNA strands, which triggers the cell's alarm bells and can cause unwanted mutations during repair. Base editors avoid this entirely. Cytosine base editors (CBEs) fuse a cytidine deaminase to a nCas9 (nickase) — the guide RNA still locates the target, but instead of cutting, it converts C to U (read as T), achieving C→T changes. Adenine base editors (ABEs) evolved tRNA adenosine deaminases to work on DNA, enabling A→G conversions. No DSB, no donor template needed. The catch is 'bystander edits' — if multiple C or A bases are in the editing window, all of them may get converted. Next-gen base editors with narrower activity windows are addressing this.",
+      "Imagine your DNA as a book with three billion letters. Standard CRISPR is like cutting a page out and hoping the repair crew pastes it back correctly. Base editing is more like having a tiny eraser and pencil — it quietly swaps one letter for another without tearing the page. A molecular tool called a deaminase is attached to a modified Cas9 that can no longer cut. It still finds the right spot using the guide RNA, then chemically converts the target letter. C→T editors and A→G editors can fix many genetic diseases caused by a single wrong letter. No double-strand break, no messy repair needed. Interesting fact: sickle cell disease is caused by just one wrong letter in a single gene — base editing can potentially fix this in one step.",
     topic: "crispr",
   },
   {
     id: "cr6",
     question:
-      "Prime editing is described as a 'search and replace' function for the genome. How does it actually work?",
+      "Prime editing is called a 'find and replace' tool for DNA. What makes it different from base editing?",
     options: [
-      "It uses two separate Cas9 proteins that each cut one strand, with a repair template delivered between them",
-      "It uses a pegRNA (containing both guide and repair template) plus a reverse transcriptase fused to nCas9 to directly write new sequence without a DSB",
-      "It works by NHEJ after inserting a reverse-transcribed copy of the desired sequence at the cut site",
-      "Prime editing is only possible in embryonic stem cells where chromatin is fully accessible",
+      "Prime editing uses two separate Cas9 proteins working together",
+      "Prime editing uses a special guide RNA that carries the new sequence you want, plus a reverse transcriptase enzyme that writes the new sequence directly into DNA",
+      "Prime editing only works in bacterial cells",
+      "Prime editing is an older technique that base editing replaced",
     ],
     correctIndex: 1,
     explanation:
-      "Prime editing, developed by David Liu's lab in 2019, is genuinely elegant. The 'prime editing guide RNA' (pegRNA) does two jobs: its 5' spacer region directs nCas9 to the target, and its 3' extension contains a primer binding site plus a reverse transcriptase (RT) template carrying the desired edit. After nCas9 nicks one strand, the RT template hybridizes to the cut strand, reverse transcriptase copies in the new sequence, and mismatch repair resolves the edit into permanent DNA. No DSB, no donor template floating free in the cell. PE2 adds a mutant reverse transcriptase for better efficiency; PE3 nicks the complementary strand to bias mismatch repair toward incorporating the edit. It can make any small substitution, insertion, or deletion — it's the most versatile single-component system available.",
+      "David Liu's lab invented prime editing in 2019, and it's genuinely clever. The guide RNA in prime editing is special — it does two jobs at once. First, it finds the right spot in the DNA (just like a normal guide RNA). Second, it carries a mini template of the exact change you want to make. A reverse transcriptase enzyme (borrowed from retroviruses!) reads this template and writes the new sequence directly into the DNA — like a molecular cut-and-paste. What makes prime editing so powerful is that it can make any small change: swap a letter, add letters, or delete letters, all without making a dangerous double-strand break. It's the most flexible single-tool editor we have so far.",
     topic: "crispr",
   },
   {
     id: "cr7",
     question:
-      "Which FDA-approved CRISPR therapy for sickle cell disease works by reactivating fetal hemoglobin, and how?",
+      "Casgevy was the first CRISPR medicine approved by the FDA. What disease does it treat and how does it work?",
     options: [
-      "Zolgensma — it replaces the sickle hemoglobin gene with a corrected copy via AAV delivery",
-      "Casgevy (exa-cel) — it edits the BCL11A enhancer in patient hematopoietic stem cells to reactivate fetal hemoglobin (HbF)",
-      "Luxturna — it delivers CRISPR machinery directly into red blood cells in the bloodstream",
-      "Hemgenix — it uses base editing to directly correct the HbS point mutation in beta-globin",
+      "It treats type 1 diabetes by repairing insulin-producing cells in the pancreas",
+      "It treats sickle cell disease by editing bone marrow stem cells to turn on a backup haemoglobin that works perfectly",
+      "It treats lung cancer by deleting tumour-promoting genes",
+      "It treats HIV by preventing the virus from entering T cells",
     ],
     correctIndex: 1,
     explanation:
-      "Casgevy (exagamglogene autotemcel), FDA-approved December 2023, is the world's first approved CRISPR medicine. Here's the beautiful logic: people with sickle cell have broken adult hemoglobin (HbS), but during fetal development everyone makes fetal hemoglobin (HbF) that works perfectly. After birth, a transcription factor called BCL11A switches HbF off. Casgevy uses CRISPR to disrupt the BCL11A enhancer in a patient's own hematopoietic stem cells (drawn from the bone marrow, edited ex vivo, then infused back after conditioning). HbF turns back on and compensates for HbS. In clinical trials, 29 of 29 patients were free of vaso-occlusive crises for at least 12 months. That's a dramatic result for a disease that had no cure.",
+      "In December 2023, the FDA approved Casgevy — the world's first CRISPR medicine, and what a story it is! Here's the beautiful logic behind it: people with sickle cell disease have broken adult haemoglobin, but as babies, everyone makes fetal haemoglobin (HbF) that works perfectly. After birth, a molecular switch called BCL11A turns off HbF production. Casgevy uses CRISPR to disrupt that switch in the patient's own bone marrow stem cells — the stem cells are taken out, edited in the lab, then given back to the patient. The fetal haemoglobin comes back on and does the job the adult haemoglobin can't do. In clinical trials, 29 out of 29 patients were completely free of painful crises for over a year. For a disease that had no cure, this is remarkable.",
     topic: "crispr",
   },
   {
     id: "cr8",
     question:
-      "What delivery method is most commonly used for CRISPR in current clinical trials, and what are its advantages?",
+      "What are lipid nanoparticles and why are they useful for delivering CRISPR into cells?",
     options: [
-      "Adeno-associated virus (AAV) — unlimited payload capacity and permanent integration",
-      "Lipid nanoparticles (LNPs) — can deliver mRNA or RNP cargo, non-viral, transient expression reduces off-target risk",
-      "Retrovirus — random integration provides permanent editing without need for nuclear localization",
-      "Microinjection — most efficient method for in vivo tissue delivery",
+      "They are tiny fat bubbles that protect and carry CRISPR components into cells without needing a virus",
+      "They are protein capsules that permanently integrate CRISPR into the genome",
+      "They are metal particles that attract CRISPR to specific cell types using magnets",
+      "They are sugar-coated viruses that carry CRISPR to the liver only",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation:
-      "Lipid nanoparticles have become the dominant delivery platform for many CRISPR clinical applications — the same technology that delivered mRNA COVID vaccines. LNPs can package CRISPR as mRNA (Cas9 mRNA + guide RNA) or as ribonucleoprotein (RNP — pre-assembled Cas9 + guide). Because the cargo doesn't integrate into the genome, expression is transient: Cas9 acts, edits, and degrades. That actually reduces off-target risk since the editing machinery isn't sitting around for weeks. AAV is still used widely for delivery to specific tissues (eye, liver, muscle) but has a 4.7 kb payload limit that constrains larger Cas proteins. For ex vivo editing (editing cells outside the body), electroporation of RNPs is the most efficient method.",
+      "Here's something interesting — the same technology that delivered mRNA COVID vaccines is now used to deliver CRISPR! Lipid nanoparticles are tiny fat spheres, a bit like microscopic soap bubbles, that can wrap around and protect the CRISPR machinery (the guide RNA and Cas9 instructions). When these bubbles reach a cell, they fuse with the cell membrane and release their cargo inside. Because the CRISPR doesn't get permanently installed in the genome — it arrives, does its job, and then gets broken down — the risk of the editing machinery causing problems long-term is much lower. This 'hit and run' approach makes lipid nanoparticles one of the safest delivery methods available.",
     topic: "crispr",
   },
   {
     id: "cr9",
     question:
-      "What are off-target effects in CRISPR, and how are researchers addressing them?",
+      "What are off-target effects and why do scientists work hard to minimise them?",
     options: [
-      "Off-target effects occur when guide RNA degrades before reaching the nucleus",
-      "Cas9 cuts DNA at unintended sites with sequences similar to the guide — addressed with high-fidelity Cas9 variants, better guide design, and whole-genome sequencing",
-      "Off-target effects refer to immune reactions against the Cas9 protein in patients",
-      "They occur when CRISPR edits only one allele instead of both copies of the target gene",
+      "Off-target effects happen when CRISPR edits the wrong person's cells",
+      "Cas9 can sometimes cut DNA at the wrong location if the guide RNA partially matches a different part of the genome — which could accidentally damage an important gene",
+      "Off-target effects refer to CRISPR accidentally editing RNA instead of DNA",
+      "They happen when a patient's immune system destroys the CRISPR components before they work",
     ],
     correctIndex: 1,
     explanation:
-      "Cas9 tolerates mismatches between the guide RNA and DNA — especially near the 5' end of the guide (far from the PAM). This means there may be other genomic sites with similar enough sequences that Cas9 cuts there too. In a therapeutic context, an off-target cut in a tumor suppressor could be dangerous. Researchers are addressing this on multiple fronts: computational tools like Cas-OFFinder predict likely off-target sites so they can be assessed by sequencing; high-fidelity Cas9 variants (eSpCas9, HiFi Cas9, evoCas9) have mutations that make the protein more 'demanding' — it requires a tighter match before committing to cut; and shorter guides (17-18 nt instead of 20) can improve specificity. Whole-genome sequencing of edited cells before clinical use is now standard practice in gene therapy programs.",
+      "Think of it this way: you're searching a book for one specific sentence, but sometimes similar sentences in different chapters could be mistaken for the one you want. Cas9 is similar — it's very precise but not perfect. If the guide RNA matches another spot in the genome even slightly, Cas9 might cut there too. In a medical treatment, accidentally cutting near a tumour suppressor gene could be dangerous. Scientists tackle this in several clever ways: they design guides that match the target as specifically as possible, they use 'high-fidelity' Cas9 versions that are pickier about matching, and they sequence the entire genome of edited cells before any clinical use to make sure nothing unexpected was cut. The field is getting safer all the time.",
     topic: "crispr",
   },
   {
     id: "cr10",
     question:
-      "What ethical distinction separates somatic cell CRISPR editing from germline CRISPR editing?",
+      "Why is editing genes in a living patient considered very different from editing genes in an embryo?",
     options: [
-      "Somatic editing is banned globally; germline editing is permitted under medical supervision",
-      "Somatic edits affect only one patient and are not inherited; germline edits (in embryos/gametes) are heritable by all future descendants",
-      "There is no ethical distinction — both types require the same regulatory oversight globally",
-      "Germline editing only affects mitochondrial genes, so it has minimal hereditary consequences",
+      "Editing a patient is more expensive, which is the main ethical concern",
+      "Editing a patient's body cells only affects that one person; editing an embryo changes genes that will be passed to every future child and grandchild — without their consent",
+      "There is no ethical difference — both types of editing are equally controversial",
+      "Embryo editing is only controversial because the technology is less reliable",
     ],
     correctIndex: 1,
     explanation:
-      "This is the most important ethical question in all of biotechnology right now. Somatic gene editing — modifying the cells of a living person — affects only that individual. The edit stops with them. This is why therapies like Casgevy are medically and ethically permissible: one patient, one treatment, no effect on future generations. Germline editing — modifying eggs, sperm, or early embryos — is fundamentally different. Those edits get inherited. The children and grandchildren of the edited person carry them forever without any possibility of consent. The 2018 case of He Jiankui, who created genome-edited babies in China, shocked the world precisely because he crossed this line without scientific consensus, without proper consent, and with an unjustified medical rationale. He was convicted and imprisoned. The WHO, National Academies, and virtually every scientific body agrees: germline editing must not proceed clinically until safety, efficacy, and governance frameworks are firmly established.",
+      "This is one of the most important conversations happening in science right now. When doctors use CRISPR to treat a patient — like Casgevy for sickle cell disease — they're changing only that patient's cells. Those changes stay with that person and don't get passed on. That's called somatic editing, and it's medically and ethically accepted. But editing an embryo's genes is completely different — those changes get copied into every single cell of the resulting child, and into their children, and their children's children, forever. In 2018, a scientist named He Jiankui created CRISPR-edited babies without proper consent or safety evidence. The scientific world was appalled. He was imprisoned. The reason everyone reacted so strongly is that changing heritable genes affects future generations who never agreed to it. Scientists broadly agree: germline editing must wait until the science is much better understood and global governance frameworks are in place.",
     topic: "crispr",
   },
 ];
@@ -214,22 +214,22 @@ const STEPS: { id: MechanismStep; label: string; desc: string }[] = [
   {
     id: "scan",
     label: "1 · Guide RNA Scanning",
-    desc: "The guide RNA (sgRNA) piggybacks on Cas9 and slides along the DNA double helix, hunting for a 20-letter sequence that matches its own — while simultaneously checking for the PAM motif (NGG). It's checking millions of base pairs fast, like a barcode scanner sweeping a crowded shelf.",
+    desc: "Think of the guide RNA as a tiny search query. It carries a 20-letter sequence that matches your target gene, and it slides along the DNA looking for that exact match — like scrolling through a very long document using Ctrl+F. Cas9 travels with it, checking for a short landing signal called PAM (the letters NGG) to confirm it's found the right spot.",
   },
   {
     id: "bind",
-    label: "2 · Cas9 Binding & R-loop",
-    desc: "Found it! Cas9 unzips the double helix at the target site, the guide RNA hybridizes to the complementary strand (forming an R-loop), and the protein locks into place. Both cutting blades — HNH and RuvC — rotate into their active conformations. The complex is now primed.",
+    label: "2 · Cas9 Binds to DNA",
+    desc: "Match found! Cas9 grips the DNA, peels the two strands apart at the target site, and the guide RNA hooks onto one strand. The whole complex locks into place like a key fitting a lock. Cas9's two cutting arms — called HNH and RuvC — slowly rotate into their ready position. The system is now primed and ready to cut.",
   },
   {
     id: "cut",
-    label: "3 · Double-Strand Break",
-    desc: "Both nuclease domains fire simultaneously — HNH snips the strand complementary to the guide, RuvC snips the other. The result: a clean blunt-ended double-strand break exactly 3 bp upstream of the PAM. The DNA is severed in two. The cell's damage sensors go off immediately.",
+    label: "3 · The Cut",
+    desc: "Cas9 fires both cutting arms at the same time — one cuts each strand of the DNA double helix. The result is a complete break through both strands, right where you aimed. It's like snipping a rope in two. The cell immediately detects the broken DNA and sends repair signals — which is where scientists can step in and guide what happens next.",
   },
   {
     id: "repair",
     label: "4 · DNA Repair Choice",
-    desc: "The cell scrambles to fix the break. NHEJ glues ends back fast but often drops/adds bases — creating indels that disrupt the gene (knockout). HDR, if you supply a repair template, copies in your exact sequence change (knock-in). MMEJ creates predictable deletions using short microhomologies flanking the break.",
+    desc: "The cell has two main ways to fix the break. NHEJ is the fast, emergency repair — it glues the ends back together quickly, but it's sloppy and often deletes or adds a few letters, which breaks the gene. Scientists use this on purpose to disable genes. HDR is the precise repair — if you provide a DNA template with the correct sequence, the cell copies it in exactly. This is how you fix a mutation.",
   },
 ];
 
@@ -633,52 +633,52 @@ function CRISPRDiagram() {
 // ── Explanation paragraphs ─────────────────────────────────────────────────────
 const EXPLANATIONS = [
   {
-    title: "The Surprising Origin: Bacterial Self-Defense",
+    title: "Where CRISPR Came From — A Bacterial Secret Weapon",
     anchorId: "crispr-origin",
     color: TEAL,
-    text: "CRISPR didn't start in a biotech lab — it started in bacteria's ongoing war against viruses. Francisco Mojica, a Spanish microbiologist, noticed something odd in the 1990s: bacteria had repetitive sequences interspersed with unique spacers in their genomes. By the early 2000s, he'd pieced together what they were: each spacer was a genetic 'mugshot' of a virus that had previously attacked the bacterium. When a new viral infection came, the bacterium transcribed these spacers into small RNA molecules and used them — along with Cas proteins — to identify and destroy the viral DNA. It was adaptive immunity, bacterial-style, operating purely through molecular recognition. Yoshizumi Ishino had actually spotted the sequences first in 1987 without knowing what they were. It took Mojica's systematic work to realize their function. Then in 2012, Jennifer Doudna and Emmanuelle Charpentier published their landmark paper showing the system could be reprogrammed to cut any DNA sequence by simply changing 20 letters of the guide RNA. The Nobel Prize in Chemistry followed in 2020 — the fastest-ever translation from basic discovery to prize recognition.",
+    text: "CRISPR didn't start in a high-tech laboratory. It was hiding inside bacteria for billions of years before scientists even noticed it was there. Here's the story: bacteria don't have an immune system like ours — they can't make antibodies or send in white blood cells. But they do have CRISPR. Every time a virus attacked a bacterium and the bacterium survived, it stored a tiny piece of that virus's DNA as a 'wanted poster.' If the same virus came back, the bacterium could recognise it and destroy it immediately. A Spanish microbiologist named Francisco Mojica spent years in the 1990s puzzling over strange repetitive sequences in bacteria — and eventually figured out this was actually a primitive immune memory. Then in 2012, Jennifer Doudna and Emmanuelle Charpentier made a revolutionary discovery: they could reprogram this bacterial system to cut any DNA sequence they wanted, just by changing 20 letters of a guide RNA. Nature had already built the tool. Scientists just figured out how to aim it at anything. Doudna and Charpentier won the Nobel Prize in Chemistry in 2020, and CRISPR quickly became the most powerful and widely used biotechnology tool in the world.",
   },
   {
-    title: "Before CRISPR: ZFNs, TALENs, and Why They Weren't Enough",
+    title: "Why Scientists Needed CRISPR: The Tools That Came Before",
     anchorId: "crispr-history",
     color: "oklch(0.52 0.14 185)",
-    text: "Scientists had gene editing tools before CRISPR — they just weren't practical at scale. Zinc Finger Nucleases (ZFNs) used engineered zinc finger protein domains to recognize specific DNA sequences, fused to a FokI nuclease that cut DNA when two ZFN units dimerized. TALENs (Transcription Activator-Like Effector Nucleases) were similar but used a different protein scaffold for DNA recognition and were slightly easier to design. Both worked. The problem was engineering: for every new target gene, you had to design, make, and validate an entirely new protein. That took months of specialized work and cost thousands of dollars per target. Multiplexing — editing multiple genes at once — was essentially impossible. Then CRISPR arrived and made the recognition element out of RNA, not protein. To target a new sequence, you just order a synthetic 20-nucleotide oligonucleotide. Designing a new guide RNA takes an afternoon; a new ZFN pair took a semester. That difference in accessibility is why CRISPR transformed the field almost overnight and why labs that had never done gene editing before could suddenly deploy it within months.",
+    text: "Before CRISPR, scientists could edit genes — but it was painfully slow and expensive. Tools called Zinc Finger Nucleases (ZFNs) and TALENs did the same basic job. The problem was that for every new gene you wanted to edit, you had to design and build an entirely new custom protein from scratch. That could take months of specialised lab work and cost between $5,000 and $20,000 per target. Editing two genes at once was nearly impossible. Then CRISPR arrived and changed everything. The key difference is clever: CRISPR uses RNA to find its target, not protein. RNA is easy and cheap to make. To aim at a new gene, you just order a new 20-letter RNA sequence — it takes an afternoon and costs about $50. Suddenly, a scientist could edit ten different genes in one experiment. A lab that had never done gene editing before could learn the technique in a couple of weeks. CRISPR didn't just improve gene editing — it made it accessible to everyone. That's why it transformed biology so rapidly.",
   },
   {
-    title: "The CRISPR-Cas9 Mechanism in Molecular Detail",
+    title: "How CRISPR-Cas9 Actually Works, Step by Step",
     anchorId: "crispr-cas9",
     color: "oklch(0.52 0.14 160)",
-    text: "Let's trace exactly what happens when CRISPR-Cas9 edits a gene. You start by designing a single guide RNA (sgRNA) — a 100-nucleotide RNA that combines the CRISPR RNA (crRNA, containing your 20-nt target sequence) and the trans-activating crRNA (tracrRNA, which anchors to Cas9). This sgRNA and Cas9 protein together form a ribonucleoprotein (RNP) complex. Inside the cell, the complex diffuses into the nucleus and begins scanning. Cas9 doesn't read every base: it first checks for PAM sequences (NGG for SpCas9) on the non-template strand. Finding one, it unwinds a few base pairs and checks whether the adjacent ~20 nucleotides match the guide through Watson-Crick base pairing — a process called R-loop formation. If the match is sufficient (tolerating up to ~5 mismatches, especially at the PAM-distal end), the HNH domain cleaves the strand complementary to the guide and the RuvC domain cleaves the other strand simultaneously. The cut is blunt-ended, precisely 3 bp upstream of the PAM. The entire recognition-and-cut process, once the PAM is found, happens in seconds. The cell senses the double-strand break within milliseconds and begins mobilizing repair machinery.",
+    text: "CRISPR is basically molecular scissors with a built-in GPS system. Let's walk through exactly what happens inside a cell. First, you design a short piece of RNA called a guide RNA. About 20 of its letters match the DNA sequence you want to cut — this is the 'address.' You load this guide RNA into the Cas9 protein, and the two form a team. Inside the cell, this team enters the nucleus and starts scanning the DNA. Cas9 is looking for a short landing marker called a PAM sequence — for the most common version, this is just the letters 'NGG.' When it finds one, it unzips the DNA slightly and checks: do the nearby 20 letters match the guide RNA? If yes — cut. Cas9 fires both of its cutting blades at the same time, one for each DNA strand. The result is a clean break through the entire double helix. The whole process, from finding the PAM to making the cut, happens in seconds. Right away, the cell's repair systems kick in — and this is the moment scientists can steer things toward disrupting a gene or precisely fixing one.",
   },
   {
-    title: "DNA Repair After Cutting: NHEJ, HDR, and MMEJ",
+    title: "What Happens After the Cut: NHEJ, HDR, and Repair Choices",
     anchorId: "crispr-repair",
     color: "oklch(0.52 0.14 172)",
-    text: "A double-strand break is among the most dangerous forms of DNA damage — left unrepaired, it can cause chromosomal rearrangements. Cells have three main repair responses. Non-Homologous End Joining (NHEJ) is the default path: the Ku70/Ku80 complex binds both broken ends, recruits DNA-PKcs to hold them together, and ligates them back. It's fast — within minutes — but the resection of overhangs and gap-filling frequently introduces insertions or deletions (indels) of 1-50 bp. If an indel falls within a coding sequence and disrupts the reading frame, it creates a premature stop codon and functionally destroys the protein. This is how researchers achieve gene knockouts. Homology-Directed Repair (HDR) uses a homologous template — either the sister chromatid or an exogenously supplied donor DNA with ~50-500 bp homology arms flanking the desired change. The cell uses the template as a guide for accurate repair, copying in whatever sequence you placed between the homology arms. HDR only operates during S and G2 phases (when sister chromatids are available), which limits efficiency in post-mitotic cells. Microhomology-Mediated End Joining (MMEJ) kicks in when there are 5-25 bp microhomologous sequences near the break ends — it creates predictable deletions but without a template, making it useful for programmable frameshift approaches.",
+    text: "When DNA breaks completely, a cell treats it like an emergency. It needs to fix both strands immediately or risk losing an entire chromosome. Here's the fascinating part: cells have more than one repair strategy, and scientists can take advantage of which one gets used. The first is called NHEJ — Non-Homologous End Joining. Picture a panicked repair crew grabbing the two broken ends and taping them back together as fast as possible. They're quick, but careless — they often drop or add a few letters in the process. These tiny errors (called indels) scramble the gene's instructions and effectively break it. This is actually useful when researchers want to knock out a gene on purpose. The second option is called HDR — Homology-Directed Repair. This is like giving the cell a perfect blueprint to copy from. If scientists provide a repair template alongside the CRISPR machinery, the cell can use it to make an exact, intentional change — like fixing the one misspelled letter that causes sickle cell disease. The catch: HDR only works well in actively dividing cells, so it's harder to use in the brain or heart muscle. Scientists choose between these options depending on whether they want to disrupt a gene or correct it.",
   },
   {
-    title: "Beyond Cas9: A Whole Family of CRISPR Tools",
+    title: "The CRISPR Toolbox: More Than Just Cas9",
     anchorId: "crispr-base-prime-editing",
     color: "oklch(0.55 0.14 142)",
-    text: "CRISPR-Cas9 is the most famous tool, but the CRISPR family is diverse. Cas12a (Cpf1) recognizes a T-rich PAM (TTTV) on the 5' side, processes its own crRNA without needing tracrRNA, and cuts in a staggered fashion leaving 5-nucleotide 5' overhangs — useful for directional insertions. Its smaller size and collateral single-stranded DNA cleavage activity have made it the workhorse for DETECTR-based diagnostics. Cas13 is the RNA-cutter — it targets RNA rather than DNA, making it ideal for transcriptome editing and for SHERLOCK diagnostics. When Cas13 binds its target RNA, it unleashes non-specific RNase activity that can cleave fluorescent reporter RNAs as a readout signal — sensitive enough to detect attomolar concentrations of pathogen RNA. Base editors take a quieter approach: instead of cutting, cytosine base editors (CBEs) fuse a deaminase enzyme to nCas9 and convert C→T in a small editing window, while adenine base editors (ABEs) convert A→G using an evolved tRNA adenosine deaminase. No double-strand break, no donor template. Prime editors add a reverse transcriptase to nCas9 and encode the desired edit in the pegRNA's extension, writing new sequence directly into the genome like a molecular word-processor. Each tool has its optimal use case, and researchers now choose among them depending on what the editing task requires.",
+    text: "Cas9 gets all the headlines, but it's only one tool in a growing CRISPR toolbox. Cas12a is another CRISPR protein that scientists love for different situations — it needs a simpler guide RNA, uses a different landing marker (TTTV instead of NGG), and cuts in a staggered way that's helpful for inserting new DNA. Cas12a has a remarkable bonus trick: after it cuts its target, it starts cutting any nearby single-stranded DNA. Scientists have turned this into a powerful disease detection test — DETECTR can identify COVID-19, Zika, or dengue viruses within minutes. Cas13 is even more unusual: it targets RNA instead of DNA, which lets scientists adjust how a gene is being used without permanently changing the genetic code. Then there are base editors — tools that don't cut the DNA at all. Instead, they act like a tiny chemical eraser, swapping one DNA letter for another. Change a single C to a T without making any cuts. And prime editing is the newest advance: it can insert, delete, or change any small sequence using a self-contained editing system — like having a miniature find-and-replace tool for the genome. Each tool has its strengths, and modern scientists pick the right one for each specific job.",
   },
   {
-    title: "CRISPR in the Clinic: Real Approvals, Real Patients",
+    title: "CRISPR as Medicine: From Lab to Pharmacy",
     anchorId: "crispr-applications",
     color: "oklch(0.52 0.14 195)",
-    text: "The decade from 2012 to 2022 was proof-of-concept. Then 2023 happened, and CRISPR became real medicine. In December 2023, the FDA approved two CRISPR-based therapies for sickle cell disease on the same day — Casgevy (Vertex/CRISPR Therapeutics) and Lyfgenia (bluebird bio). Casgevy uses CRISPR to disrupt the BCL11A erythroid enhancer, reactivating fetal hemoglobin. Lyfgenia uses a gene-addition approach via lentiviral vector. In clinical trials, most patients receiving Casgevy were free of painful vaso-occlusive crises — the most debilitating feature of the disease — for at least a year. In cancer, CRISPR-edited CAR-T cells are being tested in trials at multiple institutions. Researchers knock out the T cell receptor (to reduce rejection in allogeneic cells), PD-1 (to improve persistence), and TRAC locus, while inserting the chimeric antigen receptor targeting CD19 or BCMA. The idea is to make 'off-the-shelf' CAR-T cells from healthy donor T cells rather than a patient's own exhausted cells. For HIV, CRISPR is being used in preclinical studies to excise latent proviral HIV from infected CD4+ cells — targeting the long terminal repeats that flank the integrated viral genome.",
+    text: "For years, CRISPR was mainly a research tool — incredibly powerful in the lab, but not yet a real medicine. That changed in December 2023 when the FDA approved Casgevy, the world's first CRISPR-based therapy. It treats sickle cell disease using a beautifully logical approach. People with sickle cell have broken adult haemoglobin — but as babies, everyone makes a different, fully working version called fetal haemoglobin. After birth, a molecular switch turns it off. Casgevy uses CRISPR to break that switch in the patient's own bone marrow stem cells. The cells are removed from the patient, edited in the lab, then returned to the body. Fetal haemoglobin comes back on and does the job the adult version can't. In clinical trials, every single treated patient was free of sickle cell crises for at least a year. For a disease with no cure, this is extraordinary. CRISPR is also being tested in cancer treatment, where it's used to engineer patients' immune cells into powerful cancer hunters. Scientists hope to create 'off-the-shelf' immune cells that any patient could receive immediately — no waiting for personalised treatment.",
   },
   {
-    title: "CRISPR in Agriculture: Editing the Farm",
+    title: "CRISPR in Farming: Editing the Crops We Eat",
     anchorId: "crispr-agriculture",
     color: "oklch(0.50 0.14 262)",
-    text: "CRISPR's reach extends well beyond the clinic. In agriculture, the most significant advantage is that many CRISPR edits don't introduce foreign DNA — they just disrupt or modify existing genes. Regulatory bodies in several countries treat these 'null-segregant' CRISPR crops differently from transgenic GMOs. The US USDA cleared CRISPR-edited waxy corn (high-amylopectin starch), high-oleic soybeans, and disease-resistant wheat varieties without requiring GMO regulatory review. Japan approved CRISPR tomatoes with higher GABA content (claimed cardiovascular benefit) in 2021 — the first CRISPR food to reach consumers. Researchers have used CRISPR to knock out the PPO gene (polyphenol oxidase) in mushrooms, preventing browning; to disrupt the TaMLO susceptibility gene in wheat, conferring powdery mildew resistance; and to modify waxy maize starch for industrial uses. In livestock, CRISPR has produced hornless cattle (by editing the POLLED locus, eliminating the need for painful dehorning), pigs resistant to PRRS virus (worth ~$600M annually to US pork producers), and tilapia with improved cold tolerance. Gene drives — CRISPR systems that bias their own inheritance so they spread through wild populations — represent the most powerful and ethically fraught agricultural application. A self-spreading gene drive that makes female mosquitoes infertile could theoretically eliminate malaria-transmitting Anopheles gambiae from a region. That could save hundreds of thousands of lives per year. It could also unpredictably cascade through an ecosystem. This is not a simple calculation.",
+    text: "CRISPR isn't just for medicine — it's also changing what we grow and eat. One of the most interesting things about agricultural CRISPR is that many crop edits don't add any foreign DNA at all. They simply adjust genes that already exist in the plant. Several countries treat these kinds of edits differently from traditional GMOs, which can make regulatory approval faster. In 2021, Japan became the first country to approve a CRISPR food for sale in supermarkets: tomatoes with higher levels of GABA, a molecule that may support heart health. Scientists have also used CRISPR to make mushrooms that don't turn brown, wheat that resists a devastating fungus, and pigs that can survive a deadly viral disease. One of the most ambitious applications is something called a gene drive — a CRISPR system designed to spread through wild populations. A gene drive targeting malaria-carrying mosquitoes could theoretically save hundreds of thousands of lives each year. But it would spread through the entire wild population permanently, which is why scientists are very cautious and discuss the ethics thoroughly before any real-world release.",
   },
   {
-    title: "The Ethics of Rewriting the Human Germline",
+    title: "The Ethical Questions CRISPR Forces Us to Answer",
     anchorId: "crispr-ethics",
     color: "oklch(0.50 0.14 210)",
-    text: "In November 2018, a Chinese researcher named He Jiankui announced the birth of twin girls — Lulu and Nana — whose CCR5 gene had been disrupted by CRISPR in embryos before implantation. CCR5 encodes the co-receptor that HIV uses to enter T cells; people naturally lacking both copies (about 1% of Northern Europeans) have strong HIV resistance. On the surface, the goal seemed protective. In practice, it was a violation of every principle of responsible science. The girls were not at meaningful risk of HIV. The editing was performed without adequate safety evidence. Informed consent was questionable. Off-target analysis was insufficient. And most importantly — the edits are germline changes, heritable by all their future descendants, who had absolutely no say. He was convicted of 'illegal medical practice' and sentenced to three years in prison. An international scientific commission convened by the WHO and National Academies concluded that germline editing should not proceed clinically until it meets a very high bar: no reasonable alternative treatment exists, benefit is compelling, safety is demonstrated, international governance consensus is established, and ongoing oversight is guaranteed. The underlying technology continues advancing. Base editing and prime editing can now make single-nucleotide corrections in embryos with extraordinary precision. The scientific capability is racing ahead of the governance frameworks. That gap — between what is technically possible and what is societally agreed — is the defining challenge for CRISPR ethics in the coming decade.",
+    text: "CRISPR has sparked some of the most important ethical conversations in modern science. There's a clear dividing line. When doctors use CRISPR to treat a patient — like fixing a blood disorder — they're only changing that person's cells. The changes don't get passed on to their children. This is called somatic editing, and it's widely accepted because the patient can consent and the benefits are real. Editing an embryo is completely different. Any change made to an embryo's DNA gets copied into every cell of the child, and passed to their children, and their grandchildren — forever. In 2018, a scientist in China named He Jiankui used CRISPR to edit human embryos that were then implanted, resulting in the birth of three babies. He did this without adequate safety data, without genuine informed consent, and for a purpose that didn't justify the risks to those children. The scientific world reacted with near-universal condemnation. He was imprisoned for three years. The reason scientists reacted so strongly is simple: changing heritable genes affects people who haven't been born yet and never had a say in the decision. That's not just a safety question — it's a fundamental ethical question about power, consent, and the limits of science.",
   },
 ];
 
@@ -763,7 +763,7 @@ export default function CRISPRSection() {
           <SectionHeader
             topicId="crispr"
             title="Genetic Engineering & CRISPR"
-            subtitle="Bacteria invented it. Scientists borrowed it. And now we're using it to rewrite the code of life — one base pair at a time."
+            subtitle="CRISPR is basically molecular scissors — imagine being able to find a specific word in a three-billion-letter book and change just that one word. That's what this tool does, and bacteria invented it first."
           />
           <div
             className="mb-6 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold"

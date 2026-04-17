@@ -20,151 +20,151 @@ const RNA_QUIZ: QuizQuestion[] = [
   {
     id: "rna-q1",
     question:
-      "What is alternative splicing and why does it dramatically increase protein diversity?",
+      "The human genome only has about 20,000 protein-coding genes, yet our bodies make far more than 20,000 different proteins. How is this possible?",
     options: [
-      "Alternative splicing is a mutation that creates new exons spontaneously",
-      "Alternative splicing is where different combinations of exons from a single pre-mRNA are joined together, allowing one gene to encode multiple different protein isoforms",
-      "Alternative splicing is the degradation of mRNAs that have incorrect stop codons",
-      "Alternative splicing is the addition of multiple poly-A tails to stabilize an mRNA",
+      "The same gene can be transcribed multiple times simultaneously, producing extra proteins",
+      "Alternative splicing — where different combinations of exons from the same pre-mRNA are joined together — allows one gene to produce many different protein versions (isoforms)",
+      "Mutations accumulate in each cell, gradually creating slightly different versions of each gene",
+      "Most proteins are actually imported from food, not made by genes",
     ],
     correctIndex: 1,
     explanation:
-      "This is one of the most mind-expanding discoveries in genomics. The human genome has ~20,000 protein-coding genes — far fewer than expected for our complexity. The answer to this paradox is largely alternative splicing. When the spliceosome processes a pre-mRNA, different exons can be included or excluded in different cell types or conditions, generating multiple distinct mRNAs (and thus multiple proteins) from a single gene. The DSCAM gene in Drosophila, for example, can theoretically generate over 38,000 different protein isoforms through alternative splicing — more than the entire fly genome has genes! In humans, ~95% of multi-exon genes undergo alternative splicing. Errors in splicing regulation are implicated in many diseases, including spinal muscular atrophy (SMN2 exon 7 skipping) and several cancers.",
+      "This is one of the most mind-expanding discoveries in genomics. We expected humans to have hundreds of thousands of genes, because we have enormous complexity. When we found only ~20,000, it was a shock. The answer to this paradox is largely alternative splicing. When a gene is transcribed, the pre-mRNA includes both exons (protein-coding parts) and introns (non-coding spacers). The spliceosome removes the introns — but in different cell types or conditions, it can include or exclude different exons, creating different versions of the mRNA and therefore different proteins from the same gene. The DSCAM gene in fruit flies can theoretically generate over 38,000 different protein isoforms — more than the entire fly genome has genes!",
     topic: "rna",
   },
   {
     id: "rna-q2",
     question:
-      "What is the wobble hypothesis in tRNA decoding, and why is it important?",
+      "There are 61 codons that code for amino acids, but only about 45 tRNA molecules in most cells. How can 45 tRNAs read all 61 codons?",
     options: [
-      "Wobble refers to the physical oscillation of tRNA in the ribosome A-site",
-      "Wobble refers to flexible base pairing at the third codon position, allowing a single tRNA anticodon to recognize multiple codons that differ only at the third position — reducing the number of tRNAs needed",
-      "Wobble is the process by which aminoacyl-tRNA synthetases identify the correct tRNA",
-      "Wobble describes the conformational change in the ribosome during translocation",
+      "Each tRNA can read any codon — the amino acid attached to it changes depending on the codon",
+      "The wobble hypothesis: flexible base pairing at the third codon position allows some tRNAs to recognise multiple codons that differ only in the last base",
+      "The ribosome reads codons in pairs, so only 31 tRNAs are needed",
+      "The remaining 16 codons are simply ignored during translation",
     ],
     correctIndex: 1,
     explanation:
-      "Francis Crick proposed the wobble hypothesis in 1966 to explain a puzzle: there are 61 sense codons but only ~45 tRNA anticodons in most organisms. How can 45 tRNAs decode 61 codons? The answer is that the pairing at the third codon position (the 'wobble position') is flexible — a G in the anticodon can pair with U or C; inosine (a modified base found in many tRNAs at position 34) can pair with U, C, or A. This non-Watson-Crick pairing means some tRNAs can recognize 2–4 different codons. The genetic code is degenerate precisely because of wobble — many amino acids are encoded by multiple codons differing only at position 3. This degeneracy also buffers against silent mutations.",
+      "Francis Crick proposed the wobble hypothesis in 1966 to solve this puzzle. Normal base pairing is strict: A pairs with U, G pairs with C. But at the third position of a codon (the 'wobble position'), pairing is more flexible. A modified base called inosine in many tRNA anticodons can pair with U, C, or A. G in the anticodon can pair with U or C. This flexibility means some tRNAs can read multiple codons that code for the same amino acid — which is exactly why the genetic code is 'degenerate' (redundant). Many amino acids have 2, 4, or even 6 codons. This degeneracy is actually protective: a mutation in the wobble position of a codon often doesn't change the amino acid, so it causes no harm.",
     topic: "rna",
   },
   {
     id: "rna-q3",
     question:
-      "How do miRNAs regulate gene expression, and why are they dysregulated in cancer?",
+      "MicroRNAs (miRNAs) are tiny molecules that can silence hundreds of genes at once. How do they work?",
     options: [
-      "miRNAs are catalytic RNAs that directly degrade DNA in the nucleus to silence genes",
-      "miRNAs are ~22 nt RNAs that, loaded into the RISC complex, find complementary sequences in target mRNAs and either block their translation or trigger their degradation — one miRNA can silence hundreds of targets",
-      "miRNAs are the same as siRNAs and function only in plants",
-      "miRNAs are structural components of the spliceosome with no role in gene silencing",
+      "miRNAs directly cut genes out of chromosomes to silence them permanently",
+      "miRNAs (~22 nucleotides long) load into a protein complex called RISC, which then scans mRNAs for partially matching sequences. When a match is found, the mRNA is blocked from being translated or is degraded",
+      "miRNAs are identical to hormones and work by binding to receptors on the cell surface",
+      "miRNAs only function in plants — animal cells use a different silencing mechanism",
     ],
     correctIndex: 1,
     explanation:
-      "miRNAs are tiny but enormously influential. They're transcribed as primary miRNAs (pri-miRNAs), cleaved by Drosha/DGCR8 in the nucleus into pre-miRNA hairpins (~70 nt), exported by Exportin-5, and cleaved by Dicer into mature ~22 nt duplexes. One strand loads into Argonaute (AGO) to form the RISC complex. RISC scans 3' UTRs of mRNAs for complementary sequences — partial complementarity (common in animals) leads to translational repression and mRNA destabilization. A single miRNA can regulate hundreds of genes. miRNA-21 is overexpressed in many cancers and suppresses multiple tumor suppressors. The therapeutic potential of miRNA mimics and anti-miRNA oligonucleotides is a major research frontier.",
+      "miRNAs are genuinely tiny — only about 22 nucleotides — but their impact is enormous. They're made in the cell, processed by enzymes called Drosha and Dicer, then loaded into a protein called Argonaute to form the RISC complex. RISC then scans mRNAs for sequences that partially match the miRNA, and when it finds them in the 3' end (UTR) of the mRNA, it either blocks the ribosome from reading the mRNA or triggers the mRNA to be degraded. One miRNA can regulate hundreds of different genes. Here's the cancer connection: miR-21 is overexpressed in most human cancers and suppresses multiple tumour suppressor genes — it's like the security system getting hacked and the guard dogs called off.",
     topic: "rna",
   },
   {
     id: "rna-q4",
     question:
-      "What is the function of the 5' cap and poly-A tail on eukaryotic mRNA?",
+      "Eukaryotic mRNAs have a special 'cap' on one end and a 'tail' on the other. What are these modifications and why do they matter?",
     options: [
-      "The 5' cap provides the start codon; the poly-A tail provides the stop codon",
-      "The 5' 7-methylguanosine cap protects mRNA from 5' exonucleases and recruits the ribosome; the 3' poly-A tail protects from 3' degradation, aids nuclear export, and enhances translation efficiency",
-      "Both the cap and tail are removed before the mRNA is translated",
-      "The 5' cap is added in the cytoplasm; the poly-A tail is added in the nucleus before transcription",
+      "The 5' cap is the start codon; the 3' poly-A tail is the stop codon",
+      "The 5' 7-methylguanosine cap protects mRNA from degradation and helps recruit the ribosome; the 3' poly-A tail (about 250 adenines) stabilises the mRNA, helps it exit the nucleus, and enhances translation efficiency",
+      "Both the cap and the tail are removed before translation begins",
+      "The 5' cap is added in the cytoplasm after the mRNA leaves the nucleus; the tail is added during transcription",
     ],
     correctIndex: 1,
     explanation:
-      "These two modifications are like protective bookends that dramatically extend mRNA life and functionality. The 5' cap is an unusual 7-methylguanosine linked via a 5'–5' triphosphate bridge — added co-transcriptionally by capping enzymes. Cap-binding protein (eIF4E) recognizes it during cap-dependent translation initiation, and it blocks 5'→3' exonucleases. The poly-A tail (~250 adenines) is bound by poly(A) binding protein (PABP), which interacts with eIF4E at the cap to circularize the mRNA, promoting ribosome recycling and efficient translation. Different mRNAs have dramatically different half-lives: some are degraded in minutes (rapid-response genes), others last days.",
+      "Think of the 5' cap and poly-A tail as protective bookends that keep the mRNA safe and working. The 5' cap is an unusual nucleotide (7-methylguanosine) added to the very start of the mRNA while it's still being made. It blocks degrading enzymes from chewing into the mRNA from the 5' end, and it's also the recognition signal that tells ribosomes 'start here.' The poly-A tail (~250 adenines) is added to the other end and is bound by poly(A)-binding proteins. These proteins interact with the cap end, effectively circularising the mRNA — which helps ribosomes that finish translating to quickly loop back and start again. Different mRNAs have dramatically different lifespans: cytokine mRNAs (for immune signals) are destroyed in minutes; some mRNAs in eggs last for days.",
     topic: "rna",
   },
   {
     id: "rna-q5",
     question:
-      "What are snRNAs and how do they drive pre-mRNA splicing in the spliceosome?",
+      "The spliceosome removes introns from pre-mRNA. What is it actually made of, and what makes it remarkable?",
     options: [
-      "snRNAs are structural RNAs found only in prokaryotes that replace ribosomes",
-      "snRNAs combine with proteins to form snRNPs (U1, U2, U4, U5, U6), which assemble on pre-mRNA splice sites and catalyze two transesterification reactions to remove introns and join exons",
-      "snRNAs are identical to miRNAs but are 40–60 nt instead of 22 nt",
-      "snRNAs serve only a structural role in the spliceosome and play no part in catalysis",
+      "The spliceosome is a protein-only complex — RNA plays no catalytic role",
+      "The spliceosome is made of five snRNA molecules (U1, U2, U4, U5, U6) combined with proteins to form snRNPs. Remarkably, the actual cutting and joining chemistry is performed by the RNA (U6 snRNA), making the spliceosome a ribozyme",
+      "The spliceosome is a single enzyme, not a complex — it's similar to DNA polymerase",
+      "snRNAs in the spliceosome only provide structure; all catalysis is done by the protein components",
     ],
     correctIndex: 1,
     explanation:
-      "The spliceosome is an astonishing molecular machine — roughly the size of a ribosome, assembled de novo on every intron. U1 snRNP recognizes the 5' splice site; U2 snRNP recognizes the branch point adenosine; U4/U6 and U5 join to form the active spliceosome. Two transesterification reactions occur: first, the 2'-OH of the branch point A attacks the 5' splice site, creating a lariat intermediate; then, the free 3'-OH of the upstream exon attacks the 3' splice site, joining the exons and releasing the lariat. Remarkably, the splicing chemistry may be catalyzed by U6 snRNA itself — making the spliceosome another ribozyme.",
+      "The spliceosome is one of the most complex molecular machines in the cell — roughly the same size as a ribosome, but assembled fresh on every intron it processes. Five snRNPs (U1, U2, U4, U5, U6 — each a small nuclear RNA wrapped in proteins) recognise the splice sites and branch point, assemble on the pre-mRNA, and catalyse two transesterification reactions to cut out the intron and join the exons. The remarkable part: U6 snRNA performs the actual chemistry, not the protein components. This makes the spliceosome a ribozyme — an RNA catalyst. The chemistry it performs is almost identical to that of ancient self-splicing introns, suggesting that spliceosomal introns are evolutionary descendants of those early RNA catalysts.",
     topic: "rna",
   },
   {
     id: "rna-q6",
     question:
-      "What is the ribosome's composition in bacteria vs eukaryotes, and what makes it fundamentally an RNA machine?",
+      "The ribosome is sometimes described as 'life's most ancient machine.' Why is it significant that the catalytic core of the ribosome is made of RNA, not protein?",
     options: [
-      "Bacterial ribosomes are 80S (40S + 60S); eukaryotic are 70S (30S + 50S); both use protein as the catalytic center",
-      "Bacterial ribosomes are 70S (30S + 50S); eukaryotic are 80S (40S + 60S); peptidyl transferase activity is performed by the 23S/28S rRNA — making the ribosome a ribozyme",
-      "Both bacterial and eukaryotic ribosomes are 80S and use identical ribosomal proteins for catalysis",
-      "The ribosome has no RNA catalytic activity — only proteins perform peptide bond synthesis",
+      "It's significant because RNA-based ribosomes are faster than protein-based ones would be",
+      "Bacterial ribosomes are 80S and eukaryotic are 70S — protein ribosomes would work but RNA is used for historical reasons",
+      "Because peptide bond formation — the core chemistry of protein synthesis — is catalysed by ribosomal RNA (not proteins), making the ribosome a ribozyme and providing strong evidence that RNA came before proteins in early life",
+      "Ribosomes use RNA catalysis only in simple organisms; complex organisms switched to protein catalysis",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation:
-      "This is one of biology's most profound discoveries. Bacterial ribosomes are 70S (30S small subunit with 16S rRNA + 50S large subunit with 23S and 5S rRNA). Eukaryotic ribosomes are 80S (40S with 18S rRNA + 60S with 28S, 5.8S, and 5S rRNA). The bombshell: the peptidyl transferase center — where peptide bonds are actually formed — is made entirely of RNA (23S rRNA in bacteria, 28S in eukaryotes). Proteins are present but mostly structural, not catalytic. This confirms the ribosome is a ribozyme, which is one of the strongest arguments for the RNA World hypothesis: RNA was catalyzing protein synthesis long before proteins took over most enzymatic roles.",
+      "This is one of biology's most profound discoveries. Bacterial ribosomes are 70S (a 30S small subunit and a 50S large subunit). Eukaryotic ribosomes are 80S (40S and 60S subunits). Both have RNA and protein, but when scientists mapped where peptide bonds are actually formed, they found only RNA in the active site — specifically 23S rRNA in bacteria and 28S rRNA in eukaryotes. The proteins nearby are structural, not catalytic. The ribosome is a ribozyme. This is one of the strongest arguments for the RNA World hypothesis: if RNA was already doing the chemistry of protein synthesis, then RNA preceded proteins. Every protein ever made in the history of life was assembled by an RNA machine. That's a remarkable thought.",
     topic: "rna",
   },
   {
     id: "rna-q7",
     question:
-      "What is the difference between siRNA and miRNA in the RNAi pathway?",
+      "What's the difference between siRNA and miRNA, and why does siRNA hold such promise for medicine?",
     options: [
-      "siRNA and miRNA are identical — 'siRNA' is just the name used for therapeutic applications",
-      "siRNA is typically exogenous/double-stranded and guides RISC to perfectly complementary mRNAs for cleavage; miRNA is endogenously produced and usually has partial complementarity, causing translational repression rather than cleavage",
-      "siRNA functions in the nucleus; miRNA functions only in the cytoplasm",
-      "siRNA silences genes permanently by methylating their promoters; miRNA acts only temporarily",
+      "siRNA and miRNA are the same molecule — 'siRNA' is just the name used when it's used as a drug",
+      "siRNA is typically derived from external double-stranded RNA and guides RISC to precisely cleave a matching mRNA target; miRNA is produced internally and usually causes partial silencing of many targets rather than precise cleavage of one",
+      "siRNA functions only in plant cells; miRNA functions only in animal cells",
+      "siRNA permanently silences genes by methylating their DNA promoters; miRNA only causes temporary effects",
     ],
     correctIndex: 1,
     explanation:
-      "Both siRNA and miRNA work through the RNAi pathway and the RISC complex, but they differ in origin and mechanism. siRNAs are typically double-stranded, processed by Dicer, and guide RISC to perfectly complementary target mRNAs — leading to precise mRNA cleavage by Argonaute 'slicer' activity. siRNA naturally defends against viruses and transposons (especially in plants and invertebrates). In research and therapy, synthetic siRNAs are powerful gene-knockdown tools. miRNAs have imperfect complementarity to their targets, causing translational repression and mRNA destabilization rather than precise cleavage. This partial complementarity allows one miRNA to regulate hundreds of genes subtly — functioning as a fine-tuner rather than a binary on/off switch.",
+      "Both siRNA and miRNA use the RISC complex to silence genes, but they differ in origin and precision. siRNAs come from double-stranded RNA (from viruses, transposons, or synthetic sources in the lab/clinic) and are processed by Dicer into ~21-23 nucleotide pieces. They guide RISC to precisely cleave any mRNA with a perfectly matching sequence — like a very precise molecular scissors. miRNAs have partial complementarity to their targets, causing translational repression rather than precise cleavage. The therapeutic power of siRNA: if a disease is caused by a gene producing a harmful protein, you can design an siRNA to specifically destroy that mRNA. The first FDA-approved siRNA drug, patisiran (2018), treats a rare disease called transthyretin amyloidosis by targeting the responsible mRNA in the liver. Many more are in development.",
     topic: "rna",
   },
   {
     id: "rna-q8",
     question:
-      "What is the difference between RNA Pol I, Pol II, and Pol III in eukaryotic transcription?",
+      "Cells have three different RNA polymerases (Pol I, Pol II, Pol III). Why do cells need three separate enzymes to make RNA?",
     options: [
-      "All three polymerases transcribe the same genes but are used in different cell types",
-      "RNA Pol I transcribes rRNA (28S, 18S, 5.8S) in the nucleolus; RNA Pol II transcribes all protein-coding genes and most snRNA and miRNA; RNA Pol III transcribes tRNA, 5S rRNA, and other small RNAs",
-      "RNA Pol I is in the nucleus; Pol II is in the cytoplasm; Pol III is in the mitochondria",
-      "RNA Pol III is the main polymerase; Pol I and Pol II are accessory factors",
+      "All three polymerases transcribe the same genes but are used in different parts of the cell cycle",
+      "RNA Pol I makes ribosomal RNA in the nucleolus; RNA Pol II transcribes all protein-coding genes and most regulatory RNAs; RNA Pol III makes small stable RNAs like tRNA and 5S rRNA",
+      "Pol I works in the nucleus; Pol II works in the cytoplasm; Pol III works in mitochondria",
+      "Pol III is the main polymerase; Pol I and Pol II only activate when Pol III is overwhelmed",
     ],
     correctIndex: 1,
     explanation:
-      "This division of labor is beautifully organized. RNA Pol I is dedicated to ribosomal RNA production — it transcribes the 45S rRNA precursor in the nucleolus, processed into 28S, 18S, and 5.8S rRNAs. This is the most active polymerase in rapidly growing cells, reflecting the huge demand for ribosomes. RNA Pol II transcribes all protein-coding genes plus most non-coding RNAs (snRNAs, miRNA precursors, most lncRNAs). Its large carboxy-terminal domain (CTD) serves as a platform for co-transcriptional RNA processing. RNA Pol III transcribes small, stable RNAs: all tRNAs, 5S rRNA, U6 snRNA — the 'housekeeping' RNAs needed in large quantities.",
+      "This division of labour is beautifully organised. RNA Pol I has one job: making ribosomal RNA. It transcribes the large 45S rRNA precursor in the nucleolus, which is then processed into the 28S, 18S, and 5.8S rRNAs that make up the ribosome. Rapidly growing cells have enormous, active nucleoli because they need so many ribosomes. RNA Pol II is the workhorse — it transcribes all ~20,000 protein-coding genes plus most non-coding RNAs (miRNAs, lncRNAs, snRNAs). Its large tail (the CTD) recruits the processing machinery that caps, splices, and polyadenylates the mRNA. RNA Pol III handles small, stable RNAs needed in huge quantities: all tRNAs, 5S rRNA, U6 snRNA. Three polymerases, each specialised, each regulated differently.",
     topic: "rna",
   },
   {
     id: "rna-q9",
     question:
-      "What is a riboswitch, and what makes it an extraordinary example of RNA's versatility?",
+      "Bacteria can regulate gene expression directly using RNA, without any proteins involved. What is a riboswitch and why is it fascinating?",
     options: [
-      "A riboswitch is a switch between the ribosome's two subunits during translation",
-      "A riboswitch is an RNA element in the 5' UTR of certain bacterial mRNAs that directly binds a small-molecule metabolite and changes its secondary structure to regulate transcription or translation — no protein needed",
-      "A riboswitch is a eukaryotic protein that switches ribosomes between cap-dependent and IRES-dependent translation",
-      "A riboswitch is the regulatory sequence that controls tRNA aminoacylation",
+      "A riboswitch is a physical switch on the ribosome that toggles it between active and inactive states",
+      "A riboswitch is an RNA element in the 5' UTR of some bacterial mRNAs that folds into two different shapes depending on whether a specific small molecule is bound to it — directly controlling whether the gene is expressed, with no proteins needed",
+      "A riboswitch is a eukaryotic protein that decides whether cap-dependent or IRES-based translation is used",
+      "A riboswitch controls tRNA charging by detecting the concentration of amino acids",
     ],
     correctIndex: 1,
     explanation:
-      "Riboswitches are astonishing examples of RNA doing things we didn't think RNA could do. Found mostly in bacterial mRNAs, they fold into two competing secondary structures depending on whether a specific small-molecule ligand is bound. When a metabolite (like thiamine pyrophosphate or SAM) binds the aptamer domain, it induces a conformational change that either causes premature transcription termination or sequesters the ribosome-binding site — all without a protein. It's direct RNA-based gene regulation: the mRNA itself 'senses' the concentration of its product and shuts off when that product is abundant. Another beautiful glimpse of the RNA World.",
+      "Riboswitches are one of those discoveries that make you rethink what molecules are capable of. Found in the 5' UTR (the beginning section) of certain bacterial mRNAs, a riboswitch can fold into two competing structures: one that allows the gene to be transcribed and translated, and one that shuts it down. Which structure forms depends on whether a specific small molecule — like thiamine pyrophosphate, S-adenosyl methionine, or an amino acid — is bound to it. When the metabolite concentration is high (meaning the cell has enough of the product), the riboswitch changes shape and shuts off the gene producing more. It's direct molecular feedback, with no proteins involved at all. This is thought to be a relic of the RNA World — RNA molecules that could sense their environment and regulate themselves.",
     topic: "rna",
   },
   {
     id: "rna-q10",
     question:
-      "What is XIST RNA and what role does it play in X-chromosome inactivation?",
+      "Female mammals have two X chromosomes while males have one. How do cells avoid making double the amount of X-linked proteins in females?",
     options: [
-      "XIST is a protein-coding mRNA that encodes a transcription repressor",
-      "XIST is a long non-coding RNA (lncRNA) transcribed from the X-inactivation center that spreads in cis along one X chromosome in female cells, recruiting Polycomb complexes to silence that chromosome — creating the Barr body",
-      "XIST is a microRNA that silences individual X-linked genes during development",
-      "XIST is expressed in males to activate the single X chromosome",
+      "Female cells transcribe X-linked genes at half the normal rate to compensate for having two copies",
+      "A long non-coding RNA called XIST is produced from one X chromosome and 'coats' it, recruiting protein complexes that silence almost all genes on that chromosome — creating a condensed, inactive Barr body",
+      "XIST is a microRNA that specifically degrades mRNAs produced from the second X chromosome",
+      "Males express X-linked genes at double the normal rate to compensate for having only one copy",
     ],
     correctIndex: 1,
     explanation:
-      "X-chromosome inactivation (XCI) is one of the most striking examples of epigenetic regulation and lncRNA biology. Without dosage compensation, female mammals would produce twice as much X-linked gene product as males. XIST (X-Inactive Specific Transcript) is a ~17 kb lncRNA that 'coats' the chromosome it's transcribed from in cis, recruiting Polycomb repressive complexes that add repressive H3K27me3 marks, and DNA methyltransferases that methylate CpG islands. The result is a condensed, silent Barr body. XIST is one of the strongest pieces of evidence that non-coding RNA can drive large-scale chromatin reorganization — and the mosaicism it creates is why tortoiseshell cats are almost always female.",
+      "X-chromosome inactivation is one of the most striking examples of how RNA can control large-scale chromosome organisation. XIST (X-Inactive Specific Transcript) is a ~17,000-nucleotide long non-coding RNA — much larger than most regulatory RNAs. It's transcribed from the X chromosome destined to be silenced, and it literally spreads along that chromosome, coating it. XIST then recruits a protein complex called PRC2, which adds repressive chemical marks to the histones along the entire chromosome, silencing ~1,000 genes. The result is a dense, visible condensed chromosome called the Barr body. This happens in each cell independently, which is why the two X chromosomes of a female are not the same in every cell — creating the mosaic orange-and-black pattern of tortoiseshell cats (who are almost always female).",
     topic: "rna",
   },
 ];
@@ -526,66 +526,66 @@ const PARAGRAPHS = [
   {
     id: "para-structure",
     anchorId: "rna-structure",
-    heading: "RNA vs DNA: Three Differences, Huge Consequences",
-    body: `RNA and DNA are both nucleic acid polymers built from nucleotides — but three structural differences give them entirely different cellular fates. First, RNA uses ribose (with a 2'-OH group) instead of deoxyribose. That extra hydroxyl makes RNA more reactive and less stable than DNA — perfect for a molecule that's supposed to work and then get degraded, not stick around as a permanent archive. Second, RNA uses uracil instead of thymine. Both pair with adenine, but uracil lacks thymine's methyl group. Third, RNA is typically single-stranded, not double-stranded.
+    heading: "RNA vs DNA: Three Differences That Change Everything",
+    body: `RNA and DNA are both built from nucleotides and carry genetic information, but three structural differences give them completely different roles. First, RNA uses ribose (with a 2'-OH group) instead of deoxyribose. That extra hydroxyl makes RNA more chemically reactive and less stable than DNA — which is perfect. RNA is supposed to work, deliver its message, and then get degraded. DNA is the permanent archive; RNA is the working copy. Second, RNA uses uracil instead of thymine. Both pair with adenine, but uracil lacks a methyl group — making it cheaper to synthesise for something that's temporary. Third, RNA is typically single-stranded.
 
-That single-stranded nature is not a limitation — it's an enormous opportunity. A single RNA strand can fold back on itself to form hairpin loops, stem-loops, pseudoknots, and complex tertiary structures. These aren't just passive shapes — they're functional. RNA can adopt conformations that allow it to bind small molecules (aptamers, riboswitches), catalyze reactions (ribozymes), and perform structural scaffolding functions. RNA secondary structures also regulate mRNA stability and translation efficiency. This conformational flexibility explains why RNA was likely life's original molecule — capable of both information storage and catalysis before proteins evolved to take over most enzymatic roles.`,
+Here's where it gets interesting: that single-stranded nature is not a weakness. A single RNA strand can fold back on itself and form hairpin loops, stem-loops, and elaborate three-dimensional structures. These structures aren't just decorative — they're functional. Some RNAs form precisely shaped pockets that bind specific small molecules (aptamers). Some catalyse chemical reactions (ribozymes). Some form scaffolds that organise the activity of other molecules. This structural flexibility is why RNA was almost certainly the original molecular agent of life — capable of both storing information and catalysing reactions before proteins took over most enzymatic roles.`,
   },
   {
     id: "para-mrna",
     anchorId: "rna-mrna",
-    heading: "mRNA: From Gene to Message — Every Processing Step Matters",
-    body: `In eukaryotes, the journey from gene to mature mRNA is anything but direct. RNA Polymerase II transcribes a primary transcript called pre-mRNA, and three crucial processing steps occur before it leaves the nucleus. The 5' cap (7-methylguanosine added co-transcriptionally via an unusual 5'–5' triphosphate bond) protects the mRNA from 5' exonucleases and recruits the translation machinery via eIF4E. The 3' poly-A tail (~250 adenosines added by poly(A) polymerase after recognizing the AAUAAA polyadenylation signal) stabilizes the transcript, aids nuclear export via PABP interactions, and circularizes the mRNA during translation to enhance ribosome recycling. And crucially, the spliceosome excises introns and joins exons.
+    heading: "mRNA: The Messenger That Carries Instructions to the Ribosome",
+    body: `When a gene needs to be expressed, RNA polymerase II reads the DNA and transcribes a pre-mRNA — a raw copy that needs to be processed before it can do anything useful. Three processing steps happen in the nucleus before the mature mRNA is exported to the cytoplasm. First, capping: a modified nucleotide (7-methylguanosine) is attached to the 5' end, protecting it from degradation and marking it for ribosome recognition. Second, splicing: the spliceosome removes intron sequences and joins the exon sequences together. Third, polyadenylation: about 250 adenine nucleotides are added to the 3' end, forming the poly-A tail that helps stabilise the mRNA and improve translation.
 
-Alternative splicing is arguably the most important consequence of the intron/exon architecture. The DSCAM gene in Drosophila can theoretically generate ~38,000 isoforms — more than the entire fly genome has genes. In humans, ~95% of multi-exon genes undergo alternative splicing, and this is a major reason our ~20,000 genes generate such proteome complexity. The 5' and 3' untranslated regions (UTRs) are not just passive flanking sequences — they're regulatory hotspots. The 5' UTR determines translation efficiency (secondary structures near the start codon can stall ribosomes). The 3' UTR contains regulatory elements for mRNA stability, localization, and miRNA binding sites. mRNA stability is also regulated by AU-rich elements (AREs) in unstable mRNAs like cytokine transcripts, which recruit deadenylases to rapidly shorten the poly-A tail and trigger decay.`,
+The most fascinating consequence of the intron-exon architecture is alternative splicing. By including or excluding different exons in different tissues or conditions, one gene can produce many different protein isoforms. The fruit fly gene DSCAM can theoretically generate over 38,000 different protein isoforms — more than the total number of genes in the fly genome. In humans, roughly 95% of multi-exon genes are alternatively spliced. This is a major reason 20,000 genes can produce a proteome of vastly greater complexity. The 5' and 3' untranslated regions (UTRs) flanking the coding sequence aren't passive — they contain regulatory sequences that control how efficiently the mRNA is translated, how long it survives, and where in the cell it's delivered.`,
   },
   {
     id: "para-trna",
     anchorId: "rna-trna",
-    heading: "tRNA: The Molecular Adapter That Makes the Genetic Code Work",
-    body: `Transfer RNA is the molecular adapter that bridges genetic information and protein sequence. Each tRNA is ~73–93 nucleotides long and folds into the famous cloverleaf secondary structure: an acceptor stem (ending in the universal 3'-CCA sequence where the amino acid attaches), a D-loop (containing dihydrouridine, stabilizing the molecule), an anticodon loop (containing the three nucleotides that base-pair with the mRNA codon), and a TΨC loop (interacting with the ribosome). The cloverleaf folds further into an inverted L-shape in 3D, with the anticodon at one end and the amino acid attachment site at the other.
+    heading: "tRNA: The Adapter That Connects Codons to Amino Acids",
+    body: `Transfer RNA is the molecular adapter that makes the genetic code work. Without tRNA, the ribosome would have no way to convert the three-letter codon language of mRNA into the amino acid language of proteins. Each tRNA is ~73–93 nucleotides long and folds into a cloverleaf secondary structure with four arms: the acceptor stem (ending in the universal 3'-CCA sequence where the amino acid is attached), the D-loop (containing modified bases for stability), the anticodon loop (containing the three nucleotides that base-pair with the codon), and the TΨC loop (which interacts with the ribosome). In 3D, the cloverleaf folds into an L-shape, placing the anticodon at one end and the amino acid attachment site at the other.
 
-There are 21 aminoacyl-tRNA synthetases (aaRSs) — one per standard amino acid, plus one for selenocysteine. Each aaRS charges its specific tRNA(s) in a two-step ATP-consuming reaction: first activating the amino acid as an aminoacyl-adenylate, then transferring it to the 3'-CCA end of its tRNA. The accuracy of charging is crucial — this is called the 'second genetic code' because aaRSs determine which amino acid gets linked to which codon. Most aaRSs have proofreading mechanisms to clear incorrect aminoacyl products. Crick's wobble hypothesis explains the degeneracy of the code: flexible base-pairing at the third codon position (especially via inosine in many anticodons) allows ~45 tRNA anticodons to decode all 61 sense codons. Many tRNA bases are heavily modified post-transcriptionally — over 100 modification types are known — affecting decoding accuracy, frameshifting, and tRNA stability. The most famous modification: inosine at position 34 (anticodon wobble position) from adenosine deamination by ADAT.`,
+There are 21 aminoacyl-tRNA synthetase enzymes — one for each standard amino acid. Each synthetase recognises its specific tRNA and the correct amino acid, and charges the tRNA in a reaction that costs two ATP. The accuracy of charging is critical: this is sometimes called the 'second genetic code' because it determines which amino acid gets linked to which anticodon. Most synthetases have proofreading mechanisms to clear incorrect pairings. The wobble hypothesis (Crick, 1966) explains how ~45 tRNAs can decode all 61 sense codons: the third codon position is read flexibly. A modified base called inosine at the anticodon's wobble position can pair with U, C, or A — allowing one tRNA to recognise multiple synonymous codons.`,
   },
   {
     id: "para-rrna",
     anchorId: "rna-rrna",
     heading: "rRNA: The Ancient Heart of the Ribosome",
-    body: `Ribosomal RNA makes up ~60% of the ribosome's mass and is its most functionally critical component. In bacteria, the small subunit (30S) contains 16S rRNA; the large subunit (50S) contains 23S and 5S rRNA. In eukaryotes, the small subunit (40S) has 18S rRNA; the large subunit (60S) has 28S, 5.8S, and 5S rRNA. These rRNAs fold into elaborate three-dimensional architectures that form the ribosome's core, with ribosomal proteins (54 in bacteria, ~80 in humans) filling structural roles and stabilizing the RNA scaffold.
+    body: `Ribosomal RNA makes up about 60% of the ribosome's mass and is its most functionally critical component. In bacteria, the small subunit (30S) contains 16S rRNA; the large subunit (50S) contains 23S and 5S rRNA. In eukaryotes, the small subunit (40S) has 18S rRNA; the large subunit (60S) has 28S, 5.8S, and 5S rRNA. These RNA molecules fold into elaborate three-dimensional architectures with many protein partners.
 
-Here's the revelation that transformed how we think about life: the peptidyl transferase center — where peptide bonds are actually catalyzed — is made entirely of RNA. The 23S rRNA (in bacteria) and 28S rRNA (in eukaryotes) perform this ancient chemical reaction. Proteins near the active site are structural bystanders, not catalysts. The ribosome is, at its core, a ribozyme. This is among the most compelling evidence for the RNA World hypothesis: life's most fundamental synthetic machine runs on RNA chemistry. The 16S rRNA is also an invaluable phylogenetic marker — its sequence is conserved enough to identify organisms but variable enough to distinguish them. 16S rRNA sequencing has revolutionized microbiology, revealing that the vast majority of Earth's microorganisms have never been cultured, and fundamentally reshaped the tree of life by revealing the three-domain structure (Bacteria, Archaea, Eukarya). Ribosome assembly itself is an extraordinarily complex process occurring in the nucleolus, involving hundreds of assembly factors and dozens of processing steps.`,
+Here's the discovery that transformed how we think about the origin of life: the peptidyl transferase centre — where peptide bonds are actually formed — is made entirely of ribosomal RNA, not protein. The 23S rRNA in bacteria (and 28S rRNA in eukaryotes) performs this catalytic activity. The proteins are structural and don't contribute to the chemistry of peptide bond formation. The ribosome is a ribozyme. This is one of the strongest pieces of evidence for the RNA World hypothesis — the idea that RNA preceded both DNA and proteins in the earliest life forms. If RNA can make proteins, then RNA could have built the first protein-making machinery before proteins existed to help. The 16S rRNA is also invaluable as a 'molecular clock' for identifying and classifying bacteria — its sequence is conserved enough to be recognisable but variable enough to distinguish species. Most of what we know about the diversity of microbial life comes from sequencing 16S rRNA directly from environmental samples.`,
   },
   {
     id: "para-snrna",
     anchorId: "rna-snrna",
-    heading: "snRNAs and the Spliceosome: Molecular Surgery on Pre-mRNA",
-    body: `Small nuclear RNAs (snRNAs) are the central components of the spliceosome — one of the most complex and dynamic molecular machines in the cell, roughly the size of a ribosome and assembled fresh on every intron it processes. Five snRNAs (U1, U2, U4, U5, and U6) combine with dozens of proteins to form snRNPs (small nuclear ribonucleoproteins), which assemble on the pre-mRNA in a carefully ordered sequence. U1 snRNP base-pairs with the 5' splice site; U2 snRNP recognizes the branch point adenosine within the intron; U4/U6 di-snRNP joins and undergoes dramatic remodeling to activate the catalytic center; U5 bridges the two exons for joining.
+    heading: "snRNAs and the Spliceosome: The Cell's Molecular Scissors",
+    body: `Small nuclear RNAs (snRNAs) are the core components of the spliceosome — one of the most complex and dynamic molecular machines in the cell, roughly the size of a ribosome and assembled fresh on every intron. Five snRNAs (U1, U2, U4, U5, and U6) each combine with a set of proteins to form snRNP particles ('snurps'). They assemble on the pre-mRNA in a carefully ordered sequence: U1 snRNP base-pairs with the 5' splice site; U2 snRNP finds and binds the branch point adenosine within the intron; U4/U6 and U5 join and the complex undergoes dramatic rearrangements to form the catalytically active spliceosome.
 
-The actual chemistry of splicing involves two sequential transesterification reactions — no ATP required. First, the 2'-OH of the branch point A attacks the phosphodiester bond at the 5' splice site, forming a lariat intermediate and freeing the upstream exon's 3'-OH. Second, that free 3'-OH attacks the 3' splice site, joining the exons and releasing the lariat intron for debranching and degradation. Strikingly, U6 snRNA forms the catalytic core of the active spliceosome, and the chemistry it performs is similar to that of group II self-splicing introns — suggesting group II introns may be the evolutionary ancestors of spliceosomal introns and snRNAs. Alternative splicing is controlled by regulatory sequences (exonic splicing enhancers/silencers) and RNA-binding proteins (SR proteins, hnRNPs) that recruit or exclude spliceosomal components. Errors in these regulatory networks cause diseases including spinal muscular atrophy, retinitis pigmentosa, and numerous cancers.`,
+Splicing itself involves two reactions: first, the 2'-OH of the branch point adenosine attacks the 5' splice site, creating a lariat-shaped intron intermediate and releasing the upstream exon's end. Second, the free end of the upstream exon attacks the 3' splice site, joining the two exons and releasing the lariat intron. No external energy is needed — these are transesterification reactions. Remarkably, U6 snRNA appears to be the catalytic heart of the spliceosome, similar to how 23S rRNA is the catalyst in the ribosome. The chemistry is so similar to self-splicing group II introns (ancient RNA molecules) that spliceosomal introns may actually be ancient group II introns that got domesticated and enlisted into a large RNA-protein machine. Alternative splicing is regulated by sequences in the pre-mRNA itself (exonic splicing enhancers and silencers) plus RNA-binding proteins that recruit or block spliceosomal components — misregulation causes diseases including spinal muscular atrophy and many cancers.`,
   },
   {
     id: "para-small-regulatory",
     anchorId: "rna-regulatory",
     heading: "miRNA, siRNA, and piRNA: The Small RNA Revolution",
-    body: `The discovery of small non-coding RNAs has completely changed how we think about gene regulation. MicroRNAs (miRNAs, ~22 nt) are encoded in the genome, transcribed as long primary miRNAs (pri-miRNAs), cleaved in the nucleus by the Drosha/DGCR8 microprocessor complex into pre-miRNA hairpins (~70 nt), exported to the cytoplasm by Exportin-5, and cleaved by Dicer into ~22 nt duplexes. The guide strand loads into an Argonaute protein to form the RISC complex, which scans mRNA 3' UTRs for complementary sequences. In animals, miRNAs typically have partial complementarity to targets, causing translational repression and mRNA destabilization rather than cleavage. One miRNA can regulate hundreds of targets simultaneously — miR-21 suppresses multiple tumor suppressors and is overexpressed in most human cancers; the let-7 family regulates developmental timing and is one of the most conserved sequences in the animal kingdom.
+    body: `The discovery of small regulatory RNAs in the 1990s and 2000s overturned the idea that most of the genome's output is useless 'junk.' MicroRNAs (miRNAs, ~22 nucleotides) are encoded by their own genes, transcribed as longer hairpin precursors, and processed by two enzymes (Drosha in the nucleus, Dicer in the cytoplasm) into their mature form. The guide strand loads into an Argonaute protein to form the RISC complex, which then scans the 3' UTRs of mRNAs for partially complementary sequences. Partial complementarity causes translational repression and mRNA destabilisation — not precise cleavage but dampening. One miRNA can regulate hundreds of targets simultaneously. The let-7 family regulates developmental timing and is one of the most conserved sequences in the animal kingdom. miR-21 promotes cancer by suppressing multiple tumour suppressor genes and is upregulated in most human cancers.
 
-Small interfering RNAs (siRNAs) arise from exogenous double-stranded RNA (viral RNA, transposons, experimental constructs) processed by Dicer into 21–23 nt duplexes. They load into RISC and direct precise mRNA cleavage through perfect complementarity. siRNA-based therapeutics have become clinical reality — patisiran (for transthyretin amyloidosis) was the first FDA-approved siRNA drug (2018), and the field has exploded since. PIWI-interacting RNAs (piRNAs, 26–31 nt) are a germline-specific class processed by a Dicer-independent pathway and associated with PIWI clade Argonaute proteins. They silence transposable elements in the germline through post-transcriptional cleavage and co-transcriptional DNA methylation, protecting genome integrity across generations. Mutations in piRNA pathway genes cause transposon mobilization, DNA damage, and sterility.`,
+Small interfering RNAs (siRNAs) come from external double-stranded RNA — from viruses, transposons, or synthetic sources. They're processed by Dicer and guide RISC to precisely cleave any mRNA with a perfect matching sequence. In plants and invertebrates, siRNAs are the primary defence against viruses. In medical research, synthetic siRNAs are powerful tools for turning off specific genes, and siRNA drugs are now approved for several diseases. PIWI-interacting RNAs (piRNAs, 26–31 nucleotides) work in the germline (egg and sperm cells) to suppress transposable elements — the 'jumping genes' that could disrupt the genome. Without piRNAs, transposons reactivate, cause DNA damage, and lead to sterility.`,
   },
   {
     id: "para-lncrna",
     anchorId: "rna-lncrna",
     heading: "Long Non-Coding RNAs, Circular RNAs, and Riboswitches",
-    body: `Long non-coding RNAs (lncRNAs, >200 nt) were once dismissed as transcriptional noise. We now know thousands play regulatory roles. XIST (X-Inactive Specific Transcript) is the best-studied: a ~17 kb lncRNA transcribed from the X-inactivation center that spreads in cis to coat the entire inactive X chromosome, recruiting Polycomb repressive complexes (PRC2) that add H3K27me3 marks to silence ~1,000 genes — the mechanism behind dosage compensation in female mammals. HOTAIR, transcribed from the HOXC locus, acts in trans to silence the HOXD locus via PRC2 recruitment and is overexpressed in cancers, promoting invasion. Enhancer RNAs (eRNAs) are transcribed from active enhancers and may stabilize enhancer-promoter looping by helping anchor cohesin. NEAT1 forms the structural scaffold of nuclear paraspeckles.
+    body: `Long non-coding RNAs (lncRNAs, more than 200 nucleotides) were once dismissed as transcriptional background noise. We now know thousands of them play important regulatory roles. XIST is the best-studied: a ~17,000-nucleotide lncRNA transcribed from one X chromosome in female cells. It 'coats' that chromosome, recruiting protein complexes that add repressive marks to histones and silence nearly all genes on it — creating the condensed Barr body visible in cells. Without XIST, dosage compensation fails. HOTAIR is another lncRNA that acts at a distance, silencing a different gene cluster by guiding a histone-modifying complex to it. Enhancer RNAs (eRNAs) transcribed from active enhancers may help stabilise the physical looping contact between enhancers and the gene promoters they activate.
 
-Circular RNAs (circRNAs) are covalently closed RNA loops formed by back-splicing, where a downstream splice donor joins an upstream splice acceptor. Their circular topology makes them resistant to exonucleases, giving them exceptional stability (much longer half-lives than linear mRNAs). CDR1as/ciRS-7 has ~73 binding sites for miR-7 and acts as a 'miRNA sponge' in neurons, absorbing miR-7 to protect its mRNA targets from repression. Riboswitches represent another layer of RNA regulatory ingenuity: RNA elements embedded in the 5' UTR of bacterial mRNAs that directly bind small molecules (thiamine pyrophosphate, SAM, adenine, lysine) and fold into two competing secondary structures. When the metabolite binds, the conformational switch either causes premature transcription termination or sequesters the ribosome binding site — elegant, protein-independent feedback regulation that constitutes a direct molecular fossil of RNA World gene control.`,
+Circular RNAs (circRNAs) are created by 'back-splicing' — connecting a downstream splice site to an upstream one — forming a closed loop with no ends. Their circular topology makes them resistant to the exonuclease enzymes that degrade linear RNAs, giving them much longer lifespans. Some circRNAs contain many binding sites for specific miRNAs and act as 'sponges' — soaking up miRNAs and protecting the mRNAs those miRNAs would otherwise silence. Riboswitches, found mostly in bacteria, are RNA elements in mRNA 5' UTRs that fold into two alternative structures depending on whether a small molecule is bound. When the metabolite is present (signalling the cell already has enough), the riboswitch folds into the 'off' conformation — directly blocking gene expression without any protein involved. It's molecular feedback at its most elegant, and a glimpse of how the RNA World may have regulated itself before proteins existed.`,
   },
   {
     id: "para-rna-world",
     anchorId: "rna-world",
-    heading: "The RNA World — Where It All Began",
-    body: `Here's one of biology's most profound hypotheses: before DNA, before proteins, the first living systems may have run entirely on RNA. Think about why this is compelling. DNA can store information reliably, but it can't catalyze reactions. Proteins are extraordinary catalysts, but they need information stored elsewhere to replicate. RNA uniquely does both: it stores genetic information in its sequence and can fold into ribozymes that catalyze chemical reactions, including replication.
+    heading: "The RNA World — Where Life Might Have Started",
+    body: `Here's one of biology's most profound hypotheses: before DNA, before proteins, the very first living systems may have run entirely on RNA. Think about why this makes sense. DNA is excellent at storing information, but it can't catalyse reactions — it needs proteins to do anything. Proteins are extraordinary catalysts, but they can't replicate themselves without a genetic blueprint. RNA uniquely can do both: it stores information in its sequence, and it can fold into ribozymes that catalyse chemical reactions, including, in principle, self-replication.
 
-The RNA World hypothesis proposes that early life used RNA for both heredity and catalysis. The evidence for it is scattered throughout modern cell biology like evolutionary breadcrumbs. The ribosome is an RNA machine at its catalytic heart. The spliceosome's snRNAs catalyze splicing — and their chemistry is identical to group II self-splicing introns, suggesting spliceosomal introns are domesticated group II introns from an RNA World organism. RNase P (processing tRNA precursors) is a ribozyme. The two-step transesterification chemistry of splicing echoes ancient RNA catalysis. Riboswitches control gene expression in bacteria without any proteins. Even the coenzymes ATP, NAD, CoA, and FAD are nucleotides or contain nucleotide-like structures — possibly vestiges of an RNA-dominated metabolism. Over evolutionary time, DNA took over as the stable genetic archive (the 2'-H making it chemically more stable than RNA), and proteins took over most enzymatic roles (their 20-amino acid alphabet provides far greater functional diversity). But the fingerprints of RNA's ancient dominance are everywhere you look in molecular biology.`,
+The RNA World hypothesis suggests that early life used RNA for everything. And the evidence scattered throughout modern cell biology is striking. The ribosome — the machine that makes all proteins — has RNA at its catalytic heart. The spliceosome uses RNA for chemistry. RNase P (which processes tRNA precursors) is a ribozyme. Riboswitches in bacteria regulate genes entirely through RNA conformational changes. Even the coenzymes ATP, NAD, CoA, and FAD are nucleotides or contain nucleotide-like structures — possibly relics of an early RNA-dominated metabolism. Over billions of years, DNA took over as the stable archive (the missing hydroxyl making it more chemically inert) and proteins took over most catalysis (their 20-amino acid alphabet provides far greater functional diversity). But RNA's ancient dominance is visible everywhere you look in molecular biology — hidden in plain sight.`,
   },
 ];
 
@@ -600,7 +600,7 @@ export default function RNASection() {
       <SectionHeader
         topicId="rna"
         title="RNA: The Versatile Molecule"
-        subtitle="From transcription through translation to regulation — all RNA types, processing machinery, small regulatory RNAs, lncRNAs, and the RNA World hypothesis."
+        subtitle="From simple messenger to molecular catalyst — all RNA types explained from basics to deep knowledge, in clear, plain language."
       />
 
       {/* RNA Scene */}
@@ -987,10 +987,9 @@ export default function RNASection() {
             🧬 Test Your RNA Knowledge
           </h3>
           <p className="text-muted-foreground mb-6">
-            10 questions covering all RNA types, mRNA processing, tRNA
-            structure, ribosome composition, splicing, regulatory RNAs,
-            transcription machinery, and the RNA World — with detailed
-            teacher-style explanations.
+            10 questions covering all RNA types, mRNA processing, splicing,
+            translation, regulatory RNAs, and the RNA World — each with a full
+            explanation that teaches you the 'why,' not just the answer.
           </p>
           <QuizEngine topicId="rna" questions={RNA_QUIZ} />
         </div>

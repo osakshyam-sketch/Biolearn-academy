@@ -8,6 +8,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import type { QuizQuestion } from "@/types/biology";
 import { motion } from "motion/react";
 import { useState } from "react";
+import { PYTHON_BASICS_SECTIONS } from "./pythonBasicsData";
 
 // ── Base color codes ───────────────────────────────────────────────────────────
 
@@ -2446,6 +2447,158 @@ function ProjectCard({ project }: { project: GuidedProject }) {
 // ── Quiz ──────────────────────────────────────────────────────────────────────
 
 const BIOINFORMATICS_QUIZ: QuizQuestion[] = [
+  // ── Python Basics Questions ──────────────────────────────────────────────
+  {
+    id: "py1",
+    topic: "bioinformatics",
+    question:
+      "In Python, what is a variable? Which of the following best describes what happens when you write: dna_sequence = 'ATGCGATCG'",
+    options: [
+      "You're telling Python to analyse the sequence immediately",
+      "You're creating a labelled storage location (like a named box) that holds the value 'ATGCGATCG' for later use",
+      "You're permanently saving the sequence to a file on your computer",
+      "You're converting the text into binary code the computer can understand",
+    ],
+    correctIndex: 1,
+    explanation:
+      "Think of a variable as a labelled box. When you write dna_sequence = 'ATGCGATCG', you're putting the text 'ATGCGATCG' into a box and labelling it 'dna_sequence'. Wherever you write dna_sequence later in your code, Python knows to look in that box. You can change what's in the box at any time by reassigning it. It's one of the most fundamental concepts in programming and you'll use variables in every single script you ever write.",
+  },
+  {
+    id: "py2",
+    topic: "bioinformatics",
+    question:
+      "You have a DNA sequence stored as a Python string: seq = 'ATGCGATCG'. What does seq[0] return, and what does seq[2:5] return?",
+    options: [
+      "seq[0] returns 'A', seq[2:5] returns 'GCG' — Python counts positions starting from 0",
+      "seq[0] returns 'T' (second character), seq[2:5] returns 'TCG'",
+      "seq[0] returns the length of the sequence, seq[2:5] returns the GC content",
+      "seq[0] raises an error because strings must be accessed from the end",
+    ],
+    correctIndex: 0,
+    explanation:
+      "Python uses zero-based indexing — positions start counting from 0. So seq[0] gives 'A' (the very first character). For slicing, seq[2:5] means 'from position 2 up to (but not including) position 5', giving characters at positions 2, 3, and 4 — which are 'G', 'C', 'G'. This is incredibly useful in bioinformatics: seq[0:3] gives you the first codon, seq[3:6] gives the second codon, and so on. Once zero-based indexing clicks, you'll use it all the time.",
+  },
+  {
+    id: "py3",
+    topic: "bioinformatics",
+    question:
+      "What does a for loop do in Python? Which option correctly describes what happens when you write: for base in 'ATGC': print(base)",
+    options: [
+      "It runs the code inside once total, printing all four letters at the same time",
+      "It checks whether 'ATGC' is a valid DNA sequence",
+      "It iterates through each character one at a time, printing A, then T, then G, then C on separate lines",
+      "It reverses the string and prints 'CGTA'",
+    ],
+    correctIndex: 2,
+    explanation:
+      "A for loop repeats a block of code for each item in a collection. When you write 'for base in ATGC', Python sets the variable 'base' to each character in turn — first 'A', runs the indented code (printing 'A'), then sets 'base' to 'T' and runs it again, and so on. This is the foundation of processing sequences: you can loop over every base in a genome, every sequence in a FASTA file, every gene in a list. The same three lines of loop logic can process thousands of items.",
+  },
+  {
+    id: "py4",
+    topic: "bioinformatics",
+    question:
+      "In Python, what is the difference between a list and a string? Which would you use to store a collection of 10 different DNA sequences?",
+    options: [
+      "They're the same thing — lists and strings are interchangeable in Python",
+      "A string stores a single piece of text; a list stores an ordered collection of items. You'd use a list to store 10 sequences, with each sequence as a string element inside the list",
+      "A string can hold only one character; a list holds multiple characters",
+      "Lists are for numbers only; strings are for text only",
+    ],
+    correctIndex: 1,
+    explanation:
+      "A string is a single piece of text — perfect for one DNA sequence. A list is an ordered container that can hold multiple items of any type. To store 10 DNA sequences, you'd create a list of strings: sequences = ['ATGCG', 'GCATC', 'TTATG', ...]. Each element of the list is a string. Lists support indexing (sequences[0] gets the first sequence), appending (sequences.append('GCGCG')), and looping (for seq in sequences:). Lists are fundamental to processing batches of biological data.",
+  },
+  {
+    id: "py5",
+    topic: "bioinformatics",
+    question:
+      "What does defining a function with 'def' do in Python, and why is it better to write a function for GC content calculation instead of copying the same code every time you need it?",
+    options: [
+      "Functions make the code run faster by caching results",
+      "A function defines a named, reusable block of code. Writing GC content as a function means you write the logic once and call it anywhere — fixing a bug or improving the calculation automatically updates every place that uses it",
+      "Functions are only useful for very complex calculations with more than 50 lines of code",
+      "def stands for 'default' — it sets the default value for a variable",
+    ],
+    correctIndex: 1,
+    explanation:
+      "A function is a reusable, named block of code. Once you write 'def gc_content(sequence): ...' you can call gc_content('ATGCGATCG') anywhere in your script. If you later discover a bug — maybe you forgot to handle lowercase letters — you fix it in one place and every call to that function is automatically correct. This is called the DRY principle: Don't Repeat Yourself. In bioinformatics, you'll write functions for GC content, reverse complement, ORF finding, sequence parsing, and dozens of other tasks you use repeatedly.",
+  },
+  {
+    id: "py6",
+    topic: "bioinformatics",
+    question:
+      "You want to count how many times each nucleotide appears in a DNA sequence. Which Python data structure is best suited for this, and how would you use it?",
+    options: [
+      "A list — create a list of four numbers and track positions manually",
+      "A string — split the sequence into separate letters and count them",
+      "A dictionary — use each nucleotide letter (A, T, G, C) as a key mapping to its count as a value",
+      "A boolean — each nucleotide is either present (True) or absent (False)",
+    ],
+    correctIndex: 2,
+    explanation:
+      "A dictionary is perfect here because it maps keys to values — exactly what you need when each nucleotide maps to its count. You'd create counts = {} and then loop through the sequence, incrementing counts[base] for each base you see. At the end, counts['G'] gives you the number of Gs, counts['C'] gives Cs, and so on. Dictionaries are used constantly in bioinformatics: codon tables (codon → amino acid), gene annotations (gene name → position), and nucleotide or amino acid frequency tables all use this same key-value pattern.",
+  },
+  {
+    id: "py7",
+    topic: "bioinformatics",
+    question:
+      "What is FASTA format, and how do you recognise a header line when reading a FASTA file in Python?",
+    options: [
+      "FASTA is a compressed binary format; header lines are identified by their file position",
+      "FASTA is a plain text format for biological sequences; each entry starts with a header line beginning with '>', which you detect in Python by checking if the line starts with '>'",
+      "FASTA stands for Fast Alignment Tool A; header lines begin with '##' like in VCF files",
+      "FASTA format requires a special binary parser; you cannot read it with standard Python file operations",
+    ],
+    correctIndex: 1,
+    explanation:
+      "FASTA is one of the simplest and most universal file formats in bioinformatics. Each sequence record starts with a header line beginning with '>' — that's the identifying character. After the header comes the sequence, which may span one or multiple lines. In Python, reading a FASTA file is straightforward: open the file, loop through lines, and check if each line starts with '>'. If it does, it's a header; if not, it's sequence data. This is such a common pattern that Biopython's SeqIO module handles it for you automatically — but understanding the underlying format helps you troubleshoot when things go wrong.",
+  },
+  {
+    id: "py8",
+    topic: "bioinformatics",
+    question:
+      "What does the 'with open(filename, \"r\") as f:' pattern do, and why is it better than just writing 'f = open(filename, \"r\")'?",
+    options: [
+      "The 'with' version reads the entire file into memory at once, which is faster",
+      "The 'with' statement automatically closes the file when the block exits — even if an error occurs — preventing file handle leaks that can cause data loss or crashes in long-running scripts",
+      "The 'with' version is older Python syntax; 'f = open(...)' is the modern approach",
+      "There is no difference — both are exactly equivalent in all situations",
+    ],
+    correctIndex: 1,
+    explanation:
+      "The 'with open(...)' pattern is a context manager. It guarantees the file is properly closed when you leave the indented block, no matter what happens — even if your code crashes with an error midway through. If you use 'f = open(...)' without a 'with' block and an error occurs before you call f.close(), the file stays open, which can corrupt data you're writing or exhaust the system's file handle limit in long-running pipelines. The 'with' pattern is the professional standard for all file I/O in Python and should be your default approach.",
+  },
+  {
+    id: "py9",
+    topic: "bioinformatics",
+    question:
+      "What does 'import math' do, and how is 'from math import sqrt, log' different from 'import math'?",
+    options: [
+      "Both are identical — the 'from' syntax is just shorter notation with no functional difference",
+      "'import math' loads the whole math module (accessed as math.sqrt()); 'from math import sqrt, log' imports just those two functions directly into your namespace (accessed simply as sqrt() and log())",
+      "'import math' only imports mathematical constants like pi; 'from math import sqrt' only imports functions",
+      "'from math import' is invalid Python syntax and will cause an ImportError",
+    ],
+    correctIndex: 1,
+    explanation:
+      "Both approaches give you access to Python's math module, but in different ways. With 'import math', everything in the module is available but you must prefix it: math.sqrt(16), math.log(100). With 'from math import sqrt, log', those two functions are available directly without a prefix: sqrt(16), log(100). Neither is inherently better — it's a style choice. For large libraries used heavily in scientific Python (numpy, pandas), the convention is 'import numpy as np' and 'import pandas as pd', giving a short prefix that avoids name clashes while still being readable.",
+  },
+  {
+    id: "py10",
+    topic: "bioinformatics",
+    question:
+      "You're running a script that processes 1,000 FASTA files, and one file is missing. Without error handling, what happens? With a try/except block, what should happen instead?",
+    options: [
+      "Without error handling, Python skips missing files automatically; with try/except, it processes them twice",
+      "Without error handling, the entire script crashes with a FileNotFoundError when it reaches the missing file, losing all progress. With try/except, you can catch the error, log a warning, and continue processing the remaining 999 files",
+      "Python never raises errors for missing files — it just returns an empty string",
+      "try/except is only for handling mathematical errors like division by zero",
+    ],
+    correctIndex: 1,
+    explanation:
+      "This is a really practical point. Without error handling, one bad file (missing, corrupted, wrong format) will crash your entire pipeline at that point — any work after that file is lost. With a try/except block around the file-reading code, when a FileNotFoundError occurs you can catch it, print a warning message saying which file was skipped, and let the loop continue to the next file. In bioinformatics, where you often process hundreds of downloaded files from databases that may have inconsistent quality, robust error handling is the difference between a reliable pipeline and one that constantly needs babysitting.",
+  },
+  // ── Bioinformatics core questions ──────────────────────────────────────────
   {
     id: "bio1",
     topic: "bioinformatics",
@@ -2829,6 +2982,97 @@ export default function BioinformaticsSection() {
         ))}
       </StaggerContainer>
 
+      {/* ── Python Basics Section ──────────────────────────────────────────── */}
+      <AnimatedEntrance direction="up" delay={0.05}>
+        <div
+          id="bi-python-what-is"
+          className="mb-16"
+          data-ocid="python-basics-section"
+        >
+          {/* Section heading card */}
+          <div
+            className="rounded-2xl p-6 md:p-8 mb-8"
+            style={{
+              background: "oklch(0.96 0.03 142 / 0.18)",
+              border: "2px solid oklch(0.52 0.14 142 / 0.28)",
+            }}
+          >
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-3xl" aria-hidden="true">
+                🐍
+              </span>
+              <h3
+                className="font-display text-2xl font-bold"
+                style={{ color: "oklch(0.38 0.14 142)" }}
+              >
+                Python Basics for Bioinformatics
+              </h3>
+            </div>
+            <p
+              className="text-base leading-relaxed"
+              style={{ color: "oklch(0.35 0.05 75)" }}
+            >
+              Before we dive into Biopython, let's make sure you have a solid
+              foundation in Python itself. Think of this as the friendly intro
+              you wish every textbook started with — we'll go from "what is a
+              variable?" to reading and writing real biological files, one clear
+              step at a time. If you already know Python basics, feel free to
+              skim and jump ahead to the Biopython section.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-8">
+            {PYTHON_BASICS_SECTIONS.map((lesson) => (
+              <div
+                key={lesson.id}
+                id={lesson.anchorId}
+                className="rounded-2xl p-6 md:p-7"
+                style={{
+                  background: "oklch(0.985 0.008 75)",
+                  border: "1px solid oklch(0.87 0.02 75)",
+                  borderLeft: "3px solid oklch(0.52 0.14 142 / 0.5)",
+                }}
+                data-ocid={`python-lesson-${lesson.id}`}
+              >
+                {/* Lesson badge + heading */}
+                <div className="flex items-start gap-3 mb-4">
+                  <span
+                    className="shrink-0 text-xs font-bold px-2.5 py-1 rounded-full font-mono mt-0.5"
+                    style={{
+                      background: "oklch(0.94 0.05 142 / 0.4)",
+                      color: "oklch(0.38 0.14 142)",
+                      border: "1px solid oklch(0.68 0.14 142 / 0.4)",
+                    }}
+                  >
+                    Lesson {lesson.lessonNumber}
+                  </span>
+                  <h4
+                    className="font-display text-lg font-bold leading-tight"
+                    style={{ color: "oklch(0.35 0.10 142)" }}
+                  >
+                    {lesson.heading}
+                  </h4>
+                </div>
+
+                {/* Body paragraphs */}
+                {lesson.body.split("\n\n").map((para, pi) => (
+                  <p
+                    key={`${lesson.id}-p${pi}`}
+                    className="leading-relaxed mb-4 text-[0.95rem]"
+                    style={{ color: "oklch(0.30 0.03 75)" }}
+                  >
+                    {para}
+                  </p>
+                ))}
+
+                {/* Code example */}
+                <CodeBlock code={lesson.codeExample} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </AnimatedEntrance>
+
       {/* ── Biopython Section ──────────────────────────────────────────────── */}
       <AnimatedEntrance direction="up" delay={0.05}>
         <div
@@ -2961,9 +3205,9 @@ export default function BioinformaticsSection() {
             💻 Test Your Bioinformatics Knowledge
           </h3>
           <p className="mb-6" style={{ color: "oklch(0.45 0.04 75)" }}>
-            15 questions covering databases, BLAST, sequence alignment,
-            phylogenetics, AlphaFold, RNA-seq, metagenomics, machine learning,
-            and Biopython.
+            25 questions covering Python basics (variables, loops, functions,
+            files), Biopython, databases, BLAST, sequence alignment,
+            phylogenetics, AlphaFold, RNA-seq, and metagenomics.
           </p>
           <QuizEngine
             topicId="bioinformatics"

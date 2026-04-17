@@ -19,149 +19,150 @@ const PROTEIN_QUIZ: QuizQuestion[] = [
   {
     id: "p1",
     question:
-      "What are the four categories of amino acid R groups, and why do they matter for protein folding?",
+      "What makes each of the 20 amino acids different from one another, and why does it matter for how a protein folds?",
     options: [
-      "Acidic, basic, aromatic, sulfur-containing — they determine the protein's molecular weight",
-      "Nonpolar aliphatic/aromatic, polar uncharged, positively charged, negatively charged — they determine where each residue ends up in a folded protein and drive tertiary structure",
-      "Hydrophobic, hydrophilic, neutral, ionizable — they determine only secondary structure",
-      "R groups are identical in all amino acids — only the backbone differs",
+      "Amino acids differ in the number of peptide bonds they form — more bonds means the amino acid pulls harder on neighbouring residues",
+      "What differs is the R group (side chain) — its size, charge, and whether it likes or dislikes water determines where each residue ends up in a folded protein and drives the overall 3D shape",
+      "All amino acids are identical in chemistry; only the order in which they appear in the chain distinguishes them",
+      "Amino acids differ only in molecular weight — heavier ones sink to the protein interior; lighter ones float to the surface",
     ],
     correctIndex: 1,
     explanation:
-      "The 20 standard amino acids are classified by their R-group chemistry: nonpolar aliphatic (Gly, Ala, Val, Leu, Ile, Pro, Met) and aromatic (Phe, Trp, Tyr) residues cluster in the protein's hydrophobic core; polar uncharged residues (Ser, Thr, Cys, Asn, Gln) can participate in hydrogen bonding; positively charged (Lys, Arg, His) and negatively charged (Asp, Glu) residues sit at the protein surface where they interact with water and other charged molecules. These properties directly drive hydrophobic collapse and the specific 3D shape of every protein. Change one amino acid in a hydrophobic core position to a charged residue, and the protein often misfolds completely.",
+      "The backbone of every amino acid is the same — it's the R group (side chain) that makes each one unique. Nonpolar, hydrophobic side chains (glycine, alanine, valine, leucine, and others) hate being in contact with water, so they cluster in the protein's interior, away from the aqueous environment. This hydrophobic collapse is the main driving force of protein folding. Polar uncharged side chains (serine, threonine, asparagine) can form hydrogen bonds. Charged side chains (lysine, arginine = positive; aspartate, glutamate = negative) sit on the protein's surface where they interact with water and other molecules. One change in the right place can completely alter a protein's behaviour — the single missense mutation that causes sickle cell disease is a perfect example.",
     topic: "proteins",
   },
   {
     id: "p2",
-    question: "What makes the peptide bond special from a chemical standpoint?",
+    question:
+      "Peptide bonds connect amino acids in a chain. What makes the peptide bond chemically special, and why does that matter for protein structure?",
     options: [
-      "It's the strongest bond in biology and never breaks under any conditions",
-      "It has partial double-bond character due to resonance — the C–N bond is planar and rigid, restricting rotation and influencing secondary structure",
-      "It's a hydrogen bond between backbone atoms and is easily reversible",
-      "It connects the R groups of adjacent amino acids, not the backbone",
+      "The peptide bond is the strongest bond in biology and never breaks under any cellular conditions",
+      "The peptide bond has partial double-bond character due to electron delocalisation, making the atoms around it coplanar (flat and rigid) — this constrains the angles at which the chain can fold and fundamentally influences secondary structure",
+      "The peptide bond is a hydrogen bond between the R groups of neighbouring amino acids and is easily reversible",
+      "The peptide bond connects the R groups directly, not the backbone — it's what gives each protein its unique properties",
     ],
     correctIndex: 1,
     explanation:
-      "The peptide bond (–CO–NH–) has a fascinating chemical property: resonance between the C=O and C–N bonds gives the peptide group partial double-bond character. This means the six atoms of the peptide group (Cα–C=O–N–H–Cα) are coplanar — they can't rotate freely around the C–N bond. This planarity is crucial: it dramatically constrains the conformational space available to a polypeptide backbone, which is why only certain Phi (φ) and Psi (ψ) dihedral angles are allowed — exactly what the Ramachandran plot shows. Proline breaks helices because its cyclic side chain fixes the Phi angle and eliminates the N–H needed for helix hydrogen bonds.",
+      "The peptide bond (–CO–NH–) is formed when the carboxyl group of one amino acid reacts with the amino group of the next, releasing a water molecule. Here's what makes it special: resonance between the C=O and C–N bonds gives the peptide group partial double-bond character. This means the six atoms in the peptide unit are locked in a flat, rigid plane — they can't freely rotate around the C–N bond. This planarity severely limits the possible conformations of the protein backbone, which is why proteins settle into regular, repeating secondary structures like alpha helices and beta sheets rather than random tangles. It's a fundamental constraint that shapes all protein structure.",
     topic: "proteins",
   },
   {
     id: "p3",
-    question: "What defines the PRIMARY structure of a protein?",
+    question:
+      "What is the primary structure of a protein, and why is the sequence so important?",
     options: [
-      "The coiling of the polypeptide into an alpha-helix",
-      "The linear sequence of amino acids from N-terminus to C-terminus, encoded directly by the gene",
-      "The overall 3D folded shape of the protein",
-      "The association of multiple polypeptide chains",
+      "Primary structure is the 3D folded shape of the protein",
+      "Primary structure is the linear sequence of amino acids from N-terminus to C-terminus — encoded directly in the gene. It contains all the information needed to fold into the correct 3D shape",
+      "Primary structure is the alpha-helical coiling pattern found in most proteins",
+      "Primary structure refers to the association of multiple polypeptide chains in a complex",
     ],
     correctIndex: 1,
     explanation:
-      "Primary structure is simply the order of amino acids from N-terminus to C-terminus, determined directly by the mRNA codon sequence and historically first sequenced by Fred Sanger (using chemical degradation — his Nobel-prize-winning work on insulin in 1955). Today, mass spectrometry proteomics can identify thousands of proteins and their sequences simultaneously. The primary structure is the master instruction set — it contains all the information needed to fold into the correct 3D shape (Anfinsen's dogma, demonstrated by denaturing and refolding ribonuclease A). Change one critical amino acid and you can get sickle cell disease (Val→Glu at position 6 of hemoglobin β-chain), complete loss of enzyme function, or a disease-causing protein aggregate.",
+      "Primary structure is simply the order — amino acid number 1, number 2, number 3, and so on from the N-terminus (the amino end) to the C-terminus (the carboxyl end). It's determined directly by the DNA sequence of the gene. Here's the remarkable thing: Christian Anfinsen showed in the 1960s that this sequence alone contains all the information needed to fold the protein into its correct 3D structure. He denatured (unfolded) ribonuclease A and then allowed it to refold — it regained full activity, demonstrating that no external template is needed. Change one critical amino acid and you can get a devastating disease: sickle cell anaemia is caused by one missense mutation (glutamic acid → valine at position 6 of haemoglobin's beta chain). Primary structure is the root of everything.",
     topic: "proteins",
   },
   {
     id: "p4",
-    question:
-      "What is the alpha-helix, and what property of proline disrupts it?",
+    question: "What is an alpha helix, and why does proline break it?",
     options: [
-      "The alpha-helix has 3.6 residues per turn, with i to i+4 backbone hydrogen bonds; proline breaks helices because its cyclic pyrrolidine ring fixes the Phi angle and lacks an N–H for H-bonding",
-      "The alpha-helix is left-handed; proline's large aromatic ring sterically blocks helix formation",
-      "Alpha-helices are held together by side-chain H-bonds; proline's charged side chain disrupts these",
-      "Alpha-helices have 4 residues per turn; proline breaks them because it's nonpolar",
+      "The alpha helix is left-handed; proline breaks it because its large aromatic ring physically blocks helix formation",
+      "The alpha helix is a right-handed coil with 3.6 residues per turn, stabilised by backbone hydrogen bonds between residue n and residue n+4. Proline breaks helices because its cyclic side chain locks the backbone angle and it lacks the N–H needed for the hydrogen bond",
+      "Alpha helices have 4 residues per turn and are stabilised by R-group hydrogen bonds; proline breaks them because it's negatively charged",
+      "The alpha helix is held together by disulfide bonds; proline breaks helices by competing for these bonds",
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation:
-      "The alpha-helix is a right-handed coil with 3.6 residues per turn and a pitch of 5.4 Å. The stabilizing force is backbone hydrogen bonds between the carbonyl oxygen (C=O) of residue n and the amide nitrogen (N–H) of residue n+4. These repeating H-bonds run nearly parallel to the helix axis, creating a stable, rod-like structure. Side chains project outward from the helix surface. Proline is the helix-breaker: its cyclic pyrrolidine ring covalently fixes the Phi angle at ~-65°, which doesn't fit the standard helix geometry, and it lacks the N–H group needed to form the i to i+4 hydrogen bond. Proline is often found at helix termini or in tight turns. The amphipathic helix is a biologically important variant — one face is hydrophobic, the other hydrophilic, making it ideal for membrane insertion or coiled-coil protein-protein interactions.",
+      "Think of the alpha helix like a spiral staircase — a right-handed coil where the backbone winds around a central axis. Every 3.6 amino acids, the backbone has made one complete turn. What holds it together? Hydrogen bonds between the carbonyl oxygen (C=O) of residue n and the amide nitrogen (N–H) of residue n+4, running roughly parallel to the helix axis. Proline is the classic 'helix breaker': its side chain forms a ring that includes the nitrogen atom, fixing the backbone angle in a position that doesn't fit helix geometry and — crucially — removing the N–H group needed for the stabilising hydrogen bond. So proline forces a kink or turn. You'll often find proline at helix ends or in tight connecting loops.",
     topic: "proteins",
   },
   {
     id: "p5",
     question:
-      "What is the Michaelis-Menten equation describing, and what do Km and Vmax tell you about an enzyme?",
+      "You test two enzymes: one has a Km of 0.1 mM, the other has a Km of 10 mM. Which enzyme has higher affinity for its substrate, and what does Vmax tell you?",
     options: [
-      "It describes DNA polymerase fidelity; Km is the error rate and Vmax is the maximum replication speed",
-      "It describes enzyme reaction rate as a function of substrate concentration; Km is the substrate concentration at half-maximal velocity (reflects binding affinity); Vmax is the maximum rate when enzyme is fully saturated",
-      "It describes protein folding kinetics; Km is the folding rate constant and Vmax is the denaturation temperature",
-      "It applies only to allosteric enzymes; Km and Vmax don't apply to standard enzymes",
+      "Higher Km means higher affinity; the enzyme with Km 10 mM is better at grabbing its substrate",
+      "Lower Km means higher affinity — the enzyme with Km 0.1 mM reaches half its maximum speed at much lower substrate concentration, meaning it's more efficient at grabbing substrate. Vmax is the maximum rate the enzyme can achieve when fully loaded",
+      "Km and affinity are unrelated; Km only tells you the enzyme's optimal temperature",
+      "Both enzymes have the same affinity since Km only changes under inhibition conditions",
     ],
     correctIndex: 1,
     explanation:
-      "The Michaelis-Menten equation (v = Vmax[S] / (Km + [S])) describes how enzyme reaction velocity (v) varies with substrate concentration [S]. Km (Michaelis constant) is the substrate concentration at which v = Vmax/2 — a lower Km means the enzyme has higher affinity for its substrate (it reaches half-saturation at lower [S]). Vmax reflects how many substrate molecules the enzyme converts per unit time when fully saturated (related to kcat, the turnover number). In competitive inhibition, an inhibitor binds the active site: apparent Km increases but Vmax is unchanged — adding more substrate can overcome competitive inhibition. In noncompetitive inhibition, the inhibitor binds an allosteric site on both free enzyme and enzyme-substrate complex: Vmax decreases but Km is unchanged. Uncompetitive inhibitors bind only the enzyme-substrate complex, decreasing both Km and Vmax proportionally.",
+      "The Michaelis constant (Km) is the substrate concentration needed to reach half the maximum reaction speed. A low Km means the enzyme reaches half its speed at very low substrate concentrations — it's highly sensitive to small amounts of substrate and has high affinity. A high Km means you need much more substrate to get the same effect — lower affinity. The enzyme with Km = 0.1 mM would be working near full speed in conditions where Km = 10 mM enzyme is barely ticking over. Vmax is the maximum speed when every enzyme molecule is fully loaded with substrate — it's related to how fast the enzyme can process substrate once bound. These two numbers together define an enzyme's performance profile in a cell.",
     topic: "proteins",
   },
   {
     id: "p6",
     question:
-      "What is cooperative binding in hemoglobin, and what is the Bohr effect?",
+      "Haemoglobin carries oxygen cooperatively. What does 'cooperative' mean here, and what is the Bohr effect?",
     options: [
-      "Hemoglobin binds oxygen non-cooperatively; the Bohr effect describes how temperature affects binding",
-      "Hemoglobin switches between T-state (tense, low O₂ affinity) and R-state (relaxed, high affinity); cooperative binding means each O₂ bound makes the next easier to bind; the Bohr effect is that increased CO₂/H⁺ (in tissues) shifts hemoglobin to T-state, promoting O₂ release",
-      "Cooperative binding means hemoglobin can only bind one O₂ at a time; the Bohr effect describes allosteric inhibition by 2,3-BPG",
-      "The Bohr effect is the chemical process by which hemoglobin is synthesized in red blood cells",
+      "Cooperative binding means all four haemoglobin subunits bind oxygen simultaneously in one step",
+      "Cooperative binding means each oxygen molecule bound makes the next binding event easier — haemoglobin switches between a low-affinity T-state and a high-affinity R-state. The Bohr effect means high CO₂ and H⁺ (in active tissues) shift haemoglobin toward T-state, releasing oxygen exactly where it's needed",
+      "Cooperative binding means haemoglobin and myoglobin work together in the bloodstream to share oxygen molecules",
+      "The Bohr effect is the process by which haemoglobin is synthesised in bone marrow",
     ],
     correctIndex: 1,
     explanation:
-      "Hemoglobin's quaternary structure (two alpha and two beta globin subunits, each with a heme group) enables cooperativity — one of the most elegant examples of allosteric regulation in biochemistry. In the T-state (tense/deoxy form), the subunits are in a constrained conformation with low O₂ affinity. When the first O₂ binds, it triggers a conformational change in that subunit which propagates to neighboring subunits, converting them toward the R-state (relaxed/oxy) with higher affinity. This produces the sigmoidal oxygen-binding curve — not the hyperbolic curve of a non-cooperative protein like myoglobin. The Bohr effect describes how CO₂ and H⁺ (which are high in metabolically active tissues) shift hemoglobin toward the T-state, causing O₂ release where it's most needed. 2,3-bisphosphoglycerate (2,3-BPG) also stabilizes the T-state and is elevated at altitude to improve O₂ delivery. This is how hemoglobin acts as both an oxygen delivery truck and a built-in sensor of tissue metabolic need.",
+      "Haemoglobin is one of the most elegant examples of allosteric regulation in biology. It has four subunits (two alpha and two beta chains, each with a haem group that binds one oxygen). In the deoxy T-state (tense), subunits are in a constrained shape with low oxygen affinity. When the first oxygen binds, it shifts that subunit toward the R-state (relaxed), which nudges the other subunits toward R-state too, making them more likely to bind oxygen. This chain reaction produces the characteristic S-shaped oxygen binding curve — far more efficient for oxygen delivery than a simple non-cooperative protein like myoglobin. The Bohr effect is what makes haemoglobin a brilliant oxygen delivery system: in active tissues where CO₂ and H⁺ are high, haemoglobin's affinity drops, releasing oxygen right where metabolic demand is greatest.",
     topic: "proteins",
   },
   {
     id: "p7",
     question:
-      "What are the six major enzyme classes (EC system) and one example of each?",
+      "There are six classes of enzymes in the EC system. Can you name them and give one example of each?",
     options: [
       "Kinases, phosphatases, proteases, synthases, ligases, transferases",
-      "Oxidoreductases (lactate dehydrogenase), transferases (hexokinase), hydrolases (pepsin), lyases (pyruvate decarboxylase), isomerases (phosphoglucose isomerase), ligases (DNA ligase)",
+      "Oxidoreductases (e.g. lactate dehydrogenase), transferases (hexokinase), hydrolases (pepsin), lyases (pyruvate decarboxylase), isomerases (phosphoglucose isomerase), ligases (DNA ligase)",
       "Polymerases, nucleases, kinases, phosphatases, proteases, glycosidases",
-      "All enzymes belong to one class; the EC number only reflects their substrate specificity",
+      "There is only one enzyme class; the EC number just describes the substrate",
     ],
     correctIndex: 1,
     explanation:
-      "The six EC enzyme classes are: Oxidoreductases transfer electrons/hydrogen (lactate dehydrogenase converts pyruvate to lactate, regenerating NAD⁺; succinate dehydrogenase in the TCA cycle). Transferases move functional groups between molecules (hexokinase transfers a phosphate from ATP to glucose; aminotransferases move amino groups). Hydrolases cleave bonds using water (pepsin and trypsin cleave peptide bonds; lipases cleave ester bonds in fats; lactase cleaves lactose). Lyases cleave bonds without water, often creating double bonds (pyruvate decarboxylase removes CO₂; aldolase cleaves fructose-1,6-bisphosphate). Isomerases interconvert structural isomers (phosphoglucose isomerase converts glucose-6-phosphate to fructose-6-phosphate; triose phosphate isomerase). Ligases join two molecules using ATP energy (DNA ligase seals nicks; acetyl-CoA carboxylase joins CO₂ to acetyl-CoA). These six classes cover every chemical transformation in metabolism.",
+      "The six EC classes describe every chemical reaction catalysed by an enzyme. Oxidoreductases transfer electrons or hydrogen between molecules — lactate dehydrogenase converts pyruvate to lactate. Transferases move functional groups from one molecule to another — hexokinase transfers a phosphate from ATP to glucose. Hydrolases cleave bonds using water — pepsin, trypsin, and lipase all belong here. Lyases break bonds without water, often forming double bonds — pyruvate decarboxylase removes CO₂ from pyruvate. Isomerases convert a molecule to a structural isomer — phosphoglucose isomerase converts glucose-6-phosphate to fructose-6-phosphate in glycolysis. Ligases join two molecules using ATP — DNA ligase seals nicks in DNA. These six classes cover every chemical transformation in metabolism.",
     topic: "proteins",
   },
   {
     id: "p8",
     question:
-      "What are post-translational modifications (PTMs) and why are they crucial for protein function?",
+      "What are post-translational modifications (PTMs), and why do they dramatically increase what the proteome can do?",
     options: [
       "PTMs change the amino acid sequence after translation; they're caused only by mutations",
-      "PTMs are chemical modifications added to proteins after translation — phosphorylation activates/inactivates proteins; glycosylation affects folding and recognition; ubiquitination marks proteins for proteasomal degradation; these expand functional diversity far beyond what the primary sequence alone can achieve",
-      "PTMs are removals of the signal peptide only; all other modifications are co-translational",
-      "PTMs only affect membrane proteins and have no role in cytosolic protein regulation",
+      "PTMs are chemical additions to proteins after they're made — phosphorylation switches proteins on/off, glycosylation aids folding and targeting, ubiquitination marks proteins for degradation. They expand functional diversity far beyond what 20,000 genes alone could achieve",
+      "PTMs only remove the signal peptide from secreted proteins — all other modifications are co-translational",
+      "PTMs only affect membrane proteins; cytosolic proteins have fixed, unmodifiable functions",
     ],
     correctIndex: 1,
     explanation:
-      "Post-translational modifications are the cell's way of creating enormous functional complexity from a finite proteome. Phosphorylation (by kinases, reversed by phosphatases) is the most common regulatory PTM — the Ser/Thr/Tyr hydroxyl groups receive a negatively charged phosphate that changes the protein's conformation and interactions. Signal transduction cascades are built almost entirely from phosphorylation events. Glycosylation adds sugar chains (N-linked to Asn, O-linked to Ser/Thr) for proper folding in the ER, protein trafficking, cell-cell recognition, and immune evasion by pathogens. Ubiquitination tags proteins with ubiquitin chains recognized by the 26S proteasome for degradation — essential for clearing misfolded proteins and regulatory proteins that must be destroyed after their job is done. SUMOylation (related to ubiquitin) regulates protein localization and activity. Acetylation of lysines neutralizes charge, affecting histone compaction and enzyme activity. Lipid modifications (myristoylation, palmitoylation, prenylation) anchor proteins to membranes. The sheer number of possible PTM combinations on a single protein means the 'proteome' is far larger than the genome would suggest.",
+      "Proteins aren't finished products when translation ends — they're raw materials that get extensively modified. Phosphorylation is the most important regulatory PTM: kinase enzymes add phosphate groups to serine, threonine, or tyrosine residues, changing the protein's shape and interactions. This is how most cell signalling cascades work — information flows through a chain of phosphorylation events from a receptor at the cell surface deep into the nucleus. Phosphatase enzymes remove phosphates to reverse the signal. Glycosylation attaches sugar chains that help proteins fold correctly in the ER, target them to the right compartment, and mark them for immune recognition. Ubiquitination adds a small 76-amino acid protein tag that marks the protein for destruction by the proteasome. The combination of 20,000 genes × multiple splice variants × many possible PTMs means the actual functional proteome is vastly more complex than the genome alone suggests.",
     topic: "proteins",
   },
   {
     id: "p9",
     question:
-      "What are molecular chaperones and why are they essential for protein folding?",
+      "Your cells are crowded with proteins that could accidentally stick together. How do molecular chaperones prevent protein misfolding, and what happens when they fail?",
     options: [
-      "Chaperones are structural proteins that permanently bind their target proteins to stabilize them",
-      "Chaperones (Hsp70, Hsp90, GroEL/GroES) prevent premature folding or aggregation of nascent polypeptides — they bind exposed hydrophobic regions, provide a folding chamber, and release the protein to fold correctly; they're especially important under heat stress when proteins denature",
-      "Chaperones are only needed for membrane proteins; cytosolic proteins fold spontaneously without any assistance",
-      "Chaperones are ribozymes that catalyze peptide bond formation during translation",
+      "Chaperones permanently bind to proteins, keeping them in an unfolded state for storage until needed",
+      "Chaperones (like Hsp70 and GroEL/GroES) bind exposed hydrophobic patches on newly made proteins, preventing them from sticking to other proteins. They provide a protected environment for proper folding, then release the correctly folded protein",
+      "Chaperones are ribozymes that catalyse peptide bond formation, making sure the protein sequence is correct",
+      "Chaperones only assist membrane protein folding; soluble cytosolic proteins fold spontaneously without any help",
     ],
     correctIndex: 1,
     explanation:
-      "Protein folding in the crowded cellular environment (protein concentration ~300 mg/mL) is not the same as folding in dilute solution. Nascent polypeptides emerging from ribosomes have exposed hydrophobic segments that would readily aggregate with other unfolded proteins — a catastrophe for the cell. Chaperones prevent this. Hsp70 (heat shock protein 70) binds short hydrophobic stretches on unfolded proteins in an ATP-dependent manner, preventing aggregation while giving the protein time to fold. The GroEL/GroES system in bacteria (Hsp60/Hsp10 in eukaryotes) provides a protected folding chamber: GroEL forms a barrel that encapsulates the unfolded protein; GroES caps the barrel; ATP hydrolysis causes conformational changes that allow folding in an isolated, chaperone-lined environment. Hsp90 specializes in folding signaling proteins like kinases and steroid hormone receptors. Prion diseases (Parkinson's, Alzheimer's) involve proteins that misfold and seed aggregation of other normally folded proteins — spectacular cases where folding quality control fails with devastating consequences.",
+      "Protein folding in a crowded cell (where protein concentration can reach 300 mg per millilitre) is nothing like folding in a test tube. As a new protein chain emerges from the ribosome, its hydrophobic sections are exposed and could stick to hydrophobic sections on other unfolded proteins nearby — forming aggregates rather than properly folded proteins. Hsp70 (heat shock protein 70) acts first: it grabs exposed hydrophobic stretches on nascent chains, holding them safely while the chain finishes synthesis. GroEL/GroES (in bacteria; Hsp60/Hsp10 in cells) provides a barrel-shaped protected chamber where a protein can fold alone, away from everything else. When this quality control fails — as in Parkinson's disease (alpha-synuclein aggregates), Alzheimer's (amyloid-beta aggregates), or prion diseases — the consequences are devastating. The misfolded proteins don't just fail to work; they actively corrupt other normal proteins.",
     topic: "proteins",
   },
   {
     id: "p10",
     question:
-      "What are the five classes of antibodies (immunoglobulins) and what is the basic antibody structure?",
+      "Antibodies are Y-shaped proteins made by immune cells. What gives the immune system the ability to recognise virtually any pathogen it has never encountered before?",
     options: [
-      "IgA, IgB, IgC, IgD, IgE — each named for its tissue location of production",
-      "IgG, IgM, IgA, IgE, IgD — all share a basic Y-shape with two heavy chains and two light chains connected by disulfide bonds; the variable (V) regions at the tips form the antigen-binding site; each class has distinct effector functions",
-      "Antibodies are all identical in structure; only the signaling pathway they activate differs",
-      "There are only two antibody classes — membrane-bound and secreted forms of IgM",
+      "The immune system has millions of genes — one for every possible antigen — pre-stored in the genome",
+      "Antibodies all share the same basic Y-shaped structure (two heavy chains + two light chains) but generate enormous diversity through V(D)J recombination — randomly rearranging gene segments to create approximately 10¹⁸ possible antigen-binding sequences",
+      "Each antibody is specifically synthesised from scratch whenever a new pathogen enters the body",
+      "All antibodies are identical in structure; different effector functions are determined entirely by which cell produces them",
     ],
     correctIndex: 1,
     explanation:
-      "Antibodies are extraordinary examples of protein architecture meeting biological function. The basic monomer is Y-shaped: two identical heavy chains and two identical light chains connected by disulfide bridges. Each arm of the Y contains a variable (V) domain from both chains that together form the antigen-binding site (the paratope) — generating specificity through the hypervariable CDR loops. The five immunoglobulin classes differ in their heavy chain constant regions and thus their effector functions: IgG (most abundant in blood; crosses the placenta; four subclasses) activates complement and opsonization; IgM (pentameric) is the first antibody produced in a response and is the most effective complement activator; IgA (dimeric in secretions) protects mucosal surfaces (gut, lungs, breast milk); IgE (monomeric; bound to mast cells) mediates allergic responses and antiparasitic immunity; IgD (on naive B cell surface) functions as a B cell receptor. Antibody diversity arises from V(D)J recombination — the same NHEJ-like mechanism that introduces junctional diversity — allowing the immune system to generate ~10¹⁸ possible antigen-binding sequences from a finite genome.",
+      "Antibodies are extraordinary engineering. Each antibody is Y-shaped: two identical heavy chains and two identical light chains, held together by disulfide bonds. The tips of the Y contain the antigen-binding sites, formed by the variable regions of both heavy and light chains. These variable regions are generated by V(D)J recombination — a process of randomly combining different gene segments (V, D, and J segments) to create the antigen-binding region. With further variation introduced at the junctions, the immune system can theoretically generate about 10¹⁸ different antibody sequences from a finite genome. This is also why cancer cells that arise from immune cells often carry chromosomal translocations — they're the product of recombination machinery that went to the wrong place. The five antibody classes (IgG, IgM, IgA, IgE, IgD) differ in their constant regions and have different roles in different parts of the body.",
     topic: "proteins",
   },
 ];
@@ -589,68 +590,81 @@ function FoldingDiagram() {
 const EXPLANATION_PARAGRAPHS = [
   {
     anchorId: "proteins-amino-acids",
-    title: "Amino Acids: 20 Building Blocks, Unlimited Potential",
+    title: "Amino Acids: 20 Building Blocks, Infinite Possibilities",
     color: "#c2410c",
-    text: `It sounds improbable that just 20 amino acids could build the staggering diversity of proteins in every living organism — but that's exactly what happens. Every amino acid has the same backbone: a central alpha-carbon bonded to an amino group (–NH₂), a carboxyl group (–COOH), and a hydrogen atom. What makes each one unique is its R-group, the side chain hanging off that central carbon. Glycine's R-group is just a hydrogen atom — the smallest, most flexible amino acid. Tryptophan's is a large bicyclic aromatic indole ring. Aspartate carries a negative charge at physiological pH; lysine carries a positive charge; cysteine has a thiol group (–SH) that forms disulfide bridges.
+    text: `It seems almost impossible that just 20 amino acids could build all the proteins in every living organism on Earth — from the haemoglobin in your blood to the enzymes that digest your food to the antibodies that fight infections. But that's exactly what happens, and the key is combinatorial diversity. Every amino acid has the same backbone: a central alpha-carbon bonded to an amino group (–NH₂), a carboxyl group (–COOH), and a hydrogen atom. What makes each amino acid unique is its R group (side chain) — the fourth group hanging off that central carbon.
 
-The 20 amino acids are sorted into families by R-group properties. Nonpolar aliphatic (Gly, Ala, Val, Leu, Ile, Pro) and aromatic (Phe, Trp, Tyr) residues are hydrophobic — they cluster in protein cores away from water. Polar uncharged residues (Ser, Thr, Cys, Asn, Gln) have hydroxyl or amide groups capable of hydrogen bonding. Positively charged (Lys, Arg, His) and negatively charged (Asp, Glu) residues are at the surface. Essential amino acids (His, Ile, Leu, Lys, Met, Phe, Thr, Trp, Val in adults) must come from diet because humans can't synthesize them. Nine non-essential ones are synthesized from metabolic intermediates. Peptide bond formation is a condensation reaction: the carboxyl of one amino acid reacts with the amino group of the next, releasing water and creating the –CO–NH– linkage. Remarkably, this bond has partial double-bond character due to resonance — making the peptide unit planar and rigid, a constraint that drives secondary structure.`,
+Glycine's R group is just a hydrogen atom — making it the smallest, most flexible amino acid. Tryptophan has a large, complex bicyclic indole ring. Cysteine has a thiol group (–SH) that can form covalent disulfide bridges with another cysteine — molecular staples that hold parts of a protein in a fixed shape. Aspartate and glutamate carry negative charges; lysine, arginine, and histidine carry positive charges. These charged and polar groups tend to sit on the protein's water-exposed surface. Phenylalanine, leucine, and valine are hydrophobic — they hide in the protein's interior, away from water. Understanding R-group chemistry is understanding why proteins fold the way they do. The nine essential amino acids (histidine, isoleucine, leucine, lysine, methionine, phenylalanine, threonine, tryptophan, valine) can't be synthesised by the human body and must come from food — which is why protein quality in diet matters.`,
   },
   {
     anchorId: "proteins-structure",
-    title:
-      "Secondary Structure: Alpha-Helices, Beta-Sheets, and Ramachandran Space",
+    title: "Secondary Structure: Helices, Sheets, and Why Shape Follows Rule",
     color: "#d97706",
-    text: `Secondary structure refers to regular, repeating local arrangements stabilized by backbone hydrogen bonds. The alpha-helix is a right-handed coil with 3.6 amino acid residues per turn and a pitch of 5.4 Å. Each backbone carbonyl oxygen (C=O at residue n) hydrogen bonds to the backbone amide nitrogen (N–H at residue n+4), and these H-bonds run roughly parallel to the helix axis, stabilizing it beautifully. Side chains project outward from the helix, available for interactions with other parts of the protein or with other molecules. Proline is the classic helix-breaker: its cyclic pyrrolidine side chain fixes the Phi backbone dihedral angle and lacks the N–H needed for helix H-bonding — proline is often found at helix termini or in tight turns, creating structural kinks (crucial in collagen, for example).
+    text: `Once amino acids are linked into a chain, the chain doesn't flop around randomly — it folds into regular, repeating patterns called secondary structures, stabilised by hydrogen bonds between backbone atoms (not R groups). The two main secondary structures are the alpha helix and the beta sheet.
 
-Beta-sheets form when two or more extended polypeptide strands run side-by-side, connected by backbone H-bonds between the strands rather than within a single strand. Antiparallel beta-sheets (strands running in opposite N→C directions) are more stable than parallel sheets because their H-bonds are more linear and their geometry more favorable. The pleated appearance of beta-sheets arises because the backbone has a slightly zig-zag geometry when extended. Beta-turns (type I, II, II') connect strands in antiparallel sheets and are frequently found on protein surfaces. The Ramachandran plot charts the allowed Phi (φ) and Psi (ψ) backbone dihedral angles for every residue — steric clashes forbid most regions, and the alpha-helical and beta-sheet regions are clearly distinct. Analyzing a new protein structure's Ramachandran plot is a standard quality check in structural biology.`,
+The alpha helix is a right-handed coil with 3.6 amino acid residues per complete turn. Its stability comes from hydrogen bonds between the carbonyl oxygen of residue n and the amide nitrogen (N–H) of residue n+4 — these H-bonds run roughly along the helix axis, creating a rod-like structure. Side chains project outward from the helix, free to interact with other molecules. Proline disrupts helices because its cyclic side chain locks the backbone angle and removes the N–H needed for the key hydrogen bond — proline is a natural helix-breaker.
+
+Beta sheets form when two or more extended polypeptide strands run side by side, connected by hydrogen bonds between strands rather than within one strand. Antiparallel sheets (strands running in opposite directions) are more stable than parallel ones. Both alpha helices and beta sheets are found throughout all proteins — their relative proportions and arrangement determine the protein's overall shape. The Ramachandran plot maps which backbone dihedral angles are physically allowed, showing that most residues in real proteins fall neatly into the alpha-helical or beta-sheet regions. It's a beautifully simple way to check whether a protein structure is realistic.`,
   },
   {
     anchorId: "proteins-tertiary",
-    title: "Tertiary Structure: Protein Domains, Motifs, and Chaperones",
+    title: "Tertiary Structure: How a Protein Gets Its Final 3D Shape",
     color: "#b45309",
-    text: `Tertiary structure is the complete three-dimensional fold of a single polypeptide chain, stabilized by a network of R-group interactions. The hydrophobic effect is the dominant driving force: nonpolar side chains are excluded from water and cluster in the protein interior, minimizing the thermodynamically unfavorable exposure of hydrophobic surface area. Disulfide bonds between cysteine residues (formed in the oxidizing environment of the ER lumen) provide covalent stabilization, crucial for extracellular proteins like antibodies and insulin. Salt bridges between oppositely charged residues and a network of hydrogen bonds add further stability.
+    text: `Tertiary structure is the complete three-dimensional fold of a single polypeptide chain — the full, complex shape that allows a protein to do its job. This shape is stabilised by a web of interactions between R groups: the hydrophobic effect (nonpolar side chains clustering in the protein's core, away from water) is the dominant driving force. Additional stability comes from hydrogen bonds between polar side chains, ionic bonds between oppositely charged residues (salt bridges), and in secreted proteins, covalent disulfide bridges between cysteine residues.
 
-Proteins often contain independently folding units called domains — compact substructures with distinct hydrophobic cores, typically 50–350 residues. Protein domains are evolution's modular building blocks: the TIM barrel (a barrel of 8 beta-strands and 8 alpha-helices) is one of the most common enzymatic folds; the Rossmann fold binds NAD⁺/NADH in many dehydrogenases; the EF-hand is a calcium-binding loop found in calmodulin. Structural motifs are smaller super-secondary patterns: the leucine zipper and helix-turn-helix (HTH) are DNA-binding motifs; zinc fingers coordinate Zn²⁺ to stabilize a small finger-like protrusion that inserts into the DNA major groove. Chaperones are essential for in-cell folding — Hsp70 prevents premature aggregation of nascent chains; the GroEL/GroES barrel provides a protected folding chamber. When folding goes wrong, misfolded proteins aggregate into amyloid fibrils: Alzheimer's disease involves β-amyloid (Aβ) and tau aggregation; Parkinson's involves alpha-synuclein; prions are an extreme case where a misfolded protein (PrP^Sc) acts as a template to refold normal prions (PrP^C) into the disease conformation.`,
+Proteins often contain independently stable sub-units called domains — compact, self-contained folding units of typically 50–350 residues. Domains are evolution's modular building blocks: the same domain appears in many different proteins, performing the same function in each. The TIM barrel is one of the most common enzyme folds. The Rossmann fold binds NAD⁺ in many dehydrogenases. Zinc fingers coordinate a zinc ion to form a small projection that inserts into the DNA major groove — they're DNA-binding domains found in hundreds of transcription factors.
+
+Folding in the crowded cellular environment requires help. Molecular chaperones (Hsp70, GroEL/GroES) prevent nascent chains from aggregating before they've had the chance to fold. When proteins misfold and can't be salvaged by chaperones, they're tagged with ubiquitin and destroyed by the proteasome. When this quality control fails, misfolded proteins accumulate: Alzheimer's disease involves aggregates of amyloid-beta and tau protein; Parkinson's involves alpha-synuclein aggregates; prion diseases involve a protein that templates its own misfolding. These diseases show starkly how much depends on getting the fold exactly right.`,
   },
   {
     anchorId: "proteins-quaternary",
-    title: "Quaternary Structure and Allosteric Regulation",
+    title: "Quaternary Structure: When Multiple Chains Work Together",
     color: "#7c3aed",
-    text: `Quaternary structure exists in proteins made of two or more polypeptide subunits — the arrangement of those subunits relative to each other. Subunits can be identical (homomers: hemoglobin-like complexes, viral capsids) or different (heteromers). The interactions holding subunits together are the same non-covalent forces as tertiary structure, plus sometimes intersubunit disulfide bonds. Quaternary assembly enables a remarkable phenomenon impossible in monomers: allostery.
+    text: `Quaternary structure is what you get when two or more polypeptide chains assemble together to form a functional complex. Subunits can be identical (a homomer) or different (a heteromer), and they're held together by the same non-covalent forces as tertiary structure — hydrophobic interactions, hydrogen bonds, salt bridges — plus sometimes disulfide bonds between chains.
 
-Hemoglobin is the textbook example of positive cooperativity. The four subunits (2 alpha + 2 beta globin chains, each carrying a heme group) exist in two conformations: T-state (tense, low O₂ affinity) and R-state (relaxed, high affinity). When the first O₂ binds one subunit, it triggers a conformational change that propagates through the other subunits, shifting them toward R-state and making them more likely to bind O₂. This produces hemoglobin's sigmoidal oxygen-binding curve — far more efficient than the hyperbolic curve of non-cooperative myoglobin. The Bohr effect means that high CO₂ and H⁺ (in metabolically active tissues) stabilize the T-state and promote O₂ release exactly where it's needed. 2,3-BPG also stabilizes the T-state. Other major quaternary complexes: the 26S proteasome (28 subunit protease complex degrading ubiquitinated proteins), ATP synthase (8+ subunit types spanning two membranes, rotary mechanism), and the ribosome (4 rRNA + ~80 proteins). All are among the most complex machines in the cell.`,
+Haemoglobin is the textbook example, and for good reason: its four-subunit structure (two alpha and two beta chains) enables cooperative oxygen binding, which is far more sophisticated than anything a single chain could do. In the deoxy T-state (tense), the subunits are in a constrained conformation with low oxygen affinity. When the first oxygen binds, it triggers a conformational change that propagates to the other subunits, shifting them toward the high-affinity R-state. The result: a sigmoidal oxygen-binding curve that loads up efficiently in the lungs and releases oxygen efficiently in tissues. The Bohr effect adds another layer of elegance: high CO₂ and H⁺ in metabolically active tissues push haemoglobin toward T-state, releasing oxygen exactly where it's most needed.
+
+Other examples of quaternary structure are everywhere: the proteasome (28 subunits forming a barrel-shaped protein destroyer), ATP synthase (8+ subunit types spanning two membranes, working as a rotary motor), and the ribosome (4 RNA molecules plus ~80 proteins). Quaternary assembly enables allosteric regulation — one part of the complex influencing the activity of another — which would be impossible in a single isolated chain.`,
   },
   {
     anchorId: "proteins-enzymes",
-    title: "Six Enzyme Classes and Kinetics: From Km to Inhibition",
+    title: "Enzymes: Biological Catalysts and How They Work",
     color: "#c2410c",
-    text: `Enzymes are biological catalysts that lower the activation energy of reactions without being consumed. They're classified into six EC (Enzyme Commission) classes: Oxidoreductases catalyze electron/hydrogen transfer (lactate dehydrogenase, succinate dehydrogenase, cytochrome P450s). Transferases move functional groups (hexokinase transfers phosphate from ATP to glucose; aminotransferases move amino groups in amino acid synthesis and catabolism). Hydrolases cleave bonds using water (proteases, lipases, glycosidases — the digestive enzymes). Lyases cleave bonds without water, often forming double bonds (pyruvate decarboxylase removing CO₂; aldolase in glycolysis). Isomerases interconvert stereoisomers or structural isomers (triose phosphate isomerase — one of the most efficient enzymes known; phosphoglucose isomerase). Ligases join two molecules using ATP energy (DNA ligase sealing nicks; acetyl-CoA carboxylase in fatty acid synthesis).
+    text: `Enzymes are proteins that make reactions happen that would otherwise take minutes, hours, or centuries, and they do this without being used up themselves. They work by binding their substrate in a precisely shaped active site and stabilising the transition state — the teetering, highest-energy moment of the reaction — making it easier to pass through. The 'induced fit' model is more accurate than the old 'lock and key' analogy: both enzyme and substrate change shape slightly when they meet, optimising the fit around the transition state.
 
-Enzyme kinetics follows the Michaelis-Menten model (v = Vmax[S]/(Km + [S])) for most simple enzymes. Km is the substrate concentration at half-maximal velocity — a low Km means high substrate affinity. Vmax reflects the maximum rate when enzyme is fully saturated, related to kcat (the catalytic rate constant, or turnover number). Competitive inhibitors bind the active site and increase apparent Km without affecting Vmax — addable substrate can overcome them. Noncompetitive inhibitors bind an allosteric site on both free enzyme and enzyme-substrate complex, decreasing Vmax but leaving Km unchanged. Uncompetitive inhibitors bind only the enzyme-substrate complex, decreasing both Km and Vmax. Allosteric enzymes (like aspartate transcarbamoylase or phosphofructokinase) don't obey Michaelis-Menten kinetics and produce sigmoidal v vs [S] curves — they're the key control points in metabolic pathways.`,
+There are six enzyme classes. Oxidoreductases transfer electrons or hydrogen between molecules — lactate dehydrogenase, succinate dehydrogenase. Transferases move functional groups — hexokinase transfers phosphate from ATP to glucose. Hydrolases cleave bonds using water — your digestive enzymes (pepsin, trypsin, lipase) are all hydrolases. Lyases cleave bonds without water, often forming double bonds — pyruvate decarboxylase removes CO₂. Isomerases interconvert structural isomers — phosphoglucose isomerase in glycolysis. Ligases join molecules using ATP — DNA ligase.
+
+Enzyme kinetics tells you how fast an enzyme works under different conditions. Km (Michaelis constant) is the substrate concentration at half-maximal speed — lower Km means higher affinity. Vmax is the maximum rate when all enzyme molecules are fully loaded. Competitive inhibitors bind the active site, raising apparent Km but leaving Vmax unchanged — add more substrate to overcome them. Noncompetitive inhibitors bind elsewhere, reducing Vmax but not Km — can't overcome with substrate. Many drugs work by enzyme inhibition: statins inhibit HMG-CoA reductase (cholesterol synthesis), aspirin irreversibly inhibits cyclooxygenase (prostaglandin synthesis), and many antibiotics target bacterial enzymes.`,
   },
   {
     anchorId: "proteins-functions",
-    title: "Structural, Transport, Motor, and Signaling Proteins",
+    title: "Proteins in Action: Structural, Transport, Motor, and Signalling",
     color: "#d97706",
-    text: `Proteins are the most functionally diverse molecules in biology. Structural proteins provide mechanical strength: collagen (the most abundant protein in the human body) is a triple-helix rope-like polymer that gives tendons, cartilage, bone, and skin their tensile strength; mutations in collagen genes cause Ehlers-Danlos and osteogenesis imperfecta syndromes. Keratin fills hair, nails, and the outer skin layer (epidermis). Actin and tubulin are cytoskeletal proteins that form dynamic filaments and microtubules for cell shape, division, and intracellular transport.
+    text: `Proteins do almost everything in a cell. Structural proteins provide the scaffolding: collagen (the most abundant protein in your body by mass) is a triple-helix rope-like polymer that gives tendons, cartilage, bone, and skin their tensile strength. Mutations in collagen genes cause brittle bone disease and Ehlers-Danlos syndrome. Keratin fills your hair and nails and the outer skin layer. Actin and tubulin form dynamic filaments and microtubules that give cells their shape and serve as tracks for cargo.
 
-Transport proteins carry molecules where they're needed: hemoglobin carries O₂ in red blood cells; myoglobin stores O₂ in muscle; albumin (most abundant plasma protein) carries fatty acids, hormones, and bilirubin in blood; channel proteins (aquaporins, ion channels) and carrier proteins (glucose transporters) move solutes across membranes with specificity and speed. Motor proteins convert chemical energy (ATP hydrolysis) into directed mechanical motion: myosin walks along actin filaments, powering muscle contraction; kinesin and dynein walk along microtubules carrying vesicles and organelles toward opposite cell poles (kinesin toward + end, dynein toward − end). Signaling proteins include G-proteins (molecular switches cycling between GTP-active and GDP-inactive states), receptor tyrosine kinases (RTKs like EGFR and insulin receptor that autophosphorylate upon ligand binding, triggering downstream phosphorylation cascades), G-protein-coupled receptors (GPCRs — the largest receptor superfamily, ~800 human GPCRs, targets of ~35% of approved drugs), ligand-gated ion channels (nicotinic acetylcholine receptor), and nuclear receptors (glucocorticoid receptor, estrogen receptor — transcription factors activated by lipophilic ligands). Antibodies (IgG, IgM, IgA, IgE, IgD) are Y-shaped immunoglobulins with hypervariable CDR loops at the tips that generate extraordinary binding specificity; their diversity arises from V(D)J recombination.`,
+Transport proteins are molecular taxis: haemoglobin carries oxygen in red blood cells, cooperatively loading and unloading in response to oxygen partial pressure and the Bohr effect. Myoglobin stores oxygen in muscle. Albumin (the most abundant protein in blood plasma) carries fatty acids, hormones, and bilirubin. Channel proteins (aquaporins, ion channels) and carrier proteins (GLUT glucose transporters) move specific molecules across cell membranes.
+
+Motor proteins convert ATP energy into directed mechanical movement: myosin walks along actin filaments to power muscle contraction. Kinesin walks toward the plus end of microtubules, carrying vesicles toward the cell periphery. Dynein walks toward the minus end, carrying things back toward the nucleus. Signalling proteins are how cells communicate: GPCRs (G-protein-coupled receptors) are the largest receptor superfamily (~800 human genes) and the target of about 35% of all approved drugs — they respond to hormones, neurotransmitters, light, and smell. Receptor tyrosine kinases (RTKs) like the insulin receptor and EGFR activate intracellular signalling cascades when growth factors bind. Nuclear receptors (glucocorticoid, oestrogen, thyroid hormone receptors) enter the nucleus and directly regulate gene transcription.`,
   },
   {
     anchorId: "proteins-ptms",
-    title: "Post-Translational Modifications and Protein Targeting",
+    title: "Post-Translational Modifications: The Protein's Second Life",
     color: "#b45309",
-    text: `Once a protein is translated, its story is far from over. Post-translational modifications (PTMs) dramatically expand functional diversity beyond what the primary sequence alone achieves. Phosphorylation is the most common regulatory PTM: kinases add phosphate groups to Ser, Thr, or Tyr hydroxyl groups, creating negative charges that alter protein conformation and interactions; phosphatases reverse this. Signal transduction cascades — from the cell surface to the nucleus — are largely built from phosphorylation events. Glycosylation adds carbohydrate chains (N-linked to Asn in the ER, O-linked to Ser/Thr in the Golgi) for proper folding, targeting, and cell-surface recognition. Ubiquitination tags proteins with chains of the 76-amino acid ubiquitin protein; K48-linked polyubiquitin chains mark proteins for degradation by the 26S proteasome; K63-linked chains have signaling roles in DNA repair. SUMOylation and acetylation (especially of histone lysines) regulate protein localization and chromatin compaction. Lipid modifications (N-myristoylation, palmitoylation, prenylation) anchor peripheral membrane proteins to bilayers.
+    text: `When a protein is freshly made, it's a starting point, not a finished product. Post-translational modifications (PTMs) dramatically expand what a protein can do, where it can go, and how long it lasts. Phosphorylation is the most important: kinase enzymes add phosphate groups to serine, threonine, or tyrosine side chains, changing the protein's conformation and interactions. When a hormone binds a cell-surface receptor, the signal travels into the cell as a cascade of phosphorylation events, each kinase activating the next, eventually reaching the nucleus to change gene expression. Phosphatase enzymes reverse these modifications. It's the molecular equivalent of flicking switches on and off.
 
-Protein targeting ensures each protein reaches its correct cellular address. Cytosolic proteins (glycolytic enzymes, kinases, many regulatory proteins) are made on free ribosomes without any special signals. Proteins destined for secretion or membrane insertion contain an N-terminal hydrophobic signal sequence recognized by Signal Recognition Particle (SRP), which docks the ribosome on the rough ER — the polypeptide threads directly into the ER lumen as it's translated. After folding and initial glycosylation in the ER, COPII vesicles deliver proteins to the Golgi for further processing and sorting. Mitochondria have their own protein import machinery (TOM/TIM complexes) recognizing matrix-targeting sequences that are cleaved upon import. Nuclear localization sequences (NLS, typically enriched in Lys and Arg) are recognized by importins for active transport through nuclear pore complexes. Proteolytic cleavage activates many proteins: zymogens (inactive enzyme precursors) like trypsinogen and pepsinogen are activated by targeted cleavage; insulin is made as preproinsulin and processed to the active two-chain form by removal of the signal peptide and C-peptide.`,
+Glycosylation attaches sugar chains to asparagine (N-linked) or serine/threonine (O-linked). These sugar decorations help proteins fold correctly in the ER, direct them to the right compartment, and act as identity tags on cell surfaces — this is how cells of the same organism recognise each other, and it's also how some pathogens disguise themselves as 'self.' Ubiquitination attaches chains of a 76-amino acid protein called ubiquitin. K48-linked chains direct the protein to the proteasome for destruction — the cell's way of clearing damaged, misfolded, or no-longer-needed proteins. K63-linked chains have regulatory signalling roles instead.
+
+Lipid modifications (myristoylation, palmitoylation, prenylation) anchor proteins to the inner face of the cell membrane without them being transmembrane proteins. Signal peptide cleavage removes an N-terminal sequence that directed the protein to the secretory pathway — insulin is synthesised with both a signal peptide and an internal C-peptide, both of which are removed to produce active insulin. The sheer number of possible modifications means a genome of 20,000 genes can produce a proteome of enormous functional complexity.`,
   },
   {
     anchorId: "proteins-diseases",
-    title: "Protein Folding Diseases: When the Machine Goes Wrong",
+    title: "When Proteins Go Wrong: Folding Diseases and Their Consequences",
     color: "#c2410c",
-    text: `Given the complexity of protein folding, it's remarkable how well it works — but when it fails, the consequences can be devastating. Amyloid diseases arise when proteins misfold from their native globular conformation into beta-sheet-rich fibrillar aggregates that are resistant to cellular degradation. In Alzheimer's disease, amyloid precursor protein is cleaved to generate Aβ peptides (especially Aβ42) that aggregate into extracellular plaques; tau protein also forms intracellular neurofibrillary tangles. In Parkinson's disease, alpha-synuclein aggregates into Lewy bodies in dopaminergic neurons. Type 2 diabetes involves IAPP (islet amyloid polypeptide) aggregating in pancreatic islets, destroying beta cells. Huntington's disease involves polyglutamine (polyQ) expansion in huntingtin protein, causing it to aggregate — a direct result of a DNA repeat expansion mutation.
+    text: `Given how many steps protein folding involves, it's remarkable how well it works. But when it fails, the results are often devastating — and understanding these failures reveals deep truths about how protein structure and biology are connected.
 
-Prion diseases represent the most conceptually disturbing folding pathology: a single protein (PrP) can exist in two conformations — the normal cellular form (PrP^C, mostly alpha-helical) and the misfolded scrapie form (PrP^Sc, predominantly beta-sheet). PrP^Sc acts as a template that physically catalyzes the conversion of PrP^C into more PrP^Sc — essentially an infectious protein with no nucleic acid. This underlies mad cow disease (BSE), Creutzfeldt-Jakob disease (CJD), and kuru. Cystic fibrosis provides another instructive example: the most common mutation (ΔF508) in the CFTR chloride channel causes it to misfold slightly, so the quality control machinery of the ER retains and degrades it — resulting in near-complete loss of functional CFTR at the cell surface, despite the protein potentially having some activity if it could get there. Understanding these diseases has driven enormous investment in protein folding research and chaperone-based therapies.`,
+Amyloid diseases arise when proteins that are normally globular and soluble misfold into flat, sheet-rich fibrillar aggregates called amyloid fibrils. These aggregates resist all the cell's degradation systems and accumulate, damaging tissue. In Alzheimer's disease, amyloid precursor protein is cleaved into Aβ peptides (especially the 42-amino acid Aβ42) that aggregate outside cells into senile plaques. Tau protein forms tangles inside neurons. In Parkinson's disease, alpha-synuclein aggregates into Lewy bodies in the dopaminergic neurons of the substantia nigra, killing those cells and causing the characteristic movement problems. Type 2 diabetes involves IAPP aggregation in pancreatic islets.
+
+Prion diseases are the most conceptually disturbing: a protein (PrP) can exist in a normal cellular form (mostly alpha-helical) and an infectious misfolded form (mostly beta-sheet). The misfolded form physically templates the conversion of normal protein into more of itself — no nucleic acid, no virus, just a misfolded protein that replicates its shape. This underlies mad cow disease, Creutzfeldt-Jakob disease in humans, and kuru. Cystic fibrosis teaches a different lesson: the most common mutation (deletion of phenylalanine 508 in the CFTR chloride channel) causes only subtle misfolding — but the ER's quality control system detects it and degrades the protein before it reaches the cell surface, even though some functional CFTR might reach the surface if allowed. Therapeutic strategies that help misfolded CFTR escape quality control and reach the membrane (like lumacaftor) can partially restore function.`,
   },
 ];
 
@@ -713,7 +727,7 @@ export default function ProteinsSection() {
           <SectionHeader
             topicId="proteins"
             title="Proteins — The Molecular Workhorses"
-            subtitle="From amino acid chemistry through all four structural levels, enzyme kinetics, protein types, and post-translational modifications — a complete guide for students and researchers alike."
+            subtitle="From amino acids and four structural levels to enzymes, protein functions, and folding diseases — all explained clearly from the ground up."
           />
           <div
             className="mb-6 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold"
@@ -1052,10 +1066,9 @@ export default function ProteinsSection() {
               🧪 Test Your Protein Knowledge
             </h3>
             <p className="text-muted-foreground text-sm mb-6">
-              10 questions spanning amino acid chemistry, structural levels,
-              enzyme kinetics, cooperative binding, post-translational
-              modifications, protein types, and chaperones — with detailed
-              teacher-style explanations.
+              10 questions covering amino acids, protein structure levels,
+              enzyme kinetics, haemoglobin, modifications, and folding diseases
+              — each with a clear explanation that builds real understanding.
             </p>
             <QuizEngine topicId="proteins" questions={PROTEIN_QUIZ} />
           </div>

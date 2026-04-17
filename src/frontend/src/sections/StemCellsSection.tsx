@@ -352,13 +352,13 @@ const STEM_CELL_QUIZ: QuizQuestion[] = [
     question: "Which two properties together define a stem cell?",
     options: [
       "Rapid division and antibiotic resistance",
-      "Self-renewal and potency (ability to differentiate into specialised cell types)",
+      "Self-renewal and potency — the ability to both copy themselves and transform into specialised cell types",
       "Large nucleus and telomerase expression only",
-      "Haematopoiesis and immune privilege",
+      "Hematopoiesis and immune privilege",
     ],
     correctIndex: 1,
     explanation:
-      "Two properties together make a stem cell special: self-renewal (it can divide and produce more copies of itself indefinitely) and potency (it can transform into one or more specialised cell types). Most cells can do one or the other — stem cells do both. Ernest McCulloch and James Till first demonstrated this experimentally in 1961 using mouse bone marrow colony-forming units.",
+      "Two properties together make a stem cell special — and you need both. Self-renewal means the cell can divide and produce identical copies of itself, keeping the stem cell pool topped up. Potency means it can differentiate — given the right signals, it can transform into one or more specialised cell types. Most specialised cells can do neither: neurons don't divide, and they can only be neurons. Most dividing cells (like skin cells) can only make more skin cells. Stem cells can both replicate themselves and become something new. It was Ernest McCulloch and James Till who first demonstrated these properties rigorously in 1961 using mouse bone marrow cells — showing that single cells could both self-renew and generate colonies of different blood cell types. Their experiments established the modern concept of the hematopoietic stem cell and are considered foundational to stem cell biology.",
   },
   {
     id: "sc2",
@@ -373,7 +373,7 @@ const STEM_CELL_QUIZ: QuizQuestion[] = [
     ],
     correctIndex: 2,
     explanation:
-      "Totipotent — the 'total potential' option. The fertilised egg (zygote) and the cells of the very early embryo (2–4 cell stage) are totipotent: they can form every tissue in the body AND the extraembryonic tissues like the placenta. That total capacity disappears quickly as the embryo develops into a blastocyst.",
+      "Totipotent — the word means 'total potential.' The fertilised egg (zygote) and the cells of the very early embryo (2–4 cell stage, called blastomeres) are totipotent: they can form every tissue in the body AND the extraembryonic tissues like the placenta and yolk sac. This total capacity disappears quickly as the embryo develops. By the time the embryo forms a blastocyst (around day 5–7), the inner cell mass cells have narrowed to pluripotent — they can form any cell in the body, but not the placenta. This is a one-way narrowing: totipotent cells become pluripotent, pluripotent cells become multipotent, and so on. Normally, you can't go back up the ladder. One of the most amazing discoveries in modern biology was that under the right conditions, you can reprogram cells back to pluripotency — the iPSC revolution, which earned Shinya Yamanaka the Nobel Prize in 2012.",
   },
   {
     id: "sc3",
@@ -387,7 +387,7 @@ const STEM_CELL_QUIZ: QuizQuestion[] = [
     ],
     correctIndex: 1,
     explanation:
-      "ESCs come from the inner cell mass (ICM) of a blastocyst — the stage the embryo reaches about 5–7 days after fertilisation. The ICM contains the pluripotent cells that would normally develop into the embryo proper. Deriving ESCs requires destroying the blastocyst. James Thomson first cultured human ESCs in 1998, requiring years of work and triggering global ethical debate.",
+      "ESCs come from the inner cell mass (ICM) of a blastocyst — the stage the embryo reaches about 5–7 days after fertilization. At this point, the embryo is a hollow ball of about 100–200 cells. The outer layer will become the placenta; the ICM (about 30–40 cells tucked inside) would normally develop into the embryo itself. Deriving ESC lines involves removing those ICM cells and growing them in culture — which requires destroying the blastocyst. James Thomson at the University of Wisconsin first derived and cultured human ESC lines in 1998, opening a new era of cell biology. ESCs are pluripotent — they can become any of the ~200 cell types in the human body. Their derivation triggered profound ethical debate that continues today, because different people hold genuinely different views about the moral status of a 5-day embryo.",
   },
   {
     id: "sc4",
@@ -402,22 +402,22 @@ const STEM_CELL_QUIZ: QuizQuestion[] = [
     ],
     correctIndex: 1,
     explanation:
-      "The Yamanaka factors — Oct4, Sox2, Klf4, and c-Myc (abbreviated OSKM) — are transcription factors that, when introduced into adult somatic cells, reprogram them back to a pluripotent state. Yamanaka's 2006 paper showing this in mouse fibroblasts genuinely shocked the scientific community. The Nobel Prize in Physiology or Medicine followed in 2012, shared with John Gurdon.",
+      "Oct4, Sox2, Klf4, and c-Myc — abbreviated OSKM, or the 'Yamanaka factors.' These four proteins are all transcription factors, meaning they bind to DNA and switch genes on or off. In embryonic stem cells, these factors are naturally active and work together to maintain the pluripotent state. Yamanaka's genius was asking: what if you force adult cells to express these same factors? His team inserted genes for all four into mouse skin cells using viruses in 2006. Remarkably, a small percentage of those skin cells were reprogrammed all the way back to a pluripotent state — behaving almost identically to embryonic stem cells in key tests. His team repeated the achievement with human cells in 2007. The scientific community was genuinely shocked — the fundamental direction of development (from stem cell to specialized cell) had been assumed to be irreversible. Yamanaka shared the 2012 Nobel Prize with John Gurdon, who had shown nuclear reprogramming was possible in frogs back in the 1960s.",
   },
   {
     id: "sc5",
     topic: "stem-cells",
     question:
-      "What is a key advantage of iPSCs over embryonic stem cells for therapeutic use?",
+      "What is a key advantage of iPSCs over embryonic stem cells for therapy?",
     options: [
-      "iPSCs are always faster to differentiate",
-      "iPSCs can be generated from a patient's own cells, avoiding immune rejection and embryo destruction",
+      "iPSCs are always faster to differentiate into target cell types",
+      "iPSCs can be made from a patient's own cells, avoiding immune rejection and without requiring embryo destruction",
       "iPSCs never form teratomas under any condition",
-      "iPSCs are simpler to derive than ESCs",
+      "iPSCs are simpler and quicker to derive than ESCs",
     ],
     correctIndex: 1,
     explanation:
-      "This is the reason iPSCs were so transformative: you take a skin biopsy or blood sample from a patient, reprogram those cells back to pluripotency, then differentiate them into the cell type needed for therapy. No embryo is destroyed, and the cells are genetically the patient's own — meaning no immune rejection. The challenge is that iPSC lines can retain epigenetic memory of their source tissue and incomplete reprogramming can cause problems.",
+      "This is what made iPSCs so transformative for medicine. If you need replacement cells for a patient — say, dopamine-producing neurons for someone with Parkinson's disease — using someone else's cells risks immune rejection, and the patient would need to take immunosuppressant drugs for life. But if you take a small skin biopsy or blood sample from the patient, reprogram those cells to iPSCs, and then differentiate them into the needed cell type, the resulting cells are genetically the patient's own. The immune system recognizes them as 'self' and doesn't attack. No embryo needs to be destroyed, and no immunosuppression is needed. This autologous (patient-matched) approach is exactly what several clinical trials are now pursuing for Parkinson's disease, diabetes, and macular degeneration. The main challenges: iPSC derivation and differentiation take weeks to months, some iPSC lines don't behave perfectly, and pluripotent cells that haven't fully differentiated can form tumors (teratomas) if transplanted — a real safety challenge being actively solved.",
   },
   {
     id: "sc6",
@@ -426,13 +426,13 @@ const STEM_CELL_QUIZ: QuizQuestion[] = [
       "Hematopoietic stem cells (HSCs) in bone marrow are described as 'multipotent'. What does this mean?",
     options: [
       "They can produce every cell type in the body",
-      "They are restricted to producing all blood cell lineages but not neurons or liver cells",
+      "They can produce all blood cell types but cannot make neurons or liver cells",
       "They can only produce red blood cells",
       "They are identical to pluripotent embryonic stem cells",
     ],
     correctIndex: 1,
     explanation:
-      "Multipotent means 'several fates, but within one tissue family.' HSCs can produce every type of blood cell — red cells (erythrocytes), white cells (neutrophils, lymphocytes, monocytes), and platelets. But they can't make neurons or liver cells. In humans, HSCs are characterised as CD34+/CD38- cells. They respond to cytokines like SCF, TPO, G-CSF, and EPO to control which lineage is produced.",
+      "Multipotent means 'several fates, but within one tissue family.' HSCs sit at the top of the blood cell hierarchy — they can produce every type of blood cell: oxygen-carrying red cells (erythrocytes), immune cells (neutrophils, lymphocytes, monocytes, eosinophils), and clot-forming platelets. That's a wide range of different, specialized cell types. But they cannot make neurons, liver cells, or muscle cells — their potential is limited to the blood and immune system lineage. This is different from pluripotent cells, which can become any cell in the body. The more potency narrows, the lower the tumor risk, which matters greatly for therapy. HSCs have been used in bone marrow transplants since the 1960s — this makes them the most clinically proven stem cell in medicine. They respond to molecular signals called cytokines (like erythropoietin to make more red cells, or G-CSF to make more neutrophils) that the body uses to match blood cell production to current needs.",
   },
   {
     id: "sc7",
@@ -440,58 +440,57 @@ const STEM_CELL_QUIZ: QuizQuestion[] = [
     question: "Which is the OLDEST established clinical use of stem cells?",
     options: [
       "Repairing spinal cord injuries with neural stem cells",
-      "Growing new cardiac muscle from cardiac stem cells",
+      "Growing new cardiac muscle after a heart attack",
       "Bone marrow transplantation for blood cancers and genetic blood disorders",
-      "Replacing pancreatic β-cells for type 1 diabetes",
+      "Replacing pancreatic beta-cells for type 1 diabetes",
     ],
     correctIndex: 2,
     explanation:
-      "Bone marrow transplantation has been used clinically since the 1960s — it's the original stem cell therapy. Patients with leukaemia, lymphoma, or inherited blood disorders (like sickle cell disease) receive high-dose chemotherapy to eliminate the diseased haematopoietic system, and then donor (or their own previously collected) stem cells are infused to rebuild a healthy blood system. Tens of thousands of transplants are performed annually.",
+      "Bone marrow transplantation has been used clinically since the 1960s — it's the original stem cell therapy and it's been saving lives for over 60 years. Here's how it works: a patient with leukemia or lymphoma receives high-dose chemotherapy or radiation to destroy their cancerous blood-making system (and unfortunately most of the healthy system too). Then donor stem cells from matching bone marrow are infused — these stem cells migrate to the bone marrow, settle in, and rebuild an entirely new blood and immune system. If successful, the patient ends up with a healthy blood system derived from the donor's stem cells. For sickle cell disease and thalassemia, a successful transplant from a matched donor can be genuinely curative — the patient's own defective stem cells are replaced with healthy donor cells that make normal hemoglobin. Tens of thousands of these transplants are performed annually worldwide. This established clinical reality is important context when evaluating newer, more experimental stem cell therapies.",
   },
   {
     id: "sc8",
     topic: "stem-cells",
-    question:
-      "What are organoids, and which scientist's group first described intestinal organoids from stem cells?",
+    question: "What are organoids, and why are they so valuable for research?",
     options: [
-      "Organ transplants; discovered by Christiaan Barnard",
-      "3D self-organising tissue structures derived from stem cells; Hans Clevers' group using Lgr5+ intestinal stem cells",
+      "Organ transplants using lab-grown tissue; developed by Christiaan Barnard",
+      "3D self-organizing tissue structures grown from stem cells that mimic the architecture of real organs — used to test drugs and study diseases on human tissue",
       "Artificial organs made from synthetic polymers; developed by Robert Langer",
-      "Single-cell suspensions from dissociated organs; method by Yamanaka",
+      "Single-cell suspensions from dissociated organs",
     ],
     correctIndex: 1,
     explanation:
-      "Organoids are 3D self-organising mini-organs grown from stem cells in culture — they recapitulate the architecture and cell diversity of real tissues. Hans Clevers' group at the Hubrecht Institute first generated intestinal organoids from Lgr5+ intestinal stem cells (crypt base columnar cells) in 2009. Since then, organoids have been made from brain, lung, liver, kidney, retina, and stomach tissue — and are revolutionising drug testing and disease modelling.",
+      "Organoids are one of the most exciting recent developments in biology. When you grow stem cells in a 3D environment with the right matrix and signaling molecules, they self-organize into miniature structures that look and behave like real organs — a tiny intestine with crypts and villi, a mini-brain with layers similar to the real cortex, a small liver with functional liver cells. Hans Clevers' group at the Hubrecht Institute first grew intestinal organoids from adult intestinal stem cells in 2009. Since then, organoids have been made from brain, lung, liver, kidney, retina, stomach, and pancreas tissue. Why are they so valuable? Drug testing in animals is imperfect because mouse biology differs from human biology. Organoids allow you to test drugs on genuine human tissue, organized in the right 3D structure. A drug that kills cancer cells in a standard 2D culture might fail in a patient because tumors are 3D and have different properties. Tumor organoids grown from patient biopsies now predict drug response in clinical trials with remarkable accuracy. Brain organoids have been used to study how Zika virus causes microcephaly. The potential is enormous.",
   },
   {
     id: "sc9",
     topic: "stem-cells",
     question:
-      "Why did the He Jiankui case in 2018 cause a global scientific and ethical uproar?",
+      "Why did the He Jiankui case in 2018 cause such a strong global reaction?",
     options: [
       "He claimed to have created the first human clone",
-      "He gene-edited human embryos that were then implanted, resulting in live births — without adequate safety data or ethical approval",
+      "He used CRISPR to edit human embryos that were then implanted, resulting in live births — without adequate safety data or proper ethical oversight",
       "He destroyed embryos to derive a new ESC line without consent",
       "He performed bone marrow transplants without patient consent",
     ],
     correctIndex: 1,
     explanation:
-      "He Jiankui used CRISPR to edit the CCR5 gene in human embryos to try to confer HIV resistance, then implanted those embryos — resulting in twin girls (and later a third child). This was done without proper ethical oversight, without adequate safety data, and without transparency. The scientific community condemned it almost universally. He was convicted of illegal medical practice in China and imprisoned. The case catalysed global discussion on the governance of germline editing.",
+      "He Jiankui, a Chinese scientist working largely in secret, used CRISPR to edit the CCR5 gene in human embryos to try to make them resistant to HIV infection. He then implanted those edited embryos into a woman's uterus, resulting in the birth of twin girls — and later a third child — with heritable genetic changes. The scientific community's reaction was almost universally one of shock and condemnation. Not because the idea of preventing genetic disease is wrong, but because: (1) CCR5 editing for HIV prevention wasn't medically necessary given existing HIV prevention options, (2) the safety data was completely inadequate — CRISPR editing can cause off-target mutations we can't fully predict yet, (3) the ethical review process was bypassed, and (4) germline edits (changes to embryos) are passed on to all future generations, affecting people who have no say. He was convicted of illegal medical practice in China and imprisoned. The case prompted serious international discussions about who should decide when — or if — germline editing is appropriate, and what governance structures need to exist before it could ever be used responsibly.",
   },
   {
     id: "sc10",
     topic: "stem-cells",
     question:
-      "In mesenchymal stem cell (MSC) therapy, what is thought to be the primary mechanism of benefit — even in trials where structural repair is limited?",
+      "In mesenchymal stem cell (MSC) therapy, what is thought to be the primary mechanism of benefit?",
     options: [
-      "Direct transdifferentiation into the target tissue cell type",
-      "Paracrine signalling — MSCs secrete growth factors and immunomodulatory molecules that reduce inflammation and stimulate local repair",
-      "Genetic correction of host cell DNA",
+      "Direct transformation into the target tissue cell type",
+      "Paracrine signaling — MSCs secrete growth factors and anti-inflammatory molecules that reduce inflammation and stimulate local repair",
+      "Genetic correction of the host cell's DNA",
       "Antibody production targeting damaged tissue",
     ],
     correctIndex: 1,
     explanation:
-      "This is one of the most important realisations in MSC biology: even when transplanted MSCs don't directly become the intended cell type (e.g. cartilage in osteoarthritis), they often still provide benefit. The reason appears to be paracrine signalling — MSCs secrete a cocktail of growth factors, cytokines, and exosomes that reduce inflammation, attract endogenous repair cells, and create a more permissive environment for tissue healing. Understanding this 'hit and run' mechanism has shifted how MSC therapies are designed.",
+      "This discovery genuinely surprised researchers. Early hopes for MSC therapy were that the transplanted cells would directly become cartilage (for arthritis), heart muscle (for heart failure), or neurons (for neurological conditions). In most trials, that direct transformation turned out to be rare or minimal. Yet many patients still showed benefit. Researchers dug deeper and found that MSCs secrete a rich cocktail of growth factors, anti-inflammatory cytokines, and extracellular vesicles (tiny packages carrying signaling molecules). These secreted factors reduce inflammation, attract the body's own repair cells to the area, and create a more supportive environment for healing — even if the MSCs themselves don't stick around for long. This 'hit and run' paracrine mechanism has fundamentally changed how MSC therapies are designed. Some researchers are now investigating whether you could just use the secreted vesicles (exosomes) rather than transplanting whole cells — simpler, easier to manufacture, and avoiding some of the risks of live cell transplantation.",
   },
 ];
 
@@ -501,80 +500,66 @@ const explanations = [
   {
     id: "what-are",
     anchorId: "stem-cells-what-are",
-    heading: "What Makes a Stem Cell a Stem Cell?",
-    body: `Picture the moment a fertilised egg starts dividing. Two cells. Four. Eight. At some point those identical cells begin specialising — this one will become a neuron, that one a muscle fibre. The remarkable thing is that some cells hold off. They stay in a kind of molecular 'pause mode,' retaining the ability to produce other cell types when needed. Those are stem cells.
+    heading: "What Is a Stem Cell, Really?",
+    body: `Picture the moment a fertilised egg starts dividing. Two cells. Four. Eight. At some point, those identical cells begin specialising — this one will become a neuron, that one a muscle cell. But some cells hold off. They remain in a kind of 'pause mode,' keeping the ability to turn into other cell types when needed. Those are stem cells — and they're one of the most fascinating things in biology.
 
-Two properties together define them. Self-renewal means they can divide and produce more of themselves — indefinitely, under the right conditions. Most specialised cells can't do this at all; neurons, for example, are essentially post-mitotic. Potency means they can differentiate: given the right molecular signals, they transform into one or more specific cell types. Every one of your ~200 cell types descended from a single fertilised egg through repeated rounds of division and differentiation, and stem cell populations keep the supply chain running throughout life — your gut lining replaces itself every 3–5 days, your blood cells live only weeks to months, all sustained by local stem cell reservoirs.
-
-The stem cell niche is the microenvironment that controls all of this. It's not just passive storage — it's an active signalling hub of supporting cells, extracellular matrix, and secreted factors that collectively determine whether a stem cell stays dormant, self-renews, or differentiates. Ernest McCulloch and James Till were the first to demonstrate quantitative properties of stem cells experimentally, using bone marrow colony-forming assays in mice in 1961 — work that established the modern concept of the haematopoietic stem cell.`,
+Two properties together define a stem cell. First, self-renewal: stem cells can divide and produce more copies of themselves, keeping the supply running. Most specialised cells can't do this — your neurons, for instance, are essentially permanent once formed. Second, potency: stem cells can differentiate, meaning they can transform into one or more specific cell types when they receive the right molecular signals. Your gut lining replaces itself completely every 3–5 days, your blood cells live only weeks to months, and it's all sustained by local stem cell reservoirs quietly doing their job. You have stem cells working for you right now, maintaining your tissues around the clock. The environment around a stem cell — called the stem cell niche — is an active signalling hub of surrounding cells and secreted molecules that tells the stem cell whether to stay dormant, divide, or differentiate. The balance of these signals is what keeps your body's tissues in good repair throughout life.`,
   },
   {
     id: "potency-levels",
     anchorId: "stem-cells-potency",
-    heading: "Potency Hierarchy: From Totipotent to Unipotent",
-    body: `When biologists talk about stem cell 'potency,' they mean: how many different cell types can this cell produce? The hierarchy goes from totipotent at the top down to unipotent at the bottom — and the distinctions matter enormously for therapy and research.
+    heading: "Potency Levels: From Totipotent to Unipotent",
+    body: `When biologists talk about a stem cell's 'potency,' they're asking: how many different cell types can this cell produce? The answer ranges from 'every cell that could possibly exist in or around your body' all the way down to 'just one type.' Understanding these levels matters enormously for therapy and research.
 
-Totipotent cells — the fertilised egg and the first few cells after it divides (up to the 4–8 cell stage in humans) — are the most powerful. They can form every tissue in the body AND the extraembryonic tissues (placenta, yolk sac). By the time the embryo reaches the blastocyst stage (around day 5–7), this capacity is gone. Pluripotent stem cells in the inner cell mass can make any of the ~200 cell types in the body proper, but not the placenta. These cells express a characteristic network of transcription factors: OCT4, SOX2, NANOG, and KLF4 form the pluripotency circuit. The promoters of these genes are active, their chromatin is 'bivalent' (carrying both activating and repressive marks — poised for either self-renewal or differentiation). In culture, human ESCs require FGF2 and Activin/Nodal/TGF-β signalling to maintain pluripotency; mouse ESCs require LIF/JAK/STAT3 — a revealing species difference.
-
-Multipotent stem cells have narrowed their potential to a family of related types: haematopoietic stem cells produce all blood lineages, mesenchymal stem cells produce adipocytes, osteoblasts, and chondrocytes, neural stem cells produce neurons, astrocytes, and oligodendrocytes. Oligopotent cells produce just two or three lineages. Unipotent cells produce only one — muscle satellite cells produce muscle fibres, spermatogonial stem cells produce sperm. The further down the potency ladder a cell sits, the lower the tumour risk it poses in transplantation — which is a critical safety consideration for cell therapies.`,
+Totipotent cells are the most powerful — the fertilised egg and the cells of the very early embryo (up to the 4–8 cell stage) can form every tissue in the body AND the placenta and other supporting structures. Totipotency disappears within the first week of development. Pluripotent stem cells — like embryonic stem cells and iPSCs — can become any of the approximately 200 cell types in the body, but not the placenta. They express a network of transcription factors (Oct4, Sox2, Nanog) that keep them in the pluripotent state. Multipotent stem cells have narrowed their potential to a family of related types: blood stem cells produce all blood lineages, neural stem cells produce neurons and support cells, but neither can produce cells outside their tissue family. Oligopotent cells produce just two or three types. Unipotent cells produce only one — muscle stem cells make muscle, skin basal cells make skin. As you go down the ladder from totipotent to unipotent, each level is more restricted in what it can become — but also safer for therapy, because cells that can only become one thing have almost no risk of forming tumors.`,
   },
   {
     id: "embryonic",
     anchorId: "stem-cells-esc-ipsc",
-    heading: "Embryonic Stem Cells: Extraordinary Biology, Complex Ethics",
-    body: `Embryonic stem cells come from the inner cell mass of a blastocyst — a day 5–7 embryo. James Thomson at the University of Wisconsin first derived and cultured human ESC lines in 1998, opening a new era of cell biology. ESCs are naturally pluripotent, can self-renew indefinitely in culture, and can differentiate into any tissue type in the body given the right signals. From a basic science standpoint, they're extraordinary.
+    heading: "Embryonic Stem Cells: Amazing Science, Real Ethical Questions",
+    body: `Embryonic stem cells come from the inner cell mass of a blastocyst — a day 5–7 embryo that is a hollow ball of about 100–200 cells. James Thomson at the University of Wisconsin first derived and cultured human ESC lines in 1998, opening a new era of cell biology. ESCs are naturally pluripotent — given the right chemical signals in culture, they can differentiate into any tissue type in the body. They can self-renew indefinitely. From a scientific standpoint, they're extraordinary tools.
 
-Maintaining pluripotency in culture requires careful conditions. Historically, this meant growing ESCs on a feeder layer of mouse embryonic fibroblasts (MEF cells) that secrete supporting signals. Modern feeder-free systems use defined matrices like Matrigel combined with chemically defined media (such as mTeSR1) and recombinant FGF2 and Activin A. To induce differentiation, you can either allow cells to form 3D embryoid bodies (where cells spontaneously begin differentiating into all three germ layers) or use directed differentiation — applying specific growth factor combinations in a precise temporal sequence to guide cells toward a target lineage. For example, to make dopaminergic neurons you apply FGF8, SHH, and BDNF at defined stages; to make pancreatic beta cells you use a six-stage protocol spanning nearly 30 days.
-
-The ethical controversy centres on one inescapable fact: deriving ESCs destroys the blastocyst. Whether that's morally acceptable depends on your view of the moral status of a 5-day embryo — a genuinely contested question, not a simple one. This disagreement has shaped research funding, regulatory frameworks, and scientific careers across countries for decades.`,
+Directing ESCs to become specific cell types requires very precise conditions. To make dopaminergic neurons (the cells lost in Parkinson's disease), you apply specific growth factors in a precise sequence over several weeks. To make pancreatic beta cells (the insulin-producing cells lost in type 1 diabetes), you follow a six-stage protocol taking nearly 30 days. These differentiation protocols are the product of years of patient research, and getting them right enough for clinical use is genuinely hard work. The ethical controversy is real and shouldn't be dismissed. Deriving ESCs requires destroying the blastocyst, and whether a 5-day embryo has moral status equivalent to a person is a genuinely contested question that reasonable people answer differently. This disagreement has shaped research funding (the US restricted federal funding for new ESC lines), regulatory frameworks (Germany prohibits derivation; the UK permits it under strict oversight), and scientific careers. It's a good example of how science and ethics can't be cleanly separated when the research involves human material.`,
   },
   {
     id: "adult-stem-cells",
     anchorId: "stem-cells-adult",
-    heading: "Adult Stem Cells: Tissue Repair, Every Day of Your Life",
-    body: `Adult stem cells are the unsung heroes of biology. They quietly sit in tissues throughout your body, maintaining and repairing them continuously — usually without you ever noticing. When you do notice (a wound healing, a bone mending, blood counts recovering after chemotherapy), that's adult stem cells in action.
+    heading: "Adult Stem Cells: The Quiet Heroes of Your Body",
+    body: `Right now, without you noticing, stem cells are quietly maintaining your body. Every day your bone marrow produces millions of new blood cells to replace worn-out ones. Your gut lining renews itself completely every few days. Your skin constantly replaces surface cells. This is all adult stem cells in action — and they've been there since you were born.
 
-Haematopoietic stem cells (HSCs) in the bone marrow are the best characterised. In mice, they're identified by the LSK (Lin-/Sca1+/cKit+) phenotype; in humans, CD34+/CD38- marks them. Every blood cell in your body — the oxygen-carrying erythrocytes, the immune-defending neutrophils and lymphocytes, the clot-forming platelets — derives from HSCs through a series of progressively committed progenitor stages, guided by cytokines like SCF, TPO, G-CSF, and EPO. Neural stem cells reside in two brain regions — the subventricular zone and the dentate gyrus of the hippocampus — and produce neurons, astrocytes, and oligodendrocytes even in adult brains, a discovery that overturned decades of dogma about brain cells being non-renewable. Mesenchymal stem cells (MSCs) found in bone marrow, adipose tissue, and umbilical cord are of great therapeutic interest: they differentiate into adipocytes, osteoblasts, and chondrocytes, but their therapeutic benefit in trials appears to come primarily from paracrine secretion of growth factors and immunomodulatory molecules rather than direct cell replacement.
-
-Lgr5+ intestinal stem cells at the base of gut crypts replace the entire intestinal lining every 3–5 days — one of the highest cell turnover rates in the body. Skin stem cells in the basal layer and hair follicle bulge region maintain the skin and hair cycling. Even the liver, long considered to have limited regenerative capacity, contains hepatic progenitor cells (sometimes called oval cells) that activate after severe damage. Limbal stem cells at the border of the cornea and conjunctiva are the source of corneal epithelium — their deficiency causes corneal blindness, and limbal stem cell transplantation is one of the few established stem cell therapies outside the haematopoietic system.`,
+Hematopoietic stem cells (HSCs) in the bone marrow are the best understood. From a single HSC at the top of the hierarchy, the whole blood and immune system is maintained: oxygen-carrying red cells, immune-defending white cells (neutrophils, lymphocytes, monocytes), and clot-forming platelets. The body controls which type gets made by releasing hormonal signals — erythropoietin (EPO) to make more red cells when oxygen is low (this is the same molecule that athletes illegally dope with!), G-CSF to make more neutrophils during infection. Neural stem cells in two specific brain regions keep producing new neurons even in adults — overturning decades of dogma that said brain cells never regenerate. Skin stem cells in the bottom layer of the epidermis and in hair follicles maintain the skin and hair cycle. Intestinal stem cells at the base of gut crypts are among the most active dividing cells in the body. All of these are multipotent — restricted to their tissue family. They don't need to be as powerful as embryonic stem cells to do their job, and their restricted nature means much lower tumor risk. Adult stem cells are already the basis of the most established clinical stem cell therapy: bone marrow transplantation for leukemia and blood disorders, used successfully since the 1960s.`,
   },
   {
     id: "ipscs",
     anchorId: "stem-cells-ipscs",
-    heading: "iPSCs: The Reprogramming Revolution",
-    body: `In 2006, Shinya Yamanaka published a result that genuinely shocked the scientific world: you can take a fully differentiated adult mouse skin cell and reprogram it back to a pluripotent state by introducing just four transcription factors — Oct4, Sox2, Klf4, and c-Myc (OSKM). The resulting induced pluripotent stem cells behaved almost identically to embryonic stem cells in all key tests. His team did the same with human cells in 2007. The 2012 Nobel Prize in Physiology or Medicine followed, shared with John Gurdon who had shown nuclear reprogramming was possible in frogs back in the 1960s.
+    heading: "iPSCs: Rewinding the Clock on Cells",
+    body: `In 2006, Shinya Yamanaka published a result that genuinely stunned the scientific world. He took a fully specialised adult mouse skin cell — a fibroblast — and introduced just four transcription factors (Oct4, Sox2, Klf4, c-Myc). A small percentage of those cells were reprogrammed all the way back to a pluripotent stem-cell-like state, capable of becoming virtually any cell in the body. His team called these induced pluripotent stem cells (iPSCs). They repeated the achievement with human cells in 2007. Yamanaka shared the 2012 Nobel Prize with John Gurdon, who had shown nuclear reprogramming was possible in frogs in the 1960s.
 
-How does reprogramming work? The OSKM factors enter the nucleus and begin remodelling the epigenome — erasing somatic methylation patterns, opening up chromatin at pluripotency gene promoters, and activating the self-reinforcing OCT4/SOX2/NANOG network. It takes 2–4 weeks, and efficiency is low — typically less than 1% of starting cells become genuine iPSCs. Early methods used integrating retroviruses to deliver the factors, raising concerns about insertional mutagenesis. Modern non-integrating methods include Sendai virus vectors (widely used, no genomic integration), episomal plasmids, synthetic mRNA transfection, and even small molecule cocktails that can partially replace the transcription factors.
-
-iPSCs are now the standard model for studying patient-specific disease in a dish — you can take cells from a patient with a genetic disorder, reprogram them, differentiate them into the affected cell type, and study the disease mechanism in human cells that actually have the patient's mutations. The pharmaceutical industry uses iPSC-derived cardiomyocytes and hepatocytes for drug cardiotoxicity and hepatotoxicity testing. And the prospect of using iPSC-derived cells for autologous cell therapy — patient-matched replacement cells with no immune rejection — is actively being pursued in Parkinson's disease, diabetes, macular degeneration, and heart failure. The challenges are real: some iPSC lines retain epigenetic memory of their source tissue, differentiation is not always complete, and residual undifferentiated cells in a transplant are a tumour risk.`,
+How does reprogramming work? The four factors enter the nucleus and begin rewriting the epigenome — opening up chromatin at pluripotency gene promoters, activating the self-reinforcing Oct4/Sox2/Nanog network, and gradually erasing the gene expression patterns that made the cell a skin cell. It takes 2–4 weeks and only about 1% of starting cells successfully reprogram. Early methods used viruses that integrated into the genome (raising safety concerns). Modern approaches use non-integrating Sendai virus vectors, synthetic mRNA, or even chemical cocktails — safer and increasingly efficient. iPSCs have transformed disease research: you can now take cells from a patient with any genetic condition, reprogram them, differentiate them into the affected cell type (heart cells, neurons, liver cells), and study the disease in human cells with the patient's exact mutations. You can test drugs on those cells. The pharmaceutical industry uses iPSC-derived heart cells to test whether new drugs cause dangerous heart rhythm problems — a major cause of drug failures. And the prospect of making patient-matched replacement cells for therapy is actively being pursued in multiple clinical trials.`,
   },
   {
     id: "differentiation-niche",
     anchorId: "stem-cells-differentiation",
-    heading: "How Cells Decide What to Become: Signals and the Niche",
-    body: `Differentiation — the process by which a stem cell commits to a specific identity — is driven by an orchestrated sequence of molecular signals, not random chance. External signals (growth factors, morphogens, cytokines, neighbouring cells, physical forces like stiffness and stretch) bind receptors on the stem cell surface and trigger intracellular signalling pathways (Wnt, Notch, Hedgehog, TGF-β, BMP, and others). These pathways activate lineage-specific transcription factors — master regulators like MyoD for muscle, Pax6 for neural tissue, GATA-1 for red blood cells — which then remodel the epigenome. Histone acetylation opens chromatin; methylation closes it. CpG methylation at promoters silences genes. Bivalent domains (both H3K4me3 activating mark and H3K27me3 repressing mark at the same gene) keep lineage genes poised — ready to be activated or silenced when the differentiation signal arrives.
+    heading: "How Stem Cells Decide What to Become",
+    body: `Stem cell differentiation — the process of committing to a specific identity — doesn't happen randomly. It's driven by a precisely orchestrated sequence of molecular signals, and it's one of the most elegant examples of biological computing that exists. External signals (growth factors, hormone-like molecules called morphogens, neighbouring cells, even the stiffness of the surrounding material) bind receptors on the stem cell surface and activate signaling pathways inside the cell. Those pathways turn on 'master regulator' transcription factors — proteins like MyoD, which commands muscle identity, Pax6 which commands neural identity, or GATA-1 which drives blood cell formation. These master regulators then remodel the cell's entire gene expression pattern.
 
-The stem cell niche is the physical and chemical microenvironment that keeps stem cells in their stem cell state until needed. For bone marrow HSCs, the niche includes osteoblasts, endothelial cells, and perivascular stromal cells that secrete CXCL12 (SDF-1), SCF, and thrombopoietin — factors that maintain HSC quiescence and prevent exhaustion. Most stem cells are kept in a quiescent (G0) state under normal homeostasis: this protects the genome from damage and prevents the stem cell pool from being depleted. Injury signals — reactive oxygen species, inflammatory cytokines, damage-associated molecular patterns — pull stem cells out of quiescence and direct rapid proliferation and differentiation. The precision of this push-and-pull is why stem cells can sustain tissue renewal throughout a lifetime without getting exhausted or becoming cancerous. When the niche fails — as happens with age, radiation damage, or genetic mutations — the stem cell pool shrinks, tissue maintenance fails, and disease follows.`,
+The mechanism involves chromatin remodeling: physical changes to how DNA is wound around proteins (histones) that make certain genes accessible and others inaccessible. Active genes have their chromatin opened up; silenced genes get it closed down or even chemically marked with methyl groups. There are also 'bivalent domains' — genes carrying both activating and repressing marks simultaneously — kept poised and ready to be rapidly activated or silenced when a differentiation signal arrives. The stem cell niche plays a major role in all of this. For blood stem cells in the bone marrow, the niche includes bone-lining cells, blood vessel cells, and fibroblasts that together maintain the right chemical environment. Most stem cells are kept in a quiescent (sleeping) state under normal conditions — this protects their DNA from accumulating mutations during quiet periods. When tissue damage occurs, inflammation signals wake them up and direct rapid proliferation. This push-and-pull between quiescence and activity is what allows stem cells to sustain tissue repair throughout a lifetime.`,
   },
   {
     id: "therapy",
     anchorId: "stem-cells-therapy",
-    heading: "Stem Cell Therapies: What Works, What's Coming",
-    body: `The most established stem cell therapy is bone marrow transplantation, in use since the 1960s for leukaemia, lymphoma, aplastic anaemia, and inherited blood disorders. For sickle cell disease, a successful bone marrow transplant from a matched donor is literally curative — the patient's entire haematopoietic system is replaced. CAR-T cell therapies, while distinct from traditional stem cell therapies, use ex vivo engineering of T lymphocytes and represent some of the most spectacular oncology results in modern medicine.
+    heading: "Stem Cell Therapies: What Works and What's Coming",
+    body: `The most proven stem cell therapy is bone marrow transplantation — used since the 1960s for leukemia, lymphoma, aplastic anemia, sickle cell disease, and other blood disorders. For many patients with otherwise incurable blood cancers, a successful bone marrow transplant from a matched donor is genuinely curative. This is already mature, established medicine performed tens of thousands of times every year.
 
-Beyond haematology, the field is moving rapidly. Limbal stem cell transplantation (using cells from the patient's own healthy eye or from a donor) restores vision in patients with corneal stem cell deficiency — a clean, established success. Skin graft procedures using autologous epidermal stem cells have been used for burn patients since the 1980s. In 2015, a group in Germany treated a 7-year-old boy with junctional epidermolysis bullosa (a fatal skin condition) by gene-correcting his epidermal stem cells and growing a complete new skin from them — he has been healthy since. For neurodegenerative disease, dopaminergic neurons derived from iPSCs are now in Phase I/II clinical trials for Parkinson's disease in Japan. For diabetes, Vertex Pharmaceuticals' VX-880 (ESC-derived islet cells) has shown extraordinary early results — participants have reduced or eliminated insulin dependence. For the eye, ESC-derived retinal pigment epithelium cells are in clinical trials for Stargardt disease and age-related macular degeneration with early evidence of safety and vision stabilisation.
-
-Organoids — 3D self-organising tissue structures derived from stem cells — have become essential research tools even before reaching clinical application. Brain organoids model neurodevelopment and have been used to study Zika virus neurotropism and microcephaly. Tumour organoids grown from patient-derived cells predict drug response in clinical trials with accuracy that animal models often can't match. The path from organoid to implantable organ is long (vascularity, immune integration, and maturation all remain unsolved), but organ-on-a-chip microfluidic devices are already improving drug testing pipelines.`,
+Beyond blood disorders, the field is advancing. Limbal stem cell transplantation restores vision in patients whose corneal stem cells have been destroyed by chemical burns or disease — this is a clean, established therapy that works. In 2015, gene-corrected skin stem cells were used to grow an entirely new skin covering 80% of the body surface area for a child with a fatal genetic skin condition — he has been living normally ever since. For Parkinson's disease, dopaminergic neurons derived from iPSCs are now in Phase I/II clinical trials. For diabetes, stem cell-derived beta cells have shown extraordinary early results — some participants in trials have reduced or eliminated their insulin dependence. For the eye, stem cell-derived retinal pigment epithelium cells are in trials for macular degeneration with early evidence of safety and visual stabilization. Organoids — 3D mini-organs grown from stem cells — are already revolutionising drug development even before reaching clinical use themselves. The path to full organ replacement remains long (vascular connections, immune integration, and complete maturation are all unsolved), but each year brings new clinical approvals and clinical trial results. The pace is accelerating.`,
   },
   {
     id: "ethics",
     anchorId: "stem-cells-ethics",
-    heading: "The Ethical Landscape: Genuine Complexity, Not Easy Answers",
-    body: `Stem cell research sits at the intersection of extraordinary science and genuine ethical complexity. The core controversy around embryonic stem cells is not manufactured: if you believe a human blastocyst is a person with full moral standing, then destroying it for research is ethically unacceptable regardless of the potential therapeutic benefits. That belief is sincere and widely held, and it has shaped regulatory policy in the United States (Congressional restrictions on federal funding for new ESC lines), Germany (where ESC derivation is prohibited), the UK (where it's permitted under strict HFEA regulation), and across the world — revealing how deeply moral frameworks differ.
+    heading: "The Ethics: Real Complexity, Genuine Disagreement",
+    body: `Stem cell research sits at the intersection of remarkable science and genuine ethical complexity. The core controversy around embryonic stem cells isn't manufactured: if you believe that a human blastocyst has the full moral status of a person, then destroying it to derive stem cells is unacceptable regardless of the therapeutic potential. That belief is sincerely and widely held. Different countries have landed in very different places on this question — the US restricted federal funding for new ESC lines for years, Germany prohibits ESC derivation entirely, while the UK permits it under strict regulatory oversight. These differences reflect real moral disagreement, not just different levels of scientific literacy.
 
-iPSC technology largely sidestepped the embryo destruction issue, but created new ethical territory. Human-animal chimeras — where human pluripotent cells are introduced into animal embryos to study development or (hypothetically) to grow human organs — raise profound questions about the moral status of the resulting animals. Synthetic embryo models, created by combining embryonic and trophoblast organoids, are beginning to recapitulate early human development without a sperm or egg — and existing regulations (including the 14-day rule, which limits culture of human embryos to 14 days) weren't designed with these in mind. The He Jiankui case in 2018, in which human embryos were CRISPR-edited and implanted to produce live births without adequate safety data or ethical approval, demonstrated how badly things can go when scientists act unilaterally in the absence of societal consensus.
-
-Equity is a quieter but equally important ethical issue: if a CAR-T therapy costs $400,000 per treatment, or a personalised iPSC therapy costs millions, who gets access? The most effective stem cell therapies risk being available only to patients in wealthy countries. Global governance frameworks for cell and gene therapies are still catching up to the pace of scientific advance — and that gap is everyone's problem to solve together.`,
+iPSC technology largely sidestepped the embryo destruction issue — but created new ethical territory. Human-animal chimeras (inserting human pluripotent cells into animal embryos to study development or potentially grow human organs) raise profound questions about the moral status of the resulting animals. Synthetic embryo models — created by combining different types of stem cells to form structures that recapitulate early human development — are being created in labs today, and existing regulations (like the 14-day rule limiting embryo culture) were simply not designed with these structures in mind. Equity is another important ethical dimension: if the most effective stem cell therapies cost hundreds of thousands or millions of dollars per patient, who actually gets access? The most powerful medicines risk being available only in wealthy countries. The pace of scientific advance in stem cell biology has consistently outrun the governance frameworks meant to oversee it. Bridging that gap is everyone's responsibility — scientists, policymakers, patients, and the public all have a stake in getting this right.`,
   },
 ];
 

@@ -957,151 +957,150 @@ const QUIZ: QuizQuestion[] = [
   {
     id: "cloning-q1",
     question:
-      "What distinguishes Type II restriction enzymes from Type I and Type III, and why are Type II enzymes the workhorses of molecular cloning?",
+      "What do restriction enzymes do, and why are Type II restriction enzymes so useful for cloning?",
     options: [
-      "Type II require ATP for cleavage; Type I and III do not — Type II is preferred for speed",
-      "Type II enzymes cut at or near their recognition sequence, producing defined fragments — Type I and III cut at distant sites making fragment sizes unpredictable",
-      "Type II are only active in eukaryotic cells; Type I and III work in prokaryotes",
-      "Type II recognize longer sequences (>12 bp); shorter recognition sites are Type I",
+      "They copy DNA very quickly and are used in PCR",
+      "They cut DNA at specific, predictable sequences — Type II enzymes cut right at or near their recognition site, creating defined pieces with 'sticky ends' ready for joining",
+      "They join DNA fragments together like molecular glue",
+      "They only cut RNA, not DNA",
     ],
     correctIndex: 1,
     explanation:
-      "Type II restriction enzymes are the cloning workhorses because they cut at a defined position relative to their recognition sequence, producing predictable, reproducible fragments. EcoRI (GAATTC) and BamHI (GGATCC) always cut their 6-bp palindrome and produce the same sticky ends every time. Type I enzymes recognize one sequence but cleave a random site far away (up to 1000 bp distant) — useless for generating defined fragments. Type III enzymes cleave 24–26 bp from the recognition site — less predictable. Type II's precision made restriction mapping and recombinant DNA technology possible.",
+      "Restriction enzymes are bacteria's natural defence against viruses — they chop up foreign DNA that invades the cell. Scientists borrowed them for cloning. The really useful ones are called Type II: they recognise a specific short sequence in DNA (usually 6 letters) and cut right there, every single time. Importantly, they often cut in a staggered way — not straight across, but offset — leaving short single-stranded overhangs. These overhangs are called 'sticky ends' because they can pair up with matching overhangs from another piece of DNA cut with the same enzyme. It's like cutting puzzle pieces that are designed to fit together. EcoRI, for example, always recognises GAATTC and cuts it the same way, producing AATT overhangs every time. That predictability is what makes molecular cloning reliable.",
     topic: "cloning",
   },
   {
     id: "cloning-q2",
     question:
-      "Why are sticky ends more efficient for ligation than blunt ends?",
+      "Why are sticky ends better than blunt ends for joining DNA pieces together?",
     options: [
-      "Sticky ends contain phosphate groups that blunt ends lack — making them easier for ligase to seal",
-      "Sticky ends (single-stranded overhangs) base-pair spontaneously with complementary ends, bringing them into proximity for ligation — 10–100x more efficient than random collisions of blunt ends",
-      "Sticky ends form with ATP as cofactor; blunt-end ligation requires GTP",
-      "Blunt ends can only be ligated if they share the same restriction enzyme sequence",
+      "Sticky ends contain extra phosphate groups that blunt ends lack",
+      "Sticky ends have short single-stranded overhangs that naturally attract each other and hold the pieces close together, making it much easier for the joining enzyme (ligase) to seal them",
+      "Blunt ends can only be joined by heat treatment, which destroys the DNA",
+      "Sticky ends are longer and therefore stronger than blunt ends",
     ],
     correctIndex: 1,
     explanation:
-      "When EcoRI cuts GAATTC on both strands (staggered), it leaves 5'-AATT single-stranded overhangs on each piece. These overhangs are complementary to each other — they anneal spontaneously by hydrogen bonding. The insert and vector are essentially pre-positioned for ligation. Blunt ends have no such attraction — you're relying on random collisions in solution. That's why sticky-end ligation is 10–100x more efficient. For directional cloning, use two different restriction enzymes (incompatible ends) to force the insert in the correct orientation. Dephosphorylating the vector backbone (alkaline phosphatase) prevents self-ligation of the vector without insert, increasing the proportion of recombinant clones.",
+      "Think of sticky ends like Velcro — they want to stick to their matching partner. When EcoRI cuts DNA, it leaves AATT single-stranded overhangs. These four-letter overhangs base-pair naturally with complementary TTAA overhangs from another piece cut with the same enzyme. By being held close together, they're 10–100 times more likely to be sealed by DNA ligase than blunt-ended pieces that rely on random bumping in solution. For directional cloning (making sure your gene inserts the right way), you can use two different restriction enzymes that create different sticky ends — the pieces can only fit together one way. Like a key that only fits one lock.",
     topic: "cloning",
   },
   {
     id: "cloning-q3",
     question:
-      "What three features must every functional cloning vector have, and what does each do?",
+      "Every cloning vector needs three essential features. What are they?",
     options: [
-      "Promoter, terminator, ribosome binding site — for protein expression only",
-      "Origin of replication (for autonomous replication), selectable marker (for identifying transformed cells), and multiple cloning site (for inserting genes)",
-      "Cos sites (for phage packaging), antibiotic resistance, and lacZ for expression",
-      "Centromere, telomere, ARS sequence — for stable chromosomal maintenance",
+      "A promoter, a terminator, and a ribosome binding site",
+      "An origin of replication (so it can copy itself), a selectable marker (so you can find which bacteria took it up), and a place to insert your gene (the multiple cloning site)",
+      "A gene for green fluorescent protein, an antibiotic resistance gene, and a bacteriophage attachment site",
+      "A centromere, telomere, and autonomously replicating sequence",
     ],
     correctIndex: 1,
     explanation:
-      "Every cloning vector needs exactly three things: (1) Origin of replication (ori) — tells the cell's replication machinery where to start copying the plasmid. Without it, the plasmid dilutes out with every division. High-copy ori like ColE1 gives hundreds of copies per cell; low-copy ori like p15A gives 5–10. (2) Selectable marker — usually an antibiotic resistance gene (ampicillin, kanamycin, chloramphenicol). Plate transformed bacteria on antibiotic medium: only cells that took up the plasmid survive. (3) Multiple Cloning Site (MCS) — a short stretch containing recognition sites for 10–20 different restriction enzymes, giving flexibility to use whichever enzyme matches your insert. Some vectors add a lacZ gene flanking the MCS for blue-white screening.",
+      "A vector is like a tiny taxi — its job is to carry your gene of interest into bacterial cells and make sure it stays there. For that to work, it needs three things. First, an origin of replication: a sequence that tells the bacterium's copying machinery 'start copying here.' Without this, the plasmid would be lost every time the cell divides. Second, a selectable marker: usually an antibiotic resistance gene. When you plate the bacteria on antibiotic, only the ones that took up the plasmid survive. Third, a multiple cloning site: a stretch of DNA packed with recognition sites for many different restriction enzymes, giving you flexibility in how you insert your gene. Think of the MCS as a universal docking port. Interesting fact: many famous vectors like pUC19 have been used in millions of experiments and are freely available to any researcher who needs them.",
     topic: "cloning",
   },
   {
     id: "cloning-q4",
-    question:
-      "How does blue-white screening work to identify recombinant colonies?",
+    question: "What is blue-white screening and what does it tell you?",
     options: [
-      "Blue colonies express GFP from the vector backbone; white colonies have the GFP gene disrupted by the insert",
-      "The lacZ-alpha gene in the vector encodes beta-galactosidase; when an insert disrupts lacZ, colonies turn white on X-gal/IPTG plates instead of blue",
-      "Blue colonies have incorporated two copies of the insert; white colonies have none",
-      "White colonies have taken up linearized plasmid; blue colonies have circular plasmid",
+      "Blue colonies have double the antibiotic resistance; white colonies have single resistance",
+      "Blue colonies have intact lacZ gene so they make a blue colour on a special plate; white colonies have the lacZ gene disrupted by the insert, meaning they successfully received your gene",
+      "White colonies are contaminated; blue colonies are pure clones",
+      "The colour tells you how much protein the bacteria is making",
     ],
     correctIndex: 1,
     explanation:
-      "Blue-white screening is elegant. The vector carries the lacZ-alpha fragment, encoding the alpha-peptide of beta-galactosidase. When bacteria are plated on X-gal (a colorless substrate that produces blue dye when cleaved) and IPTG (inducer), colonies with intact lacZ-alpha turn blue — the enzyme is working. But when your gene of interest is inserted into the MCS, it disrupts the lacZ-alpha reading frame. The truncated, non-functional fragment can't cleave X-gal. Those colonies stay white. So white colonies almost certainly have your insert. Blue colonies have empty vector (re-ligated without insert). You pick white colonies, grow them up, and confirm by PCR or sequencing. Simple, visual, no fancy equipment needed.",
+      "Blue-white screening is one of those elegant tricks in molecular biology that seems like magic until you understand it. The vector carries part of a gene called lacZ, which makes an enzyme that breaks down a compound called X-gal into a blue dye. When bacteria are grown on plates with X-gal, they turn blue if lacZ is working. Now, the multiple cloning site sits right in the middle of lacZ. If your gene inserts there, it disrupts lacZ — and the colony stays white. So white colonies = insert present, blue colonies = empty vector (gene didn't insert). You pick white colonies, grow them up, and confirm by PCR or sequencing. No need for any expensive testing to get that first clue. It's simple, visual, and works every time.",
     topic: "cloning",
   },
   {
     id: "cloning-q5",
     question:
-      "What is Gibson Assembly and how does it differ from restriction enzyme–based cloning?",
+      "What is Gibson Assembly, and how is it different from restriction enzyme cloning?",
     options: [
-      "Gibson Assembly uses RNA ligation instead of DNA ligase — it's faster but only works with RNA targets",
-      "Gibson Assembly uses three enzymes (5' exonuclease, polymerase, DNA ligase) to seamlessly join overlapping DNA fragments in a single tube — no restriction sites needed, no scar sequences left",
-      "Gibson Assembly requires a specific palindromic adapter sequence; restriction cloning does not",
-      "They are identical in mechanism — Gibson Assembly just uses different restriction enzymes",
+      "Gibson Assembly uses RNA instead of DNA and joins fragments with heat",
+      "Gibson Assembly uses three enzymes to join DNA fragments that have overlapping sequences — no restriction sites needed, no scars left, and multiple pieces can be joined at once",
+      "Gibson Assembly is just a faster version of restriction cloning with better enzymes",
+      "Gibson Assembly can only join two fragments at a time",
     ],
     correctIndex: 1,
     explanation:
-      "Gibson Assembly, developed by Daniel Gibson at JCVI in 2009, works completely differently from restriction cloning. You design your fragments to have 15–30 bp overlapping sequences at their junctions. Then three enzymes act together at 50°C: T5 5' exonuclease chews back the 5' ends to expose single-stranded overhangs that can anneal; a polymerase fills in any gaps; DNA ligase seals the nicks. The result: seamlessly joined DNA with no extra restriction site sequences left at the junctions ('scarless' cloning). You can assemble 2–10 fragments in a single reaction. Golden Gate Assembly is similar but uses Type IIS restriction enzymes (like BsaI) that cut outside their recognition sequence — programmable overhangs with no scar. These modern assembly methods have largely replaced traditional restriction cloning for complex gene assembly and pathway engineering.",
+      "Restriction enzyme cloning works well but leaves behind extra sequences at every junction — 'scars' from the restriction site. Gibson Assembly is seamless. Here's how it works: you design your fragments so the ends overlap by 15–30 DNA letters. Then three enzymes work together: the first chews back one strand of each overlapping end, exposing single-stranded regions that can pair up. A polymerase fills in any gaps. A ligase seals the nicks. The result is perfectly joined DNA with no extra sequences. Better still, you can join 2, 5, or even 10 pieces in a single tube reaction. Gibson Assembly is now standard in synthetic biology, where scientists need to assemble entire pathways — sometimes hundreds of pieces — quickly and cleanly. It was developed by Daniel Gibson in 2009 and has completely changed large-scale DNA assembly.",
     topic: "cloning",
   },
   {
     id: "cloning-q6",
     question:
-      "Why is E. coli BL21(DE3) used for protein expression while DH5α is used for cloning?",
+      "Why do scientists use E. coli BL21 for making protein but DH5α for making more plasmid?",
     options: [
-      "BL21 lacks restriction enzymes that would degrade foreign DNA; DH5α has restriction enzymes needed for ligation",
-      "BL21 lacks the Lon and OmpT proteases that degrade overexpressed proteins and carries the T7 RNA polymerase gene for IPTG-inducible expression; DH5α is optimized for stable plasmid propagation",
-      "DH5α grows faster, making colony selection quicker; BL21 grows slowly for quality protein folding",
-      "BL21 is used for mammalian expression vectors; DH5α only for bacterial vectors",
+      "BL21 grows faster; DH5α grows at a lower temperature",
+      "BL21 is missing two enzymes that would chew up your overexpressed protein, and has a gene for a specialised RNA polymerase that drives massive protein production; DH5α is optimised for stably making lots of plasmid without any extra genes getting in the way",
+      "DH5α is the only strain that can take up plasmids by transformation",
+      "BL21 produces more antibiotic resistance",
     ],
     correctIndex: 1,
     explanation:
-      "Strain choice matters enormously. DH5α is optimized for stable, high-copy plasmid propagation: it lacks endA1 (a nuclease that degrades plasmid DNA) and has lacZ mutations allowing blue-white screening. It's your workhorse for cloning, sequencing, and preparing plasmid stocks. BL21(DE3) is optimized for protein production: it lacks Lon protease and OmpT outer membrane protease, which would degrade overexpressed proteins. The '(DE3)' means it carries a chromosomal copy of T7 RNA polymerase under lacUV5 promoter control — add IPTG, and T7 RNAP is expressed, which then drives high-level transcription from your T7-promoter–containing expression vector. For toxic proteins, use auto-induction media or a T7 expression strain with a tighter promoter.",
+      "Choosing the right bacterial strain matters enormously, and this is a classic example. DH5α is the workhorse for cloning — it's great at stably replicating plasmids at high copy number, and it has a mutation that prevents it from breaking down the plasmid DNA. Use it to make lots of plasmid for sequencing, storage, or transformation. BL21(DE3) is the workhorse for protein production. It's missing two proteases (Lon and OmpT) that would otherwise chew up your protein the moment you make it. The '(DE3)' part means it carries a gene for T7 RNA polymerase, which drives incredibly powerful transcription from T7 promoters in your expression vector. When you add IPTG to BL21(DE3) cells, it's like pressing the turbo button — the cells pour all their resources into making your protein. Interesting fact: a typical E. coli expression experiment can produce so much protein that it represents 30–50% of all the protein in the cell.",
     topic: "cloning",
   },
   {
     id: "cloning-q7",
     question:
-      "What are BACs and YACs, and why were they critical for the Human Genome Project?",
+      "What are BACs and YACs, and why were they essential for sequencing the human genome?",
     options: [
-      "BACs (Bacterial Artificial Chromosomes) hold up to 300 kb; YACs (Yeast Artificial Chromosomes) hold up to 1 Mb — both were essential for cloning large genomic fragments for sequencing",
-      "BACs are used for plant gene expression; YACs for fungal expression",
-      "BACs replicate in mammalian cells; YACs replicate in bacterial cells only",
-      "Both BACs and YACs are 10–20 kb vectors — the same as standard plasmids but with greater insert stability",
+      "BACs hold up to 300,000 DNA letters; YACs hold up to 1,000,000 — both allowed scientists to clone and sequence large pieces of the human genome without it falling apart",
+      "BACs and YACs are both exactly the same as normal plasmids but with a different name",
+      "BACs and YACs are used in plant biology only",
+      "They're both types of PCR used to amplify large genomic regions",
     ],
     correctIndex: 0,
     explanation:
-      "Standard plasmids max out around 10–15 kb inserts before becoming unstable. To clone and sequence an entire human genome (3 billion bp), you need vectors that can carry much larger pieces. BACs (Bacterial Artificial Chromosomes) are derived from the F-plasmid of E. coli and can accommodate inserts of 100–300 kb with high stability and low chimerism. YACs (Yeast Artificial Chromosomes) include centromere, telomere, and ARS sequences from yeast, enabling inserts up to 1 Mb, but suffer from insert instability and chimerism. The Human Genome Project used BAC libraries — genomic DNA fragmented to ~150 kb, cloned into BACs, each BAC sequenced by shotgun methods, then assembled. The final human genome reference sequence is built on BAC-based physical maps.",
+      "Standard plasmids fall apart if you try to put more than about 10,000–15,000 DNA letters in them. The human genome has 3 billion letters — you can't clone it in normal plasmids. BACs (Bacterial Artificial Chromosomes) are derived from a large natural plasmid in E. coli and can stably hold inserts of 100,000–300,000 letters. YACs (Yeast Artificial Chromosomes) include the elements of a real yeast chromosome and can hold inserts up to 1,000,000 letters. To sequence the human genome, scientists cut genomic DNA into pieces of about 150,000 letters, cloned each piece into a BAC, then sequenced each BAC individually and assembled the results like a giant jigsaw puzzle. Without BACs, the Human Genome Project as it was done would have been impossible. Interesting fact: the project was completed ahead of schedule in 2003 and remains one of the largest collaborative scientific projects in history.",
     topic: "cloning",
   },
   {
     id: "cloning-q8",
     question:
-      "Which expression system is best for producing a therapeutic monoclonal antibody with full post-translational modifications?",
+      "Why is human insulin produced in CHO cells rather than bacteria for therapeutic use?",
     options: [
-      "E. coli — fastest and cheapest, produces correctly glycosylated antibodies",
-      "Cell-free expression — most controllable and scalable for complex proteins",
-      "Chinese Hamster Ovary (CHO) cells — mammalian system capable of human-compatible glycosylation essential for antibody efficacy and half-life",
-      "Pichia pastoris — produces identical glycosylation to CHO cells at lower cost",
+      "Bacteria can't take up the insulin gene",
+      "Bacteria produce insulin, but it triggers immune reactions — CHO cells are mammalian and add the sugar decorations (glycosylation) that many therapeutic proteins need to work safely in the human body",
+      "CHO cells grow faster than bacteria at industrial scale",
+      "E. coli doesn't have the right promoter sequences to express human genes",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation:
-      "Antibody production illustrates why expression system choice matters. Antibodies are glycoproteins — N-linked glycans on the Fc region are essential for complement activation, FcR binding, and serum half-life. E. coli can't add mammalian glycans (it lacks the pathway entirely) and produces non-glycosylated antibodies that fold poorly in the reducing cytoplasm, often forming insoluble inclusion bodies. Pichia adds glycans but they're yeast-type, which can be immunogenic and differs from human patterns. CHO cells perform human-compatible N-glycosylation, produce properly folded and disulfide-bonded antibodies, secrete them into the culture medium, and can be grown at industrial scale in bioreactors. That's why virtually every approved therapeutic antibody (trastuzumab, bevacizumab, adalimumab) is produced in CHO cells.",
+      "This is a great example of why choosing the right expression system matters. Bacteria like E. coli are brilliant at making simple proteins quickly and cheaply — that's why the original human insulin (Humulin) was made in E. coli and still is. But many proteins need extra modifications after they're made. Antibodies, for example, need specific sugars attached to them (called glycosylation) for them to function properly in the body, have the right half-life in the bloodstream, and not trigger immune reactions. Bacteria don't add these sugars — they lack the machinery. Chinese Hamster Ovary (CHO) cells are mammalian, so they can add human-compatible sugars. That's why virtually every therapeutic antibody — trastuzumab for breast cancer, adalimumab for rheumatoid arthritis, and hundreds more — is manufactured in CHO cells. Interesting fact: CHO cells have been used in biopharmaceutical production for over 40 years and are responsible for billions of doses of life-saving medicines.",
     topic: "cloning",
   },
   {
     id: "cloning-q9",
     question:
-      "What was the historical significance of insulin production by recombinant DNA, and what year was it approved?",
+      "Why was the production of recombinant human insulin in 1982 so historically significant?",
     options: [
-      "Recombinant insulin was the first genetically modified food, approved in 1990",
-      "Recombinant human insulin (Humulin) was the first approved recombinant protein drug in 1982, replacing animal-derived insulin and establishing the commercial viability of recombinant biotechnology",
-      "Insulin was first produced by CRISPR base editing in 2015, replacing transgenic approaches",
-      "Recombinant insulin was produced in yeast by Sanger in 1977, the same year he developed DNA sequencing",
+      "It was the first time DNA was ever transferred between organisms",
+      "Humulin was the world's first recombinant protein medicine — it proved the entire concept of using bacteria as drug factories and launched the modern biotech industry",
+      "It solved the problem of insulin side effects permanently",
+      "It was the first gene to ever be successfully sequenced",
     ],
     correctIndex: 1,
     explanation:
-      "Humulin, approved by the FDA in October 1982, was the world's first recombinant protein pharmaceutical — a landmark that launched the modern biotechnology industry. The human insulin gene was synthesized and inserted into E. coli by Genentech scientists (Herbert Boyer's company, co-founded with Robert Swanson). Before 1982, all insulin came from porcine and bovine pancreas glands — supply was limited, quality varied, and about 1–2% of patients had immunological reactions to animal insulin. Human recombinant insulin was identical to the natural human hormone, produced at industrial scale, with consistent quality. Eli Lilly licensed the technology and brought it to market. That one product established the entire pharmaceutical biotechnology business model and opened the door to every recombinant therapeutic that followed.",
+      "Before 1982, all insulin for treating diabetes came from pig and cow pancreas glands. Supply was limited, quality could vary, and some patients had immune reactions to the animal protein. Then Genentech — a company founded by Herbert Boyer, one of the inventors of recombinant DNA — inserted the human insulin gene into E. coli and got the bacteria to make it. Humulin, approved by the FDA in 1982, was identical to the insulin the human body makes. It could be produced at industrial scale, consistently. This single product: proved that bacteria could make human medicines, created a commercial model for the entire biotech industry, and opened the door to hundreds of subsequent drugs. Eli Lilly, which licensed the technology, made billions from it. Interesting fact: the Stanford and UCSF patents on recombinant DNA technology ultimately generated over $250 million in royalties — money that funded a generation of biotechnology research.",
     topic: "cloning",
   },
   {
     id: "cloning-q10",
     question:
-      "How does somatic cell nuclear transfer (SCNT) produce cloned organisms, and how does it differ from molecular cloning?",
+      "What is somatic cell nuclear transfer (SCNT), and how is it different from molecular cloning?",
     options: [
       "SCNT and molecular cloning are identical — both produce multiple copies of a gene",
-      "SCNT transfers the nucleus from an adult somatic cell into an enucleated egg, reprogramming it to develop into a genetically identical organism; molecular cloning copies specific DNA sequences in bacterial hosts",
-      "SCNT is performed only in bacteria using plasmid vectors; molecular cloning is done only in mammalian cells",
-      "SCNT produces copies of proteins; molecular cloning produces copies of organisms",
+      "Molecular cloning copies a gene in bacteria; SCNT takes the nucleus from an adult body cell and puts it into an egg cell to make a genetically identical organism — like Dolly the sheep",
+      "SCNT creates multiple identical protein molecules; molecular cloning creates identical organisms",
+      "Both techniques use restriction enzymes and plasmids",
     ],
     correctIndex: 1,
     explanation:
-      "These two uses of 'cloning' are completely different. Molecular cloning (what most of this section covers) copies a specific DNA sequence by putting it in a plasmid and growing it in E. coli. You end up with billions of copies of your gene and its encoded protein. Somatic cell nuclear transfer (SCNT) is organism-level cloning: you take a somatic cell (any body cell) from the organism you want to clone, remove its nucleus, inject that nucleus into an egg cell whose own nucleus has been removed, and stimulate the egg to develop into an embryo. The resulting organism is genetically identical to the donor of the somatic cell nucleus. Dolly the sheep (1996, Roslin Institute) was the first mammal cloned this way — her nuclear DNA came from an adult mammary gland cell. Therapeutic cloning uses SCNT to create embryos only to harvest embryonic stem cells for research, not to produce offspring.",
+      "This is a really important distinction because 'cloning' means different things in different contexts. Molecular cloning (most of what this section covers) is about copying a specific piece of DNA in bacteria — you make billions of copies of a gene, not a whole organism. Somatic cell nuclear transfer is completely different: you take the nucleus from any regular body cell (a skin cell, for example), remove the nucleus from an egg cell, insert the body cell nucleus into that empty egg, and stimulate it to develop. The resulting organism has the same DNA as whoever donated the body cell nucleus. This is how Dolly the sheep was made in 1996 at the Roslin Institute in Scotland. It was a scientific bombshell — until then, most scientists believed you couldn't reprogram an adult cell nucleus. Dolly lived to age six and was a healthy sheep. Her birth opened entirely new discussions about cloning in medicine and ethics.",
     topic: "cloning",
   },
 ];
@@ -1112,36 +1111,36 @@ const EXPLANATIONS = [
     uid: "exp-history",
     anchorId: "cloning-restriction-enzymes",
     color: C.teal,
-    heading: "The Discovery That Started an Industry: Cohen, Boyer, and 1973",
-    body: "The story of recombinant DNA begins in Hawaii in 1972. Stanley Cohen (Stanford) and Herbert Boyer (UCSF) happened to sit next to each other at a conference on plasmids. Cohen was an expert on bacterial plasmids; Boyer had just discovered restriction enzymes could produce sticky-ended fragments. Over a late-night deli sandwich, they realized their tools were made for each other: Boyer's restriction enzymes could cut DNA from any source to produce compatible ends; Cohen's plasmid expertise could get that DNA into bacteria. In 1973 they published the first recombinant DNA experiment — a frog ribosomal gene spliced into an E. coli plasmid, successfully replicated inside bacteria. The world immediately understood the implications. Senator Ted Kennedy convened hearings. Scientists themselves called for a moratorium at the Asilomar Conference in 1975 to discuss the safety of recombinant organisms. The moratorium lasted months, not years — because careful analysis showed that E. coli K-12 laboratory strains with recombinant plasmids posed negligible risk. By 1977, the first recombinant human protein (somatostatin) was made in bacteria. By 1982, recombinant insulin was on pharmacy shelves. The Cohen-Boyer patents, licensed by Stanford and UCSF to industry, generated over $250 million in royalties and seeded the entire biotech industry.",
+    heading: "The Late-Night Sandwich That Launched Biotechnology",
+    body: "The story of recombinant DNA begins at a conference dinner in Hawaii in 1972. Two scientists happened to sit next to each other: Stanley Cohen from Stanford, who was an expert on bacterial plasmids (small circular DNA molecules that bacteria carry alongside their main chromosome), and Herbert Boyer from UCSF, who had been studying restriction enzymes — proteins that cut DNA and leave matching sticky ends. Over sandwiches, they realised their tools were made for each other. Boyer's enzymes could cut DNA from any source into pieces with matching ends. Cohen's knowledge could get those pieces into bacteria and keep them there. In 1973 they published the first recombinant DNA experiment — the proof that you could cut a gene from one organism and paste it into another. The world immediately understood what this meant. By 1982, just nine years later, recombinant human insulin produced in bacteria was on pharmacy shelves, changing medicine forever. The Stanford and UCSF patents on their technology generated over $250 million in royalties and essentially seeded the entire modern biotech industry — all from a dinner conversation over sandwiches.",
   },
   {
     uid: "exp-restriction",
     anchorId: "cloning-restriction-enzymes-detail",
     color: C.geneA,
-    heading: "Restriction Enzymes: The Original Molecular Scissors",
-    body: "Restriction enzymes are bacterial self-defense weapons. When a virus (bacteriophage) injects its DNA into a bacterium, the bacterium tries to destroy it using restriction endonucleases — proteins that recognize and cut specific short DNA sequences. The bacterium's own DNA is protected by methylation at those same sequences. Werner Arber, Daniel Nathans, and Hamilton Smith shared the 1978 Nobel Prize for discovering and characterizing restriction enzymes. Over 3,000 restriction enzymes from hundreds of bacteria are now known, each recognizing a different sequence. The most useful for cloning are Type II enzymes: they recognize palindromic sequences (reading the same on both strands 5'→3') and cut within or very near the recognition sequence, producing predictable fragments. Recognition sequence length determines cutting frequency: a 4-cutter (like HaeIII, GGCC) cuts every 256 bp on average; a 6-cutter (like EcoRI, GAATTC) cuts every 4,096 bp; an 8-cutter (like NotI, GCGGCCGC) cuts every 65,536 bp — useful for rare cuts and mapping large genomic regions. The sticky ends produced by enzymes like EcoRI (4-nt 5' overhang: AATT) or BamHI (4-nt 5' overhang: GATC) drive efficient ligation. 'Star activity' is a real problem: under non-optimal conditions (excess glycerol, wrong salt, high enzyme concentration), some enzymes cut at relaxed recognition sequences — which can generate spurious fragments and wreck a cloning experiment.",
+    heading: "Restriction Enzymes: Bacteria's Natural Molecular Scissors",
+    body: "Restriction enzymes exist because bacteria need to defend themselves. When a virus injects its DNA into a bacterium, restriction enzymes chop the viral DNA into harmless pieces. The bacterium protects its own DNA by adding a chemical mark (called methylation) at those same sequences — so its own DNA is invisible to the scissors. Werner Arber, Daniel Nathans, and Hamilton Smith won the Nobel Prize in 1978 for discovering how these enzymes work. Over 3,000 different restriction enzymes have been found since then, each recognising a different short sequence. The most useful ones for cloning are called Type II enzymes. They recognise short palindromic sequences — meaning the sequence reads the same forwards and backwards on both strands. For example, EcoRI always recognises the six-letter sequence GAATTC. Here's the interesting detail: when EcoRI cuts in the middle of this sequence, it cuts in a staggered way, leaving single-stranded overhangs of AATT on each piece. These overhangs are called 'sticky ends' because they naturally pair up with any other piece cut by EcoRI. It's like leaving puzzle tabs on each side — pieces from different sources automatically fit together.",
   },
   {
     uid: "exp-vectors",
     anchorId: "cloning-vectors",
     color: C.geneB,
-    heading: "Vectors: Choosing the Right Carrier for Your Gene",
-    body: "Not all vectors are equal — the right choice depends on insert size, desired copy number, expression requirements, and host organism. For routine cloning, pUC19 and pBR322 are the workhorses: they replicate to hundreds of copies in E. coli, carry ampicillin and/or tetracycline resistance markers, and have multiple cloning sites. For larger inserts (up to 45 kb), bacteriophage lambda vectors use cos sites for in vitro packaging into viral heads, achieving high efficiency transformation. Cosmids are plasmids carrying cos sites — they can carry 40–45 kb inserts and are packaged as phage but replicate as plasmids in E. coli. BACs (100–300 kb inserts, derived from F-plasmid) and YACs (up to 1 Mb inserts, with centromere, telomere, and ARS sequences) enable genomic library construction for genome projects. For protein expression, the vector needs a strong promoter (T7 for bacterial expression driven by T7 RNAP; CMV for mammalian cells; 35S for plant cells), a ribosome binding site, and often an affinity tag for purification — His-tag (6xHis binds Ni-NTA resin), GST-tag (binds glutathione resin), or FLAG-tag (recognized by specific antibody). Inducible systems — IPTG/lac operator for bacteria, tetracycline-responsive elements for mammalian cells — let you control when the gene is expressed, preventing toxic protein accumulation during cell growth.",
+    heading: "Vectors: Choosing the Right Taxi for Your Gene",
+    body: "A vector is like a taxi that carries your gene into a cell and makes sure it stays there and gets used. Choosing the right vector depends on what you're trying to do. For simply making lots of copies of a piece of DNA, a small plasmid like pUC19 is perfect — it replicates to hundreds of copies per bacterial cell, is easy to handle, and comes with antibiotic resistance and a docking site for inserting your gene. For larger pieces of DNA (up to 45,000 letters), bacteriophage lambda vectors package DNA into viral capsids and deliver it into bacteria very efficiently. For very large inserts (100,000–300,000 letters), BACs (Bacterial Artificial Chromosomes) are stable and reliable — they were essential for mapping the entire human genome. For actually making a protein in bacteria, expression vectors have extra features: a strong promoter that can be switched on by adding a chemical, a sequence that tells the ribosome where to start translating, and a protein tag (like 6 histidine amino acids in a row) that lets you easily pull your protein out of the bacterial soup. Each vector is an engineering choice based on your goal.",
   },
   {
     uid: "exp-ligation",
     anchorId: "cloning-transformation",
     color: C.ligase,
-    heading: "Ligation, Transformation, and Colony Screening",
-    body: "Once your insert and vector have been digested, purified, and mixed, T4 DNA ligase seals the phosphodiester bonds between the compatible sticky ends — using ATP as energy source. The optimal vector:insert molar ratio is typically 1:3 to 1:5 (more insert than vector drives recombinant formation over empty vector re-ligation). Ligation efficiency depends on temperature (4°C overnight vs 16°C for 1h vs quick ligation kits at 25°C), DNA concentration (optimal around 10–20 ng vector in 10 μL), and sticky end quality. After ligation, you need to get the plasmid into bacteria — transformation. Chemically competent cells (prepared by CaCl₂ treatment) take up DNA after heat shock at 42°C for 30–90 seconds. The heat shock transiently disrupts the membrane, allowing plasmid entry. Electroporation (a brief high-voltage pulse at ~1.8 kV/cm across the cell) is more efficient — up to 10⁹ transformants per μg DNA — but requires electrocompetent cells and causes more cell death. After transformation, cells recover in rich medium for 1 hour (allowing antibiotic resistance gene expression), then are plated. Colonies appear overnight. You screen by colony PCR (pick colony, amplify with flanking primers — right size band = insert present), blue-white screening, or direct sequencing (Sanger sequencing of a small miniprep).",
+    heading: "Ligation, Transformation, and Finding Your Clones",
+    body: "Once you've cut your gene and your vector with the same restriction enzyme, you mix them together with an enzyme called T4 DNA ligase. Ligase seals the connections between the sticky ends, permanently joining the gene into the vector. You use more insert than vector in the reaction to encourage the gene to go in rather than the vector just re-joining itself empty. Next comes transformation: getting the recombinant plasmid into bacteria. The classic method treats bacteria with chemicals to make them temporarily 'competent' (able to take up DNA), then gives them a brief 42°C heat shock. Nobody fully understands why the heat shock helps — but it works reliably. The bacteria are then spread onto plates containing antibiotic. Most bacteria take up no DNA and die. The ones that survive have a plasmid. But which ones have your gene inside? Blue-white screening is the clever visual trick: bacteria with empty vectors turn blue on special plates; bacteria with your gene inserted turn white. Pick the white colonies, grow them up overnight, extract the plasmid, and send it for DNA sequencing to confirm your gene is there. The whole process — from ligation to a confirmed clone — typically takes just two to three days.",
   },
   {
     uid: "exp-expression",
     anchorId: "cloning-expression",
     color: "oklch(0.55 0.14 220)",
-    heading: "From Gene to Product: Recombinant Protein Expression",
-    body: "Getting a gene into a host cell is just step one. Making useful amounts of functional protein requires careful design of the expression system. In E. coli, the gene needs a strong promoter (T7 is the most powerful — driven by T7 RNA polymerase, it generates massive transcript levels), a ribosome binding site (Shine-Dalgarno sequence) precisely spaced 5–10 nt upstream of the start codon, and the right reading frame from the start codon through the tag. Common problems: inclusion bodies (insoluble protein aggregates, especially for eukaryotic proteins with complex disulfide bonds — resolvable by growing at 18°C, reducing IPTG concentration, or using solubility-enhancing tags like SUMO or TF); proteolysis (use protease-deficient strains like BL21); codon bias (if your gene uses rare codons, use Rosetta strain that supplies rare tRNA genes). For proteins requiring glycosylation, disulfide bonds, or other eukaryotic modifications, switch to yeast (P. pastoris secretes proteins with glycosylation into the medium), insect cells (baculovirus system — high yield, partial glycosylation), or mammalian cells (CHO, HEK293 — gold standard for therapeutic proteins, full human glycosylation). After expression, purification uses affinity chromatography for tagged proteins, then size exclusion chromatography or ion exchange to achieve pharmaceutical purity. The entire workflow — gene synthesis to purified protein — can now be accomplished in 2–4 weeks with modern tools.",
+    heading: "From Gene to Working Protein: The Expression Challenge",
+    body: "Getting a gene into bacteria is the easy part. Getting the bacteria to make the protein in a useful form is harder. For a simple protein, E. coli expression is fast and cheap: add a chemical called IPTG to switch on transcription, grow for a few hours, break open the cells, and purify the protein. Simple. But for many human proteins — especially ones that need to fold into complex shapes, have sugars attached, or are actually toxic to bacteria if overproduced — things get complicated. A common problem is called inclusion bodies: the bacteria make lots of protein, but it all clumps together in insoluble lumps instead of folding correctly. Solutions include growing at a lower temperature, adding less inducer, or switching to a different host altogether. Yeast cells handle folding much better for some proteins, and they can secrete proteins outside the cell for easy collection. When a protein absolutely needs human-compatible sugar decorations — as therapeutic antibodies do — you need mammalian cells like CHO cells (Chinese Hamster Ovary cells), which do the job but grow more slowly. The choice of expression system is one of the most important decisions in any protein production project.",
   },
 ];
 
@@ -1149,42 +1148,42 @@ const KEY_CONCEPTS = [
   {
     uid: "kc-re",
     term: "Type II Restriction Enzyme",
-    def: "Cuts at/near its recognition sequence (palindromic, 4–8 bp) producing defined sticky or blunt ends. Over 3,000 known; 6-cutters like EcoRI most common in cloning.",
+    def: "Molecular scissors that cut DNA at a specific short sequence (usually 6 letters). They cut in a staggered way, leaving 'sticky ends' — short single-stranded overhangs ready to pair with matching pieces. EcoRI is the classic example, recognising GAATTC every time.",
   },
   {
     uid: "kc-pv",
     term: "Plasmid Vector",
-    def: "Circular self-replicating DNA requiring: origin of replication (copy number), selectable marker (ampR), and MCS (insertion sites). pUC19 is the classic backbone.",
+    def: "A small circular DNA molecule that acts as a 'taxi' for your gene. Needs three things to work: an origin of replication (so it can copy itself), a selectable marker like antibiotic resistance (so you can find which bacteria took it up), and a cloning site (where your gene goes in).",
   },
   {
     uid: "kc-se",
     term: "Sticky Ends",
-    def: "Single-stranded 5' or 3' overhangs after staggered restriction cuts. Anneal spontaneously with complementary ends, enabling 10–100x more efficient ligation than blunt ends.",
+    def: "Short single-stranded overhangs left when a restriction enzyme cuts in a staggered way. Because they're complementary to each other, they naturally pair up and hold DNA pieces together, making ligation 10–100 times more efficient than blunt ends.",
   },
   {
     uid: "kc-dl",
     term: "T4 DNA Ligase",
-    def: "ATP-dependent enzyme sealing phosphodiester bonds between compatible ends. Dephosphorylate vector backbone first to prevent self-ligation without insert.",
+    def: "The enzyme that acts as 'molecular glue' — it seals the connections between sticky ends, permanently joining DNA fragments together. Uses ATP as energy. The essential final step that turns separate pieces into a complete recombinant DNA molecule.",
   },
   {
     uid: "kc-tr",
     term: "Transformation",
-    def: "Uptake of plasmid by competent bacteria. Heat shock (42°C, 30s) for chemical competence; ~1,800 V/cm pulse for electroporation. ~10⁶–10⁹ colonies/μg DNA.",
+    def: "The process of getting a plasmid into bacterial cells. Bacteria are made temporarily 'competent' using chemicals, then given a brief heat shock at 42°C that somehow allows the plasmid to enter the cell. It's not fully understood why it works — but it does, consistently.",
   },
   {
     uid: "kc-sm",
     term: "Selectable Marker",
-    def: "Antibiotic resistance gene (ampicillin, kanamycin, chloramphenicol). Only transformed cells survive on selection plates. Blue-white adds visual screening for insert presence.",
+    def: "Usually an antibiotic resistance gene on the plasmid. When you plate bacteria on antibiotic-containing media, only bacteria that took up the plasmid survive. Blue-white screening adds a visual clue — white colonies have your gene inserted; blue ones just have the empty plasmid.",
   },
   {
     uid: "kc-ga",
     term: "Gibson Assembly",
-    def: "Isothermal, scarless joining of overlapping fragments using T5 exonuclease + polymerase + ligase. No restriction sites needed. Industry-standard for synthetic biology.",
+    def: "A modern method that joins DNA pieces without restriction enzymes, leaving no extra sequences (scars) at the junctions. Works by designing fragments with overlapping ends, then using three enzymes that chew, fill, and seal them together seamlessly. Can join up to 10 pieces at once.",
   },
   {
     uid: "kc-bac",
     term: "BAC / YAC",
-    def: "Large-capacity vectors: BAC up to 300 kb (F-plasmid derived, stable), YAC up to 1 Mb (yeast chromosomal elements, prone to chimerism). Critical for genome project libraries.",
+    def: "Large-capacity vectors for when your DNA is too big for a regular plasmid. BACs hold up to 300,000 letters and are very stable. YACs hold up to 1,000,000 letters. Both were essential for the Human Genome Project — you can't clone 3 billion letters using regular plasmids.",
   },
 ] as const;
 
@@ -1202,7 +1201,7 @@ export default function CloningSection() {
         <SectionHeader
           topicId="cloning"
           title="Cloning & Recombinant DNA"
-          subtitle="How scientists cut, paste, and copy genes — and turned bacteria into microscopic factories for life-saving medicines, one precision molecular step at a time."
+          subtitle="When people hear 'cloning,' they often think of identical sheep or science fiction. But molecular cloning is actually about copying genes — and it gave us human insulin, life-saving vaccines, and almost every medicine made from proteins."
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-14">
@@ -1218,12 +1217,13 @@ export default function CloningSection() {
                 <span className="font-semibold" style={{ color: C.teal }}>
                   Recombinant DNA
                 </span>{" "}
-                is any DNA assembled by joining genetic material from two or
-                more different sources. Cohen and Boyer pioneered this in 1973 —
-                and it's the foundation of virtually every biotech product in
-                existence. The logic is simple: take a gene you want, cut it
-                out, paste it into a carrier DNA (vector), and use living cells
-                to amplify it and produce the protein it encodes.
+                is DNA that has been put together by joining pieces from two or
+                more different sources. Cohen and Boyer pioneered the technique
+                in 1973, and it became the foundation of virtually every biotech
+                product that exists today. The idea is straightforward: take a
+                gene you want, cut it out, paste it into a small carrier DNA
+                called a vector, and use living cells to copy it and produce the
+                protein it encodes.
               </p>
               <p
                 className="text-base leading-relaxed"
@@ -1233,11 +1233,12 @@ export default function CloningSection() {
                 <span className="font-semibold" style={{ color: C.teal }}>
                   restriction enzymes
                 </span>{" "}
-                act as molecular scissors, cutting DNA at specific palindromic
-                sequences (like GAATTC for EcoRI) in a staggered way that leaves
-                'sticky ends'. Cut both your gene and your vector with the same
-                enzyme, and they have matching sticky ends that spontaneously
-                pair up — ready to be sealed permanently by{" "}
+                act as molecular scissors — they find specific short DNA
+                sequences (like GAATTC for EcoRI) and cut there every single
+                time, leaving short sticky overhangs on each piece. Cut both
+                your gene and your vector with the same enzyme, and the matching
+                sticky ends automatically pair up, ready to be sealed
+                permanently by the enzyme{" "}
                 <span className="font-semibold" style={{ color: C.ligase }}>
                   T4 DNA ligase
                 </span>
@@ -1247,15 +1248,15 @@ export default function CloningSection() {
                 className="text-base leading-relaxed"
                 style={{ color: "oklch(0.30 0.03 75)" }}
               >
-                The resulting <em>recombinant plasmid</em> is introduced into{" "}
+                The recombinant plasmid is then introduced into{" "}
                 <span className="font-semibold" style={{ color: C.bacteria }}>
                   E. coli
                 </span>{" "}
-                by transformation (heat shock or electroporation). Bacteria that
-                took up the plasmid survive on antibiotic medium; those that
-                didn't are eliminated. Each surviving colony is a clone —
-                millions of identical cells, all replicating your gene and
-                potentially making its protein product.
+                by a process called transformation. Bacteria that took up the
+                plasmid survive on antibiotic plates; the rest don't. Each
+                surviving colony is a clone — millions of identical cells, all
+                carrying your gene and potentially producing its protein product
+                in large amounts.
               </p>
             </div>
           </AnimatedEntrance>

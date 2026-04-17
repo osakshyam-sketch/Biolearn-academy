@@ -557,6 +557,36 @@ export const BIOTECH_NAV_ITEMS: NavItem[] = [
         anchor: "#bioinformatics-genomics",
       },
       {
+        id: "bi-python-basics",
+        label: "Python Basics",
+        anchor: "#bi-python-what-is",
+      },
+      {
+        id: "bi-python-variables",
+        label: "Variables & Data Types",
+        anchor: "#bi-python-variables",
+      },
+      {
+        id: "bi-python-strings",
+        label: "Strings & Sequences",
+        anchor: "#bi-python-strings",
+      },
+      {
+        id: "bi-python-loops",
+        label: "Lists & Loops",
+        anchor: "#bi-python-loops",
+      },
+      {
+        id: "bi-python-functions",
+        label: "Functions",
+        anchor: "#bi-python-functions",
+      },
+      {
+        id: "bi-python-files",
+        label: "Files & Modules",
+        anchor: "#bi-python-files",
+      },
+      {
         id: "bi-biopython-basics",
         label: "Biopython Basics",
         anchor: "#bioinformatics-biopython-basics",
